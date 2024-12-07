@@ -82,7 +82,7 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: BBB
 
-*** TODO 11:20 - 11:45 :: p-search: a local search engine in Emacs
+*** DONE 11:20 - 11:45 :: p-search: a local search engine in Emacs
 - *Speaker*: Zac Romero
 - *Track*: Development
 - *Q&A*: BBB
@@ -103,7 +103,7 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: BBB
 
-*** TODO 13:25 - 13:45 :: Beguiling Emacs: Guile-Emacs relaunched!
+*** DONE 13:25 - 13:45 :: Beguiling Emacs: Guile-Emacs relaunched!
 - *Speaker*: Robin Templeton (they/them)
 - *Track*: Development
 - *Q&A*: #emacsconf-dev
@@ -113,7 +113,7 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: #emacsconf-gen
 
-*** 13:55 - 14:05 :: Committing secrets with git using sops-mode
+*** TODO 13:55 - 14:05 :: Committing secrets with git using sops-mode
 - *Speaker*: Jonathan Otsuka
 - *Track*: Development
 - *Q&A*: BBB
