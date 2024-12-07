@@ -1,0 +1,92 @@
+* p-search: A Local Search Engine in Emacs
+** Installation
+#+begin_src elisp
+(use-package p-search :straight (:host github :repo "zkry/p-search"))
+#+end_src
+
+#+RESULTS:
+
+** Examples
+*** Basic File Search
+Simple search across files in current directory:
+
+#+begin_src elisp
+;; Start a basic p-search session
+(p-search)
+
+;; Key commands in p-search buffer:
+;; P - Add a text query prior
+;; C - Add a candidate generator
+;; RET - Open file at point
+;; v - View file at point in read-only mode
+;; + / - - Increase/decrease preview size
+;; TAB - Toggle section visibility
+#+end_src
+
+*** Info Documentation Search
+Search across Emacs manuals:
+
+#+begin_src elisp
+;; First require the info extension
+(require 'psx-info)
+
+;; Create a search session for Emacs and Elisp manuals
+(p-search-setup-buffer 
+ '(:group ((:candidate-generator psx-info-candidate-generator 
+            :args ((info-node . emacs)))
+           (:candidate-generator psx-info-candidate-generator 
+            :args ((info-node . elisp)))
+           (:prior-template p-search-prior-query 
+            :args ((query-string . "buffers"))))))
+#+end_src
+
+*** Custom Search Engine
+Create a specialized search interface:
+
+#+begin_src elisp
+;; Create a search engine for Git repositories
+(p-search-engine
+ '(:group ((:candidate-generator p-search-candidate-generator-filesystem
+            :args ((search-tool . :rg)
+                   (filename-regexp . ".*")
+                   (base-directory . "~/.anthropic/sandbox/")))
+           (:prior-template p-search-prior-query
+            :args ((query-string . ""))
+            :search-engine-arg-name query-string))))
+#+end_src
+
+*** Combined Search with Multiple Priors
+Combine multiple search criteria:
+
+#+begin_src elisp
+;; Search with multiple criteria
+(p-search-setup-buffer
+ '(:group ((:candidate-generator p-search-candidate-generator-filesystem
+            :args ((base-directory . "~/.anthropic/sandbox/")
+                   (search-tool . :rg)))
+           (:prior-template p-search-prior-query
+            :args ((query-string . "emacs")))
+           (:prior-template p-search-prior-git-author
+            :args ((git-author . "Jason Walsh")))
+           (:prior-template p-search-prior-mtime-recency
+            :args ((target-date . "2024-01-01")
+                   (time-scale . :months))))))
+#+end_src
+
+*** Saving Search Configurations
+Bookmark your search setups:
+
+#+begin_src elisp
+;; In a p-search buffer:
+;; 1. Set up your search with desired candidates and priors
+;; 2. Use M-x bookmark-set to save the configuration
+;; 3. Later use M-x bookmark-jump to restore the search session
+#+end_src
+
+** Key Features
+- Probabilistic search combining multiple criteria
+- Integration with Info documentation
+- Git-aware searching
+- Bookmarkable search configurations
+- Interactive buffer interface
+- Flexible candidate generation and prior system
