@@ -1,0 +1,235 @@
+#+TITLE: EmacsConf 2024: Full Schedule
+#+DATE: December 7-8, 2024
+
+- https://emacsconf.org/2024/talks/
+
+* Interest Categories
+- :REPL: REPL-driven development focus
+- :AI: AI/ML and data processing related
+- :LITERATE: Literate programming and documentation
+- :CLOUD: Cloud/systems development
+- :CORE: Core Emacs development/internals
+- :RECOMMEND: Strong recommendation based on your interests
+
+* Streaming Options and Setup
+For optimal performance, we recommend watching the streams using mpv:
+
+#+begin_src bash
+# General Track
+mpv https://live0.emacsconf.org/gen.webm
+
+# Development Track
+mpv https://live0.emacsconf.org/dev.webm
+#+end_src
+
+* [#A] Priority Talks                                             :RECOMMEND:
+
+** Saturday Key Talks
+1. [10:00] Gypsum: Emacs and ELisp in Scheme                      :REPL:CORE:
+2. [10:40] Experimental Emacs core in Rust                         :CORE:CLOUD:
+3. [11:20] p-search: local search engine                          :AI:
+4. [13:00] Julia and Emacs philosophies                           :REPL:
+5. [13:25] Guile-Emacs relaunched                                 :REPL:CORE:
+6. [14:25] Elisp and McCLIM                                       :REPL:
+
+** Sunday Key Talks
+1. [09:10] Org-based semantic wiki                                :LITERATE:
+2. [09:30] Regex compilation and pattern matching                 :CORE:
+3. [14:15] Literate programming for 21st Century                  :LITERATE:
+4. [16:00] Transducers: ergonomic data processing                :AI:
+
+* [#A] Schedule
+Times in EST (GMT-5)
+
+** Saturday, December 7, 2024
+
+*** 9:00 - 9:10 :: Saturday opening remarks
+- *Track*: General
+- *Q&A*: Etherpad
+
+*** DONE [#B] 9:10 - 9:20 :: Writing academic papers in Org-Roam      :watch:
+- *Speaker*: Vincent Conus (he/him)
+- *Track*: General
+- *Q&A*: BBB
+
+*** 9:40 - 10:00 :: Managing writing project metadata with org-mode
+- *Speaker*: Blaine Mooers (he/him)
+- *Track*: General
+- *Q&A*: BBB
+
+*** 10:00 - 10:20 :: Gypsum: my clone of Emacs and ELisp written in Scheme
+- *Speaker*: Ramin Honary (he/him)
+- *Track*: Development
+- *Q&A*: BBB
+
+- https://emacsconf.org/2024/talks/gypsum/
+
+*** TODO 10:20 - 11:00 :: The Future of Org
+- *Speaker*: Ihor Radchenko
+- *Track*: General
+- *Q&A*: BBB
+
+- https://emacsconf.org/2024/talks/org-update - Ihor Radchenko - Track: General
+- https://sr.ht/~yantar92/
+
+*** TODO 10:40 - 11:00 :: An experimental Emacs core in Rust
+- *Speaker*: Troy Hinckley
+- *Track*: Development
+- *Q&A*: BBB
+
+*** 11:20 - 11:30 :: Colour your Emacs with ease
+- *Speaker*: Ryota Sawada (he/him)
+- *Track*: General
+- *Q&A*: BBB
+
+*** 11:20 - 11:45 :: p-search: a local search engine in Emacs
+- *Speaker*: Zac Romero
+- *Track*: Development
+- *Q&A*: BBB
+
+*** 13:00 - 13:10 :: Exploring shared philosophies in Julia and Emacs
+- *Speaker*: Gabriele Bozzola (he/him/his)
+- *Track*: Development
+- *Q&A*: BBB
+
+*** 13:00 - 13:10 :: My journey of finding and creating the "perfect" Emacs theme
+- *Speaker*: MetroWind (he/him)
+- *Track*: General
+- *Q&A*: BBB
+
+*** 13:25 - 13:45 :: Beguiling Emacs: Guile-Emacs relaunched!
+- *Speaker*: Robin Templeton (they/them)
+- *Track*: Development
+- *Q&A*: #emacsconf-dev
+
+*** 13:30 - 13:45 :: Watering my (digital) plant with Emacs timers
+- *Speaker*: Christopher Howard (he/him)
+- *Track*: General
+- *Q&A*: #emacsconf-gen
+
+*** 13:55 - 14:05 :: Committing secrets with git using sops-mode
+- *Speaker*: Jonathan Otsuka
+- *Track*: Development
+- *Q&A*: BBB
+
+*** 13:55 - 14:35 :: Emacs as a shell
+- *Speaker*: Christopher Howard (he/him)
+- *Track*: General
+- *Q&A*: #emacsconf-gen
+
+*** 14:25 - 15:25 :: Elisp and McCLIM
+- *Speaker*: he or e/em/eir
+- *Track*: Development
+- *Q&A*: BBB
+
+*** 14:45 - 15:05 :: Re-imagining the Emacs user experience with Casual Suite
+- *Speaker*: Charles Choi (he/him)
+- *Track*: General
+- *Q&A*: BBB
+
+*** 15:25 - 15:45 :: New in hyperdrive.el: quick install, peer graph, transclusion!
+- *Speaker*: Joseph Turner
+- *Track*: General
+- *Q&A*: BBB
+
+*** 15:45 - 16:05 :: Emacs, eev, and Maxima - now!
+- *Speaker*: Eduardo Ochs
+- *Track*: Development
+- *Q&A*: Etherpad
+
+*** 16:05 - 16:15 :: Emacs Writing Studio
+- *Speaker*: Peter Prevos (he)
+- *Track*: General
+- *Q&A*: BBB
+
+*** 16:25 - 16:50 :: Emacs 30 Highlights
+- *Speaker*: Philip Kaludercic
+- *Track*: General
+- *Q&A*: BBB
+
+*** 17:00 - 17:10 :: Saturday closing remarks
+- *Track*: General
+- *Q&A*: Etherpad
+
+** Sunday, December 8, 2024
+
+*** 9:00 - 9:10 :: Sunday opening remarks
+- *Track*: General
+- *Q&A*: Etherpad
+
+*** 9:10 - 9:20 :: Unlocking linked data: replacing specialized apps with an Org-based semantic wiki
+- *Speaker*: Abhinav Tushar (he/him)
+- *Track*: General
+- *Q&A*: Etherpad
+
+*** 9:30 - 9:50 :: Emacs regex compilation and future directions for expressive pattern matching
+- *Speaker*: Danny McClanahan (they/them)
+- *Track*: General
+- *Q&A*: #emacsconf-gen
+
+*** 10:00 - 10:20 :: Survival of the skillest: Thriving in the learning jungle
+- *Speaker*: Bala Ramadurai (his/him)
+- *Track*: General
+- *Q&A*: Etherpad
+
+*** 10:30 - 11:15 :: About Blee: enveloping our own autonomy directed digital ecosystem with Emacs
+- *Speaker*: Mohsen BANAN (he/him)
+- *Track*: General
+- *Q&A*: BBB
+
+*** 11:30 - 11:45 :: Fun things with GNU Hyperbole
+- *Speaker*: Mats Lidell (he/him)
+- *Track*: General
+- *Q&A*: BBB
+
+*** 13:40 - 13:55 :: PGmacs: browsing and editing PostgreSQL databases from Emacs
+- *Speaker*: Eric Marsden (he/him)
+- *Track*: General
+- *Q&A*: BBB
+
+*** 14:15 - 14:35 :: Literate programming for the 21st Century
+- *Speaker*: Howard Abrams (he/him)
+- *Track*: General
+- *Q&A*: BBB
+
+*** 15:00 - 15:10 :: An example of a cohesive student workflow in Emacs
+- *Speaker*: Daniel Pinkston (he/him)
+- *Track*: General
+- *Q&A*: #emacsconf-gen
+
+*** 15:20 - 15:40 :: So you want to be an Emacs-fluencer?
+- *Speaker*: Gopar
+- *Track*: General
+- *Q&A*: Etherpad
+
+*** 16:00 - 16:30 :: Transducers: finally, ergonomic data processing for Emacs!
+- *Speaker*: Colin Woodbury (he)
+- *Track*: General
+- *Q&A*: BBB
+
+*** 16:50 - 17:00 :: Sunday closing remarks
+- *Track*: General
+- *Q&A*: Etherpad
+
+* Streaming Options
+For optimal performance, we recommend watching the streams using a streaming media player:
+
+** General Track
+Stream URL: https://live0.emacsconf.org/gen.webm
+Low bandwidth: https://live0.emacsconf.org/gen-480p.webm
+
+** Development Track
+Stream URL: https://live0.emacsconf.org/dev.webm
+Low bandwidth: https://live0.emacsconf.org/dev-480p.webm
+
+Supported players:
+- mpv
+- vlc
+- ffplay
+
+* Chat Channels
+- General Track: #emacsconf-gen on libera.chat
+- Development Track: #emacsconf-dev on libera.chat
+
+
+
