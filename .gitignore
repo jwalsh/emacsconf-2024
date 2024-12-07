@@ -47,3 +47,7 @@ flycheck_*.el
 notes/
 dist/
 build/
+
+2024/
+*.webm
+media.emacsconf.org

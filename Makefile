@@ -45,41 +45,9 @@ elisp-example: ## Create a new Elisp example
 	@echo '(message "Hello from Elisp!")' > examples/elisp/example.el
 	@emacs --batch -l examples/elisp/example.el
 
-# Add to your existing Makefile
 
-COMMIT_TEMPLATE="Analyze this git diff and create a conventional commit message following these rules:\n\
-1. Use types: feat|fix|docs|style|refactor|test|chore\n\
-2. Optional scope in parentheses\n\
-3. Short description in imperative mood\n\
-4. Optionally followed by longer description\n\
-5. Include relevant technical details\n\
-\nDiff:\n"
+commit: ## Just show the suggested commit message without committing
+	@poetry run python git-conv.py
 
-commit-msg: ## Generate conventional commit message from current diff
-	@if [ -z "$$(git diff)" ]; then \
-		echo "$(CYAN)No changes to commit$(RESET)"; \
-		exit 1; \
-	fi
-	@echo -e "$(COMMIT_TEMPLATE)" > /tmp/commit_prompt.txt
-	@git diff >> /tmp/commit_prompt.txt
-	@echo "$(CYAN)Generating commit message...$(RESET)"
-	@ollama run codellama:latest < /tmp/commit_prompt.txt > /tmp/commit_msg.txt
-	@echo "$(CYAN)Suggested commit message:$(RESET)"
-	@cat /tmp/commit_msg.txt
-	@echo "\n$(CYAN)Use this message? [y/N]$(RESET)"
-	@read -r response; \
-	if [ "$$response" = "y" ]; then \
-		git commit -F /tmp/commit_msg.txt; \
-	else \
-		echo "$(CYAN)Commit cancelled$(RESET)"; \
-	fi
-
-suggest-commit: ## Just show the suggested commit message without committing
-	@if [ -z "$$(git diff)" ]; then \
-		echo "$(CYAN)No changes to analyze$(RESET)"; \
-		exit 1; \
-	fi
-	@echo -e "$(COMMIT_TEMPLATE)" > /tmp/commit_prompt.txt
-	@git diff >> /tmp/commit_prompt.txt
-	@echo "$(CYAN)Generating commit suggestion...$(RESET)"
-	@ollama run codellama:latest < /tmp/commit_prompt.txt
+mirror: ## Media mirror
+	wget -mkEpnp https://media.emacsconf.org/2024/
