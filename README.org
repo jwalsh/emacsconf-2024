@@ -162,7 +162,7 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: #emacsconf-gen
 
-*** TODO 14:25 - 15:25 :: Elisp and McCLIM
+*** DONE 14:25 - 15:25 :: Elisp and McCLIM
 - *Speaker*: he or e/em/eir
 - *Track*: Development
 - *Q&A*: BBB
@@ -197,7 +197,6 @@ Times in EST (GMT-5)
 
 - https://emacsconf.org/2024/talks/hyperdrive/
 
-
 *** 15:45 - 16:05 :: Emacs, eev, and Maxima - now!
 - *Speaker*: Eduardo Ochs
 - *Track*: Development
@@ -212,14 +211,14 @@ Times in EST (GMT-5)
 
 - https://emacsconf.org/2024/talks/writing/
 
-*** TODO 16:25 - 16:50 :: Emacs 30 Highlights
+*** DONE 16:25 - 16:50 :: Emacs 30 Highlights
 - *Speaker*: Philip Kaludercic
 - *Track*: General
 - *Q&A*: BBB
 
 - https://emacsconf.org/2024/talks/emacs30/
 
-*** 17:00 - 17:10 :: Saturday closing remarks
+*** DONE 17:00 - 17:10 :: Saturday closing remarks
 - *Track*: General
 - *Q&A*: Etherpad
 
@@ -227,7 +226,7 @@ Times in EST (GMT-5)
 
 ** Sunday, December 8, 2024
 
-*** 9:00 - 9:10 :: Sunday opening remarks
+*** TODO 9:00 - 9:10 :: Sunday opening remarks
 - *Track*: General
 - *Q&A*: Etherpad
 
@@ -269,7 +268,7 @@ Times in EST (GMT-5)
 
 - https://emacsconf.org/2024/talks/hyperbole/
 
-*** 13:40 - 13:55 :: PGmacs: browsing and editing PostgreSQL databases from Emacs
+*** [#C] 13:40 - 13:55 :: PGmacs: browsing and editing PostgreSQL databases from Emacs
 - *Speaker*: Eric Marsden (he/him)
 - *Track*: General
 - *Q&A*: BBB
@@ -317,7 +316,7 @@ Times in EST (GMT-5)
 
 - https://emacsconf.org/2024/talks/transducers/
 
-*** 16:50 - 17:00 :: Sunday closing remarks
+*** TODO 16:50 - 17:00 :: Sunday closing remarks
 - *Track*: General
 - *Q&A*: Etherpad
 
