@@ -64,7 +64,7 @@ Times in EST (GMT-5)
 
 - https://emacsconf.org/2024/talks/gypsum/
 
-*** TODO 10:20 - 11:00 :: The Future of Org
+*** DONE 10:20 - 11:00 :: The Future of Org
 - *Speaker*: Ihor Radchenko
 - *Track*: General
 - *Q&A*: BBB
@@ -72,7 +72,7 @@ Times in EST (GMT-5)
 - https://emacsconf.org/2024/talks/org-update - Ihor Radchenko - Track: General
 - https://sr.ht/~yantar92/
 
-*** TODO 10:40 - 11:00 :: An experimental Emacs core in Rust
+*** DONE 10:40 - 11:00 :: An experimental Emacs core in Rust
 - *Speaker*: Troy Hinckley
 - *Track*: Development
 - *Q&A*: BBB
@@ -82,12 +82,18 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: BBB
 
-*** 11:20 - 11:45 :: p-search: a local search engine in Emacs
+*** TODO 11:20 - 11:45 :: p-search: a local search engine in Emacs
 - *Speaker*: Zac Romero
 - *Track*: Development
 - *Q&A*: BBB
 
-*** 13:00 - 13:10 :: Exploring shared philosophies in Julia and Emacs
+- https://github.com/zkry/p-search
+
+#+begin_src elisp
+(use-package p-search :straight (:host github :repo "zkry/p-search"))
+#+end_src
+
+*** TODO 13:00 - 13:10 :: Exploring shared philosophies in Julia and Emacs
 - *Speaker*: Gabriele Bozzola (he/him/his)
 - *Track*: Development
 - *Q&A*: BBB
@@ -97,7 +103,7 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: BBB
 
-*** 13:25 - 13:45 :: Beguiling Emacs: Guile-Emacs relaunched!
+*** TODO 13:25 - 13:45 :: Beguiling Emacs: Guile-Emacs relaunched!
 - *Speaker*: Robin Templeton (they/them)
 - *Track*: Development
 - *Q&A*: #emacsconf-dev
@@ -117,7 +123,7 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: #emacsconf-gen
 
-*** 14:25 - 15:25 :: Elisp and McCLIM
+*** TODO 14:25 - 15:25 :: Elisp and McCLIM
 - *Speaker*: he or e/em/eir
 - *Track*: Development
 - *Q&A*: BBB
@@ -157,12 +163,12 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: Etherpad
 
-*** 9:10 - 9:20 :: Unlocking linked data: replacing specialized apps with an Org-based semantic wiki
+*** TODO 9:10 - 9:20 :: Unlocking linked data: replacing specialized apps with an Org-based semantic wiki
 - *Speaker*: Abhinav Tushar (he/him)
 - *Track*: General
 - *Q&A*: Etherpad
 
-*** 9:30 - 9:50 :: Emacs regex compilation and future directions for expressive pattern matching
+*** TODO 9:30 - 9:50 :: Emacs regex compilation and future directions for expressive pattern matching
 - *Speaker*: Danny McClanahan (they/them)
 - *Track*: General
 - *Q&A*: #emacsconf-gen
@@ -187,7 +193,7 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: BBB
 
-*** 14:15 - 14:35 :: Literate programming for the 21st Century
+*** TODO 14:15 - 14:35 :: Literate programming for the 21st Century
 - *Speaker*: Howard Abrams (he/him)
 - *Track*: General
 - *Q&A*: BBB
@@ -202,7 +208,7 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: Etherpad
 
-*** 16:00 - 16:30 :: Transducers: finally, ergonomic data processing for Emacs!
+*** TODO 16:00 - 16:30 :: Transducers: finally, ergonomic data processing for Emacs!
 - *Speaker*: Colin Woodbury (he)
 - *Track*: General
 - *Q&A*: BBB
