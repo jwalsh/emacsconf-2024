@@ -1,0 +1,159 @@
+* Committing secrets with git using sops-mode
+** Overview
+SOPS (Secrets OPerationS) is a tool for encrypting/decrypting files, integrated into Emacs through sops-mode. It allows seamless editing of encrypted files without leaving the editor.
+
+** Features
+- Auto-detection of SOPS encrypted files
+- Decrypt/encrypt files directly in Emacs
+- Integration with AWS KMS profiles
+- Global minor mode for automatic activation
+
+** Installation
+Using ~use-package~ with ~straight.el~:
+
+#+begin_src elisp
+(defun sops-setup-env ()
+  "Set environment variable for SOPS"
+  (when (string-match "arn:aws:kms.*:\\([[:digit:]]+\\):" (buffer-string))
+    (pcase (match-string-no-properties 1 (buffer-string))
+      ("111111111111" (setenv "AWS_PROFILE" "dev"))
+      ("222222222222" (setenv "AWS_PROFILE" "stage"))
+      ("333333333333" (setenv "AWS_PROFILE" "prod"))
+      (x (message "No matching AWS Profile for %s" x)))))
+
+(use-package sops
+  :straight (:type git :repo "djgoku/sops")
+  :bind (("C-c C-c" . sops-save-file)
+         ("C-c C-k" . sops-cancel)
+         ("C-c C-d" . sops-edit-file))
+  :init
+  (setq sops-before-encrypt-decrypt-hook 'sops-setup-env)
+  (global-sops-mode 1))
+#+end_src
+
+** Usage
+*** Basic Workflow
+1. Open a SOPS encrypted file
+2. sops-mode activates automatically via ~global-sops-mode~
+3. Use ~C-c C-d~ to decrypt and edit
+4. Use ~C-c C-c~ to save changes and encrypt
+5. Use ~C-c C-k~ to cancel changes
+
+*** Example Files
+**** YAML Configuration
+Example encrypted configuration file (secrets.yaml):
+
+#+begin_src yaml :tangle secrets-example.yaml
+# Example SOPS-encrypted YAML file
+apiVersion: ENC[AES256_GCM,data:qq3B,iv:SE49...]
+mysql:
+    host: ENC[AES256_GCM,data:qq3B,iv:SE49...]
+    password: ENC[AES256_GCM,data:qq3B,iv:SE49...]
+redis:
+    password: ENC[AES256_GCM,data:qq3B,iv:SE49...]
+#+end_src
+
+**** JSON Secrets
+Example encrypted JSON file (secrets.json):
+
+#+begin_src json :tangle secrets-example.json
+{
+    "api_key": "ENC[AES256_GCM,data:qq3B,iv:SE49...]",
+    "database": {
+        "password": "ENC[AES256_GCM,data:qq3B,iv:SE49...]"
+    }
+}
+#+end_src
+
+*** AWS KMS Integration
+**** Setup with AWS Profiles
+Example .sops.yaml configuration:
+
+#+begin_src yaml :tangle .sops.yaml
+creation_rules:
+  - path_regex: secrets/dev/.*
+    kms: 'arn:aws:kms:us-east-1:111111111111:key/key-id'
+  - path_regex: secrets/stage/.*
+    kms: 'arn:aws:kms:us-east-1:222222222222:key/key-id'
+  - path_regex: secrets/prod/.*
+    kms: 'arn:aws:kms:us-east-1:333333333333:key/key-id'
+#+end_src
+
+The ~sops-setup-env~ function automatically sets the correct AWS profile based on the KMS key used.
+
+*** Git Integration Examples
+**** .gitattributes Configuration
+Add to your .gitattributes file:
+
+#+begin_src text :tangle .gitattributes.example
+*.enc.yaml diff=sopsdiffer
+*.enc.json diff=sopsdiffer
+#+end_src
+
+**** Git Pre-commit Hook
+Example pre-commit hook to prevent unencrypted secrets:
+
+#+begin_src bash :tangle .git/hooks/pre-commit.example
+#!/bin/bash
+# .git/hooks/pre-commit
+
+files=$(git diff --cached --name-only)
+for file in $files; do
+    if [[ $file =~ \.enc\.(yaml|json)$ ]]; then
+        if ! grep -q "ENC\[AES256_GCM" "$file"; then
+            echo "Error: $file appears to be unencrypted"
+            exit 1
+        fi
+    fi
+done
+exit 0
+#+end_src
+
+** Configuration Options
+| Variable                           | Description                                 |
+|------------------------------------+---------------------------------------------|
+| ~sops-executable~                  | Path to SOPS executable (default: "sops")   |
+| ~sops-decrypt-args~                | SOPS decrypt arguments (default: ~'("-d")~) |
+| ~sops-before-encrypt-decrypt-hook~ | Hook run before encryption/decryption       |
+
+** Common Patterns
+*** Multiple Environment Setup
+#+begin_src elisp
+(defun my/sops-setup-by-path ()
+  "Set AWS profile based on file path"
+  (let ((file-path (buffer-file-name)))
+    (cond
+     ((string-match "/dev/" file-path) (setenv "AWS_PROFILE" "dev"))
+     ((string-match "/stage/" file-path) (setenv "AWS_PROFILE" "stage"))
+     ((string-match "/prod/" file-path) (setenv "AWS_PROFILE" "prod")))))
+
+(setq sops-before-encrypt-decrypt-hook 'my/sops-setup-by-path)
+#+end_src
+
+*** Auto-save Prevention
+#+begin_src elisp
+;; Prevent auto-save for encrypted files
+(add-hook 'sops-mode-hook
+          (lambda ()
+            (setq-local auto-save-default nil)))
+#+end_src
+
+** Requirements
+- Emacs 28.1 or later
+- SOPS executable installed
+- Appropriate AWS credentials if using KMS
+
+** Troubleshooting
+*** Common Issues
+1. Encryption fails with AWS KMS
+   - Check AWS credentials
+   - Verify correct profile is set
+   - Check KMS key permissions
+
+2. File appears corrupted
+   - Use ~sops-cancel~ to revert changes
+   - Check original encrypted file in git history
+
+3. Version compatibility
+   - SOPS version 3.9.0 or later recommended
+   - Check ~sops --version~ output

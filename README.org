@@ -93,7 +93,10 @@ Times in EST (GMT-5)
 (use-package p-search :straight (:host github :repo "zkry/p-search"))
 #+end_src
 
-*** TODO 13:00 - 13:10 :: Exploring shared philosophies in Julia and Emacs
+#+begin_src elisp
+#+end_src
+
+*** DONE 13:00 - 13:10 :: Exploring shared philosophies in Julia and Emacs
 - *Speaker*: Gabriele Bozzola (he/him/his)
 - *Track*: Development
 - *Q&A*: BBB
@@ -113,10 +116,13 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: #emacsconf-gen
 
-*** TODO 13:55 - 14:05 :: Committing secrets with git using sops-mode
+*** DONE 13:55 - 14:05 :: Committing secrets with git using sops-mode
 - *Speaker*: Jonathan Otsuka
 - *Track*: Development
 - *Q&A*: BBB
+
+- https://github.com/getsops/sops
+- https://github.com/djgoku/sops
 
 *** 13:55 - 14:35 :: Emacs as a shell
 - *Speaker*: Christopher Howard (he/him)
@@ -148,7 +154,7 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: BBB
 
-*** 16:25 - 16:50 :: Emacs 30 Highlights
+*** TODO 16:25 - 16:50 :: Emacs 30 Highlights
 - *Speaker*: Philip Kaludercic
 - *Track*: General
 - *Q&A*: BBB
