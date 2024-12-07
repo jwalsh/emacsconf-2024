@@ -1,0 +1,42 @@
+#EXTM3U
+#PLAYLIST: EmacsConf 2024
+#EXTALB: EmacsConf 2024
+#EXTGENRE: Speech
+#EXTINF:-1,Emacs, eev, and Maxima - now! - Eduardo Ochs
+emacsconf-2024-maxima--emacs-eev-and-maxima-now--eduardo-ochs--main.webm
+#EXTINF:-1,Beguiling Emacs: Guile-Emacs relaunched! - Robin Templeton
+emacsconf-2024-guile--beguiling-emacs-guileemacs-relaunched--robin-templeton--main.webm
+#EXTINF:-1,The Future of Org - Ihor Radchenko
+emacsconf-2024-org-update--the-future-of-org--ihor-radchenko--main.webm
+#EXTINF:-1,Elisp and McCLIM - screwlisp
+emacsconf-2024-mcclim--elisp-and-mcclim--screwlisp--main.webm
+#EXTINF:-1,Writing academic papers in Org-Roam - Vincent Conus
+emacsconf-2024-papers--writing-academic-papers-in-orgroam--vincent-conus--main.webm
+#EXTINF:-1,Colour your Emacs with ease - Ryota Sawada
+emacsconf-2024-color--colour-your-emacs-with-ease--ryota--main.webm
+#EXTINF:-1,Exploring shared philosophies in Julia and Emacs - Gabriele Bozzola
+emacsconf-2024-julia--exploring-shared-philosophies-in-julia-and-emacs--gabriele-bozzola--main.webm
+#EXTINF:-1,Saturday opening remarks - nil
+emacsconf-2024-sat-open--saturday-opening-remarks--main.webm
+#EXTINF:-1,Emacs 30 Highlights - Philip Kaludercic
+emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--main.webm
+#EXTINF:-1,Gypsum: my clone of Emacs and ELisp written in Scheme - Ramin Honary
+emacsconf-2024-gypsum--gypsum-my-clone-of-emacs-and-elisp-written-in-scheme--ramin-honary--main.webm
+#EXTINF:-1,My journey of finding and creating the “perfect” Emacs theme - MetroWind
+emacsconf-2024-theme--my-journey-of-finding-and-creating-the-perfect-emacs-theme--metrowind--main.webm
+#EXTINF:-1,New in hyperdrive.el: quick install, peer graph, transclusion! - Joseph Turner
+emacsconf-2024-hyperdrive--new-in-hyperdriveel-quick-install-peer-graph-transclusion--joseph-turner--main.webm
+#EXTINF:-1,Re-imagining the Emacs user experience with Casual Suite - Charles Choi
+emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--main.webm
+#EXTINF:-1,Emacs as a shell - Christopher Howard
+emacsconf-2024-shell--emacs-as-a-shell--christopher-howard--main.webm
+#EXTINF:-1,An experimental Emacs core in Rust - Troy Hinckley
+emacsconf-2024-rust--an-experimental-emacs-core-in-rust--troy-hinckley--main.webm
+#EXTINF:-1,Managing writing project metadata with org-mode - Blaine Mooers
+emacsconf-2024-project--managing-writing-project-metadata-with-orgmode--blaine-mooers--main.webm
+#EXTINF:-1,Emacs Writing Studio - Peter Prevos
+emacsconf-2024-writing--emacs-writing-studio--peter-prevos--main.webm
+#EXTINF:-1,p-search: a local search engine in Emacs - Zac Romero
+emacsconf-2024-p-search--psearch-a-local-search-engine-in-emacs--zac-romero--main.webm
+#EXTINF:-1,Watering my (digital) plant with Emacs timers - Christopher Howard
+emacsconf-2024-water--watering-my-digital-plant-with-emacs-timers--christopher-howard--main.webm
