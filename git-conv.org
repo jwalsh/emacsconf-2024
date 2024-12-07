@@ -1,0 +1,265 @@
+#+TITLE: RFC: git-conv - AI-powered Conventional Commits
+#+SUBTITLE: An AI-assisted tool for standardizing Git commit messages
+#+AUTHOR: Your Name
+#+DATE: 2024-12-07
+
+* Table of Contents                                                    :TOC:
+- [[#introduction][Introduction]]
+  - [[#overview][Overview]]
+  - [[#key-features][Key Features]]
+- [[#functionality][Functionality]]
+  - [[#change-analysis][Change Analysis]]
+  - [[#commit-message-generation][Commit Message Generation]]
+  - [[#validation][Validation]]
+- [[#usage][Usage]]
+  - [[#installation][Installation]]
+  - [[#configuration][Configuration]]
+  - [[#example-code][Example Code]]
+- [[#use-cases][Use Cases]]
+  - [[#team-consistency][Team Consistency]]
+  - [[#time-savings][Time Savings]]
+  - [[#history-quality][History Quality]]
+- [[#future-considerations][Future Considerations]]
+  - [[#short-term-goals][Short-term Goals]]
+  - [[#long-term-vision][Long-term Vision]]
+- [[#conclusion][Conclusion]]
+  - [[#summary][Summary]]
+  - [[#next-steps][Next Steps]]
+
+* Introduction
+** Overview
+git-conv is a tool designed to streamline the process of writing clear, consistent commit messages that follow the Conventional Commits specification. By leveraging AI and validation tools, it reduces cognitive overhead and improves commit message quality.
+
+** Key Features
+- AI-powered commit message generation
+- Automated change analysis
+- Configurable validation rules
+- IDE integration support
+
+* Functionality
+** Change Analysis
+*** Description
+The change analysis module examines Git diffs to understand modifications, providing context for commit message generation.
+
+*Key capabilities:*
+- File type detection
+- Change scope analysis
+- Impact assessment
+- Dependency tracking
+
+*** Workflow
+#+BEGIN_SRC mermaid
+sequenceDiagram
+    actor Developer
+    participant gc as git-conv
+    participant git as Git
+
+    Developer->>gc: Run git-conv
+    gc->>git: Execute git diff
+    git-->>gc: Return diff output
+    gc->>gc: Analyze diff (file types, changes, etc.)
+#+END_SRC
+
+*** Algorithm Details                                                :noexport:
+Internal implementation details and considerations.
+
+** Commit Message Generation
+*** Description
+Generates structured commit messages based on analyzed changes and conventional commit specifications.
+
+*Components:*
+- Type determination (feat, fix, etc.)
+- Scope analysis
+- Description generation
+- Breaking change detection
+
+*** Workflow
+#+BEGIN_SRC mermaid
+sequenceDiagram
+    participant gc as git-conv
+
+    gc->>gc: Determine commit type (feat, fix, etc.)
+    gc->>gc: Determine scope (if applicable)
+    gc->>gc: Generate short description
+    gc->>gc: Generate long description (optional)
+    gc->>gc: Format message according to Conventional Commits
+#+END_SRC
+
+*** Example Output
+#+BEGIN_EXAMPLE
+feat(auth): implement OAuth2 authentication flow
+
+- Add OAuth2 client implementation
+- Configure token management
+- Implement refresh token logic
+
+BREAKING CHANGE: Authentication header format has changed
+#+END_EXAMPLE
+
+** Validation
+*** Description
+Ensures generated commit messages adhere to project standards and conventions.
+
+*Validation checks:*
+- Conventional Commits compliance
+- Project-specific rules
+- Character length limits
+- Breaking change notation
+
+*** Workflow
+#+BEGIN_SRC mermaid
+sequenceDiagram
+    participant gc as git-conv
+    participant val as Validator (e.g., phi3)
+
+    gc->>val: Send generated commit message
+    val-->>gc: Return validation result (pass/fail)
+    gc->>gc: Display validation results
+#+END_SRC
+
+* Usage
+** Installation
+#+BEGIN_QUOTE
+*Note:* Requires Git >= 2.25.0 and Python >= 3.8
+#+END_QUOTE
+
+#+BEGIN_SRC bash
+pip install git-conv
+#+END_SRC
+
+** Configuration
+Create a ~.git-conv.yml~ in your project root:
+
+#+BEGIN_SRC yaml
+validation:
+  max_length: 72
+  required_scope: true
+  allowed_types:
+    - feat
+    - fix
+    - chore
+    - docs
+#+END_SRC
+
+** Example Code
+*** Change Analysis Implementation
+#+BEGIN_SRC python :tangle test_analysis.py
+import subprocess
+
+def analyze_changes():
+    """
+    Analyzes git changes using git diff.
+
+    Returns:
+        dict: A dictionary containing information about the changes.
+            - "files_changed": A list of changed files.
+            - "lines_added": The number of lines added.
+            - "lines_deleted": The number of lines deleted.
+    """
+    try:
+        # Execute git diff and capture output
+        diff_process = subprocess.run(["git", "diff", "--numstat"], 
+                                    capture_output=True, text=True)
+        diff_output = diff_process.stdout.strip()
+
+        files_changed = []
+        lines_added = 0
+        lines_deleted = 0
+
+        # Parse the output of git diff
+        for line in diff_output.splitlines():
+            added, deleted, filename = line.split("\t")
+            files_changed.append(filename)
+            lines_added += int(added) if added.isdigit() else 0
+            lines_deleted += int(deleted) if deleted.isdigit() else 0
+
+        return {
+            "files_changed": files_changed,
+            "lines_added": lines_added,
+            "lines_deleted": lines_deleted,
+        }
+
+    except FileNotFoundError:
+        print("Error: Git command not found. Please ensure Git is installed.")
+        return None
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing git diff: {e}")
+        return None
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return None
+
+if __name__ == "__main__":
+    changes = analyze_changes()
+    if changes:
+        print(changes)
+#+END_SRC
+
+*** Message Validation Script
+#+BEGIN_SRC shell :tangle test_validation.sh
+#!/bin/bash
+
+# Sample commit message (replace with your actual message)
+commit_message="feat(scope): Add a new feature"
+
+# Validate using phi3 (make sure phi3 is installed)
+validation_result=$(phi3 validate "$commit_message")
+
+# Check the validation result
+if echo "$validation_result" | grep -q "PASS"; then
+  echo "Validation passed!"
+else
+  echo "Validation failed:"
+  echo "$validation_result"
+fi
+#+END_SRC
+
+* Use Cases
+** Team Consistency
+*** Problem
+Different team members write commit messages in varying styles, making history hard to follow.
+
+*** Solution
+git-conv enforces a consistent format across the team while reducing the mental overhead of writing messages.
+
+** Time Savings
+*** Problem
+Developers spend significant time crafting appropriate commit messages.
+
+*** Solution
+Automated generation and validation reduce time spent on message composition while maintaining quality.
+
+** History Quality
+*** Problem
+Poor commit messages make it difficult to understand changes and debug issues.
+
+*** Solution
+AI-generated messages provide clear, consistent documentation of changes with proper context.
+
+* Future Considerations
+** Short-term Goals
+- Interactive message refinement
+- Custom validation rules
+- Pre-commit hook integration
+
+** Long-term Vision
+- IDE plugin ecosystem
+- Multi-language support
+- Machine learning improvements
+  - Better change analysis
+  - Context-aware message generation
+  - Project-specific customization
+
+* Conclusion
+** Summary
+git-conv offers a practical solution to the challenge of maintaining consistent, high-quality commit messages. By combining AI-powered analysis and generation with robust validation, it helps teams improve their Git workflow efficiency.
+
+** Next Steps
+1. Review and provide feedback on this RFC
+2. Begin prototype implementation
+3. Conduct user testing
+4. Plan initial release
+
+# Local Variables:
+# org-hide-emphasis-markers: t
+# End:
