@@ -1,0 +1,49 @@
+# .gitignore
+*.ss~
+*.ss#*
+.#*.ss
+
+*.scm~
+*.scm#*
+.#*.scm
+
+# Rust
+/target
+**/*.rs.bk
+Cargo.lock
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+.org-id-locations
+*_archive
+*_flymake.*
+/eshell/history
+/eshell/lastdir
+*.rel
+/auto/
+.cask/
+flycheck_*.el
+.projectile
+.dir-locals.el
+
+# Binary output
+*.o
+*.so
+*.dylib
+*.dll
+*.a
+
+# Project specific
+.cargo/
+.guix-profile/
+.store/
+notes/
+dist/
+build/
