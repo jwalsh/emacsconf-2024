@@ -1,21 +1,48 @@
-import subprocess
+#!/usr/bin/env python3
+
 import sys
-from typing import Optional, Literal
+from typing import Literal, TextIO
+import click
+import subprocess
 from pydantic import BaseModel, Field
 import ollama
-import time
 
 class CommitMessage(BaseModel):
-    commit_type: str = Field(description="Type of change")
-    scope: Optional[Literal['dev', 'gen', 'chat', 'stream', 'org', 'poetry']] = Field(
+    """Schema for conventional commit messages."""
+    commit_type: Literal[
+        'feat', 'fix', 'docs', 'style', 'refactor',
+        'perf', 'test', 'build', 'ci', 'chore'
+    ] = Field(description="Type of change")
+    
+    scope: Literal[
+        'schedule',    # Conference schedule and timing
+        'stream',      # Streaming setup and configurations
+        'track',       # Track-specific content (general/development)
+        'talk',        # Individual talk details
+        'chat',        # Chat and communication channels
+        'setup',       # Setup instructions and configurations
+        'org',         # Org-mode related content
+        'core',        # Core Emacs/development topics
+        'speaker',     # Speaker information
+        'qa'          # Q&A and interaction details
+    ] | None = Field(
         default=None,
-        description="Scope of change",
+        description="Scope of the change"
     )
-    short_description: str = Field(description="Brief description")
-    long_description: Optional[str] = Field(default=None)
+    
+    short_description: str = Field(
+        description="Brief description of the change",
+        min_length=1,
+        max_length=100
+    )
+    
+    long_description: str | None = Field(
+        default=None,
+        description="Detailed explanation if needed"
+    )
 
     def format_message(self) -> str:
-        """Format the commit message."""
+        """Format as conventional commit message."""
         header = f"{self.commit_type}"
         if self.scope:
             header += f"({self.scope})"
@@ -26,196 +53,169 @@ class CommitMessage(BaseModel):
             return f"{header}\n\n{self.long_description}"
         return header
 
-class CommitValidator:
-    def __init__(self, model: str = "phi3", validation_attempts: int = 3):
-        self.model = model
-        self.validation_attempts = validation_attempts
-
-    def validate_commit(self, message: str) -> list[tuple[bool, str]]:
-        """Validate a commit message multiple times using the specified model."""
-        results = []
-        prompt = f"""Analyze this git commit message for compliance with Conventional Commits specification and clarity.
-Return only "PASS" or "FAIL" followed by a brief explanation.
-
-Commit message:
-{message}
-
-Rules to check:
-1. Must start with type (feat, fix, docs, style, refactor, test, chore)
-2. Optional scope in parentheses
-3. Must have colon and space after type/scope
-4. Must have clear, concise description
-5. Optional body must be separated by blank line
-"""
-        for i in range(self.validation_attempts):
-            try:
-                response = ollama.chat(
-                    model=self.model,
-                    messages=[{"role": "user", "content": prompt}]
-                )
-                result = response.message.content.strip().upper()
-                passed = result.startswith("PASS")
-                explanation = result.split("\n", 1)[1].strip() if "\n" in result else ""
-                results.append((passed, explanation))
-                time.sleep(1)  # Small delay between validations
-            except Exception as e:
-                results.append((False, f"Validation error: {str(e)}"))
-        return results
+class ReviewResult(BaseModel):
+    """Schema for commit message validation results."""
+    passed: bool = Field(description="Whether the commit message passed validation")
+    issues: list[str] = Field(
+        default_factory=list,
+        description="List of issues found, if any"
+    )
 
 class GitCommitAI:
-    CYAN = '\033[0;36m'
-    RED = '\033[0;31m'
-    GREEN = '\033[0;32m'
-    YELLOW = '\033[0;33m'
-    NC = '\033[0m'
+    def __init__(
+        self,
+        generator: str = "llama3.2",
+        validator: str = "phi3",
+        max_attempts: int = 3
+    ):
+        self.generator = generator
+        self.validator = validator
+        self.max_attempts = max_attempts
+        self.schema = CommitMessage.model_json_schema()
+        self.review_schema = ReviewResult.model_json_schema()
 
-    def __init__(self, model: str = "llama3.2", validator_model: str = "phi3", 
-                 validation_attempts: int = 3, stage_all: bool = False):
-        self.model = model
-        self.stage_all = stage_all
-        self.validator = CommitValidator(validator_model, validation_attempts)
-
-    def print_color(self, color: str, message: str):
-        """Print a message in color."""
-        print(f"{color}{message}{self.NC}")
-
-    def stage_files(self) -> bool:
-        """Stage files for commit."""
-        try:
-            if self.stage_all:
-                subprocess.run(['git', 'add', '.'], check=True)
-                return True
-            
-            status = subprocess.check_output(['git', 'status', '--porcelain']).decode()
-            if not status:
-                self.print_color(self.RED, "No changes to commit")
-                return False
-            
-            print("\nUnstaged changes:")
-            print(status)
-            self.print_color(self.CYAN, "\nStage all changes? [y/N]")
-            if input().lower().startswith('y'):
-                subprocess.run(['git', 'add', '.'], check=True)
-                return True
-            return False
-        except subprocess.CalledProcessError as e:
-            self.print_color(self.RED, f"Failed to stage files: {e}")
-            return False
-
-    def check_git_changes(self) -> str:
-        """Check for and return git changes."""
+    def get_staged_changes(self) -> str:
+        """Get staged git changes."""
         try:
             diff = subprocess.check_output(['git', 'diff', '--staged']).decode()
-            if not diff:
-                if not self.stage_files():
-                    self.print_color(self.RED, "No changes staged for commit")
-                    sys.exit(1)
-                diff = subprocess.check_output(['git', 'diff', '--staged']).decode()
+            if not diff.strip():
+                click.echo("No changes staged for commit", err=True)
+                click.echo("Use 'git add <files>' to stage changes", err=True)
+                sys.exit(1)
             return diff
         except subprocess.CalledProcessError as e:
-            self.print_color(self.RED, f"Git command failed: {e}")
-            sys.exit(1)
-        except Exception as e:
-            self.print_color(self.RED, f"Unexpected error: {e}")
+            click.echo(f"Git error: {e}", err=True)
             sys.exit(1)
 
-    def generate_commit_message(self, diff: str) -> CommitMessage:
-        """Generate a commit message using Ollama."""
-        self.print_color(self.CYAN, f"Analyzing changes with {self.model}...")
+    def generate_message(self, diff: str, attempt: int = 1, feedback: str = None) -> CommitMessage:
+        """Generate commit message using model."""
+        prompt = [
+            {"role": "system", "content": "Generate a conventional commit message based on the git diff."},
+            {"role": "user", "content": f"""Return valid JSON matching this schema:
+{self.schema}
 
-        prompt = "Create a conventional commit message for this diff:"
+Keep the message concise and focused on the key changes."""}
+        ]
+
+        if feedback and attempt > 1:
+            prompt.append({"role": "user", "content": f"Previous issues:\n{feedback}"})
+
+        prompt.append({"role": "user", "content": f"Changes to analyze:\n{diff}"})
 
         try:
             response = ollama.chat(
-                model=self.model,
-                messages=[{"role": "user", "content": f"{prompt}\n\n{diff}"}],
-                format=CommitMessage.model_json_schema()
+                model=self.generator,
+                messages=prompt,
+                format=self.schema
             )
-            
-            self.print_color(self.CYAN, "Raw JSON response:")
-            print(response.message.content)
-            
             return CommitMessage.model_validate_json(response.message.content)
         except Exception as e:
-            self.print_color(self.RED, f"Error generating commit message: {e}")
-            sys.exit(1)
+            click.echo(f"Error generating message: {e}", err=True)
+            return None
 
-    def commit_changes(self, message: str):
+    def validate_message(self, message: str) -> tuple[bool, str]:
+        """Validate message using validator model."""
+        prompt = [
+            {"role": "system", "content": "Review this commit message and return a structured review result."},
+            {"role": "user", "content": f"""Analyze this commit message:
+{message}
+
+Return valid JSON matching this schema:
+{self.review_schema}
+
+Check:
+1. Follows conventional commits format
+2. Clear and specific description
+3. Appropriate scope if needed"""}
+        ]
+
+        try:
+            response = ollama.chat(
+                model=self.validator,
+                messages=prompt,
+                format=self.review_schema
+            )
+            result = ReviewResult.model_validate_json(response.message.content)
+            return result.passed, "\n".join(result.issues) if result.issues else ""
+        except Exception as e:
+            return False, str(e)
+
+    def commit_changes(self, message: str) -> bool:
         """Commit changes with the given message."""
         try:
-            subprocess.run(['git', 'commit', '-m', message], check=True)
-            self.print_color(self.GREEN, "Changes committed!")
+            subprocess.run(['git', 'commit', '-m', message], check=True, text=True)
+            click.secho("✓ Changes committed successfully!", fg="green")
+            return True
         except subprocess.CalledProcessError as e:
-            self.print_color(self.RED, f"Failed to commit changes: {e}")
-            sys.exit(1)
+            click.secho(f"Failed to commit: {e}", fg="red", err=True)
+            return False
 
-    def run(self):
-        """Run the commit message generator with multiple validations."""
-        diff = self.check_git_changes()
-        while True:
-            commit_msg = self.generate_commit_message(diff)
-            formatted_msg = commit_msg.format_message()
+    def run(self) -> None:
+        """Run the commit message generation and validation flow."""
+        diff = self.get_staged_changes()
+        
+        feedback = None
+        for attempt in range(1, self.max_attempts + 1):
+            click.echo(f"\nAttempt {attempt}/{self.max_attempts}...")
             
-            self.print_color(self.CYAN, "\nFormatted commit message:")
-            print(formatted_msg)
-            
-            # Run multiple validations
-            self.print_color(self.CYAN, f"\nValidating with {self.validator.model} ({self.validator.validation_attempts} attempts)...")
-            validations = self.validator.validate_commit(formatted_msg)
-            
-            # Print validation results
-            print("\nValidation Results:")
-            for i, (passed, explanation) in enumerate(validations, 1):
-                print(f"\nAttempt {i}:")
-                if passed:
-                    self.print_color(self.GREEN, "✓ PASS")
-                else:
-                    self.print_color(self.RED, "✗ FAIL")
-                if explanation:
-                    self.print_color(self.YELLOW, explanation)
-            
-            # Calculate consensus
-            passes = sum(1 for passed, _ in validations if passed)
-            consensus = f"{passes}/{len(validations)} validations passed"
-            if passes > len(validations)/2:
-                self.print_color(self.GREEN, f"\nOverall: {consensus}")
-            else:
-                self.print_color(self.RED, f"\nOverall: {consensus}")
-
-            self.print_color(self.CYAN, "\nUse this message? [y/N/r(retry)]")
-            choice = input().lower()
-            
-            if choice.startswith('y'):
-                self.commit_changes(formatted_msg)
-                break
-            elif choice.startswith('r'):
+            commit_msg = self.generate_message(diff, attempt, feedback)
+            if not commit_msg:
                 continue
-            else:
-                self.print_color(self.CYAN, "Commit cancelled")
+            
+            formatted = commit_msg.format_message()
+            click.echo("\nGenerated message:")
+            click.echo(formatted)
+            
+            click.echo("\nValidating...")
+            passed, feedback = self.validate_message(formatted)
+            
+            if passed:
+                click.secho("✓ Validation passed", fg="green")
+                if feedback:
+                    click.echo(f"Suggestions: {feedback}")
                 break
+            else:
+                click.secho("✗ Validation failed", fg="red")
+                click.echo(f"Issues: {feedback}")
+                if attempt < self.max_attempts:
+                    click.echo("\nRetrying with feedback...")
+        
+        if click.confirm("\nUse this message?", default=False):
+            self.commit_changes(formatted)
 
-def main():
-    import argparse
-    parser = argparse.ArgumentParser(description="AI-powered conventional commit message generator")
-    parser.add_argument("-m", "--model", default="llama3.2", help="Ollama model to use for generation")
-    parser.add_argument("-v", "--validator", default="phi3", help="Ollama model to use for validation")
-    parser.add_argument("-n", "--num-validations", type=int, default=3, help="Number of validation attempts")
-    parser.add_argument("-a", "--all", action="store_true", help="Stage all changes before committing")
-    args = parser.parse_args()
-
+@click.command()
+@click.option(
+    '-g', '--generator',
+    default="llama3.2",
+    help="Model to use for generation",
+    show_default=True
+)
+@click.option(
+    '-v', '--validator',
+    default="phi3",
+    help="Model to use for validation",
+    show_default=True
+)
+@click.option(
+    '-n', '--attempts',
+    default=3,
+    help="Maximum generation attempts",
+    show_default=True
+)
+def main(generator: str, validator: str, attempts: int) -> None:
+    """AI-powered conventional commit message generator."""
     try:
         committer = GitCommitAI(
-            model=args.model, 
-            validator_model=args.validator,
-            validation_attempts=args.num_validations,
-            stage_all=args.all
+            generator=generator,
+            validator=validator,
+            max_attempts=attempts
         )
         committer.run()
     except KeyboardInterrupt:
-        print("\nOperation cancelled by user")
-        sys.exit(1)
+        click.echo("\nOperation cancelled by user", err=True)
+        sys.exit(130)  # Standard interrupt exit code
     except Exception as e:
-        print(f"\nUnexpected error: {e}")
+        click.echo(f"Error: {e}", err=True)
         sys.exit(1)
 
 if __name__ == "__main__":

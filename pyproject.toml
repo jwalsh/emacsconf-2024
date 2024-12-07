@@ -9,6 +9,7 @@ readme = "README.md"
 python = "^3.11"
 ollama = "^0.4.3"
 pydantic = "^2.10.3"
+click = "^8.1.7"
 
 
 [build-system]
