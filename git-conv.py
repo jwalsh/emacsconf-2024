@@ -3,33 +3,25 @@
 import subprocess
 import sys
 from typing import Optional, Literal
-import json
 from pydantic import BaseModel, Field
 import ollama
 
 class CommitMessage(BaseModel):
-    commit_type: Literal['feat', 'fix', 'docs', 'style', 'refactor', 'test', 'chore'] = Field(
-        description="Type of change based on conventional commits specification"
-    )
-    scope: Optional[Literal['org', 'cli', 'docs', 'schedule', 'stream', 'tools']] = Field(
+    commit_type: str = Field(description="Type of change")
+    scope: Optional[Literal['dev', 'gen', 'chat', 'stream', 'org', 'poetry']] = Field(
         default=None,
-        description="Scope of the change (org: org-mode files, cli: command line tools, docs: documentation, "
-                   "schedule: conference schedule, stream: streaming setup, tools: development tools)"
+        description="Scope of change",
     )
-    short_description: str = Field(
-        description="Brief imperative description of the change"
-    )
-    long_description: Optional[str] = Field(
-        default=None,
-        description="Optional detailed explanation of the changes"
-    )
+    short_description: str = Field(description="Brief description")
+    long_description: Optional[str] = Field(default=None)
 
     def format_message(self) -> str:
-        """Format the commit message according to conventional commits."""
+        """Format the commit message."""
         header = f"{self.commit_type}"
         if self.scope:
             header += f"({self.scope})"
-        header += f": {self.short_description}"
+        desc = self.short_description.rstrip('.')
+        header += f": {desc}"
         
         if self.long_description:
             return f"{header}\n\n{self.long_description}"
@@ -39,7 +31,7 @@ class GitCommitAI:
     CYAN = '\033[0;36m'
     RED = '\033[0;31m'
     GREEN = '\033[0;32m'
-    NC = '\033[0m'  # No Color
+    NC = '\033[0m'
 
     def __init__(self, model: str = "llama3.2", stage_all: bool = False):
         self.model = model
@@ -75,10 +67,8 @@ class GitCommitAI:
     def check_git_changes(self) -> str:
         """Check for and return git changes."""
         try:
-            # Check staged changes first
             diff = subprocess.check_output(['git', 'diff', '--staged']).decode()
             if not diff:
-                # If no staged changes, offer to stage
                 if not self.stage_files():
                     self.print_color(self.RED, "No changes staged for commit")
                     sys.exit(1)
@@ -95,18 +85,12 @@ class GitCommitAI:
         """Generate a commit message using Ollama."""
         self.print_color(self.CYAN, f"Analyzing changes with {self.model}...")
 
-        prompt = f"""As an expert in conventional commits, analyze this git diff and create a precise commit message.
-Focus on the actual changes in the code, not generic messages.
-Use imperative mood for descriptions (e.g., 'add' not 'added').
-Include relevant technical details.
-
-Git diff follows:
-{diff}"""
+        prompt = "Create a conventional commit message for this diff:"
 
         try:
             response = ollama.chat(
                 model=self.model,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[{"role": "user", "content": f"{prompt}\n\n{diff}"}],
                 format=CommitMessage.model_json_schema()
             )
             
