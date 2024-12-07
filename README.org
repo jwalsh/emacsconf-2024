@@ -64,6 +64,25 @@ Times in EST (GMT-5)
 
 - https://emacsconf.org/2024/talks/gypsum/
 
+
+#+begin_src scheme
+(define push-stack (put-with cons))
+(define collatz
+  (many
+    push-stack
+    (either
+      (try (check (λ (n) (<= n 1)))
+                  (success))
+      (try (check odd?)
+           (next (λ (n) (+ 1 (* 3 n)))))
+      (try (check even?)
+           (next (λ (n) (quotient n 2))))
+      (fail "not an integer")
+      )))
+#+end_src
+
+#+RESULTS:
+
 *** DONE 10:20 - 11:00 :: The Future of Org
 - *Speaker*: Ihor Radchenko
 - *Track*: General
@@ -77,6 +96,9 @@ Times in EST (GMT-5)
 - *Track*: Development
 - *Q&A*: BBB
 
+- https://emacsconf.org/2024/talks/rust/
+- https://github.com/CeleritasCelery/rune
+
 *** 11:20 - 11:30 :: Colour your Emacs with ease
 - *Speaker*: Ryota Sawada (he/him)
 - *Track*: General
@@ -87,6 +109,7 @@ Times in EST (GMT-5)
 - *Track*: Development
 - *Q&A*: BBB
 
+- https://emacsconf.org/2024/talks/p-search/
 - https://github.com/zkry/p-search
 
 #+begin_src elisp
@@ -101,6 +124,8 @@ Times in EST (GMT-5)
 - *Track*: Development
 - *Q&A*: BBB
 
+- https://emacsconf.org/2024/talks/julia/
+
 *** 13:00 - 13:10 :: My journey of finding and creating the "perfect" Emacs theme
 - *Speaker*: MetroWind (he/him)
 - *Track*: General
@@ -110,6 +135,8 @@ Times in EST (GMT-5)
 - *Speaker*: Robin Templeton (they/them)
 - *Track*: Development
 - *Q&A*: #emacsconf-dev
+
+- https://emacsconf.org/2024/talks/guile/
 
 *** 13:30 - 13:45 :: Watering my (digital) plant with Emacs timers
 - *Speaker*: Christopher Howard (he/him)
@@ -121,8 +148,14 @@ Times in EST (GMT-5)
 - *Track*: Development
 - *Q&A*: BBB
 
+- https://emacsconf.org/2024/talks/secrets/
 - https://github.com/getsops/sops
 - https://github.com/djgoku/sops
+
+#+begin_src elisp
+(use-package sops
+  :straight (:type git :repo "djgoku/sops"))
+#+end_src
 
 *** 13:55 - 14:35 :: Emacs as a shell
 - *Speaker*: Christopher Howard (he/him)
@@ -134,34 +167,63 @@ Times in EST (GMT-5)
 - *Track*: Development
 - *Q&A*: BBB
 
+- https://emacsconf.org/2024/talks/mcclim/
+
+#+begin_src elisp
+(use-package rmoo
+    :straight (:type git :repo "toddsundsted/rmoo")
+    :init
+    (unless (fboundp 'process-kill-without-query)
+        (defun process-kill-without-query (process &optional flag)
+            (set-process-query-on-exit-flag process nil)
+            t))
+    :config
+    (rmoo-worlds-add-new-moo "LambdaMOO" "lambda.moo.mud.org" "8888"))
+#+end_src
+
+#+RESULTS:
+
 *** 14:45 - 15:05 :: Re-imagining the Emacs user experience with Casual Suite
 - *Speaker*: Charles Choi (he/him)
 - *Track*: General
 - *Q&A*: BBB
+
+- https://emacsconf.org/2024/talks/casual/
 
 *** 15:25 - 15:45 :: New in hyperdrive.el: quick install, peer graph, transclusion!
 - *Speaker*: Joseph Turner
 - *Track*: General
 - *Q&A*: BBB
 
+- https://emacsconf.org/2024/talks/hyperdrive/
+
+
 *** 15:45 - 16:05 :: Emacs, eev, and Maxima - now!
 - *Speaker*: Eduardo Ochs
 - *Track*: Development
 - *Q&A*: Etherpad
+
+- https://emacsconf.org/2024/talks/maxima/
 
 *** 16:05 - 16:15 :: Emacs Writing Studio
 - *Speaker*: Peter Prevos (he)
 - *Track*: General
 - *Q&A*: BBB
 
+- https://emacsconf.org/2024/talks/writing/
+
 *** TODO 16:25 - 16:50 :: Emacs 30 Highlights
 - *Speaker*: Philip Kaludercic
 - *Track*: General
 - *Q&A*: BBB
 
+- https://emacsconf.org/2024/talks/emacs30/
+
 *** 17:00 - 17:10 :: Saturday closing remarks
 - *Track*: General
 - *Q&A*: Etherpad
+
+- https://emacsconf.org/2024/talks/sat-close/
 
 ** Sunday, December 8, 2024
 
@@ -169,59 +231,97 @@ Times in EST (GMT-5)
 - *Track*: General
 - *Q&A*: Etherpad
 
+- https://emacsconf.org/2024/talks/sun-open/
+
 *** TODO 9:10 - 9:20 :: Unlocking linked data: replacing specialized apps with an Org-based semantic wiki
 - *Speaker*: Abhinav Tushar (he/him)
 - *Track*: General
 - *Q&A*: Etherpad
+
+- https://emacsconf.org/2024/talks/links/
 
 *** TODO 9:30 - 9:50 :: Emacs regex compilation and future directions for expressive pattern matching
 - *Speaker*: Danny McClanahan (they/them)
 - *Track*: General
 - *Q&A*: #emacsconf-gen
 
+- https://emacsconf.org/2024/talks/regex/
+
 *** 10:00 - 10:20 :: Survival of the skillest: Thriving in the learning jungle
 - *Speaker*: Bala Ramadurai (his/him)
 - *Track*: General
 - *Q&A*: Etherpad
+
+- https://emacsconf.org/2024/talks/learning/
 
 *** 10:30 - 11:15 :: About Blee: enveloping our own autonomy directed digital ecosystem with Emacs
 - *Speaker*: Mohsen BANAN (he/him)
 - *Track*: General
 - *Q&A*: BBB
 
+- https://emacsconf.org/2024/talks/blee/
+- https://github.com/bxgenesis/start
+
 *** 11:30 - 11:45 :: Fun things with GNU Hyperbole
 - *Speaker*: Mats Lidell (he/him)
 - *Track*: General
 - *Q&A*: BBB
+
+- https://emacsconf.org/2024/talks/hyperbole/
 
 *** 13:40 - 13:55 :: PGmacs: browsing and editing PostgreSQL databases from Emacs
 - *Speaker*: Eric Marsden (he/him)
 - *Track*: General
 - *Q&A*: BBB
 
+- https://emacsconf.org/2024/talks/pgmacs/
+- https://github.com/emarsden/pgmacs
+
+#+begin_src elisp
+(use-package pg
+  :straight (:type git :host github :repo "emarsden/pg-el"))
+
+(use-package pgmacs 
+  :straight (:type git :host github :repo "emarsden/pgmacs"))
+#+end_src
+
+#+RESULTS:
+
 *** TODO 14:15 - 14:35 :: Literate programming for the 21st Century
 - *Speaker*: Howard Abrams (he/him)
 - *Track*: General
 - *Q&A*: BBB
+
+- https://emacsconf.org/2024/talks/literate/
+- https://howardism.org/Technical/Emacs/literate-writ-large.html
 
 *** 15:00 - 15:10 :: An example of a cohesive student workflow in Emacs
 - *Speaker*: Daniel Pinkston (he/him)
 - *Track*: General
 - *Q&A*: #emacsconf-gen
 
+- https://emacsconf.org/2024/talks/students/
+- https://protesilaos.com/emacs/denote
+
 *** 15:20 - 15:40 :: So you want to be an Emacs-fluencer?
 - *Speaker*: Gopar
 - *Track*: General
 - *Q&A*: Etherpad
+
+- https://emacsconf.org/2024/talks/sharing/
 
 *** TODO 16:00 - 16:30 :: Transducers: finally, ergonomic data processing for Emacs!
 - *Speaker*: Colin Woodbury (he)
 - *Track*: General
 - *Q&A*: BBB
 
+- https://emacsconf.org/2024/talks/transducers/
+
 *** 16:50 - 17:00 :: Sunday closing remarks
 - *Track*: General
 - *Q&A*: Etherpad
+
+- https://emacsconf.org/2024/talks/sun-close/
 
 * Streaming Options
 For optimal performance, we recommend watching the streams using a streaming media player:
