@@ -1,0 +1,27 @@
+* About Blee Towards An Integrated Emacs Environment For Enveloping Our Own Autonomy Directed Digital Ecosystem
+:PROPERTIES:
+:SPEAKER: Mohsen Banan
+:END:
+
+** Key Points
+- Emacs as a primary ingredient for an autonomy and morality directed digital ecosystem
+- Augmenting Emacs with cohesive elisp capabilities and creating Blee (ByStar Libre-Halaal Emacs Environment)
+- Combining Blee with Debian and BISOS to form a foundation for ByStar, a non-proprietary digital ecosystem
+- Redecentralization of internet application services through ByStar
+- Raising the bar on Emacs integration and recognizing the value of smaller, well-integrated environments
+
+
+** Technical Terms
+| Term                   | Definition                                                                                                                                    | Context                                                                                                                   |
+|------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------|
+| universal core         | A platform that enables the creation of an unparalleled user environment by facilitating cooperation with other systems (in this case, OS)    | Emacs as the ultimate integration platform                                                                                |
+| Elisp                  | A powerful programming language for creating customizations and extensions for Emacs                                                          | Elisp engine in Emacs                                                                                                     |
+| input methods          | A system that allows users to input text and commands using non-keyboard-based interfaces (e.g. voice, gestures)                              | Input methods engine in Emacs                                                                                             |
+| common agents paradigm | A design pattern for creating reusable code that can interact with other systems and services                                                 | Common agents paradigm in Emacs                                                                                           |
+| idioms and memes       | Reused code patterns and design principles that facilitate the integration of external services into Emacs                                    | Mature and convivial idioms and memes for absorption and integration of external software services continuum capabilities |
+| BISOS                  | An integrated framework on top of Debian that provides a foundation for ByStar, a non-proprietary digital ecosystem                           | BISOS (ByStar Internet Services Operating System)                                                                         |
+| ByStar                 | A comprehensive, interdisciplinary, and non-proprietary digital ecosystem that challenges the existing proprietary American digital ecosystem | ByStar (By*)                                                                                                              |
+
+** Meta
+- Generated: 2024-12-08T18:02:25.499886
+- Model: llama3.2

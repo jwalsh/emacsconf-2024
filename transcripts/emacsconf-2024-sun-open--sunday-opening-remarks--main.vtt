@@ -1,0 +1,221 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.460
+ Welcome to the second day of EMAXCon 2024.
+
+00:00:03.460 --> 00:00:07.980
+ Today we have one track of talks so you don't have to worry about missing out on anything.
+
+00:00:07.980 --> 00:00:13.960
+ The best parts of EMAXCon are the conversations, the wiki as a page and how to watch and participate,
+
+00:00:13.960 --> 00:00:15.860
+ and I'll give you a quick overview as well.
+
+00:00:15.860 --> 00:00:20.900
+ You can watch the stream at live.emaxconv.org using free and open source software.
+
+00:00:20.900 --> 00:00:26.220
+ Using a streaming media player like MPV seems to be the best way to watch in terms of performance,
+
+00:00:26.220 --> 00:00:29.300
+ but there are also web-based players just in case that's all you've got.
+
+00:00:29.300 --> 00:00:32.940
+ As you're watching the talks, you can refer to the schedule in another window.
+
+00:00:32.940 --> 00:00:35.740
+ However, over the boxes to see the times and titles,
+
+00:00:35.740 --> 00:00:39.900
+ and click on the boxes in the schedule to jump to the talks page for more details.
+
+00:00:39.900 --> 00:00:44.220
+ You can also get the schedules in iCounder file or in Org file in different time zones.
+
+00:00:44.220 --> 00:00:47.900
+ Many talks will be followed by live Q&A web conferences with a speaker,
+
+00:00:47.900 --> 00:00:50.580
+ which will be done in big blue button or BBB.
+
+00:00:50.580 --> 00:00:55.940
+ These are indicated with a solid border in the schedule and by Q&A BBB on the schedule page.
+
+00:00:55.940 --> 00:01:01.700
+ You can draw in the webcon friends room by clicking on the BBB link on the schedule page or the talks web page.
+
+00:01:01.700 --> 00:01:04.940
+ Then you can ask your questions yourself when the Q&A starts.
+
+00:01:04.940 --> 00:01:09.780
+ To improve performance, please keep your webcam off and stay muted until it's your turn to talk.
+
+00:01:09.780 --> 00:01:15.060
+ If you don't like JavaScript, you can still ask questions via IRC and the hosts can read them out for you.
+
+00:01:15.060 --> 00:01:18.980
+ We're probably going to automatically switch between talks and Q&A sessions,
+
+00:01:18.980 --> 00:01:22.140
+ so the transitions on the stream might be a little sudden.
+
+00:01:22.140 --> 00:01:27.540
+ People in the big blue button room can continue the conversation even after the talk moves off stream.
+
+00:01:27.540 --> 00:01:32.300
+ And you can also reach out to the speakers using the contact information on the talk page.
+
+00:01:32.300 --> 00:01:37.140
+ Other talks will have Q&A via etherpad or IRC depending on what the speakers prefer.
+
+00:01:37.140 --> 00:01:41.540
+ This is indicated in the schedule with a dashboarder and on the schedule page as well.
+
+00:01:41.540 --> 00:01:45.540
+ Please ask your questions in the recommended places so that the speakers can easily see them.
+
+00:01:45.540 --> 00:01:49.540
+ Again, if you ask your questions in IRC, we'll try to copy them to the right places.
+
+00:01:49.540 --> 00:01:56.340
+ We're going to start Sunday morning with more IRC or etherpad Q&A to try to get around some of the bandwidth issues that we noticed last year.
+
+00:01:56.340 --> 00:02:00.940
+ The schedule pages and track pages have quick shortcuts so that you can find out more about talks,
+
+00:02:00.940 --> 00:02:04.140
+ open the etherpads, and join the Q&A sessions.
+
+00:02:04.140 --> 00:02:07.540
+ The watch page has more tips on how to make the most of Q&A.
+
+00:02:07.540 --> 00:02:11.340
+ If you can, please add notes and ask questions in the etherpad for the talk.
+
+00:02:11.340 --> 00:02:16.540
+ That makes it easier for everyone to share their notes and speakers and hosts can read the questions from there.
+
+00:02:16.540 --> 00:02:19.140
+ We'll copy the notes to the talk pages afterwards.
+
+00:02:19.140 --> 00:02:22.940
+ We have one pad for each talk so you can follow the links to get to the next one,
+
+00:02:22.940 --> 00:02:25.340
+ or go back to the schedule and get the link from there.
+
+00:02:25.340 --> 00:02:28.340
+ If you have general feedback about the conference itself,
+
+00:02:28.340 --> 00:02:34.340
+ please put it in pad.emaxclanf.org/20204, which is linked in each pad.
+
+00:02:34.340 --> 00:02:38.940
+ You can also use this as a general community message board for things like help wanted.
+
+00:02:38.940 --> 00:02:41.540
+ Or you can put it in IRC and we'll find it there too.
+
+00:02:41.540 --> 00:02:46.340
+ Internet really chat or IRC can be another great way to be parts of lots of conversations.
+
+00:02:46.340 --> 00:02:51.340
+ You can use chat.emaxclanf.org to join the IRC channels through your web browser.
+
+00:02:51.340 --> 00:02:54.740
+ The tabs on the left can help you switch between the different channels.
+
+00:02:54.740 --> 00:02:58.540
+ Most discussions will be in emaxclanf.gen for the general track.
+
+00:02:58.540 --> 00:03:07.140
+ If you need to reach us, you can join emaxclanf.org or email us at emaxclanf.org/private@gnu.org.
+
+00:03:07.140 --> 00:03:10.340
+ You can use emaxclan for hallway conversations.
+
+00:03:10.340 --> 00:03:14.740
+ Of course, you can join any of these channels with your favorite IRC client.
+
+00:03:14.740 --> 00:03:20.540
+ You can connect to IRC.libera.chat.port6697 with TLS.
+
+00:03:20.540 --> 00:03:24.740
+ Once again, we're going to be streaming with open captions for most of the talks this year
+
+00:03:24.740 --> 00:03:27.340
+ thanks to our speakers and captioning volunteers.
+
+00:03:27.340 --> 00:03:30.940
+ The caption talks are indicated on schedule and with any luck
+
+00:03:30.940 --> 00:03:34.940
+ we'll be posting transcripts and talk pages shortly after the talks start.
+
+00:03:34.940 --> 00:03:38.940
+ If you need additional accommodations, please let us know in emaxclanf.org
+
+00:03:38.940 --> 00:03:40.940
+ and we'll see if we can make things happen.
+
+00:03:40.940 --> 00:03:44.640
+ If something goes down, we'll update status.emaxclanf.org
+
+00:03:44.640 --> 00:03:49.840
+ If it doesn't look like we've noticed yet, please let us know in the emaxclanf.org IRC channel
+
+00:03:49.840 --> 00:03:52.340
+ where we will be quietly panicking.
+
+00:03:52.340 --> 00:03:56.340
+ In all of these conversations, please keep in mind our guidelines for conduct.
+
+00:03:56.340 --> 00:03:57.740
+ You can find them on the wiki.
+
+00:03:57.740 --> 00:04:00.340
+ They basically boil down to, please be nice.
+
+00:04:00.340 --> 00:04:03.540
+ If all goes well, the prerecorded talks and transcripts should be available
+
+00:04:03.540 --> 00:04:06.140
+ from the talk pages shortly after they start playing
+
+00:04:06.140 --> 00:04:10.940
+ and will post recordings of life talks and Q&A sessions within the next month or so.
+
+00:04:10.940 --> 00:04:12.440
+ If you'd like to get an update,
+
+00:04:12.440 --> 00:04:15.640
+ you can subscribe to the emaxclanf discuss mailing list.
+
+00:04:15.640 --> 00:04:17.140
+ Alright, let's get going.
+
+00:04:17.140 --> 00:04:19.740
+ Leo Vivier is hosting the general track again today.
+
+00:04:19.740 --> 00:04:23.140
+ The other volunteers and I will run around mostly backstage
+
+00:04:23.140 --> 00:04:25.640
+ and you'll probably meet us in the closing remarks.
+
+00:04:25.640 --> 00:04:27.240
+ That's us, oops.
+
+00:04:27.240 --> 00:04:30.440
+ That's also where we get to thank all the people and organizations
+
+00:04:30.440 --> 00:04:32.440
+ who make emaxclanf possible.
+
+00:04:32.440 --> 00:04:34.140
+ Thanks for, oops.
+
+00:04:34.140 --> 00:04:36.740
+ Thanks for coming to emaxclanf 2024.
+

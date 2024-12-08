@@ -1,0 +1,20 @@
+* Survival Of The Skillest Thriving In The Learning Jungle
+:PROPERTIES:
+:SPEAKER: Bala Ramadurai
+:END:
+
+** Key Points
+- Learning new skills is crucial for personal and professional growth
+- There are various reasons why one might want to learn a new skill, including getting ahead in their career or looking good in their peer group
+- Lack of time and motivation can be significant barriers to learning new skills
+
+** Technical Terms
+| Term             | Definition                                                                                     | Context          |
+|------------------+------------------------------------------------------------------------------------------------+------------------|
+| Skill Definition | A skill is the knowledge and ability that enables you to do something well.                    | What is a skill? |
+| Elisp Org Mode   | Emacs' built-in Org Mode for managing tasks, notes, and other information in a structured way. | Elisp Org Mode   |
+
+
+** Meta
+- Generated: 2024-12-08T18:03:49.053868
+- Model: llama3.2

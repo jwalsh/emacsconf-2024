@@ -1,0 +1,25 @@
+* Unlocking Linked Data Replacing Specialized Apps With An Orgbased Semantic Wiki
+:PROPERTIES:
+:SPEAKER: Abhinav Tushar
+:END:
+
+** Key Points
+- The speaker wants to use Emacs and Org Mode for managing all their data, replacing specialized apps.
+- Using specialized applications like Raindrop, Zotero, and Monica CRM leads to siloed data and hard linking between apps.
+- Org Roam provides a linked notes system, but the speaker feels it lacks tools for working with links.
+- The speaker wants to extend Org Roam to provide seamless integration with external applications and browsers.
+
+** Technical Terms
+| Term                    | Definition                                                                                              | Context                    |
+|-------------------------+---------------------------------------------------------------------------------------------------------+----------------------------|
+| Org-based semantic wiki | Using Emacs and Org Mode for managing all data, reducing reliance on specialized applications.          | Replacing specialized apps |
+| Raindrop                | Software tools designed to perform specific functions, often with limited integration between them.     | Specialized applications   |
+| Zotero                  | A bookmark manager app that allows users to save and organize bookmarks.                                | Specialized applications   |
+| Monica CRM              | A tool for managing notes about people, often used in CRM (Customer Relationship Management) contexts.  | Specialized applications   |
+| Zettelkasten system     | A linked notes system that allows users to create text-based files and connect them through links.      | Org Mode and Org Roam      |
+| org-roam-buffer-toggle  | A feature of Org Roam that provides a way to toggle between different buffers, showing connected nodes. | Org Mode and Org Roam      |
+
+
+** Meta
+- Generated: 2024-12-08T18:04:00.424464
+- Model: llama3.2

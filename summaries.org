@@ -2,6 +2,33 @@
 #+DATE: 2024-12-08
 
 
+* [[summaries/emacsconf-2024-blee--about-blee-towards-an-integrated-emacs-environment-for-enveloping-our-own-autonomy-directed-digital-ecosystem--mohsen-banan--main.org][Source]]
+
+* About Blee Towards An Integrated Emacs Environment For Enveloping Our Own Autonomy Directed Digital Ecosystem
+:PROPERTIES:
+:SPEAKER: Mohsen Banan
+:END:
+
+** Key Points
+- Emacs as a primary ingredient for an autonomy and morality directed digital ecosystem
+- Augmenting Emacs with cohesive elisp capabilities and creating Blee (ByStar Libre-Halaal Emacs Environment)
+- Combining Blee with Debian and BISOS to form a foundation for ByStar, a non-proprietary digital ecosystem
+- Redecentralization of internet application services through ByStar
+- Raising the bar on Emacs integration and recognizing the value of smaller, well-integrated environments
+
+
+** Technical Terms
+| Term                   | Definition                                                                                                                                    | Context                                                                                                                   |
+|------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------|
+| universal core         | A platform that enables the creation of an unparalleled user environment by facilitating cooperation with other systems (in this case, OS)    | Emacs as the ultimate integration platform                                                                                |
+| Elisp                  | A powerful programming language for creating customizations and extensions for Emacs                                                          | Elisp engine in Emacs                                                                                                     |
+| input methods          | A system that allows users to input text and commands using non-keyboard-based interfaces (e.g. voice, gestures)                              | Input methods engine in Emacs                                                                                             |
+| common agents paradigm | A design pattern for creating reusable code that can interact with other systems and services                                                 | Common agents paradigm in Emacs                                                                                           |
+| idioms and memes       | Reused code patterns and design principles that facilitate the integration of external services into Emacs                                    | Mature and convivial idioms and memes for absorption and integration of external software services continuum capabilities |
+| BISOS                  | An integrated framework on top of Debian that provides a foundation for ByStar, a non-proprietary digital ecosystem                           | BISOS (ByStar Internet Services Operating System)                                                                         |
+| ByStar                 | A comprehensive, interdisciplinary, and non-proprietary digital ecosystem that challenges the existing proprietary American digital ecosystem | ByStar (By*)                                                                                                              |
+
+
 * [[summaries/emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--main.org][Source]]
 
 * Reimagining The Emacs User Experience With Casual Suite
@@ -23,6 +50,105 @@
 | Transient library       | Emacs package providing dynamic, contextual menus that make commands more discoverable      | Used to reimagine keyboard-driven menu interfaces      |
 | pinning                 | Feature to keep menus visible and automatically updated based on system state               | Enables persistent menus that reflect command outcomes |
 | mode complexity         | Difficulty arising from modes having many interrelated functions and features               | Addressed by improving command discoverability         |
+
+
+* [[summaries/emacsconf-2024-color--colour-your-emacs-with-ease--ryota--main.org][Source]]
+
+* Colour Your Emacs With Ease
+:PROPERTIES:
+:SPEAKER: Ryota
+:END:
+
+** Key Points
+- The speaker Ryota wants to share a theme that makes Emacs aesthetically pleasing to his taste
+- He started with the Nova Theme but found it too colourful and distracting
+- He experimented with different themes like Modus Vivendi Tinted, ef-themes, owl edition, and Doom Noe
+- He used Org Mode to create a subtle theme with orange as an accent colour
+- The speaker talks about colour spaces like sRGB, HSL, LCH, and perceptual uniformity
+
+** Technical Terms
+| Term                        | Definition                                                                                                                                | Context                                  |
+|-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------|
+| Colour Space                | A system for describing and categorizing colours                                                                                          | colour spaces                            |
+| HSL Colour Space            | A colour model that describes colours in terms of hue (colour), saturation (purity), and lightness (brightness)                           | Hue, Saturation, Lightness               |
+| LCH Colour Space            | Another colour model that describes colours in terms of luminance (lightness), chroma (colourfulness), and hue                            | Luminance or Lightness, Chroma, Hue      |
+| Perceptual Uniformity       | A property of a colour space where the perceived colours are evenly distributed, making it more suitable for designing themes and colours | Perceptual uniformity                    |
+| CIE                         | An organization that developed important colour spaces like CIE XYZ, CIELAB, and LUV                                                      | International Commission of Illumination |
+| Colour Space Creation Years | Years when the CIE XYZ and LUV colour spaces were created                                                                                 | 1931, 1976 respectively                  |
+
+
+
+* [[summaries/emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--main.org][Source]]
+
+* Emacs 30 Highlights
+:PROPERTIES:
+:SPEAKER: Philip Kaludercic
+:END:
+
+** Key Points
+- Emacs 30 introduces native Android support
+- Android support allows for GUI Emacs on Android devices
+- Touchscreen interactions such as pinch-to-zoom and context menus work
+- TUI Emacs also supports touchscreen events
+
+** Technical Terms
+| Term                    | Definition                                                                                                                       | Context                 |
+|-------------------------+----------------------------------------------------------------------------------------------------------------------------------+-------------------------|
+| Android support         | Native Android support allows Emacs to be built for Android devices natively using a graphical interface.                        | new feature in Emacs 30 |
+| Touchscreen interaction | Touchscreen interactions such as pinch-to-zoom, context menus, and gesture recognition are enabled in Emacs for Android devices. | feature in Emacs 30     |
+| TUI Emacs               | TUI Emacs supports touchscreen events, enabling users to interact with their device using touch screens.                         | feature in TUI Emacs    |
+
+
+
+* [[summaries/emacsconf-2024-guile--beguiling-emacs-guileemacs-relaunched--robin-templeton--main.org][Source]]
+
+* Beguiling Emacs Guileemacs Relaunched
+:PROPERTIES:
+:SPEAKER: Robin Templeton
+:END:
+
+** Key Points
+- The Guile-Emacs project aims to use Guile as the basis for Emacs's Lisp support.
+- Guile-Emacs has two main components: a new Lisp compiler and a variant of Emacs with Guile Elisp
+- The combination of these projects will improve performance, increase expressiveness, and reduce C reliance
+- Guile was chosen for its support for multiple languages using its compiler tower
+- Guile's compiler optimizations occur at the Tree-IL layer or lower
+- The project has a long history with previous implementation attempts dating back to the 1990s
+
+** Technical Terms
+| Term                            | Definition                                                                                                                                                    | Context                                                                  |
+|---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------|
+| Scheme                          | A dialect of Lisp, and GNU's official extension language.                                                                                                     | Overview of Guile and its relation to Emacs Lisp                         |
+| Guile-Elisp                     | A new Emacs Lisp compiler built on top of Guile, and a variant of Emacs with Guile Elisp as its Lisp implementation.                                          | Explanation of the Guile-Emacs project's components                      |
+| Compiler tower                  | Improved performance, increased expressiveness for Elisp, and reduced C reliance.                                                                             | Description of the benefits of the Guile-Emacs project                   |
+| Tree-IL                         | A system that allows adding support for a new language to Guile by writing a compiler from the source language to Tree-IL.                                    | Explanation of Guile's support for multiple languages                    |
+| Compiler tower                  | The process of optimizing compiler-generated code, which occurs at the Tree-IL layer or lower.                                                                | Description of Guile's optimizations                                     |
+| GOOPS (Generic Object Protocol) | A system that provides a way to implement objects and their behavior in a language.                                                                           | Explanation of the Common Lisp Object System and its metaobject protocol |
+| Internships                     | Implementing a core subset of Elisp, modifying the garbage collector and data structures for Lisp objects, and replacing the Lisp evaluator with Guile Elisp. | Description of the project's implementation strategy                     |
+
+
+
+* [[summaries/emacsconf-2024-gypsum--gypsum-my-clone-of-emacs-and-elisp-written-in-scheme--ramin-honary--main.org][Source]]
+
+* Gypsum My Clone Of Emacs And Elisp Written In Scheme
+:PROPERTIES:
+:SPEAKER: Ramin Honary
+:END:
+
+** Key Points
+- Ramin Honary is an Emacs enthusiast who has been working on a project to write an Emacs Lisp interpreter in Scheme
+- He wants to create a clone of Emacs that can run any 'init.el' and stick closely to the R7RS standard Scheme definition
+- The goal is to make the project widely adoptable across different Scheme implementations, including Guile
+
+** Technical Terms
+| Term                                   | Definition                                        | Context                                                      |
+|----------------------------------------+---------------------------------------------------+--------------------------------------------------------------|
+| Programming languages used in industry | Python and JavaScript                             | what Ramin uses for his work                                 |
+| Functional programming language        | Haskell, Scheme                                   | Ramin's background knowledge                                 |
+| Init file compatibility                | To run any 'init.el' without significant changes  | Ramin's goal for his project                                 |
+| Scheme language standard               | R7RS (Recursive Standard for the Scheme Language) | The Scheme standard that Ramin wants to follow               |
+| Scheme implementation                  | Guile                                             | The Scheme implementation that Ramin is using as a reference |
+| Study of Scheme language capabilities  | A study of what the R7RS language can do          | The target audience for Ramin's project                      |
 
 
 
@@ -51,6 +177,152 @@
 
 
 
+* [[summaries/emacsconf-2024-hyperdrive--new-in-hyperdriveel-quick-install-peer-graph-transclusion--joseph-turner--main.org][Source]]
+
+* New In Hyperdriveel Quick Install Peer Graph Transclusion
+:PROPERTIES:
+:SPEAKER: Joseph Turner
+:END:
+
+** Key Points
+- The talk introduces hyperdrive.el, an Emacs interface to the Hyperdrive peer-to-peer file sharing system
+- Hyperdrive allows for seamless sharing of files without a central hub and has built-in versioning capabilities
+- A new package called hyperdrive-org-transclusion has been published, enabling live updating snippets of Hyperdrive files in Org documents
+- The peer graph feature visualizes the network of sources of information
+- The talk covers the installation process of hyperdrive.el and its gateway program
+
+** Technical Terms
+| Term                         | Definition                                                                             | Context                          |
+|------------------------------+----------------------------------------------------------------------------------------+----------------------------------|
+| Hyperdrive                   | A decentralized, peer-to-peer file sharing system built by HolePunch                   | definition and usage in the talk |
+| hyperdrive.el                | An Emacs interface to the Hyperdrive peer-to-peer file sharing system                  | definition and usage in the talk |
+| M-x package-refresh-contents | A command used to download and install the gateway program for hyperdrive.el           | definition and usage in the talk |
+| M-x package-install          | A command used to install a package in Emacs                                           | definition and usage in the talk |
+| hypergateway                 | A program that runs on a user's machine, acting as a gateway to the Hyperdrive network | definition and usage in the talk |
+| peer graph                   | A feature that allows users to visualize their network of sources of information       | definition and usage in the talk |
+| hyperdrive-org-transclusion  | A package that enables live updating snippets of Hyperdrive files in Org documents     | definition and usage in the talk |
+| Hyperdrive (file management) | A system for managing hyperdrives, including marking them as safe or unknown           | definition and usage in the talk |
+
+
+
+* [[summaries/emacsconf-2024-julia--exploring-shared-philosophies-in-julia-and-emacs--gabriele-bozzola--main.org][Source]]
+
+* Exploring Shared Philosophies In Julia And Emacs
+:PROPERTIES:
+:SPEAKER: Gabriele Bozzola
+:END:
+
+** Key Points
+- Julia's high-level dynamic programming language
+- Julia's ability to achieve high performance through multiple dispatch
+- Julia's just-in-time compilation with LLVM
+- Emacs' emphasis on interactivity, extensibility, and community
+- Commonalities between Julia and Emacs in terms of REPL-driven workflow
+
+** Technical Terms
+| Term                                    | Definition                                                                                                                                                                                                                                         | Context                                         |
+|-----------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------|
+| High-level dynamic programming language | A high-level programming language is one that abstracts away low-level details and provides a more concise syntax, making it easier to write code without worrying about the underlying hardware.                                                  | Definition of a high-level programming language |
+| Multiple dispatch                       | Multiple dispatch is a programming paradigm where a function call is resolved by looking at the types of every single argument involved, rather than just the type of the first argument.                                                          | Julia's multiple dispatch mechanism             |
+| Just-in-time compilation with LLVM      | Just-in-time (JIT) compilation is a technique where code is compiled into machine code at runtime, rather than beforehand. LLVM is a modular compiler infrastructure that provides a framework for building JIT compilers.                         | Julia's just-in-time compilation with LLVM      |
+| Elisp                                   | Extensibility refers to the ability of a software system to be modified or extended without affecting its core functionality. In Emacs, this is achieved through the use of Elisp, a dialect of Lisp that allows users to write custom extensions. | Emacs' extensibility features                   |
+| Package ecosystem                       | A community refers to a group of people who share common interests or goals. In Emacs, the community is driven by the development of packages, which are reusable pieces of code that can be easily installed and used.                            | Emacs' community and package ecosystem          |
+| REPL                                    | A REPL (Read-Eval-Print Loop) is an interactive shell where users can enter expressions and see the results immediately. In Julia, the REPL provides a powerful tool for exploratory programming.                                                  | Julia's REPL-driven workflow                    |
+
+
+
+* [[summaries/emacsconf-2024-learning--survival-of-the-skillest-thriving-in-the-learning-jungle--bala-ramadurai--main.org][Source]]
+
+* Survival Of The Skillest Thriving In The Learning Jungle
+:PROPERTIES:
+:SPEAKER: Bala Ramadurai
+:END:
+
+** Key Points
+- Learning new skills is crucial for personal and professional growth
+- There are various reasons why one might want to learn a new skill, including getting ahead in their career or looking good in their peer group
+- Lack of time and motivation can be significant barriers to learning new skills
+
+** Technical Terms
+| Term             | Definition                                                                                     | Context          |
+|------------------+------------------------------------------------------------------------------------------------+------------------|
+| Skill Definition | A skill is the knowledge and ability that enables you to do something well.                    | What is a skill? |
+| Elisp Org Mode   | Emacs' built-in Org Mode for managing tasks, notes, and other information in a structured way. | Elisp Org Mode   |
+
+
+
+* [[summaries/emacsconf-2024-links--unlocking-linked-data-replacing-specialized-apps-with-an-orgbased-semantic-wiki--abhinav-tushar--main.org][Source]]
+
+* Unlocking Linked Data Replacing Specialized Apps With An Orgbased Semantic Wiki
+:PROPERTIES:
+:SPEAKER: Abhinav Tushar
+:END:
+
+** Key Points
+- The speaker wants to use Emacs and Org Mode for managing all their data, replacing specialized apps.
+- Using specialized applications like Raindrop, Zotero, and Monica CRM leads to siloed data and hard linking between apps.
+- Org Roam provides a linked notes system, but the speaker feels it lacks tools for working with links.
+- The speaker wants to extend Org Roam to provide seamless integration with external applications and browsers.
+
+** Technical Terms
+| Term                    | Definition                                                                                              | Context                    |
+|-------------------------+---------------------------------------------------------------------------------------------------------+----------------------------|
+| Org-based semantic wiki | Using Emacs and Org Mode for managing all data, reducing reliance on specialized applications.          | Replacing specialized apps |
+| Raindrop                | Software tools designed to perform specific functions, often with limited integration between them.     | Specialized applications   |
+| Zotero                  | A bookmark manager app that allows users to save and organize bookmarks.                                | Specialized applications   |
+| Monica CRM              | A tool for managing notes about people, often used in CRM (Customer Relationship Management) contexts.  | Specialized applications   |
+| Zettelkasten system     | A linked notes system that allows users to create text-based files and connect them through links.      | Org Mode and Org Roam      |
+| org-roam-buffer-toggle  | A feature of Org Roam that provides a way to toggle between different buffers, showing connected nodes. | Org Mode and Org Roam      |
+
+
+
+* [[summaries/emacsconf-2024-maxima--emacs-eev-and-maxima-now--eduardo-ochs--main.org][Source]]
+
+* Emacs Eev And Maxima Now
+:PROPERTIES:
+:SPEAKER: Eduardo Ochs
+:END:
+
+** Key Points
+- The talk starts by introducing Maxima, a computer algebra system with several interfaces, including WxMaxima, and how the author prefers an older interface for teaching calculus.
+- The author explains his experience working at UFF campus in Rio das Ostras, where he faces challenges due to limited funding and infrastructure.
+- The talk highlights the contrast between the Humanities building (where humans work) and the Inhumanities building (where only inhumans work), representing different environments.
+- The author shares a personal anecdote about a student who taught him Canva in 10 minutes, changing his life.
+- The Computer Science students at UFF are unable to assist the author despite their knowledge of modern programs and languages.
+
+** Technical Terms
+| Term                         | Definition                                                                                                | Context                 |
+|------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------|
+| WxMaxima                     | A user interface is a point of entry for interacting with a computer or software system.                  | interface               |
+| command-line interface (CLI) | An interface that is not graphical, such as text-based or command-line interfaces.                        | interface               |
+| Maxima                       | A computer program used for symbolic mathematics, such as solving equations and manipulating expressions. | computer algebra system |
+| shell buffer                 | A buffer in a shell that stores the history of commands entered by a user.                                | shell buffer            |
+
+
+
+* [[summaries/emacsconf-2024-mcclim--elisp-and-mcclim--screwlisp--main.org][Source]]
+
+* Elisp And Mcclim
+:PROPERTIES:
+:SPEAKER: Screwlisp
+:END:
+
+** Key Points
+- Porting a 1978 demo application from Interlisp to Emacs Lisp
+- Using inferior-lisp and McCLIM (Common Lisp interface manager) in Superior Lisp
+- Improvising a presentation mode without Org Mode, using slime-mode or ielm-mode
+- Creating a keyboard macro to manipulate S-expressions in the buffer
+
+** Technical Terms
+| Term          | Definition                                                                                                                                                                                                                                                                                         | Context                                         |
+|---------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------|
+| EmacsLisp     | EmacsLisp is a dialect of Lisp that is specifically designed for use with the Emacs text editor. It includes features such as macro expansion, recursion, and control structures like if-else statements.                                                                                          | defuns, defvars, and other EmacsLisp constructs |
+| inferior-lisp | Inferior Lisp refers to a version of the Lisp programming language that is embedded within another program or environment, in this case, Emacs. It provides a way for users to write and execute Lisp code within the Emacs editor.                                                                | inferior-lisp                                   |
+| McCLIM        | McCLIM (Common Lisp Interface Manager) is an open-source implementation of the Common Lisp interface manager, which provides a way for Lisp programs to interact with the outside world. It allows developers to create graphical user interfaces and other interactive systems using Common Lisp. | McCLIM                                          |
+| slime-mode    | Slime-mode is a major mode in Emacs that provides a way for users to interact with the SLIME (Steel Bank EmacsLisp Interface Manager) interface manager, which allows developers to create graphical user interfaces and other interactive systems using Common Lisp.                              | slime-mode                                      |
+| ielm-mode     | ielm-mode is a major mode in Emacs that provides an interactive environment for loading and testing Common Lisp code, similar to slime-mode but with some differences.                                                                                                                             | ielm-mode                                       |
+
+
 
 * [[summaries/emacsconf-2024-org-update--the-future-of-org--ihor-radchenko--main.org][Source]]
 
@@ -73,7 +345,6 @@
 | robustness principle | The practice of supporting and updating Org Mode to ensure it continues to meet the needs of its users.                  | Org Mode maintenance     |
 | predictability       | A set of guidelines or expectations for individuals who wish to contribute to Org Mode development.                      | Contributor requirements |
 | community            | The engagement and participation of users, contributors, and maintainers in the development and improvement of Org Mode. | Community involvement    |
-
 
 
 
@@ -102,6 +373,82 @@
 
 
 
+* [[summaries/emacsconf-2024-papers--writing-academic-papers-in-orgroam--vincent-conus--main.org][Source]]
+
+* Writing Academic Papers In Orgroam
+:PROPERTIES:
+:SPEAKER: Vincent Conus
+:END:
+
+** Key Points
+- Vincent Conus presents his usage of Org notes and Org Roam for writing academic papers
+- Org notes can be exported as a document with extra configuration
+- Using Org Roam allows for a centralized bibliography system
+- The use of Org export is less documented than using LaTeX
+
+** Technical Terms
+| Term                     | Definition                                                                                                          | Context                                          |
+|--------------------------+---------------------------------------------------------------------------------------------------------------------+--------------------------------------------------|
+| Org export               | A way to reproduce any LaTeX setup that would be used to create documents with an Org file                          | Exporting Org notes as a document                |
+| Org export configuration | The process of setting up the necessary configuration to export Org notes as a LaTeX document                       | Configuring Org export for LaTeX                 |
+| Bibliography system      | A system that allows for easy referencing and linking of notes throughout an Org file                               | Centralized bibliography system in Org Roam      |
+| Debugging Org export     | The process of identifying and fixing errors in the Org export configuration to ensure proper formatting and layout | Importance of debugging Org export configuration |
+| Org Mode LaTeX           | A layer on top of LaTeX that allows for easy integration with Org Mode                                              | Org Mode LaTeX                                   |
+
+
+
+* [[summaries/emacsconf-2024-project--managing-writing-project-metadata-with-orgmode--blaine-mooers--main.org][Source]]
+
+* Managing Writing Project Metadata With Orgmode
+:PROPERTIES:
+:SPEAKER: Blaine Mooers
+:END:
+
+** Key Points
+- Blaine Mooers discusses utilizing Org mode for writing project metadata log files, specifically for research articles.
+- He shares his template for this file on GitHub and explains how it helps with navigation and organization.
+- Mooers describes his workflow in structural biology, from X-ray crystallography to analyzing protein structures.
+- He introduces the concept of assigning a unique index number to each project and using it for folder and file naming.
+- Blaine highlights the importance of having a writing log at the center of his process, which guides him through the development of a central hypothesis.
+- He emphasizes the use of templates in Org mode and other markup languages like R Markdown and LaTeX.
+- Mooers also discusses the benefits of using Typst, an independent document processor inspired by LaTeX but written in Rust.
+
+** Technical Terms
+| Term                       | Definition                                                                                               | Context                        |
+|----------------------------+----------------------------------------------------------------------------------------------------------+--------------------------------|
+| GitHub                     | A repository on GitHub where a template for managing writing project metadata can be found.              | GitHub link to template        |
+| Folder Naming Convention   | Using a unique index number to name folders and files, making it easier to navigate and access projects. | Navigation with folder naming  |
+| Org Mode Log File Template | A template for creating log files in Org mode to manage writing project metadata.                        | Org mode log file template     |
+| X-Ray Crystallography      | The process of using X-ray crystallography to determine the structures of proteins and nucleic acids.    | X-ray crystallography workflow |
+| Typst                      | An independent document processor inspired by LaTeX, written in Rust for faster processing.              | Typst document processor       |
+| Research Article Structure | The typical structure of a research article, including introduction, methods, results, and discussion.   | Research article structure     |
+
+
+
+* [[summaries/emacsconf-2024-regex--emacs-regex-compilation-and-future-directions-for-expressive-pattern-matching--danny-mcclanahan--main.org][Source]]
+
+* Emacs Regex Compilation And Future Directions For Expressive Pattern Matching
+:PROPERTIES:
+:SPEAKER: Danny Mcclanahan
+:END:
+
+** Key Points
+- The talk will discuss the compilation of Emacs regular expressions and future directions for expressive pattern matching.
+- The speaker's experience is rooted in build tools and package managers, which led to a desire to improve the efficiency of text parsing and processing.
+- The discussion will focus on patterns in text parsing and how it relates to formal languages and computation.
+- Emacs regex engine was implemented using old C code, but modern techniques may not be compatible or desirable.
+- There are larger goals that emacs-devel discussed, which overlap with the speaker's research interests and make for exciting discussions.
+
+** Technical Terms
+| Term                   | Definition                                                                                                                                 | Context                                    |
+|------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------|
+| Regular Expression     | A sequence of characters used to match patterns in text                                                                                    | Discussion of regular expressions          |
+| Formal Theory          | A set of axioms and rules that describe a mathematical system or concept                                                                   | Formal theory mentioned in the talk        |
+| Regex Compilation      | The process of converting regular expressions into machine-readable code for execution by the Emacs regex engine                           | Emacs regex engine implementation          |
+| Modern Techniques      | Approaches to implementing regular expressions that prioritize performance, efficiency, or compatibility with modern programming languages | Modern techniques mentioned in the talk    |
+| Emacs Development Team | The Emacs development team and community discussions about the future of the Emacs regex engine and its integration with other features    | Emacs Devel and emacs community discussion |
+
+
 
 * [[summaries/emacsconf-2024-rust--an-experimental-emacs-core-in-rust--troy-hinckley--main.org][Source]]
 
@@ -127,7 +474,6 @@
 
 
 
-
 * [[summaries/emacsconf-2024-sat-open--saturday-opening-remarks--main.org][Source]]
 
 * Saturday Opening Remarks
@@ -150,7 +496,6 @@
 | BigBlueButton | BigBlueButton (BBB) with open captions | streaming media player with captions |
 | Internet Relay Chat | Internet Relay Chat (IRC) | irc chat service for conference communication |
 | IRC client | not specified, but can be connected to using TLS and port 6697 | irc client software for connecting to IRC channels |
-
 
 
 
@@ -180,7 +525,6 @@
 
 
 
-
 * [[summaries/emacsconf-2024-sun-open--sunday-opening-remarks--main.org][Source]]
 
 * Sunday Opening Remarks
@@ -206,7 +550,6 @@
 
 
 
-
 * [[summaries/emacsconf-2024-theme--my-journey-of-finding-and-creating-the-perfect-emacs-theme--metrowind--main.org][Source]]
 
 * My Journey Of Finding And Creating The Perfect Emacs Theme
@@ -229,6 +572,26 @@
 | MELPA           | Major Emacs package repository for distributing and managing themes and packages                          | Used to publish and distribute Emacs themes              |
 | color palette   | Predefined set of colors chosen to work together in a design system                                       | FlucUI theme drew from DeviantArt and iOS 7 palettes     |
 | color picker    | Tool for selecting and analyzing colors within different color spaces                                     | Used to maintain consistent lightness while varying hues |
+
+
+* [[summaries/emacsconf-2024-water--watering-my-digital-plant-with-emacs-timers--christopher-howard--main.org][Source]]
+
+* Watering My Digital Plant With Emacs Timers
+:PROPERTIES:
+:SPEAKER: Christopher Howard
+:END:
+
+** Key Points
+- The talk introduces Emacs timers and their application in automating tasks using the Astrobotany game as an example.
+- The Gemini protocol is a small web protocol with simplicity, non-extensibility, and privacy goals, similar to HyperText Transfer Protocol.
+- Gemtext is a simple hyperlinking document format, analogous to HTML.
+
+** Technical Terms
+| Term                 | Definition                                                                                                          | Context    |
+|----------------------+---------------------------------------------------------------------------------------------------------------------+------------|
+| run-at-time function | A function that performs an action at a specific time to repeat it after a specific number of seconds.              | definition |
+| Gemini protocol      | A small web protocol with simplicity, non-extensibility, and privacy goals, similar to HyperText Transfer Protocol. | definition |
+| Gemtext              | A simple hyperlinking document format, analogous to HTML.                                                           | definition |
 
 
 
@@ -258,6 +621,5 @@
 | Citar                | a package for accessing bibliographies in Emacs.                                                          | citar                |
 | Vertico              | a package for minibuffer completion in Emacs.                                                             | vertico              |
 | Visual Line Mode     | a mode that enables visual line numbers in Emacs.                                                         | visual-line-mode     |
-
 
 

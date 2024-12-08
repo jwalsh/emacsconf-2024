@@ -1,0 +1,26 @@
+* Colour Your Emacs With Ease
+:PROPERTIES:
+:SPEAKER: Ryota
+:END:
+
+** Key Points
+- The speaker Ryota wants to share a theme that makes Emacs aesthetically pleasing to his taste
+- He started with the Nova Theme but found it too colourful and distracting
+- He experimented with different themes like Modus Vivendi Tinted, ef-themes, owl edition, and Doom Noe
+- He used Org Mode to create a subtle theme with orange as an accent colour
+- The speaker talks about colour spaces like sRGB, HSL, LCH, and perceptual uniformity
+
+** Technical Terms
+| Term                        | Definition                                                                                                                                | Context                                  |
+|-----------------------------+-------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------|
+| Colour Space                | A system for describing and categorizing colours                                                                                          | colour spaces                            |
+| HSL Colour Space            | A colour model that describes colours in terms of hue (colour), saturation (purity), and lightness (brightness)                           | Hue, Saturation, Lightness               |
+| LCH Colour Space            | Another colour model that describes colours in terms of luminance (lightness), chroma (colourfulness), and hue                            | Luminance or Lightness, Chroma, Hue      |
+| Perceptual Uniformity       | A property of a colour space where the perceived colours are evenly distributed, making it more suitable for designing themes and colours | Perceptual uniformity                    |
+| CIE                         | An organization that developed important colour spaces like CIE XYZ, CIELAB, and LUV                                                      | International Commission of Illumination |
+| Colour Space Creation Years | Years when the CIE XYZ and LUV colour spaces were created                                                                                 | 1931, 1976 respectively                  |
+
+
+** Meta
+- Generated: 2024-12-08T18:02:38.542331
+- Model: llama3.2

@@ -1,0 +1,24 @@
+* Writing Academic Papers In Orgroam
+:PROPERTIES:
+:SPEAKER: Vincent Conus
+:END:
+
+** Key Points
+- Vincent Conus presents his usage of Org notes and Org Roam for writing academic papers
+- Org notes can be exported as a document with extra configuration
+- Using Org Roam allows for a centralized bibliography system
+- The use of Org export is less documented than using LaTeX
+
+** Technical Terms
+| Term                     | Definition                                                                                                          | Context                                          |
+|--------------------------+---------------------------------------------------------------------------------------------------------------------+--------------------------------------------------|
+| Org export               | A way to reproduce any LaTeX setup that would be used to create documents with an Org file                          | Exporting Org notes as a document                |
+| Org export configuration | The process of setting up the necessary configuration to export Org notes as a LaTeX document                       | Configuring Org export for LaTeX                 |
+| Bibliography system      | A system that allows for easy referencing and linking of notes throughout an Org file                               | Centralized bibliography system in Org Roam      |
+| Debugging Org export     | The process of identifying and fixing errors in the Org export configuration to ensure proper formatting and layout | Importance of debugging Org export configuration |
+| Org Mode LaTeX           | A layer on top of LaTeX that allows for easy integration with Org Mode                                              | Org Mode LaTeX                                   |
+
+
+** Meta
+- Generated: 2024-12-08T18:04:32.548892
+- Model: llama3.2

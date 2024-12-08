@@ -1,0 +1,365 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:09.420
+ Welcome to Watering My Digital Plant with EMAX Timers, a talk by Christopher Howard for
+
+00:00:09.420 --> 00:00:13.660
+ EMAX Conference 2024.
+
+00:00:13.660 --> 00:00:21.860
+ The goal of this talk is to give a brief introduction to EMAX Timers using the illustration
+
+00:00:21.860 --> 00:00:28.940
+ of how I created a bot for the Astrabotony service.
+
+00:00:28.940 --> 00:00:31.040
+ That is Astrabotony.
+
+00:00:31.040 --> 00:00:39.280
+ Let me jump to the homepage.
+
+00:00:39.280 --> 00:00:46.000
+ Astrabotony is a botany game, or simulation that is played using the Gemini Protocol and
+
+00:00:46.000 --> 00:00:49.020
+ GemText documents.
+
+00:00:49.020 --> 00:00:50.740
+ What is Gemini?
+
+00:00:50.740 --> 00:00:58.120
+ The Gemini Protocol is a small web protocol, similar to the Hypertext Transfer Protocol,
+
+00:00:58.120 --> 00:01:05.600
+ but with differing goals of simplicity, non-extensibility, and protecting privacy.
+
+00:01:05.600 --> 00:01:12.120
+ GemText is a simple hyper-linking document format, the analog of the Hypertext Markup
+
+00:01:12.120 --> 00:01:16.200
+ language, or HTML.
+
+00:01:16.200 --> 00:01:20.720
+ Much more could be said about the design and goals of the Gemini project, but that is
+
+00:01:20.720 --> 00:01:25.520
+ not the focus of this talk.
+
+00:01:25.520 --> 00:01:28.720
+ And how do you play Astrabotony?
+
+00:01:28.720 --> 00:01:34.240
+ First you need to get a Gemini client, or what you might call a browser.
+
+00:01:34.240 --> 00:01:41.440
+ Many clients are available, but I am using Elfer, a Gemini client for EMAX.
+
+00:01:41.440 --> 00:01:47.680
+ Once you have your client running, navigate to the homepage for Astrabotony, which is
+
+00:01:47.680 --> 00:01:50.920
+ shown in this window.
+
+00:01:50.920 --> 00:01:57.920
+ You'll see the URL for the homepage displayed at the top of the window.
+
+00:01:57.920 --> 00:02:03.680
+ On your first visit to Astrabotony, you will need to create a client certificate, which
+
+00:02:03.680 --> 00:02:06.200
+ will be used instead of a password.
+
+00:02:06.200 --> 00:02:12.320
+ Your Gemini client will help you to create the certificate.
+
+00:02:12.320 --> 00:02:30.880
+ Then you will go to the "Visit Your Plant" page in order to view your plant, to water it,
+
+00:02:30.880 --> 00:02:37.240
+ and to collect things from it, including money.
+
+00:02:37.240 --> 00:02:43.240
+ Also here you see the plant that I am currently growing in glorious ASCII graphics.
+
+00:02:43.240 --> 00:02:57.040
+ There is also a color version available from this page.
+
+00:02:57.040 --> 00:03:08.520
+ Like at the homepage, you can do other things like go to the "Item Shop" to buy items like
+
+00:03:08.520 --> 00:03:15.880
+ badges, fertilizer, or post on the message board.
+
+00:03:15.880 --> 00:03:24.320
+ In Astrabotony, gardener bots are fully legal, and to do an action on your plant like watering
+
+00:03:24.320 --> 00:03:25.520
+ the plant.
+
+00:03:25.520 --> 00:03:32.240
+ All your bot needs to do is to access the appropriate Gemini URL or page, while presenting
+
+00:03:32.240 --> 00:03:37.120
+ the appropriate certificate for your plant.
+
+00:03:37.120 --> 00:03:42.960
+ And this brings us to EMAX Timers.
+
+00:03:42.960 --> 00:04:00.860
+ So the main function of interest to us is the "Run At Time" function.
+
+00:04:00.860 --> 00:04:10.200
+ Here is the "Help Documentation", which is available in any recent EMAX installation.
+
+00:04:10.200 --> 00:04:21.000
+ As you see, the purpose of the function is to perform an action at a specific time,
+
+00:04:21.000 --> 00:04:29.840
+ to repeat it after a specific number of seconds.
+
+00:04:29.840 --> 00:04:37.120
+ And so basically all you have to do is pass in a function to "Run At Time", telling EMAX
+
+00:04:37.120 --> 00:04:41.920
+ how soon you want to run the function, and then how often you want to run the function
+
+00:04:41.920 --> 00:04:44.440
+ after that.
+
+00:04:44.440 --> 00:04:50.280
+ The function has a variety of options for specifying the "Time" parameter, that is how
+
+00:04:50.280 --> 00:04:55.400
+ soon you want the function to run.
+
+00:04:55.400 --> 00:05:00.520
+ For our application, in which we'll be running our functions once or twice a day at specific
+
+00:05:00.520 --> 00:05:08.600
+ times, it is most useful to specify the number of seconds until the event.
+
+00:05:08.600 --> 00:05:15.080
+ This does however require calculating the number of seconds until a specific time of day.
+
+00:05:15.080 --> 00:05:18.920
+ I will provide code for this shortly.
+
+00:05:18.920 --> 00:05:24.560
+ The "Run At Time" function does allow you to specify the time parameter as a string representing
+
+00:05:24.560 --> 00:05:31.440
+ the hours and minutes, for example, 0,5, colon, 4,0.
+
+00:05:31.440 --> 00:05:40.660
+ However, there is an oddity in the design of "Run At Time", such that if the specified
+
+00:05:40.660 --> 00:05:47.000
+ time of day is already passed, then the timer will run immediately, rather than in the future,
+
+00:05:47.000 --> 00:05:49.360
+ as you might expect.
+
+00:05:49.360 --> 00:05:55.760
+ This can be problematic, for example, if "Run At Time" is being called from your init file.
+
+00:05:55.760 --> 00:06:02.360
+ Since the timer will run immediately, every time you restart EMAX for any reason.
+
+00:06:02.360 --> 00:06:15.920
+ I noticed recently that "Run At Time" also allows you to pass in a value from "encode time",
+
+00:06:15.920 --> 00:06:21.240
+ which maybe does what we want, but I never bothered with testing that.
+
+00:06:21.240 --> 00:06:26.760
+ Actually, I have a vague memory of once looking into it, didn't seem to do what I wanted,
+
+00:06:26.760 --> 00:06:32.800
+ but honestly, I can't clearly remember, so you may want to look into that yourself.
+
+00:06:32.800 --> 00:06:37.840
+ What I ended up using was just passing in a number of seconds.
+
+00:06:37.840 --> 00:06:46.800
+ So now we'll move over to the code.
+
+00:06:46.800 --> 00:06:54.560
+ So I'll skip down here first to the code that I wrote for calculating the number of seconds.
+
+00:06:54.560 --> 00:07:00.200
+ It's a function that calculates the number of seconds until a particular time of day
+
+00:07:00.200 --> 00:07:04.280
+ in the future.
+
+00:07:04.280 --> 00:07:14.040
+ You can see that you pass in the hour as a number from 0 to 23, and the minutes as a number
+
+00:07:14.040 --> 00:07:19.160
+ from 0 to 59.
+
+00:07:19.160 --> 00:07:25.600
+ And here's the code, which will also be available later.
+
+00:07:25.600 --> 00:07:32.920
+ I wrote another function seconds until weekly, which we do not need for this talk, but which
+
+00:07:32.920 --> 00:07:39.360
+ is useful if you're running events which need to happen once per week.
+
+00:07:39.360 --> 00:07:57.400
+ This function also requires a target day, but also requires passing in a target day.
+
+00:07:57.400 --> 00:08:03.440
+ And while we're on the subject of timers specifically, I should mention that EMAX has a very
+
+00:08:03.440 --> 00:08:07.640
+ useful function called list timers.
+
+00:08:07.640 --> 00:08:14.800
+ So if I call the interactive function list timers, it will give me a list of all the timers
+
+00:08:14.800 --> 00:08:16.840
+ currently running.
+
+00:08:16.840 --> 00:08:22.480
+ This page shows not only which timers exist, but also how long it will be until they run
+
+00:08:22.480 --> 00:08:29.960
+ again, along with the periodic repeat value that you specified.
+
+00:08:29.960 --> 00:08:37.640
+ Furthermore, any timer can be canceled by moving point over the timer and running timer
+
+00:08:37.640 --> 00:08:43.640
+ list cancel, which on my system is bound to the letter C by default.
+
+00:08:43.640 --> 00:08:48.520
+ This is very helpful while you are developing some timer function.
+
+00:08:48.520 --> 00:08:57.680
+ So I could cancel the timer that I already have running for shaking the plant, as well
+
+00:08:57.680 --> 00:09:05.800
+ as the one for watering the plant, and back to the code.
+
+00:09:05.800 --> 00:09:14.240
+ So now we'll talk about the actual code for managing the plant.
+
+00:09:14.240 --> 00:09:21.200
+ So you see I have a variable set up here that specifies where the certificate file, the
+
+00:09:21.200 --> 00:09:28.020
+ public certificate file, as well as the secret key file is located.
+
+00:09:28.020 --> 00:09:33.520
+ This is where it is in my system, of course, depending on your specific Gemini client,
+
+00:09:33.520 --> 00:09:41.160
+ it may be in a different space and will likely have a different name.
+
+00:09:41.160 --> 00:09:49.560
+ And here is the code for watering the plant, which I can call interactively.
+
+00:09:49.560 --> 00:10:01.000
+ And the core of it here is that it uses the GM and I utility command line utility to
+
+00:10:01.000 --> 00:10:12.560
+ call a particular URL while also loading up or presenting the required certificate.
+
+00:10:12.560 --> 00:10:19.920
+ So in this case, you can see it is the URL that is required for watering the plant.
+
+00:10:19.920 --> 00:10:30.960
+ This idea is very simple, and the GM and I client, or GM and I command line program, makes
+
+00:10:30.960 --> 00:10:34.720
+ this very simple to do.
+
+00:10:34.720 --> 00:10:37.160
+ Here's another function for shaking the plant.
+
+00:10:37.160 --> 00:10:45.000
+ Again, it is almost identical except that we use a different URL, one for shaking the
+
+00:10:45.000 --> 00:10:47.600
+ plant instead of watering it.
+
+00:10:47.600 --> 00:10:55.920
+ And again, we want to shake the plant in order to get money to fall off of it.
+
+00:10:55.920 --> 00:11:03.080
+ You need to water your plant at least once per day or it will die.
+
+00:11:03.080 --> 00:11:12.600
+ And I usually water mine twice, and just in case something happens where I Emax was turned
+
+00:11:12.600 --> 00:11:19.160
+ off because of power outage or something like that, then I'm more likely to get it watered.
+
+00:11:19.160 --> 00:11:25.520
+ And I shake it once per day because there isn't any purpose to shaking it more than that
+
+00:11:25.520 --> 00:11:37.280
+ if you try to shake it more than that then money, no more money will fall off, or not much.
+
+00:11:37.280 --> 00:11:42.480
+ So you see down here, I have the code that actually calls run at time.
+
+00:11:42.480 --> 00:11:49.640
+ I left here commented my original forms of this, which used the specify directly the time
+
+00:11:49.640 --> 00:11:50.640
+ of day.
+
+00:11:50.640 --> 00:11:59.520
+ As I mentioned, the problem with that was that these functions would also get called whenever
+
+00:11:59.520 --> 00:12:05.040
+ I restarted Emax for any reason, and that was kind of annoying.
+
+00:12:05.040 --> 00:12:11.240
+ So instead, we have here the functions down here, which uses seconds until daily to water
+
+00:12:11.240 --> 00:12:16.120
+ the plant and then seconds until daily to shake the plant.
+
+00:12:16.120 --> 00:12:25.360
+ You see, I've specified the plant to get watered at 4 in the morning, and then the function
+
+00:12:25.360 --> 00:12:33.760
+ is run again after that every 4, 43,200 seconds, which translates to every 12 hours.
+
+00:12:33.760 --> 00:12:45.920
+ And then I shake the plant every morning at 4, 15 a.m., and once every 12 hours.
+
+00:12:45.920 --> 00:12:51.840
+ With a little bit more sophistication, a little bit more work on the code, I could actually
+
+00:12:51.840 --> 00:12:58.240
+ have multiple plants, be watering and shaking multiple plants with multiple certificates,
+
+00:12:58.240 --> 00:13:09.600
+ but I never got around to that, didn't seem worth the bother to me.
+
+00:13:09.600 --> 00:13:16.720
+ So thank you for watching my video, watering my digital plant with Emax timers.
+
+00:13:16.720 --> 00:13:23.320
+ You'll see at the bottom of this page links to the code for this talk, as well as other things
+
+00:13:23.320 --> 00:13:31.640
+ that I've mentioned, like the source code for the Elfer Gemini client, the URL for the
+
+00:13:31.640 --> 00:13:39.520
+ Astrobotany capsule, as well as a link to more information about Project Gemini, and my
+
+00:13:39.520 --> 00:13:46.920
+ own personal Gemini capsule that's being run off my own server at home.
+
+00:13:46.920 --> 00:13:47.600
+ Thank you very much.
+
+00:13:47.600 --> 00:13:57.600
+ [BLANK_AUDIO]
+

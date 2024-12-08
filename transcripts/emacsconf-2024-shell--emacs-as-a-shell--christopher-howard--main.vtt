@@ -1,0 +1,821 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:14.080
+ Welcome to EMAX as a Shell, a talk by Christopher Howard for EMAX Conference 2024.
+
+00:00:14.080 --> 00:00:20.400
+ In this talk I would like to explore or advocate for a particular perspective.
+
+00:00:20.400 --> 00:00:27.640
+ I want to encourage people to think of EMAX not as simply an editor or a development environment,
+
+00:00:27.640 --> 00:00:33.360
+ but rather as a shell, or at least something that allows us to do most of the things that
+
+00:00:33.360 --> 00:00:37.960
+ we might otherwise want to do for a shell.
+
+00:00:37.960 --> 00:00:40.720
+ What do I mean by "shell"?
+
+00:00:40.720 --> 00:00:46.720
+ By "shell" I mean basically an interface that allows us to interact with the rest of
+
+00:00:46.720 --> 00:00:50.840
+ our system by entering commands.
+
+00:00:50.840 --> 00:00:57.080
+ That definition is perhaps a little too broad, and so I will try to narrow it down with
+
+00:00:57.080 --> 00:01:03.000
+ a list of features that historically we have come to expect from a shell.
+
+00:01:03.000 --> 00:01:09.540
+ The "bash shell" is one very portable and well-known shell, and for many of us it is maybe
+
+00:01:09.540 --> 00:01:13.320
+ the prototypical example.
+
+00:01:13.320 --> 00:01:19.360
+ But in the past there have been many other shells, and there are other shells available today.
+
+00:01:19.360 --> 00:01:25.400
+ If we are willing to be flexible in our thinking, we can think of EMAX as being a shell, or
+
+00:01:25.400 --> 00:01:38.880
+ at least providing most of the functionality that we expect from a shell.
+
+00:01:38.880 --> 00:01:45.240
+ Before further expanding on this idea, I must emphasize what I do not mean.
+
+00:01:45.240 --> 00:01:51.340
+ First of all, I am not talking about running "bash" or some other external shell from within
+
+00:01:51.340 --> 00:01:55.200
+ EMAX, although this is certainly possible.
+
+00:01:55.200 --> 00:02:01.960
+ I am arguing rather for using EMAX as a shell instead of other shells.
+
+00:02:01.960 --> 00:02:08.520
+ Second, I do not mean running a terminal emulator from within EMAX.
+
+00:02:08.520 --> 00:02:13.840
+ EMAX has a built-in terminal emulator, but this is not what I mean.
+
+00:02:13.840 --> 00:02:19.980
+ A terminal emulator is essentially a program designed to control the cursor and text appearance
+
+00:02:19.980 --> 00:02:27.220
+ in response to various control codes, in order to mimic a terminal display device.
+
+00:02:27.220 --> 00:02:30.540
+ There are certainly legitimate reasons to do this.
+
+00:02:30.540 --> 00:02:35.260
+ Nevertheless, in general it does not make much sense to run a terminal emulator within
+
+00:02:35.260 --> 00:02:42.100
+ EMAX, because EMAX has its own commands for controlling the cursor and text appearance.
+
+00:02:42.100 --> 00:02:49.420
+ Also, due to the way EMAX was designed historically, EMAX itself believes that it is running on a
+
+00:02:49.420 --> 00:02:55.620
+ terminal, so you end up with layers upon layers of terminal emulation.
+
+00:02:55.620 --> 00:03:01.240
+ Anyhow, at the end of the day, EMAX will not perform as well as a dedicated terminal
+
+00:03:01.240 --> 00:03:04.260
+ emulator program.
+
+00:03:04.260 --> 00:03:11.140
+ I also think that, as we try to force ANSI terminal emulation into our EMAX workflow,
+
+00:03:11.140 --> 00:03:16.420
+ this ultimately will be a hindrance to us, in taking advantage of the natural and pleasant
+
+00:03:16.420 --> 00:03:21.740
+ interfaces that are already available to us within EMAX.
+
+00:03:21.740 --> 00:03:27.120
+ In brief, if your goal is simply to figure out how to be able to do all your normal,
+
+00:03:27.120 --> 00:03:33.940
+ bash, command line wizardry from within an EMAX window, instead of a gnome console window,
+
+00:03:33.940 --> 00:03:40.420
+ you were headed down a different set of train tracks than I am.
+
+00:03:40.420 --> 00:03:47.620
+ So something which I fear may confuse the issue for some viewers, is the fact that EMAX ships
+
+00:03:47.620 --> 00:03:59.220
+ with its own unique built-in shell, called the EMAX shell, or E-shell.
+
+00:03:59.220 --> 00:04:04.540
+ E-shell aims to be a legitimate shell, and provides a very similar experience to other
+
+00:04:04.540 --> 00:04:11.260
+ shells like bash, while being well integrated into the EMAX interface, and without giving
+
+00:04:11.260 --> 00:04:15.020
+ up the power of the EMAX-lisp engine.
+
+00:04:15.020 --> 00:04:18.500
+ E-shell will be mentioned multiple times in this talk.
+
+00:04:18.500 --> 00:04:24.620
+ The entire talk could, in fact, be about E-shell, except that I want to talk the talk to cover
+
+00:04:24.620 --> 00:04:31.140
+ all aspects of EMAX shell-like functionality through its other tools, such as interactive
+
+00:04:31.140 --> 00:04:34.460
+ commands and special modes.
+
+00:04:34.460 --> 00:04:44.100
+ So hopefully we can keep distinct in our mind the ideas of EMAX-as-a-shell, versus the EMAX-shell.
+
+00:04:44.100 --> 00:04:50.300
+ The latter is an important part of the former.
+
+00:04:50.300 --> 00:04:55.420
+ Let's get back to the fundamental idea of what is a shell.
+
+00:04:55.420 --> 00:05:00.660
+ In the broadest definition, a shell is an interface, which allows you to interact with your
+
+00:05:00.660 --> 00:05:04.060
+ operating system through commands.
+
+00:05:04.060 --> 00:05:09.520
+ However, from a historical perspective, there are a few basic capabilities which we expect
+
+00:05:09.520 --> 00:05:18.540
+ to be part of every shell.
+
+00:05:18.540 --> 00:05:24.060
+ First of all, the shell provides a means of launching external programs.
+
+00:05:24.060 --> 00:05:30.460
+ Some internal or built-in commands might also be made available.
+
+00:05:30.460 --> 00:05:35.660
+ And the shell provides a means of managing environment variables.
+
+00:05:35.660 --> 00:05:41.060
+ In the past, environment variables often played a critical role as a means of passing
+
+00:05:41.060 --> 00:05:48.820
+ in options, file names, device names, and such like two external programs.
+
+00:05:48.820 --> 00:05:53.860
+ This is not quite as common today, but the environment still plays a critical role in
+
+00:05:53.860 --> 00:06:02.180
+ managing things such as the path to executables and libraries, as well as various other user
+
+00:06:02.180 --> 00:06:05.580
+ desktop and system settings.
+
+00:06:05.580 --> 00:06:13.140
+ The shell modifies the environment and passes it on to external programs.
+
+00:06:13.140 --> 00:06:20.420
+ Historically, job control was expected to be either a function of the shell or easily accessible
+
+00:06:20.420 --> 00:06:22.100
+ from it.
+
+00:06:22.100 --> 00:06:28.740
+ Obviously today our personal computing is not batch-oriented, but typically shells can run
+
+00:06:28.740 --> 00:06:36.780
+ multiple processes simultaneously, as well as provides means to suspend and terminate
+
+00:06:36.780 --> 00:06:41.900
+ processes, which are useful features.
+
+00:06:41.900 --> 00:06:47.460
+ Shells should be able to redirect and pipeline process input and output.
+
+00:06:47.460 --> 00:06:55.380
+ This allows the user to connect process input and output with files, devices, or other processes.
+
+00:06:55.380 --> 00:07:02.320
+ Finally, shells are expected to have some limited scripting capability, such as the
+
+00:07:02.320 --> 00:07:11.660
+ POSIX compliant set of program statements and conditionals the BASH provides.
+
+00:07:11.660 --> 00:07:16.700
+ As command line wizards, there are a number of tasks we expect to be able to do quickly
+
+00:07:16.700 --> 00:07:23.460
+ and easily from our shell, even though these tasks are not the domain of the shell itself.
+
+00:07:23.460 --> 00:07:27.700
+ A common task is file management, a navigation.
+
+00:07:27.700 --> 00:07:33.380
+ We quickly navigate and manipulate the file system with standard utilities that do things
+
+00:07:33.380 --> 00:07:41.500
+ like change the current working directory, rename files, smooth files, and delete files.
+
+00:07:41.500 --> 00:07:47.140
+ We usually expect to have access to some additional process management utilities.
+
+00:07:47.140 --> 00:07:51.780
+ These allow us to do things such as find out the status of all processes running on the
+
+00:07:51.780 --> 00:07:55.980
+ system and send signals processes.
+
+00:07:55.980 --> 00:08:01.980
+ Finally, we expect to have access to some basic networking utilities.
+
+00:08:01.980 --> 00:08:08.540
+ For example, we should be able to run commands that set up network interfaces, ping computers,
+
+00:08:08.540 --> 00:08:11.860
+ and download files.
+
+00:08:11.860 --> 00:08:19.020
+ With a little reflection, we can see that EMAX can provide all or nearly all of the functionality
+
+00:08:19.020 --> 00:08:21.580
+ we have described so far.
+
+00:08:21.580 --> 00:08:29.060
+ And the functionality can be called conveniently through one of several methods.
+
+00:08:29.060 --> 00:08:55.700
+ Either, a normal interactive call, MX, something, or a call to an elist function, or through
+
+00:08:55.700 --> 00:09:06.580
+ eShell commands, or through some special buffer mode, such as the directory editor, which provides
+
+00:09:06.580 --> 00:09:13.180
+ its own interface to some functionality.
+
+00:09:13.180 --> 00:09:19.700
+ It may be going too far to say that EMAX is a full replacement for shells like Bash.
+
+00:09:19.700 --> 00:09:25.060
+ Nevertheless, we can see that EMAX can do most of the things that we might otherwise do
+
+00:09:25.060 --> 00:09:27.020
+ with our shell.
+
+00:09:27.020 --> 00:09:29.700
+ Let us give some examples.
+
+00:09:29.700 --> 00:09:34.340
+ First, can EMAX launch external commands?
+
+00:09:34.340 --> 00:09:35.340
+ Of course.
+
+00:09:35.340 --> 00:09:41.380
+ Now, there are something like a half dozen different ways to do that within EMAX and some are
+
+00:09:41.380 --> 00:09:44.940
+ more convenient than others.
+
+00:09:44.940 --> 00:09:52.500
+ From any elist program, we can call functions like make process and call process to launch
+
+00:09:52.500 --> 00:10:13.040
+ external processes.
+
+00:10:13.040 --> 00:10:20.360
+ These however generally are not convenient for quick one-off commands.
+
+00:10:20.360 --> 00:10:26.440
+ Another option would be to run eShell, which would allow us to call the external program from
+
+00:10:26.440 --> 00:10:34.640
+ a familiar command line prompt.
+
+00:10:34.640 --> 00:10:41.640
+ If we do not actually want to drop into eShell just to run one command, we also have the interactive
+
+00:10:41.640 --> 00:10:57.020
+ command eShell command, which would allow us to call the external program from a familiar
+
+00:10:57.020 --> 00:11:05.880
+ command line prompt.
+
+00:11:05.880 --> 00:11:16.560
+ If we do not actually want to drop into eShell just to run one command, we also have the interactive
+
+00:11:16.560 --> 00:11:25.560
+ command eShell command, which allows us to enter in a one-off command and run that immediately.
+
+00:11:25.560 --> 00:11:34.520
+ Finally, there is also an interactive command called simply shell command.
+
+00:11:34.520 --> 00:11:41.640
+ Shell command is like eShell command, but instead passes the command off to our system shell,
+
+00:11:41.640 --> 00:11:44.140
+ for example bash.
+
+00:11:44.140 --> 00:11:57.640
+ This is a cheating, of course, but it might be useful or convenient in some scenarios.
+
+00:11:57.640 --> 00:12:04.640
+ Starting environment variables, EMAX can read and manipulate the environment variables, which
+
+00:12:04.640 --> 00:12:09.720
+ in turn get passed on to processes which it launches.
+
+00:12:09.720 --> 00:12:17.920
+ The general purpose interactive commands for this are get environment and set environment.
+
+00:12:17.920 --> 00:12:22.800
+ These commands deal with the one environment that is available throughout all parts of your
+
+00:12:22.800 --> 00:12:28.880
+ running EMAX session, in other words, these functions deal with a global environment, which
+
+00:12:28.880 --> 00:12:49.120
+ is the same wherever you are running, get environment or set environment.
+
+00:12:49.120 --> 00:13:06.680
+ An important exception is that every instance of eShell maintains a distinct environment that
+
+00:13:06.680 --> 00:13:12.040
+ will not be affected by set environment calls run in other buffers.
+
+00:13:12.040 --> 00:13:18.160
+ Also, eShell has some additional syntax for dealing with its environment, including the
+
+00:13:18.160 --> 00:13:40.840
+ set and export syntax.
+
+00:13:40.840 --> 00:13:46.560
+ Starting job control and process management.
+
+00:13:46.560 --> 00:13:52.720
+ EMAX does not provide job control in the way that fast users are used to.
+
+00:13:52.720 --> 00:13:59.400
+ We can, however, launch asynchronous processes and do various things to them.
+
+00:13:59.400 --> 00:14:07.080
+ From eShell or an eShell command call, we can append the ampersand symbol to the command,
+
+00:14:07.080 --> 00:14:22.080
+ and this will cause the process to run asynchronously in a dedicated buffer.
+
+00:14:22.080 --> 00:14:28.680
+ Now if the command is launched from eShell, it will not actually run in a separate buffer,
+
+00:14:28.680 --> 00:14:55.360
+ but the output will go to the eShell buffer.
+
+00:14:55.360 --> 00:15:01.680
+ We can run the interactive command list processes to see all the processes running for our current
+
+00:15:01.680 --> 00:15:13.560
+ EMAX session.
+
+00:15:13.560 --> 00:15:19.000
+ In eShell, we can run the command jobs to get the same list.
+
+00:15:19.000 --> 00:15:27.680
+ This will show the process name, process buffer name, process ID and some other information.
+
+00:15:27.680 --> 00:15:43.600
+ We can select the process buffer in the process list to bring up that process buffer.
+
+00:15:43.600 --> 00:15:50.960
+ We can also use the interactive command signal process to send any signal to a process,
+
+00:15:50.960 --> 00:15:59.420
+ including stop to suspend the process, continue to resume the process and interrupt or kill
+
+00:15:59.420 --> 00:16:27.860
+ to terminate the process.
+
+00:16:27.860 --> 00:16:42.860
+ We can also use the interactive command, and we can also use the interactive command, and we can do it.
+
+00:16:42.860 --> 00:17:09.340
+ Regarding redirecting and pipelining input and output, eShell does support redirection similar
+
+00:17:09.340 --> 00:17:17.200
+ to bash, so you can overwrite and append files and some other objects.
+
+00:17:17.200 --> 00:17:25.740
+ Input redirection is not yet implemented, but it is on the eShell to do list.
+
+00:17:25.740 --> 00:17:27.940
+ eShell also has pipes.
+
+00:17:27.940 --> 00:17:33.380
+ The default pipe, which uses the familiar vertical bar symbol, pipes the data between
+
+00:17:33.380 --> 00:17:37.900
+ the commands using an intermediate EMAX buffer.
+
+00:17:37.900 --> 00:17:43.180
+ This, while usually quite practical, is less efficient than the system pipe.
+
+00:17:43.180 --> 00:17:50.100
+ Therefore, eShell also makes available a star modified version, which uses the system
+
+00:17:50.100 --> 00:17:57.220
+ pipe through a call to your system shell.
+
+00:17:57.220 --> 00:18:18.020
+ So we can do things like direct output to a file, where unfortunately not able to do input
+
+00:18:18.020 --> 00:18:42.100
+ redirection, but we can use pipes.
+
+00:18:42.100 --> 00:18:48.500
+ This can manipulate and tie together processes in various ways, such as process filters and
+
+00:18:48.500 --> 00:18:54.740
+ pipe processes, but I won't attempt to cover that.
+
+00:18:54.740 --> 00:19:01.820
+ I feel like you should mention again that we have two kinds of pipes here available.
+
+00:19:01.820 --> 00:19:11.780
+ So this pipe, the standard one, will pipe the data through EMAX buffers.
+
+00:19:11.780 --> 00:19:21.060
+ It's very practical in most cases, but it is less efficient than piping through the system
+
+00:19:21.060 --> 00:19:29.460
+ pipe, so eShell makes available another symbol for that star vertical bar that allows you
+
+00:19:29.460 --> 00:19:38.780
+ to explicitly use the system pipe.
+
+00:19:38.780 --> 00:19:41.580
+ Starting scripting.
+
+00:19:41.580 --> 00:19:50.020
+ Of course, using eMAX makes available all the power of the ELIST API and third party packages.
+
+00:19:50.020 --> 00:19:53.300
+ So we have that out of the gate.
+
+00:19:53.300 --> 00:20:01.260
+ eShell also has control flow statements, like an if construct and a for construct.
+
+00:20:01.260 --> 00:20:09.820
+ See the eShell info manual, section 3.7 for more details.
+
+00:20:09.820 --> 00:20:16.420
+ And if you wish to write a script entirely in eShell syntax, store it in a separate file.
+
+00:20:16.420 --> 00:20:32.220
+ This is possible with recent versions of eMAX.
+
+00:20:32.220 --> 00:20:38.020
+ Here is an example of a brief script that I wrote.
+
+00:20:38.020 --> 00:20:45.900
+ Unfortunately, in eShell mode for proper syntax highlighting is not yet available, but hopefully
+
+00:20:45.900 --> 00:20:48.820
+ that will be forthcoming.
+
+00:20:48.820 --> 00:20:55.220
+ Note that eShell syntax allows eLIST forms to be interspersed with regular command form.
+
+00:20:55.220 --> 00:21:12.300
+ For additional scripting power, we will discuss this a little more later.
+
+00:21:12.300 --> 00:21:15.660
+ Starting file system management.
+
+00:21:15.660 --> 00:21:22.260
+ In eMAX, many of the common file system operations are available as interactive commands.
+
+00:21:22.260 --> 00:21:33.140
+ For example, eMAX CD to change your buffer's current working directory and other eMAX commands
+
+00:21:33.140 --> 00:21:48.820
+ such as make directory, CH mod and delete file.
+
+00:21:48.820 --> 00:21:59.860
+ Of course, you can also drop into eShell or use MX eShell command to run the usual external
+
+00:21:59.860 --> 00:22:04.500
+ commands for file system manipulation.
+
+00:22:04.500 --> 00:22:19.780
+ Also a file manager is built into eMAX, which can be run by calling "MetaX" directory editor.
+
+00:22:19.780 --> 00:22:25.940
+ The directory editor is powerful, but it is a bit strange to folks expecting something
+
+00:22:25.940 --> 00:22:31.960
+ like midnight commander or the gnome file manager.
+
+00:22:31.960 --> 00:22:42.460
+ It gives us a number of helpful features like the ability to mark files and to run eLIST
+
+00:22:42.460 --> 00:22:50.620
+ functions on them and some other interesting ways to manipulate and rename the files.
+
+00:22:50.620 --> 00:22:58.460
+ However, third party eMAX extensions such as midnight commander mode and sunrise commander
+
+00:22:58.460 --> 00:23:10.740
+ are available to provide a midnight commander experience who prefer that sort of file management.
+
+00:23:10.740 --> 00:23:17.780
+ eMAX also has the nifty tramp functionality built in, which allows you most of the time to
+
+00:23:17.780 --> 00:23:23.500
+ easily edit files on other computers as well as manipulate the file system.
+
+00:23:23.500 --> 00:23:44.300
+ This transparently works through SSH and some other protocols that you can specify.
+
+00:23:44.300 --> 00:23:50.180
+ Starting networking features, I don't have a lot of interesting things to say about this
+
+00:23:50.180 --> 00:23:53.580
+ at the present, so I'll skip through this quickly.
+
+00:23:53.580 --> 00:23:58.180
+ But if you do a little research, you will see that eMAX has a lot of functionality relating
+
+00:23:58.180 --> 00:24:05.700
+ to making network connections, interacting with the web, and such like both built in and
+
+00:24:05.700 --> 00:24:17.060
+ available packages as well as modes for doing things like web browsing and Gemini browsing.
+
+00:24:17.060 --> 00:24:30.460
+ And of course, you can run the usual standard networking commands for your system through eShell.
+
+00:24:30.460 --> 00:24:35.100
+ So having put forward the main arguments for this talk, I would like to take some time
+
+00:24:35.100 --> 00:24:43.340
+ now to give a brief tour of a few of the features of eShell, the eMAX shell.
+
+00:24:43.340 --> 00:24:49.260
+ It bears emphasizing that eShell is not a drop-in replacement for bash, or even a bash
+
+00:24:49.260 --> 00:24:56.660
+ clone, though I believe the developers are trying to make much of the syntax very similar.
+
+00:24:56.660 --> 00:25:02.100
+ Also eShell is not a terminal emulator, and it will not display correctly applications
+
+00:25:02.100 --> 00:25:06.100
+ which used advanced ANSI control codes.
+
+00:25:06.100 --> 00:25:12.860
+ However, eShell can be configured to be aware of such applications and to run them automatically
+
+00:25:12.860 --> 00:25:18.140
+ within the eMAX terminal emulator when launched.
+
+00:25:18.140 --> 00:25:32.780
+ Csection 5.1 of the eShell manual titled "Visual Commands".
+
+00:25:32.780 --> 00:25:39.140
+ Though eShell is not bash, it has multiple features pertaining mainly to its spy design
+
+00:25:39.140 --> 00:25:48.380
+ eMAX integration which may make it more appealing to use than bash or another shell.
+
+00:25:48.380 --> 00:25:54.460
+ For one, eShell allows entering commands on the command line that are space and new lines
+
+00:25:54.460 --> 00:25:57.660
+ separated without parentheses.
+
+00:25:57.660 --> 00:26:01.100
+ Of course, all the other shells do this.
+
+00:26:01.100 --> 00:26:08.820
+ But within eShell, it is possible to enter internal eMAX functions, as well as external
+
+00:26:08.820 --> 00:26:14.100
+ commands.
+
+00:26:14.100 --> 00:26:42.260
+ eShell allows us to do things like this.
+
+00:26:42.260 --> 00:26:52.820
+ As far as I understand, it is possible to enter any eMAX function on the eShell command line.
+
+00:26:52.820 --> 00:26:58.060
+ However, some special syntax may be required if you are trying to pass in something that
+
+00:26:58.060 --> 00:27:04.620
+ is not a string or a number.
+
+00:27:04.620 --> 00:27:10.700
+ As you might have noticed in the last example, eShell makes it possible to use an eMAX buffer
+
+00:27:10.700 --> 00:27:13.420
+ as a sync for output.
+
+00:27:13.420 --> 00:27:20.660
+ It also allows using a buffer as a source of input, though this is slightly more complicated,
+
+00:27:20.660 --> 00:27:25.700
+ since the buffer must be converted to a string first.
+
+00:27:25.700 --> 00:27:37.020
+ I have distilled this down into my own function, named with the at symbol.
+
+00:27:37.020 --> 00:27:55.020
+ And I will provide the brief snippet of code for this later.
+
+00:27:55.020 --> 00:28:04.580
+ So to give an example, here is our Messengers messages buffer, and from eShell we can do something
+
+00:28:04.580 --> 00:28:30.180
+ like this.
+
+00:28:30.180 --> 00:28:35.780
+ Let's say here we wanted to graph our messages buffer to see everything that we had been
+
+00:28:35.780 --> 00:28:48.540
+ loading during the startup process.
+
+00:28:48.540 --> 00:28:55.300
+ So you can see how that could be very handy in a number of scenarios.
+
+00:28:55.300 --> 00:29:02.660
+ I wanted to briefly mention that we have a helpful function here called eShell insert
+
+00:29:02.660 --> 00:29:16.740
+ buffer name, which allows us to insert a buffer name into the current buffer at point
+
+00:29:16.740 --> 00:29:33.280
+ using completion, which can save you a lot of typing.
+
+00:29:33.280 --> 00:29:43.120
+ Another nice feature of eShell is that it allows integrating eLisp into the command line call.
+
+00:29:43.120 --> 00:29:56.880
+ Let's give another example, saying we wanted to echo the date to an event log.
+
+00:29:56.880 --> 00:30:04.720
+ I should probably take a moment to explain this asterisk that I am occasionally using.
+
+00:30:04.720 --> 00:30:19.040
+ So since eShell can use internal or external eMex commands, it may sometimes mess necessary
+
+00:30:19.040 --> 00:30:25.020
+ to clarify which one you want to use, since the names may overlap.
+
+00:30:25.020 --> 00:30:32.880
+ Since my eShell is configured by default to prefer the internal eMex functions, then sometimes
+
+00:30:32.880 --> 00:30:43.280
+ I have to use the asterisk to specify that I want the external version.
+
+00:30:43.280 --> 00:31:03.560
+ Here I can insert a bit of eLisp
+
+00:31:03.560 --> 00:31:19.320
+ and then redirect the output to the event log.
+
+00:31:19.320 --> 00:31:25.160
+ Last I want to mention that there are some optional eShell modules in eMex, not turned
+
+00:31:25.160 --> 00:31:40.860
+ on by default, which provide additional nifty features.
+
+00:31:40.860 --> 00:31:58.620
+ On my system I have most of the optional modules turned on.
+
+00:31:58.620 --> 00:32:05.300
+ An interesting module is eShellSmart, which does various things with cursor positioning
+
+00:32:05.300 --> 00:32:18.640
+ and scrolling, so as to make editing commands and reviewing output easier.
+
+00:32:18.640 --> 00:32:31.340
+ Let's say I was to change directory to my boot directory
+
+00:32:31.340 --> 00:32:40.120
+ and use a command which involves lots of output.
+
+00:32:40.120 --> 00:32:46.740
+ You'll notice right away that the cursor positioning is set such that I am immediately able
+
+00:32:46.740 --> 00:32:56.340
+ to view the top of the output, also I am able to use the spacebar to page through the output.
+
+00:32:56.340 --> 00:33:05.160
+ So this is an opinionated feature which assumes that you are likely going to want to review
+
+00:33:05.160 --> 00:33:08.620
+ the output immediately or that you often will.
+
+00:33:08.620 --> 00:33:20.460
+ Of course you can always jump to the end.
+
+00:33:20.460 --> 00:33:26.660
+ Also after a command is entered, the cursor is immediately repositioned to make it easy
+
+00:33:26.660 --> 00:33:53.340
+ to edit the command.
+
+00:33:53.340 --> 00:33:58.220
+ But also if I don't want to edit the command and I do not want to review the output, I can
+
+00:33:58.220 --> 00:34:11.660
+ simply start typing another command.
+
+00:34:11.660 --> 00:34:17.980
+ So that covers the brief tour of eShell features.
+
+00:34:17.980 --> 00:34:26.540
+ And that basically ends my talk, however a handful of viewers might be wondering is it possible
+
+00:34:26.540 --> 00:34:40.060
+ to set eMax to be my log and shell to completely replace bash in your log and experience.
+
+00:34:40.060 --> 00:34:46.780
+ The answer is yes, but in practice there are various difficulties involved which might
+
+00:34:46.780 --> 00:35:01.020
+ make it not worth the trouble.
+
+00:35:01.020 --> 00:35:05.420
+ Before doing this you'll have to answer a few initial questions.
+
+00:35:05.420 --> 00:35:12.700
+ Do you want to make a new eMax instance every time you log in or do you want it to connect
+
+00:35:12.700 --> 00:35:22.140
+ to an eMax server which is popular among eMax users to reuse the session or to connect
+
+00:35:22.140 --> 00:35:26.300
+ to the existing session?
+
+00:35:26.300 --> 00:35:32.620
+ Also do you want a different result, whether in graphical or a terminal environment?
+
+00:35:32.620 --> 00:35:38.620
+ And are you okay with your initialization file being run every time you log in, including
+
+00:35:38.620 --> 00:35:43.640
+ every new tab you open in a terminal emulator?
+
+00:35:43.640 --> 00:35:50.500
+ If we assume that you are using a system with Etsy password user management, you get one
+
+00:35:50.500 --> 00:35:57.980
+ field to specify the name of the shell program that you want to use and no arguments are allowed.
+
+00:35:57.980 --> 00:36:04.260
+ So maybe you can see how this might be challenging depending on your answers to the previous
+
+00:36:04.260 --> 00:36:06.060
+ questions.
+
+00:36:06.060 --> 00:36:13.020
+ You can work around these issues in various ways like modifying the authentication system
+
+00:36:13.020 --> 00:36:18.100
+ or by specifying a script for your log and shell.
+
+00:36:18.100 --> 00:36:24.700
+ But if your normal workflow is to simply log in and start eMax and run that eMax session
+
+00:36:24.700 --> 00:36:37.140
+ until your next reboot then it probably isn't worth the bother.
+
+00:36:37.140 --> 00:36:43.740
+ So thank you for listening to my talk, eMax as a shell by Christopher Howard for eMax
+
+00:36:43.740 --> 00:36:47.300
+ conference 2024.
+
+00:36:47.300 --> 00:36:55.020
+ At the bottom of this page you can see a link to the repository containing the brief amount
+
+00:36:55.020 --> 00:37:04.940
+ of code that was featured here in this video, as well as a link to my personal Gemini Gem
+
+00:37:04.940 --> 00:37:10.500
+ log, as well as a web portal version of that.
+
+00:37:10.500 --> 00:37:10.820
+ Thank you.
+
+00:37:10.820 --> 00:37:20.820
+ [BLANK_AUDIO]
+

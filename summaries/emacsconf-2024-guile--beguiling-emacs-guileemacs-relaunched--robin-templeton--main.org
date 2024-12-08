@@ -1,0 +1,28 @@
+* Beguiling Emacs Guileemacs Relaunched
+:PROPERTIES:
+:SPEAKER: Robin Templeton
+:END:
+
+** Key Points
+- The Guile-Emacs project aims to use Guile as the basis for Emacs's Lisp support.
+- Guile-Emacs has two main components: a new Lisp compiler and a variant of Emacs with Guile Elisp
+- The combination of these projects will improve performance, increase expressiveness, and reduce C reliance
+- Guile was chosen for its support for multiple languages using its compiler tower
+- Guile's compiler optimizations occur at the Tree-IL layer or lower
+- The project has a long history with previous implementation attempts dating back to the 1990s
+
+** Technical Terms
+| Term                            | Definition                                                                                                                                                    | Context                                                                  |
+|---------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------|
+| Scheme                          | A dialect of Lisp, and GNU's official extension language.                                                                                                     | Overview of Guile and its relation to Emacs Lisp                         |
+| Guile-Elisp                     | A new Emacs Lisp compiler built on top of Guile, and a variant of Emacs with Guile Elisp as its Lisp implementation.                                          | Explanation of the Guile-Emacs project's components                      |
+| Compiler tower                  | Improved performance, increased expressiveness for Elisp, and reduced C reliance.                                                                             | Description of the benefits of the Guile-Emacs project                   |
+| Tree-IL                         | A system that allows adding support for a new language to Guile by writing a compiler from the source language to Tree-IL.                                    | Explanation of Guile's support for multiple languages                    |
+| Compiler tower                  | The process of optimizing compiler-generated code, which occurs at the Tree-IL layer or lower.                                                                | Description of Guile's optimizations                                     |
+| GOOPS (Generic Object Protocol) | A system that provides a way to implement objects and their behavior in a language.                                                                           | Explanation of the Common Lisp Object System and its metaobject protocol |
+| Internships                     | Implementing a core subset of Elisp, modifying the garbage collector and data structures for Lisp objects, and replacing the Lisp evaluator with Guile Elisp. | Description of the project's implementation strategy                     |
+
+
+** Meta
+- Generated: 2024-12-08T18:03:01.499285
+- Model: llama3.2

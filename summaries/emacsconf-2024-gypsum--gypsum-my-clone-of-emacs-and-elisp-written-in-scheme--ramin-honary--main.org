@@ -1,0 +1,24 @@
+* Gypsum My Clone Of Emacs And Elisp Written In Scheme
+:PROPERTIES:
+:SPEAKER: Ramin Honary
+:END:
+
+** Key Points
+- Ramin Honary is an Emacs enthusiast who has been working on a project to write an Emacs Lisp interpreter in Scheme
+- He wants to create a clone of Emacs that can run any 'init.el' and stick closely to the R7RS standard Scheme definition
+- The goal is to make the project widely adoptable across different Scheme implementations, including Guile
+
+** Technical Terms
+| Term                                   | Definition                                        | Context                                                      |
+|----------------------------------------+---------------------------------------------------+--------------------------------------------------------------|
+| Programming languages used in industry | Python and JavaScript                             | what Ramin uses for his work                                 |
+| Functional programming language        | Haskell, Scheme                                   | Ramin's background knowledge                                 |
+| Init file compatibility                | To run any 'init.el' without significant changes  | Ramin's goal for his project                                 |
+| Scheme language standard               | R7RS (Recursive Standard for the Scheme Language) | The Scheme standard that Ramin wants to follow               |
+| Scheme implementation                  | Guile                                             | The Scheme implementation that Ramin is using as a reference |
+| Study of Scheme language capabilities  | A study of what the R7RS language can do          | The target audience for Ramin's project                      |
+
+
+** Meta
+- Generated: 2024-12-08T18:03:12.355027
+- Model: llama3.2

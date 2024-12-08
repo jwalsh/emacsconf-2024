@@ -1,0 +1,24 @@
+{
+  "key_points": [
+    "The talk introduces Emacs timers and their application in automating tasks using the Astrobotany game as an example.",
+    "The Gemini protocol is a small web protocol with simplicity, non-extensibility, and privacy goals, similar to HyperText Transfer Protocol.",
+    "Gemtext is a simple hyperlinking document format, analogous to HTML."
+  ],
+  "technical_terms": [
+    {
+      "context": "definition",
+      "definition": "A function that performs an action at a specific time to repeat it after a specific number of seconds.",
+      "name": "run-at-time function"
+    },
+    {
+      "context": "definition",
+      "definition": "A small web protocol with simplicity, non-extensibility, and privacy goals, similar to HyperText Transfer Protocol.",
+      "name": "Gemini protocol"
+    },
+    {
+      "context": "definition",
+      "definition": "A simple hyperlinking document format, analogous to HTML.",
+      "name": "Gemtext"
+    }
+  ]
+}

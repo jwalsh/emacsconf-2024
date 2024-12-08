@@ -1,23 +1,3 @@
-=== Verification Response ===
-{
-  "verified": false
-}
-
-
-2024-12-08T17:24:42.342800
-
-=== Raw Content ===
-Hi! My name is Eduardo Ochs. I'm the author of an obscure package called eev and I think that it's better to start this presentation by the middle of the story - by this word here: Maxima. Maxima is a computer algebra system that has several interfaces. One of them is WxMaxima, that looks very modern and is very pretty, and it looks like this... it's a cell based interface. We can type an expression here and execute it... here's the result. But I don't like that interface because my memory is ve...
-
-2024-12-08T17:32:10.198838
-
-=== Content Verification Failed ===
-First 500 chars:
-Hi! My name is Eduardo Ochs. I'm the author of an obscure package called eev and I think that it's better to start this presentation by the middle of the story - by this word here: Maxima. Maxima is a computer algebra system that has several interfaces. One of them is WxMaxima, that looks very modern and is very pretty, and it looks like this... it's a cell based interface. We can type an expression here and execute it... here's the result. But I don't like that interface because my memory is ve
-
-2024-12-08T18:04:10.257432
-
-=== Model Response ===
 {
   "key_points": [
     "The talk starts by introducing Maxima, a computer algebra system with several interfaces, including WxMaxima, and how the author prefers an older interface for teaching calculus.",

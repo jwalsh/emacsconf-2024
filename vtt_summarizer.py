@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 import click
 import ollama
-from typing import Optional, List
+from typing import Optional, List, Tuple
 from dataclasses import dataclass
 import json
 from webvtt import WebVTT
@@ -54,26 +54,22 @@ class TalkSummary:
 - Generated: {datetime.now().isoformat()}
 - Model: {self.meta.get('model', 'unknown')}"""
 
-def generate_summary_collection(summaries_dir: Path):
-    """Generate a single org file containing all summaries."""
-    summary_file = summaries_dir.parent / "summaries.org"
+def find_vtt_files(media_dir: Path, local_transcript_dir: Path) -> List[Tuple[Path, bool]]:
+    """Find VTT files and indicate if they are official or local transcripts."""
+    vtt_files = []
     
-    content = f"""#+TITLE: EmacsConf 2024 Talk Summaries
-#+DATE: {datetime.now().strftime('%Y-%m-%d')}
-
-"""
-    
-    for org_file in sorted(summaries_dir.glob("*.org")):
-        if org_file.name.startswith("."): continue
-        content += f"\n* [[{org_file}][Source]]\n\n"
-        
-        # Read the org file but exclude Meta section
-        org_content = org_file.read_text()
-        sections = org_content.split("** Meta")[0]
-        content += sections + "\n"
-    
-    summary_file.write_text(content)
-    click.echo(f"Generated {summary_file}")
+    # Check media directory for official VTTs
+    for vtt in media_dir.glob('**/*.vtt'):
+        if '--main.vtt' in str(vtt) and '--chapters' not in str(vtt):
+            vtt_files.append((vtt, True))  # True indicates official VTT
+            
+    # Check local transcripts directory
+    if local_transcript_dir.exists():
+        for vtt in local_transcript_dir.glob('*.vtt'):
+            if not any(official_vtt.stem == vtt.stem for official_vtt, _ in vtt_files):
+                vtt_files.append((vtt, False))  # False indicates local transcript
+                
+    return sorted(vtt_files, key=lambda x: x[0].stem)
 
 def parse_vtt_content(vtt_path: Path) -> str:
     """Extract text content from VTT file."""
@@ -92,10 +88,6 @@ def verify_content(content: str, title: str) -> bool:
     words = content.split()
     if len(words) < 300:  # Main transcripts typically have >300 words
         click.echo("Warning: Content too short to be main transcript")
-        return False
-        
-    if '--chapters' in title or 'intro' in title.lower():
-        click.echo("Warning: Skipping chapter or intro file")
         return False
         
     try:
@@ -154,6 +146,24 @@ Keep the response format exactly as:
 Transcript:
 {content[:4000]}"""
 
+def generate_summary_collection(summaries_dir: Path):
+    """Generate a single org file containing all summaries."""
+    summary_file = summaries_dir.parent / "summaries.org"
+    
+    content = f"""#+TITLE: EmacsConf 2024 Talk Summaries
+#+DATE: {datetime.now().strftime('%Y-%m-%d')}
+
+"""
+    
+    for org_file in sorted(summaries_dir.glob("*.org")):
+        if org_file.name.startswith("."): continue
+        content += f"\n* [[{org_file}][Source]]\n\n"
+        sections = org_file.read_text().split("** Meta")[0]
+        content += sections + "\n"
+    
+    summary_file.write_text(content)
+    click.echo(f"Generated {summary_file}")
+
 def save_debug_output(debug_dir: Path, title: str, content: str):
     """Save debug output to file."""
     debug_file = debug_dir / f"{title.replace(' ', '_').lower()}_raw.txt"
@@ -162,13 +172,14 @@ def save_debug_output(debug_dir: Path, title: str, content: str):
         content = f"{existing}\n\n{datetime.now().isoformat()}\n{content}"
     debug_file.write_text(content)
 
-def generate_summary(content: str, title: str, speaker: str, output_path: Path) -> Optional[TalkSummary]:
+def generate_summary(content: str, title: str, speaker: str, output_path: Path, is_official: bool) -> Optional[TalkSummary]:
     """Generate summary using Llama with structured outputs."""
     debug_dir = output_path / "debug"
     debug_dir.mkdir(exist_ok=True)
     
     try:
-        if not verify_content(content, title):
+        # Only verify content for non-official transcripts
+        if not is_official and not verify_content(content, title):
             save_debug_output(debug_dir, title, f"\n=== Content Verification Failed ===\nFirst 500 chars:\n{content[:500]}")
             return None
             
@@ -200,7 +211,7 @@ def generate_summary(content: str, title: str, speaker: str, output_path: Path) 
             speaker=speaker,
             key_points=parsed.key_points,
             technical_terms=parsed.technical_terms,
-            meta={"model": "llama3.2"}
+            meta={"model": "llama3.2", "transcript": "official" if is_official else "generated"}
         )
         
     except Exception as e:
@@ -213,26 +224,28 @@ def generate_summary(content: str, title: str, speaker: str, output_path: Path) 
 @click.argument('media_dir', type=click.Path(exists=True))
 @click.option('--force', is_flag=True, help="Overwrite existing summaries")
 @click.option('--output', default='summaries', help="Output directory for summaries")
+@click.option('--transcripts', default='transcripts', help="Directory containing generated transcripts")
 @click.option('--verbose', is_flag=True, help="Show detailed processing information")
-def main(media_dir: str, force: bool, output: str, verbose: bool):
+def main(media_dir: str, force: bool, output: str, transcripts: str, verbose: bool):
     """Generate technical summaries for EmacsConf VTT files."""
     media_path = Path(media_dir)
     output_path = Path(output)
+    transcript_path = Path(transcripts)
     output_path.mkdir(exist_ok=True)
 
-    vtt_files = [f for f in media_path.glob('**/*.vtt') 
-                 if '--main.vtt' in str(f) and '--chapters' not in str(f)]
-
+    # Get both official and local VTT files
+    vtt_files = find_vtt_files(media_path, transcript_path)
     click.echo(f"Found {len(vtt_files)} VTT files to process")
 
-    for vtt_file in vtt_files:
+    for vtt_file, is_official in vtt_files:
         summary_file = output_path / f"{vtt_file.stem}.org"
+        source = "official" if is_official else "generated"
         
         if summary_file.exists() and not force:
             click.echo(f"Skipping (exists): {summary_file}")
             continue
 
-        click.echo(f"\nProcessing: {vtt_file.name}")
+        click.echo(f"\nProcessing: {vtt_file.name} ({source})")
         
         content = parse_vtt_content(vtt_file)
         if not content:
@@ -243,7 +256,7 @@ def main(media_dir: str, force: bool, output: str, verbose: bool):
             click.echo(f"Title: {title}")
             click.echo(f"Speaker: {speaker}")
         
-        summary = generate_summary(content, title, speaker, output_path)
+        summary = generate_summary(content, title, speaker, output_path, is_official)
         
         if summary:
             summary_file.write_text(summary.to_org())

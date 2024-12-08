@@ -1,0 +1,25 @@
+{
+  "key_points": [
+    "Emacs 30 introduces native Android support",
+    "Android support allows for GUI Emacs on Android devices",
+    "Touchscreen interactions such as pinch-to-zoom and context menus work",
+    "TUI Emacs also supports touchscreen events"
+  ],
+  "technical_terms": [
+    {
+      "context": "new feature in Emacs 30",
+      "definition": "Native Android support allows Emacs to be built for Android devices natively using a graphical interface.",
+      "name": "Android support"
+    },
+    {
+      "context": "feature in Emacs 30",
+      "definition": "Touchscreen interactions such as pinch-to-zoom, context menus, and gesture recognition are enabled in Emacs for Android devices.",
+      "name": "Touchscreen interaction"
+    },
+    {
+      "context": "feature in TUI Emacs",
+      "definition": "TUI Emacs supports touchscreen events, enabling users to interact with their device using touch screens.",
+      "name": "TUI Emacs"
+    }
+  ]
+}

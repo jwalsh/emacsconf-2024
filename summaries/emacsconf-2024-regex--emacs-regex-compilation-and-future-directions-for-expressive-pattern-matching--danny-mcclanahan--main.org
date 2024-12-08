@@ -1,0 +1,25 @@
+* Emacs Regex Compilation And Future Directions For Expressive Pattern Matching
+:PROPERTIES:
+:SPEAKER: Danny Mcclanahan
+:END:
+
+** Key Points
+- The talk will discuss the compilation of Emacs regular expressions and future directions for expressive pattern matching.
+- The speaker's experience is rooted in build tools and package managers, which led to a desire to improve the efficiency of text parsing and processing.
+- The discussion will focus on patterns in text parsing and how it relates to formal languages and computation.
+- Emacs regex engine was implemented using old C code, but modern techniques may not be compatible or desirable.
+- There are larger goals that emacs-devel discussed, which overlap with the speaker's research interests and make for exciting discussions.
+
+** Technical Terms
+| Term                   | Definition                                                                                                                                 | Context                                    |
+|------------------------+--------------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------|
+| Regular Expression     | A sequence of characters used to match patterns in text                                                                                    | Discussion of regular expressions          |
+| Formal Theory          | A set of axioms and rules that describe a mathematical system or concept                                                                   | Formal theory mentioned in the talk        |
+| Regex Compilation      | The process of converting regular expressions into machine-readable code for execution by the Emacs regex engine                           | Emacs regex engine implementation          |
+| Modern Techniques      | Approaches to implementing regular expressions that prioritize performance, efficiency, or compatibility with modern programming languages | Modern techniques mentioned in the talk    |
+| Emacs Development Team | The Emacs development team and community discussions about the future of the Emacs regex engine and its integration with other features    | Emacs Devel and emacs community discussion |
+
+
+** Meta
+- Generated: 2024-12-08T18:04:55.903691
+- Model: llama3.2

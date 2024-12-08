@@ -1,0 +1,425 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.920
+ Hi, I'm Peter Prevos, and I'll be talking about Emacs Riding Studio.
+
+00:00:03.920 --> 00:00:07.840
+ I'm a water engineer, associate scientist, and I dabble in theatrical magic.
+
+00:00:07.840 --> 00:00:10.160
+ And for each of those endeavors, I do a lot of writing.
+
+00:00:10.160 --> 00:00:13.520
+ I take notes, I write reports, articles, books, and websites.
+
+00:00:13.520 --> 00:00:17.360
+ I use Emacs for all my research, my writing, and my publishing.
+
+00:00:17.360 --> 00:00:21.840
+ Emacs Riding Studio is an opinionated starter kit for authors who write for humans,
+
+00:00:21.840 --> 00:00:23.760
+ not for programmers who write for computers.
+
+00:00:23.760 --> 00:00:27.360
+ And it consists of a configuration, some bespoke functions,
+
+00:00:27.360 --> 00:00:30.880
+ but are not yet a package, a website, and a book.
+
+00:00:30.880 --> 00:00:33.920
+ And a book is completely written with EWS itself.
+
+00:00:33.920 --> 00:00:39.760
+ The target audience are authors who are frustrated with using commercial software
+
+00:00:39.760 --> 00:00:43.200
+ and hoping from application to application to achieve an objective.
+
+00:00:43.200 --> 00:00:48.880
+ So these are people without any Emacs experience or coding skills.
+
+00:00:48.880 --> 00:00:53.120
+ And the objective is to teach these people how to use Emacs,
+
+00:00:53.120 --> 00:00:56.240
+ not how to configure Emacs to manage a complete writing project.
+
+00:00:56.480 --> 00:01:01.360
+ So Rye did a write a book about Emacs when the documentation is already so extensive.
+
+00:01:01.360 --> 00:01:05.440
+ Most Emacs documentation focuses on configuration,
+
+00:01:05.440 --> 00:01:08.640
+ burying potential new users with choices,
+
+00:01:08.640 --> 00:01:12.880
+ and it forces people to work on Emacs instead of with Emacs,
+
+00:01:12.880 --> 00:01:15.040
+ and it quickly can become a productivity sink.
+
+00:01:15.040 --> 00:01:22.240
+ Emacs is the ultimate free software platform, but with its freedom also comes a price.
+
+00:01:24.160 --> 00:01:28.960
+ And Barry Schwartz wrote about the paradox of choice, which is about the dramatic explosion
+
+00:01:28.960 --> 00:01:33.840
+ and choices in the modern world. Just think about the amount of effort I can take to decide
+
+00:01:33.840 --> 00:01:38.240
+ what serial to buy in a supermarket that you haven't been before, so many different choices.
+
+00:01:38.240 --> 00:01:41.840
+ And paradoxically, that's become a problem instead of a solution.
+
+00:01:41.840 --> 00:01:45.120
+ And Emacs can perhaps suffer from the same issue.
+
+00:01:45.120 --> 00:01:49.840
+ So another objective, using a COVID-19 TROP.
+
+00:01:50.800 --> 00:01:56.960
+ EWS is about flattening the curve. That is the learning curve by making these choices for the
+
+00:01:56.960 --> 00:02:04.640
+ new Emacs user and avoiding the paradox. So what about this EWS configuration?
+
+00:02:04.640 --> 00:02:09.600
+ I decided to stay as close as humanly bearable to vanilla Emacs,
+
+00:02:09.600 --> 00:02:12.080
+ and I said that tongue-on cheek, but also with some realism.
+
+00:02:12.080 --> 00:02:19.200
+ Centered around alt mode and the note for note-taking and sit-outs for accessing bibliographies,
+
+00:02:19.200 --> 00:02:24.480
+ and other convenience packages such as Vertical for Mini-Buffer completion,
+
+00:02:24.480 --> 00:02:28.800
+ there's a dictionary of Thizaurus and some other packages that are of interest to authors.
+
+00:02:28.800 --> 00:02:33.040
+ EWS uses the standard keyboard shortcuts.
+
+00:02:33.040 --> 00:02:39.520
+ Writing is much more about thinking than about maximizing the amount of words per minute.
+
+00:02:39.520 --> 00:02:44.640
+ And just think about that the most used function for authors is self-insert.
+
+00:02:44.640 --> 00:02:48.400
+ There's no need to use fancy keyboard shortcut systems when you write pros.
+
+00:02:48.720 --> 00:02:51.680
+ So how did that go about developing Emacs?
+
+00:02:51.680 --> 00:02:56.080
+ I declared Emacs bankruptcy, but we all have every now and then.
+
+00:02:56.080 --> 00:03:01.840
+ And I decided to write this book with vanilla Emacs, and only configure the system as well so
+
+00:03:01.840 --> 00:03:06.400
+ required. So the first thing I did, I hooked visual line mode to text mode and off I went.
+
+00:03:06.400 --> 00:03:09.520
+ And the configuration grew as the need arose.
+
+00:03:09.520 --> 00:03:15.120
+ And I was actually surprised with the how far you can get with just using vanilla Emacs.
+
+00:03:15.120 --> 00:03:19.920
+ And also developed two packages to enhance how I can use the note.
+
+00:03:19.920 --> 00:03:23.120
+ Let's get to a demo.
+
+00:03:23.120 --> 00:03:28.400
+ EWS is based on a typical research and writing workflow.
+
+00:03:28.400 --> 00:03:34.560
+ First step is you need to get some inspiration, and usually we do that by reading,
+
+00:03:34.560 --> 00:03:38.400
+ by watching, by listening. Then the next step is ideation.
+
+00:03:38.400 --> 00:03:43.200
+ You develop your ideas, summarized ideas, some other people write down your own ideas,
+
+00:03:43.200 --> 00:03:48.400
+ and for that you need a note-taking system. EWS also talks about managing bibliographies.
+
+00:03:48.400 --> 00:03:53.760
+ The third step is production. This is the actual writing process where, in this case,
+
+00:03:53.760 --> 00:03:59.840
+ the EWS book. And one side is finished. We convert this org mode file into something
+
+00:03:59.840 --> 00:04:05.760
+ that can be published. So that might be an e-book in an e-pop format or PDF for the interior of a
+
+00:04:05.760 --> 00:04:12.720
+ packet-back book, or perhaps as an e-book as well. And there's also configuration in Emacs
+
+00:04:12.720 --> 00:04:17.680
+ to produce MS Word documents if you need to collaborate with other people.
+
+00:04:17.680 --> 00:04:24.880
+ So let's jump in to Emacs and walk through this workflow, give you a very quick demonstration of
+
+00:04:24.880 --> 00:04:33.280
+ what's in the box. So the first step in the EWS workflow is inspiration. We all stand in the
+
+00:04:33.280 --> 00:04:38.000
+ shoulders of each other, some giants, most of the normal people. We get inspiration by reading,
+
+00:04:38.000 --> 00:04:43.200
+ listening, and watching. An Emacs can help you access text, sound, and video. It depends on
+
+00:04:43.200 --> 00:04:48.480
+ external software. An Emacs has a beautiful interface, and EWS helps you with the configuration.
+
+00:04:48.480 --> 00:04:54.720
+ But we also need a tool to manage our electronic library. And Bibtech, and CETA Package,
+
+00:04:54.720 --> 00:04:58.400
+ by Bruce Tarkins, provides a perfect interface to manage his literature.
+
+00:04:58.400 --> 00:05:05.840
+ So if I open my bibliography here, you see that I've got 1864 references in my Bibtech files.
+
+00:05:07.120 --> 00:05:12.080
+ And there's a whole bunch of stuff about, I guess, the weird things that I read.
+
+00:05:12.080 --> 00:05:15.360
+ Well, let's look for Emacs, right? Because that's a joined interest that we have.
+
+00:05:15.360 --> 00:05:21.040
+ And let's open here this paper by Markus Bildnerer, who did some research
+
+00:05:21.040 --> 00:05:26.880
+ using Emacs to teach data science and data science is my day job. So that had my interest.
+
+00:05:26.880 --> 00:05:32.000
+ So we have here a denote file, which I'll talk about in a second. There's a library file,
+
+00:05:32.000 --> 00:05:36.400
+ which is a PDF, but it could be a whole collection of different files and different formats,
+
+00:05:36.400 --> 00:05:42.720
+ even video or sound. We can create a new denote file, all as a link to the document object identifier.
+
+00:05:42.720 --> 00:05:49.200
+ So let's go to the PDF, and here we can now do our reading, so we can get our inspiration
+
+00:05:49.200 --> 00:05:53.440
+ by what Markus has written here about teaching data science with literary programming tools.
+
+00:05:53.440 --> 00:05:59.760
+ Next step is ideation. Taking notes is the core of all creativity. When I read that paper,
+
+00:05:59.760 --> 00:06:04.640
+ I might want to copy some ideas, or might get some of my own ideas, and I need to write that down.
+
+00:06:05.600 --> 00:06:10.000
+ I basically write everything in a paper notebook, but then I translate the things that are worth
+
+00:06:10.000 --> 00:06:17.280
+ keeping to the denote note-taking system. Now there are many systems that exist out there that promise
+
+00:06:17.280 --> 00:06:22.160
+ you note-taking happen when you just follow a certain process. My advice, don't worry about
+
+00:06:22.160 --> 00:06:28.480
+ settle-custom, barra or whatever is out there. Just write your notes and worry about
+
+00:06:28.480 --> 00:06:33.920
+ structuring all that later. Even Nicholas Lumen, the inventor of settle-custom, called his system,
+
+00:06:33.920 --> 00:06:39.920
+ the septic tank of ideas. I call my collection of notes, a primordial soup, from which my books emerge.
+
+00:06:39.920 --> 00:06:45.920
+ Now the note by Port Stavro is a flexible note-taking system that can implement
+
+00:06:45.920 --> 00:06:50.560
+ any of the popular methods, and I transfer thousands of files to this format, so all my information
+
+00:06:50.560 --> 00:07:00.960
+ is at my fingertips. So we can jump to the denote directory, and in my case that's the document notes,
+
+00:07:00.960 --> 00:07:09.280
+ and we see here the the marvel that is the note, which is its ingenious file naming convention
+
+00:07:09.280 --> 00:07:16.320
+ that has a timestamp, the title and some what do we call them tags or categories, which are whatever
+
+00:07:16.320 --> 00:07:23.120
+ you please. So this is a very quick way to find things, then there is an EWS diet.
+
+00:07:27.680 --> 00:07:34.080
+ Narrow function, and for example I can find anything underscore EWS means anything that has the EWS tag,
+
+00:07:34.080 --> 00:07:41.920
+ and there we go, it's narrowed down in in my EWS notes. Now this is all very well,
+
+00:07:41.920 --> 00:07:50.320
+ but I also decided to write a package called denote explore, which helps us sort of explore
+
+00:07:50.320 --> 00:07:55.760
+ these these collections of notes, and one of the fancy things we're going to do is do some
+
+00:07:55.760 --> 00:08:03.200
+ visualization. So let's go to the network function and we create a community of notes, so community
+
+00:08:03.200 --> 00:08:09.520
+ is a collection of notes that match a regular expression, underscore EWS, so all the notes here
+
+00:08:09.520 --> 00:08:18.720
+ that are on this list, the ones with the EWS tag, and in a second, so my browser pops up, and I shall
+
+00:08:19.600 --> 00:08:28.160
+ move that to my other window in a second, there we go. So denote explore creates a SVG file,
+
+00:08:28.160 --> 00:08:34.640
+ and creates an arrow between all the notes that are linked, it puts the title up there when the
+
+00:08:34.640 --> 00:08:40.400
+ note has more than two things going in or out, and we also can click on the note to read it in the browser
+
+00:08:40.400 --> 00:08:49.120
+ if you choose. If you set up Firefox properly, I'm sure it can also go into EMEX. So this is the note
+
+00:08:49.120 --> 00:08:57.760
+ tag that's available within EWS. Now, we've taken all these notes, now we need to start writing stuff,
+
+00:08:57.760 --> 00:09:04.800
+ and alt mode for me is the ideal tool, alt mode is what you see is what you mean, the text and
+
+00:09:04.800 --> 00:09:10.080
+ the syntax instruct a computer on how to produce the final result. And this means this means that one
+
+00:09:10.080 --> 00:09:14.160
+ file can become many different formats, an ebook, a print a book or a website, it doesn't matter.
+
+00:09:15.600 --> 00:09:19.360
+ Now, a lot of people talk about what you see, what you get, and that we should have what you see,
+
+00:09:19.360 --> 00:09:25.200
+ what you get more than EMEX, I think that's irrelevant, because showing the final result while you're
+
+00:09:25.200 --> 00:09:30.880
+ writing is actually a distraction. Traditional writing, producing the content, and designing the
+
+00:09:30.880 --> 00:09:37.440
+ layout and type setting are separate processes done by different professionals. In EMEX writing studio,
+
+00:09:37.440 --> 00:09:42.240
+ the writing is still done by a human, no provisions for large language models in EWS.
+
+00:09:43.120 --> 00:09:50.240
+ But layout and type setting is done by external software, BHCSS, LataqoXML, all mediated by alt mode.
+
+00:09:50.240 --> 00:09:58.720
+ And EWS also has some other tools for case conversion, it's always an dictionary that I haven't
+
+00:09:58.720 --> 00:10:04.800
+ got time to show, but what I will show you is how the book functions and then how we create this
+
+00:10:04.800 --> 00:10:17.840
+ publications. Okay, let's go to my project file. So these are the EWS chapters, and each chapter is
+
+00:10:17.840 --> 00:10:25.760
+ an org mode file. Let's go into the main document, which is set up with the Olivetti mode,
+
+00:10:25.760 --> 00:10:34.480
+ just to make it easier to read. And what we see here is all the fluff from org mode, so these are
+
+00:10:34.480 --> 00:10:41.040
+ all the various bits of method that are used to create the final result. And then for each chapter,
+
+00:10:41.040 --> 00:10:47.200
+ I have an inclusion. So this references another file. I've got some properties, in this case,
+
+00:10:47.200 --> 00:10:52.080
+ the forward is unnumbered, there's some notes, in this case, plot the actually wrote this for me,
+
+00:10:52.080 --> 00:10:59.600
+ so that we can jump into that text. And then what we see at the bottom here is some
+
+00:10:59.600 --> 00:11:06.080
+ inclusions for HTML, this is the E-pop version, but it's different in a lot of text. So again,
+
+00:11:06.080 --> 00:11:14.640
+ the same file can serve different purposes. So now let's, as the final part of this demonstration,
+
+00:11:14.640 --> 00:11:20.160
+ actually create the book, because the book's freely available, you can download the source files
+
+00:11:22.560 --> 00:11:30.480
+ from from GitHub, and you can roll your own. Okay, so let's open the dispatcher, we'll export the
+
+00:11:30.480 --> 00:11:36.320
+ large text, and we want to open the file. Now this takes a minute, because there's a lot happening
+
+00:11:36.320 --> 00:11:42.080
+ within all this in this code. So I'll shorten this video, I'll be signing it now.
+
+00:11:42.080 --> 00:11:51.920
+ And there we are. This is the E-max running studio PDF version, which will eventually become
+
+00:11:51.920 --> 00:12:02.240
+ the interior for the paperback version. So the EWS book is available in all major e-book shops,
+
+00:12:02.240 --> 00:12:06.320
+ and I'm also working on a paperback, which I hope to finish when E-max30 comes out,
+
+00:12:06.320 --> 00:12:10.880
+ but the org mode files that are used to produce the book, they're available in the GitHub
+
+00:12:10.880 --> 00:12:16.080
+ repository, so you can also roll your own, because the EWS configuration is the one that are used to
+
+00:12:16.080 --> 00:12:23.840
+ produce the book. Now some conclusions from this journey is that the best way to learn is to teach.
+
+00:12:23.840 --> 00:12:28.480
+ So that was my personal objective, and I learned a lot from systematically working out how to
+
+00:12:28.480 --> 00:12:34.880
+ implement the EWS workflow. One of the surprising things I learned is to have Google lines on
+
+00:12:34.880 --> 00:12:39.200
+ external software throughout the writing process. So I spent a lot of time in the book about explaining
+
+00:12:39.200 --> 00:12:45.840
+ these connections that E-max is not just a text processor, it is also an interface with other
+
+00:12:45.840 --> 00:12:51.520
+ software. Now future developments, as I mentioned, there will be a paperback version of the book when
+
+00:12:51.520 --> 00:12:57.360
+ E-max30 comes out, and I might reconfigure things a little bit. I'm only planning to update the
+
+00:12:57.360 --> 00:13:04.800
+ configuration when the package is break, or with another major E-max release, because I want to work
+
+00:13:04.800 --> 00:13:09.920
+ with E-max, not work on E-max. Now a big thank you to Port Stravery, who helped me with the
+
+00:13:09.920 --> 00:13:16.320
+ node packages, and also wrote the forward to the book. There's also several test readers that I met
+
+00:13:16.320 --> 00:13:21.120
+ through Mastodon that helped me out quite a bit, and of course all the E-max and package developers
+
+00:13:21.120 --> 00:13:27.360
+ without which none of this would exist. So thank you all for your attention, and I look forward to
+
+00:13:27.360 --> 00:13:30.640
+ your questions and suggestions.
+

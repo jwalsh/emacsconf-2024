@@ -1,0 +1,21 @@
+* Watering My Digital Plant With Emacs Timers
+:PROPERTIES:
+:SPEAKER: Christopher Howard
+:END:
+
+** Key Points
+- The talk introduces Emacs timers and their application in automating tasks using the Astrobotany game as an example.
+- The Gemini protocol is a small web protocol with simplicity, non-extensibility, and privacy goals, similar to HyperText Transfer Protocol.
+- Gemtext is a simple hyperlinking document format, analogous to HTML.
+
+** Technical Terms
+| Term                 | Definition                                                                                                          | Context    |
+|----------------------+---------------------------------------------------------------------------------------------------------------------+------------|
+| run-at-time function | A function that performs an action at a specific time to repeat it after a specific number of seconds.              | definition |
+| Gemini protocol      | A small web protocol with simplicity, non-extensibility, and privacy goals, similar to HyperText Transfer Protocol. | definition |
+| Gemtext              | A simple hyperlinking document format, analogous to HTML.                                                           | definition |
+
+
+** Meta
+- Generated: 2024-12-08T18:05:02.806830
+- Model: llama3.2

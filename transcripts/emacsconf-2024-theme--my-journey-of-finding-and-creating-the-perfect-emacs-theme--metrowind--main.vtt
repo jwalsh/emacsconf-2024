@@ -1,0 +1,362 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:11.320
+ Hi, my name is Mattro Wind, in this talk I will take you through my journey into Emax
+
+00:00:11.320 --> 00:00:12.320
+ themes.
+
+00:00:12.320 --> 00:00:19.160
+ I am a long-time Emax user, I started using Emax since version 21.
+
+00:00:19.160 --> 00:00:25.020
+ The goal of this talk is to inspire more people into making themes, maybe you are already
+
+00:00:25.020 --> 00:00:33.580
+ making themes, in that case I hope you could find some tips and tricks in this one.
+
+00:00:33.580 --> 00:00:39.740
+ I will basically go through all the themes that I created, but I think the most important
+
+00:00:39.740 --> 00:00:47.380
+ thing here is to understand why some of the colors are picked and the motivations behind
+
+00:00:47.380 --> 00:00:49.020
+ them.
+
+00:00:49.020 --> 00:00:55.900
+ So the first theme I created is called DivinT, it looks like this.
+
+00:00:55.900 --> 00:01:01.280
+ The inspiration for this one is a website called DivinTart, basically I just used their
+
+00:01:01.280 --> 00:01:05.980
+ color palette from their design.
+
+00:01:05.980 --> 00:01:14.500
+ It was a community for indie artists, I was really into that back in the day, so that's
+
+00:01:14.500 --> 00:01:15.500
+ that.
+
+00:01:15.500 --> 00:01:18.340
+ Otherwise nothing special.
+
+00:01:18.340 --> 00:01:33.660
+ The next theme I created was called FlockUI, it's Imelpa, and let me just show you, FlockUI.
+
+00:01:33.660 --> 00:01:42.460
+ So, yeah, that's how it looks like.
+
+00:01:42.460 --> 00:01:51.580
+ So, but where did the colors come from, so I understand that I will need to take you back
+
+00:01:51.580 --> 00:02:01.180
+ in time, to where iOS 7 was released by Apple, that was a big deal, because that popularized
+
+00:02:01.180 --> 00:02:10.220
+ the idea of FlockUI color designs, sorry, FlockUI designs, and after that everybody follows
+
+00:02:10.220 --> 00:02:20.540
+ you to change their design of their websites and applications to use some sort of flat UI
+
+00:02:20.540 --> 00:02:23.740
+ design concepts.
+
+00:02:23.740 --> 00:02:30.280
+ And about the same time there came a website called flatUIcolors.com, it hosted one color
+
+00:02:30.280 --> 00:02:35.220
+ palette, and that was really good.
+
+00:02:35.220 --> 00:02:44.460
+ So I picked that as the basis of my theme, and initially I named it flatUI, but that name
+
+00:02:44.460 --> 00:02:52.780
+ was taken in Imelpa, so I just renamed it to something random, FlockUI.
+
+00:02:52.780 --> 00:03:06.380
+ This one is called flat, to understand why I need to create this theme, it's because I thought
+
+00:03:06.380 --> 00:03:20.140
+ some of the colors in FlockUI was standing out too much, like the green here, so this one.
+
+00:03:20.140 --> 00:03:25.620
+ I thought this is too bright, just a little bit.
+
+00:03:25.620 --> 00:03:34.740
+ So I thought I needed way to pick some colors that are about the same lightness, essentially.
+
+00:03:34.740 --> 00:03:36.540
+ So how do I do that?
+
+00:03:36.540 --> 00:03:42.060
+ The answer is to go into a color space called lab.
+
+00:03:42.060 --> 00:03:49.740
+ Now normally you do color working RGB, right, which is red, green, and blue.
+
+00:03:49.740 --> 00:03:52.940
+ It doesn't tell you a lot about lightness.
+
+00:03:52.940 --> 00:04:00.860
+ If you do a pure blue, it actually look a lot darker than a pure red or a pure green,
+
+00:04:00.860 --> 00:04:03.700
+ so that doesn't work.
+
+00:04:03.700 --> 00:04:10.540
+ But in lab things are different, because one of the channels is L, which is lightness.
+
+00:04:10.540 --> 00:04:16.260
+ The other two channels are ANB, which are just for the colors.
+
+00:04:16.260 --> 00:04:21.820
+ This is great, because I could just fix L, meaning I fixed the lightness, and then I can
+
+00:04:21.820 --> 00:04:25.260
+ vary ANB however I want.
+
+00:04:25.260 --> 00:04:32.700
+ The color will stay roughly in the same lightness, which is exactly what I wanted.
+
+00:04:32.700 --> 00:04:40.340
+ So for that, I created a Mac app, where I could just fix lightness, like I said, and then
+
+00:04:40.340 --> 00:04:47.180
+ I could click on this colorful thing to pick a color, the app will pick another 5 according
+
+00:04:47.180 --> 00:04:48.180
+ to some pattern.
+
+00:04:48.180 --> 00:04:53.660
+ And then I could just, like, hard code these colors in EMAX.
+
+00:04:53.660 --> 00:04:58.740
+ Let me show you why I think lab.
+
+00:04:58.740 --> 00:05:06.380
+ Yeah, not very different from flock UI colors, which is intentional.
+
+00:05:06.380 --> 00:05:12.820
+ But the idea here, again, is all the colors will be in about the same lightness, which I
+
+00:05:12.820 --> 00:05:19.660
+ guess it was, so yeah, so this one was a success.
+
+00:05:19.660 --> 00:05:25.220
+ I used it for a really long time, and then I got bored.
+
+00:05:25.220 --> 00:05:27.580
+ So I needed something interesting.
+
+00:05:27.580 --> 00:05:35.740
+ The idea at the time was then to create a theme that doesn't have any colors, essentially,
+
+00:05:35.740 --> 00:05:41.120
+ the gray scale theme.
+
+00:05:41.120 --> 00:05:46.140
+ So I called it nothing, it is also EMAX.
+
+00:05:46.140 --> 00:05:47.980
+ It looks like this.
+
+00:05:47.980 --> 00:05:51.860
+ Yeah, like I said, everything is gray.
+
+00:05:51.860 --> 00:05:56.340
+ There's no color, but to my surprise, this is actually very usable.
+
+00:05:56.340 --> 00:06:02.020
+ I didn't have any problem in readability, I didn't have any problem in distinguish, you
+
+00:06:02.020 --> 00:06:04.980
+ know, different elements in the code.
+
+00:06:04.980 --> 00:06:10.820
+ So a big surprise and also a big success, actually.
+
+00:06:10.820 --> 00:06:18.860
+ And then I got bored, then I just decided to install a whole bunch of themes from NOPA, and
+
+00:06:18.860 --> 00:06:23.300
+ every time I start EMAX, I just pick a random theme.
+
+00:06:23.300 --> 00:06:28.780
+ There are some caveats to that, which I don't want to get into.
+
+00:06:28.780 --> 00:06:32.220
+ But let me just show you why a random theme.
+
+00:06:32.220 --> 00:06:39.640
+ So it picked one for me, and then it picked another, another, so yeah.
+
+00:06:39.640 --> 00:06:41.380
+ It's an interesting setup.
+
+00:06:41.380 --> 00:06:47.740
+ I'm still using this setup today, actually, a good one.
+
+00:06:47.740 --> 00:06:50.120
+ Wars of text.
+
+00:06:50.120 --> 00:06:56.860
+ Now the final theme I want to look into, which is the latest, is called Monte Carlo.
+
+00:06:56.860 --> 00:07:05.500
+ First idea here is to bring the idea of picking a random theme to the next level.
+
+00:07:05.500 --> 00:07:13.060
+ So this is just one theme that generates a random color palette for me, every time.
+
+00:07:13.060 --> 00:07:18.180
+ Not in NOPA, because I'm not completely satisfied.
+
+00:07:18.180 --> 00:07:25.580
+ But anyway, how would I pick a random color palette?
+
+00:07:25.580 --> 00:07:29.460
+ The answer is, again, to look at a different color space.
+
+00:07:29.460 --> 00:07:35.340
+ In this time is called HLC, which is hue, lightness, and chroma.
+
+00:07:35.340 --> 00:07:43.220
+ So hue is just colors, red, green, blue, or yellow, whatever, lightness is lightness, chroma
+
+00:07:43.220 --> 00:07:46.060
+ is saturation, essentially.
+
+00:07:46.060 --> 00:07:53.900
+ This is great because I could fix both lightness and saturation, and only vary in hue to pick
+
+00:07:53.900 --> 00:07:57.700
+ my colors.
+
+00:07:57.700 --> 00:08:07.260
+ Now the problem is, once I have the color palette in HLC, how would I convert it to SRGB?
+
+00:08:07.260 --> 00:08:12.140
+ Because MX only knows about colors in SRGB.
+
+00:08:12.140 --> 00:08:18.100
+ The answer here is to go through another color space called XYZ.
+
+00:08:18.100 --> 00:08:25.860
+ This is an extremely important color space, because basically all other color spaces are
+
+00:08:25.860 --> 00:08:29.540
+ defined on top of XYZ.
+
+00:08:29.540 --> 00:08:35.780
+ So you would have transformations from XYZ to all other color spaces.
+
+00:08:35.780 --> 00:08:44.900
+ Now if you invert these transformations, you could go from, for example, HLC back into XYZ,
+
+00:08:44.900 --> 00:08:49.900
+ and then go to another color space of you tracing.
+
+00:08:49.900 --> 00:08:53.140
+ So this is how to convert colors between color spaces.
+
+00:08:53.140 --> 00:09:00.980
+ In this case, I have to convert colors from HLC to lab, and from lab to XYZ, and from
+
+00:09:00.980 --> 00:09:03.900
+ XYZ to SRGB.
+
+00:09:03.900 --> 00:09:08.020
+ So this time, the conversions are all done in MX list.
+
+00:09:08.020 --> 00:09:16.180
+ And I have the code in here in this URL, you could take a look, or you could actually just use
+
+00:09:16.180 --> 00:09:20.380
+ maybe some package to convert colors.
+
+00:09:20.380 --> 00:09:25.060
+ Anyway, let me show you how this works.
+
+00:09:25.060 --> 00:09:30.780
+ So in this case, I could apply theme Monte Carlo.
+
+00:09:30.780 --> 00:09:34.300
+ So this is now a random theme actually.
+
+00:09:34.300 --> 00:09:41.220
+ Well, a theme with random colors, because I could apply the same theme, and you would
+
+00:09:41.220 --> 00:09:48.620
+ look different every time.
+
+00:09:48.620 --> 00:09:57.700
+ I could also look at the colors it picked, you know, as a list of colors.
+
+00:09:57.700 --> 00:10:04.140
+ I could also look at this like fancy chart of colors.
+
+00:10:04.140 --> 00:10:06.060
+ This is too small.
+
+00:10:06.060 --> 00:10:08.220
+ So let me show you this.
+
+00:10:08.220 --> 00:10:15.300
+ So basically the same thing, this is actually a cross section in the HLC space.
+
+00:10:15.300 --> 00:10:21.980
+ And the colors it picked are these white circles.
+
+00:10:21.980 --> 00:10:24.860
+ So that's that.
+
+00:10:24.860 --> 00:10:30.940
+ But I, like I said, I'm not fully satisfied because most of the time, the colors are pretty
+
+00:10:30.940 --> 00:10:33.780
+ boring from it.
+
+00:10:33.780 --> 00:10:38.100
+ I could think of some ways to improve this.
+
+00:10:38.100 --> 00:10:45.180
+ For example, I could choose different patterns of the color samples.
+
+00:10:45.180 --> 00:10:49.180
+ But I don't know of any good patterns.
+
+00:10:49.180 --> 00:10:51.300
+ So I need to try things out.
+
+00:10:51.300 --> 00:10:57.900
+ And then another way is probably to use different color spaces like the HSL or HSV.
+
+00:10:57.900 --> 00:11:02.420
+ Again, I need to try this out.
+
+00:11:02.420 --> 00:11:05.220
+ So yeah, there are room for improvements.
+
+00:11:05.220 --> 00:11:09.820
+ If you, if you haven't any idea, you know, let me know.
+
+00:11:09.820 --> 00:11:12.080
+ We can try it out.
+
+00:11:12.080 --> 00:11:13.980
+ So that's the end of my talk.
+
+00:11:13.980 --> 00:11:17.860
+ Hopefully you have some new ideas.
+
+00:11:17.860 --> 00:11:23.180
+ Thanks for listening in and yeah, go create more themes because we can't have enough.
+
+00:11:23.180 --> 00:11:23.500
+ Thanks.
+
+00:11:23.500 --> 00:11:31.180
+ [BLANK_AUDIO]
+

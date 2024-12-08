@@ -1,0 +1,24 @@
+* Elisp And Mcclim
+:PROPERTIES:
+:SPEAKER: Screwlisp
+:END:
+
+** Key Points
+- Porting a 1978 demo application from Interlisp to Emacs Lisp
+- Using inferior-lisp and McCLIM (Common Lisp interface manager) in Superior Lisp
+- Improvising a presentation mode without Org Mode, using slime-mode or ielm-mode
+- Creating a keyboard macro to manipulate S-expressions in the buffer
+
+** Technical Terms
+| Term          | Definition                                                                                                                                                                                                                                                                                         | Context                                         |
+|---------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------|
+| EmacsLisp     | EmacsLisp is a dialect of Lisp that is specifically designed for use with the Emacs text editor. It includes features such as macro expansion, recursion, and control structures like if-else statements.                                                                                          | defuns, defvars, and other EmacsLisp constructs |
+| inferior-lisp | Inferior Lisp refers to a version of the Lisp programming language that is embedded within another program or environment, in this case, Emacs. It provides a way for users to write and execute Lisp code within the Emacs editor.                                                                | inferior-lisp                                   |
+| McCLIM        | McCLIM (Common Lisp Interface Manager) is an open-source implementation of the Common Lisp interface manager, which provides a way for Lisp programs to interact with the outside world. It allows developers to create graphical user interfaces and other interactive systems using Common Lisp. | McCLIM                                          |
+| slime-mode    | Slime-mode is a major mode in Emacs that provides a way for users to interact with the SLIME (Steel Bank EmacsLisp Interface Manager) interface manager, which allows developers to create graphical user interfaces and other interactive systems using Common Lisp.                              | slime-mode                                      |
+| ielm-mode     | ielm-mode is a major mode in Emacs that provides an interactive environment for loading and testing Common Lisp code, similar to slime-mode but with some differences.                                                                                                                             | ielm-mode                                       |
+
+
+** Meta
+- Generated: 2024-12-08T18:04:23.112529
+- Model: llama3.2

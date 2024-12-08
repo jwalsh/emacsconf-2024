@@ -1,0 +1,236 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:05.540
+ Welcome to EmacsCons 2024, where we have fun exploring how much we can do with a text
+
+00:00:05.540 --> 00:00:06.540
+ editor.
+
+00:00:06.540 --> 00:00:10.240
+ It's hard to give a general overview of all the cool talks today and tomorrow, so you
+
+00:00:10.240 --> 00:00:12.720
+ can flip through the talks and see what sparks your interests.
+
+00:00:12.720 --> 00:00:15.320
+ Don't feel limited to one track or another.
+
+00:00:15.320 --> 00:00:18.560
+ The best parts of EmacsCons are the conversations.
+
+00:00:18.560 --> 00:00:23.760
+ The Wiki has a page on how to watch and participate, and I'll give you a quick overview as well.
+
+00:00:23.760 --> 00:00:29.600
+ You can watch both streams at live.emacsCons.org using free and open source software.
+
+00:00:29.600 --> 00:00:34.800
+ Having a streaming media player like MPV seems to be the best way to watch in terms of performance,
+
+00:00:34.800 --> 00:00:38.080
+ but there are also web-based players just in case that's all you've got.
+
+00:00:38.080 --> 00:00:41.880
+ The schedule shows the general track on top and the development track on the bottom, so you
+
+00:00:41.880 --> 00:00:43.960
+ can see what else is going on.
+
+00:00:43.960 --> 00:00:47.760
+ As you're watching the talks, you can refer to the schedule in another window, hover
+
+00:00:47.760 --> 00:00:52.440
+ over the boxes to see the times and titles, and click on the boxes in the schedule to jump
+
+00:00:52.440 --> 00:00:55.000
+ to the talks page for more details.
+
+00:00:55.000 --> 00:01:00.320
+ You can also get the schedule as an eye calendar file or as an org file in different time zones.
+
+00:01:00.320 --> 00:01:04.680
+ Many talks will be followed by live Q&A web conferences with a speaker, which will be done
+
+00:01:04.680 --> 00:01:06.840
+ in big blue button or BBB.
+
+00:01:06.840 --> 00:01:11.640
+ These are indicated with a solid border on the schedule and by Q&A BBB on the schedule
+
+00:01:11.640 --> 00:01:12.640
+ page.
+
+00:01:12.640 --> 00:01:17.280
+ You can join the web conference room by clicking on the BBB link on the schedule page or
+
+00:01:17.280 --> 00:01:18.920
+ the talks web page.
+
+00:01:18.920 --> 00:01:22.280
+ Then you can ask your questions yourself when the Q&A starts.
+
+00:01:22.280 --> 00:01:26.400
+ To improve performance, please keep your webcam off and stay muted until it's your turn
+
+00:01:26.400 --> 00:01:27.400
+ to talk.
+
+00:01:27.400 --> 00:01:31.440
+ If you don't like JavaScript, you can still ask questions via IRC, and the hosts can read
+
+00:01:31.440 --> 00:01:32.440
+ them out for you.
+
+00:01:32.440 --> 00:01:37.240
+ We're probably going to automatically switch between talks and Q&A sessions, so the transitions
+
+00:01:37.240 --> 00:01:39.280
+ on the stream might be a little sudden.
+
+00:01:39.280 --> 00:01:43.280
+ People in the big blue button room can continue the conversation even after the talk moves
+
+00:01:43.280 --> 00:01:47.640
+ off stream, and you can also reach out to the speakers using the contact information
+
+00:01:47.640 --> 00:01:49.280
+ on the talk page.
+
+00:01:49.280 --> 00:01:54.360
+ Other talks will have Q&A via either pad or IRC depending on what the speakers prefer.
+
+00:01:54.360 --> 00:01:58.560
+ This is indicated in the schedule with a dashed border and on the schedule page as well.
+
+00:01:58.560 --> 00:02:03.960
+ As an experiment, the Q&A for them a Clim talk this afternoon will also be in Lamb Demo.
+
+00:02:03.960 --> 00:02:07.360
+ If you'd like to try it out, see them a Clim talk page for instructions so you can join
+
+00:02:07.360 --> 00:02:08.880
+ the discussion there.
+
+00:02:08.880 --> 00:02:12.560
+ The schedule pages and track pages have quick shortcuts so that you can find out more
+
+00:02:12.560 --> 00:02:16.840
+ about talks, open the either pads, and join the Q&A sessions.
+
+00:02:16.840 --> 00:02:20.320
+ The watch page has more tips on how to make the most of Q&A.
+
+00:02:20.320 --> 00:02:24.560
+ If you can, please add notes and ask questions in the either pad for the talk, that makes it
+
+00:02:24.560 --> 00:02:28.660
+ easier for everyone to share their notes, and speakers and hosts can read the questions
+
+00:02:28.660 --> 00:02:29.660
+ from there.
+
+00:02:29.660 --> 00:02:32.360
+ We'll copy the notes to the talk pages afterwards.
+
+00:02:32.360 --> 00:02:36.420
+ We have one pad for each talk, so you can follow the links to get to the next one or go
+
+00:02:36.420 --> 00:02:39.280
+ back to the schedule and get the link from there.
+
+00:02:39.280 --> 00:02:46.400
+ If you have general feedback about the conference itself, please put it in pad.emaxclons.org/20204, which
+
+00:02:46.400 --> 00:02:47.400
+ is linked in each pad.
+
+00:02:47.400 --> 00:02:52.320
+ You can also use this as a general community message board for things like help wanted.
+
+00:02:52.320 --> 00:02:57.640
+ Internet really chat or IRC can be another great way to be part of lots of conversations.
+
+00:02:57.640 --> 00:03:02.960
+ You can use chat.emaxclons.org to join the IRC channels through your web browser.
+
+00:03:02.960 --> 00:03:06.440
+ The tabs in the left can help you switch between the different channels.
+
+00:03:06.440 --> 00:03:12.280
+ There's emaxclons.gen for the general track and emaxclons.dev for the development track.
+
+00:03:12.280 --> 00:03:21.840
+ If you need to reach us, you can join emaxclons.org or email emaxclons.org/private@gnau.org.
+
+00:03:21.840 --> 00:03:25.360
+ You can use emaxclons for hallway conversations.
+
+00:03:25.360 --> 00:03:30.160
+ Of course you can join any of these channels with your favorite IRC client by connecting to
+
+00:03:30.160 --> 00:03:36.280
+ irc.libera.chat/port6697 using TLS.
+
+00:03:36.280 --> 00:03:40.480
+ Once again we're going to be streaming with open captions for most of the talks this year.
+
+00:03:40.480 --> 00:03:43.400
+ Thanks for speakers and captioning volunteers.
+
+00:03:43.400 --> 00:03:47.840
+ The caption talks are indicated on the schedule and with any luck we'll be posting transcripts
+
+00:03:47.840 --> 00:03:50.880
+ and talk pages shortly after the talk start.
+
+00:03:50.880 --> 00:03:55.160
+ If you need additional accommodations, please let us know in emaxclons.org and we'll see
+
+00:03:55.160 --> 00:03:57.200
+ if it can make things happen.
+
+00:03:57.200 --> 00:04:01.040
+ If something goes down, we'll update status.emaxclons.org.
+
+00:04:01.040 --> 00:04:05.720
+ If it doesn't look like we've noticed yet, please let us know in the emaxclons.org IRC
+
+00:04:05.720 --> 00:04:08.960
+ channel where we will be quietly panicking.
+
+00:04:08.960 --> 00:04:12.600
+ In all of these conversations, please keep in mind our guidelines for conduct.
+
+00:04:12.600 --> 00:04:16.480
+ You can find them on the wiki, they basically boil down to, please be nice.
+
+00:04:16.480 --> 00:04:19.800
+ If all goes well, the prerequisite of the talks and transcripts should be available from
+
+00:04:19.800 --> 00:04:22.560
+ the talk pages shortly after they start playing.
+
+00:04:22.560 --> 00:04:27.240
+ And we'll post the recordings of live talks and Q&A sessions within the next month or so.
+
+00:04:27.240 --> 00:04:31.680
+ If you'd like to get an update, you can subscribe to the emaxclons.gov/discussmailinglist.
+
+00:04:31.680 --> 00:04:33.640
+ Alright, let's get going.
+
+00:04:33.640 --> 00:04:37.400
+ Leo is hosting the channel track and Karwin is hosting the development track.
+
+00:04:37.400 --> 00:04:40.760
+ The other volunteers tonight will run around mostly backstage and you'll probably meet us
+
+00:04:40.760 --> 00:04:42.080
+ in the closing remarks.
+
+00:04:42.080 --> 00:04:46.880
+ That's also where we get to thank all the people and organizations who make emaxclons possible.
+
+00:04:46.880 --> 00:04:49.160
+ Thanks for coming to emaxclons 2024.
+

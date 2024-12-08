@@ -1,0 +1,28 @@
+* New In Hyperdriveel Quick Install Peer Graph Transclusion
+:PROPERTIES:
+:SPEAKER: Joseph Turner
+:END:
+
+** Key Points
+- The talk introduces hyperdrive.el, an Emacs interface to the Hyperdrive peer-to-peer file sharing system
+- Hyperdrive allows for seamless sharing of files without a central hub and has built-in versioning capabilities
+- A new package called hyperdrive-org-transclusion has been published, enabling live updating snippets of Hyperdrive files in Org documents
+- The peer graph feature visualizes the network of sources of information
+- The talk covers the installation process of hyperdrive.el and its gateway program
+
+** Technical Terms
+| Term                         | Definition                                                                             | Context                          |
+|------------------------------+----------------------------------------------------------------------------------------+----------------------------------|
+| Hyperdrive                   | A decentralized, peer-to-peer file sharing system built by HolePunch                   | definition and usage in the talk |
+| hyperdrive.el                | An Emacs interface to the Hyperdrive peer-to-peer file sharing system                  | definition and usage in the talk |
+| M-x package-refresh-contents | A command used to download and install the gateway program for hyperdrive.el           | definition and usage in the talk |
+| M-x package-install          | A command used to install a package in Emacs                                           | definition and usage in the talk |
+| hypergateway                 | A program that runs on a user's machine, acting as a gateway to the Hyperdrive network | definition and usage in the talk |
+| peer graph                   | A feature that allows users to visualize their network of sources of information       | definition and usage in the talk |
+| hyperdrive-org-transclusion  | A package that enables live updating snippets of Hyperdrive files in Org documents     | definition and usage in the talk |
+| Hyperdrive (file management) | A system for managing hyperdrives, including marking them as safe or unknown           | definition and usage in the talk |
+
+
+** Meta
+- Generated: 2024-12-08T18:03:26.889020
+- Model: llama3.2

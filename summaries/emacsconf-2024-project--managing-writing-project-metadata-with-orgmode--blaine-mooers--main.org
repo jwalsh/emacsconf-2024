@@ -1,0 +1,28 @@
+* Managing Writing Project Metadata With Orgmode
+:PROPERTIES:
+:SPEAKER: Blaine Mooers
+:END:
+
+** Key Points
+- Blaine Mooers discusses utilizing Org mode for writing project metadata log files, specifically for research articles.
+- He shares his template for this file on GitHub and explains how it helps with navigation and organization.
+- Mooers describes his workflow in structural biology, from X-ray crystallography to analyzing protein structures.
+- He introduces the concept of assigning a unique index number to each project and using it for folder and file naming.
+- Blaine highlights the importance of having a writing log at the center of his process, which guides him through the development of a central hypothesis.
+- He emphasizes the use of templates in Org mode and other markup languages like R Markdown and LaTeX.
+- Mooers also discusses the benefits of using Typst, an independent document processor inspired by LaTeX but written in Rust.
+
+** Technical Terms
+| Term                       | Definition                                                                                               | Context                        |
+|----------------------------+----------------------------------------------------------------------------------------------------------+--------------------------------|
+| GitHub                     | A repository on GitHub where a template for managing writing project metadata can be found.              | GitHub link to template        |
+| Folder Naming Convention   | Using a unique index number to name folders and files, making it easier to navigate and access projects. | Navigation with folder naming  |
+| Org Mode Log File Template | A template for creating log files in Org mode to manage writing project metadata.                        | Org mode log file template     |
+| X-Ray Crystallography      | The process of using X-ray crystallography to determine the structures of proteins and nucleic acids.    | X-ray crystallography workflow |
+| Typst                      | An independent document processor inspired by LaTeX, written in Rust for faster processing.              | Typst document processor       |
+| Research Article Structure | The typical structure of a research article, including introduction, methods, results, and discussion.   | Research article structure     |
+
+
+** Meta
+- Generated: 2024-12-08T18:04:45.247330
+- Model: llama3.2

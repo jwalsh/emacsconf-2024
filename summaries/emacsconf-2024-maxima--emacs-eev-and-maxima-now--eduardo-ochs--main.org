@@ -1,0 +1,24 @@
+* Emacs Eev And Maxima Now
+:PROPERTIES:
+:SPEAKER: Eduardo Ochs
+:END:
+
+** Key Points
+- The talk starts by introducing Maxima, a computer algebra system with several interfaces, including WxMaxima, and how the author prefers an older interface for teaching calculus.
+- The author explains his experience working at UFF campus in Rio das Ostras, where he faces challenges due to limited funding and infrastructure.
+- The talk highlights the contrast between the Humanities building (where humans work) and the Inhumanities building (where only inhumans work), representing different environments.
+- The author shares a personal anecdote about a student who taught him Canva in 10 minutes, changing his life.
+- The Computer Science students at UFF are unable to assist the author despite their knowledge of modern programs and languages.
+
+** Technical Terms
+| Term                         | Definition                                                                                                | Context                 |
+|------------------------------+-----------------------------------------------------------------------------------------------------------+-------------------------|
+| WxMaxima                     | A user interface is a point of entry for interacting with a computer or software system.                  | interface               |
+| command-line interface (CLI) | An interface that is not graphical, such as text-based or command-line interfaces.                        | interface               |
+| Maxima                       | A computer program used for symbolic mathematics, such as solving equations and manipulating expressions. | computer algebra system |
+| shell buffer                 | A buffer in a shell that stores the history of commands entered by a user.                                | shell buffer            |
+
+
+** Meta
+- Generated: 2024-12-08T18:04:10.258740
+- Model: llama3.2
