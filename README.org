@@ -226,7 +226,7 @@ Times in EST (GMT-5)
 
 ** Sunday, December 8, 2024
 
-*** TODO 9:00 - 9:10 :: Sunday opening remarks
+*** DONE 9:00 - 9:10 :: Sunday opening remarks
 - *Track*: General
 - *Q&A*: Etherpad
 
