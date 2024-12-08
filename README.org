@@ -239,12 +239,34 @@ Times in EST (GMT-5)
 
 - https://emacsconf.org/2024/talks/links/
 
+#+begin_src emacs-lisp
+;; Install package
+(straight-use-package
+ '(org-roam-exts :type git :host github :repo "lepisma/org-roam-exts"))
+
+;; Configure display settings
+(add-to-list 'display-buffer-alist
+             '("\\*org-roam\\*"
+               (display-buffer-in-direction)
+               (direction . right)
+               (window-width . 0.33)
+               (window-height . fit-window-to-buffer)))
+
+;; Enable features
+(org-roam-exts-enable)
+(org-roam-sk-enable)
+
+#+end_src
+
+#+RESULTS:
+
 *** TODO 9:30 - 9:50 :: Emacs regex compilation and future directions for expressive pattern matching
 - *Speaker*: Danny McClanahan (they/them)
 - *Track*: General
 - *Q&A*: #emacsconf-gen
 
 - https://emacsconf.org/2024/talks/regex/
+- https://github.com/cosmicexplorer/helm-rg
 
 *** 10:00 - 10:20 :: Survival of the skillest: Thriving in the learning jungle
 - *Speaker*: Bala Ramadurai (his/him)
