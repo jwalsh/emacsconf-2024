@@ -1,0 +1,998 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.320
+ Hello, welcome to this talk on hyperdrive.el.
+
+00:00:03.320 --> 00:00:06.160
+ I'm Joseph Turner, presenting on behalf of Ushen,
+
+00:00:06.160 --> 00:00:09.600
+ a tiny independent information freedom non-profit.
+
+00:00:09.600 --> 00:00:12.600
+ Hyperdrive.el is an EMAX interface
+
+00:00:12.600 --> 00:00:15.480
+ to the Hyperdrive peer-to-peer file sharing system
+
+00:00:15.480 --> 00:00:16.800
+ built by hole punch.
+
+00:00:16.800 --> 00:00:19.320
+ Like other peer-to-peer file sharing tools,
+
+00:00:19.320 --> 00:00:22.040
+ such as BitTorrent, Hyperdrive lets you
+
+00:00:22.040 --> 00:00:25.720
+ share unlimited files directly with other users
+
+00:00:25.720 --> 00:00:28.200
+ without having to go through a central hub.
+
+00:00:28.200 --> 00:00:30.480
+ One thing that sets Hyperdrive apart
+
+00:00:30.480 --> 00:00:33.240
+ is that the files you share can be modified.
+
+00:00:33.240 --> 00:00:35.720
+ And since Hyperdrive has built-in versioning,
+
+00:00:35.720 --> 00:00:37.720
+ you can explore the history of changes
+
+00:00:37.720 --> 00:00:40.800
+ that you make to your files or others make to theirs.
+
+00:00:40.800 --> 00:00:43.280
+ You can stream video and audio.
+
+00:00:43.280 --> 00:00:46.480
+ There's no sign-up or account creation process required,
+
+00:00:46.480 --> 00:00:48.600
+ and it's all free software.
+
+00:00:48.600 --> 00:00:51.240
+ This means that the community has the legal right,
+
+00:00:51.240 --> 00:00:53.760
+ the tools and the information necessary
+
+00:00:53.760 --> 00:00:56.520
+ to participate in the development process,
+
+00:00:56.520 --> 00:01:00.480
+ or even fork the project and go simmer-on.
+
+00:01:00.480 --> 00:01:04.360
+ Since last year's talk, we've added a few new features.
+
+00:01:04.360 --> 00:01:08.160
+ It's now much easier to get started using Hyperdrive.el
+
+00:01:08.160 --> 00:01:11.480
+ since we added the Hyperdrive install command,
+
+00:01:11.480 --> 00:01:13.600
+ which downloads the gateway program
+
+00:01:13.600 --> 00:01:15.920
+ and installs it on your machine.
+
+00:01:15.920 --> 00:01:18.120
+ We added a peer-graph feature, which
+
+00:01:18.120 --> 00:01:22.560
+ lets you visualize your network of sources of information.
+
+00:01:22.560 --> 00:01:25.440
+ We also published a new package, Hyperdrive,
+
+00:01:25.440 --> 00:01:28.480
+ Org Transclusion, which lets you display
+
+00:01:28.480 --> 00:01:34.560
+ live updating snippets of Hyperdrive files in Org documents.
+
+00:01:34.560 --> 00:01:35.840
+ Let's get started.
+
+00:01:35.840 --> 00:01:38.280
+ Let's say you get an email from your friend, Alice,
+
+00:01:38.280 --> 00:01:41.080
+ inviting you to check out Hyperdrive.el.
+
+00:01:41.080 --> 00:01:45.280
+ Let's click on the link here to look at the manual.
+
+00:01:45.280 --> 00:01:49.120
+ Let's go down to the installation section.
+
+00:01:49.120 --> 00:01:53.880
+ So it says you need to have GNU EMAX version 28.1 or later.
+
+00:01:53.880 --> 00:01:55.600
+ I'll assume you have it installed, but if not,
+
+00:01:55.600 --> 00:01:57.480
+ you can click this link.
+
+00:01:57.480 --> 00:02:00.440
+ You need to have curl installed, which is likely already
+
+00:02:00.440 --> 00:02:04.680
+ the case, but if not, Hyperdrive.el will let you know.
+
+00:02:04.680 --> 00:02:09.320
+ Now, from within EMAX, you can install Hyperdrive.el.
+
+00:02:09.320 --> 00:02:14.440
+ Run meta-x, package, refresh contents.
+
+00:02:14.440 --> 00:02:20.800
+ Then meta-x, package install, type in Hyperdrive,
+
+00:02:20.800 --> 00:02:22.120
+ and hit return.
+
+00:02:22.120 --> 00:02:26.080
+ Next, we'll install Hyper Gateway Usher.
+
+00:02:26.080 --> 00:02:31.680
+ Let's run meta-x, Hyperdrive install.
+
+00:02:31.680 --> 00:02:34.600
+ It's prompting me to download and install the gateway,
+
+00:02:34.600 --> 00:02:35.920
+ which is 51 megabytes.
+
+00:02:35.920 --> 00:02:43.520
+ I'll press Y, and I will skip most of the download process.
+
+00:02:43.520 --> 00:02:44.760
+ The download is wrapping up.
+
+00:02:49.480 --> 00:02:52.160
+ Now, it's prompting me to start the gateway.
+
+00:02:52.160 --> 00:02:55.840
+ I can other run meta-x, Hyperdrive start,
+
+00:02:55.840 --> 00:02:59.240
+ or I can press this button.
+
+00:02:59.240 --> 00:03:03.560
+ And after a few moments, we'll see that the gateway will start.
+
+00:03:03.560 --> 00:03:04.760
+ It's ready.
+
+00:03:04.760 --> 00:03:07.640
+ You can also click this button, view Hyperdrive user
+
+00:03:07.640 --> 00:03:09.840
+ info manual, to view the same manual
+
+00:03:09.840 --> 00:03:11.920
+ that we were viewing in the browser.
+
+00:03:11.920 --> 00:03:14.920
+ The info manual comes with Hyperdrive.el
+
+00:03:14.920 --> 00:03:17.000
+ and is available offline.
+
+00:03:17.000 --> 00:03:20.200
+ Now that everything's installed and the gateway is running,
+
+00:03:20.200 --> 00:03:22.280
+ we're back at Alice's email.
+
+00:03:22.280 --> 00:03:26.000
+ Let's click on the link to her Hyperdrive.
+
+00:03:26.000 --> 00:03:27.960
+ Here's Alice's Hyperdrive.
+
+00:03:27.960 --> 00:03:29.840
+ Let's open her hello.org file.
+
+00:03:29.840 --> 00:03:36.800
+ I'm being prompted to mark Alice's Hyperdrive.
+
+00:03:36.800 --> 00:03:39.080
+ Currently, it's unknown.
+
+00:03:39.080 --> 00:03:41.880
+ I'll press question mark to see more details.
+
+00:03:41.880 --> 00:03:47.680
+ Safe, unsafe, unknown, I'll press E for explain.
+
+00:03:47.680 --> 00:03:51.640
+ In the info manual, it says that if a Hyperdrive
+
+00:03:51.640 --> 00:03:56.720
+ is marked as safe, that means files in that Hyperdrive
+
+00:03:56.720 --> 00:04:00.280
+ will automatically have their major mode enabled
+
+00:04:00.280 --> 00:04:02.480
+ based on their file extension.
+
+00:04:02.480 --> 00:04:06.160
+ In this case, if I mark Alice's Hyperdrive as safe,
+
+00:04:06.160 --> 00:04:10.120
+ and I click on this hello.org file, Emax will automatically
+
+00:04:10.120 --> 00:04:12.360
+ enable org mode in that file.
+
+00:04:12.360 --> 00:04:17.320
+ Since I know Alice directly, I'll mark her Hyperdrive as safe.
+
+00:04:17.320 --> 00:04:20.280
+ I'll click on the file hello.org again,
+
+00:04:20.280 --> 00:04:25.600
+ and now I'll press shift S for safe.
+
+00:04:25.600 --> 00:04:29.160
+ Now I'm going to set Alice's pet name.
+
+00:04:29.160 --> 00:04:33.320
+ Hyperdrive.el has different ways to name a Hyperdrive.
+
+00:04:33.320 --> 00:04:37.120
+ The public key is the drive's unique identifier.
+
+00:04:37.120 --> 00:04:40.200
+ You can also assign yourself a public nickname, which
+
+00:04:40.200 --> 00:04:41.840
+ you announce to the world.
+
+00:04:41.840 --> 00:04:45.880
+ Then users on their own machines can assign each Hyperdrive
+
+00:04:45.880 --> 00:04:49.120
+ that they are aware of a private pet name.
+
+00:04:49.120 --> 00:04:51.800
+ So I'll assign Alice a pet name, which
+
+00:04:51.800 --> 00:04:56.200
+ is the way that I will identify Alice just on my own machine.
+
+00:04:56.200 --> 00:04:58.920
+ I'll type in my friend Alice.
+
+00:04:58.920 --> 00:05:03.880
+ Then when I refresh her drive, we
+
+00:05:03.880 --> 00:05:07.400
+ see that it says pet name in the top left.
+
+00:05:07.400 --> 00:05:11.440
+ Now I'll do what she asks, which is to right click on her name
+
+00:05:11.440 --> 00:05:13.240
+ and open her peer graph.
+
+00:05:13.240 --> 00:05:17.000
+ In the context menu, I see a few different actions I can take,
+
+00:05:17.000 --> 00:05:19.200
+ but I'll click on peer graph.
+
+00:05:19.200 --> 00:05:22.560
+ It's prompting me to pick the max hops for sources.
+
+00:05:22.560 --> 00:05:23.720
+ Default three.
+
+00:05:23.720 --> 00:05:25.080
+ I'll choose the default.
+
+00:05:25.080 --> 00:05:26.200
+ Same for blockers.
+
+00:05:26.200 --> 00:05:27.680
+ I'll explain what that means later.
+
+00:05:27.680 --> 00:05:33.760
+ This is Alice's peer graph.
+
+00:05:33.760 --> 00:05:39.160
+ Here, we can see that Alice has two direct sources, Bob and Eve.
+
+00:05:39.160 --> 00:05:42.600
+ Both Bob and Eve have assigned themselves nicknames.
+
+00:05:42.600 --> 00:05:45.200
+ And so we see Bob and Eve here.
+
+00:05:45.200 --> 00:05:50.080
+ Eve has assigned this other Hyperdrive to be a source.
+
+00:05:50.080 --> 00:05:57.120
+ But this other Hyperdrive, whose public key is kb3zr6mq and so on,
+
+00:05:57.120 --> 00:05:59.000
+ if we hover over the Hyperdrive, we'll
+
+00:05:59.000 --> 00:06:02.800
+ see the full public key, has not assigned itself a nickname.
+
+00:06:02.800 --> 00:06:07.560
+ And so we just see the truncated short public key.
+
+00:06:07.560 --> 00:06:10.920
+ Because we've assigned a pet name for Alice,
+
+00:06:10.920 --> 00:06:14.520
+ we see Alice's pet name show up here.
+
+00:06:14.520 --> 00:06:18.520
+ Now I'll open the peer list view to show the same information
+
+00:06:18.520 --> 00:06:20.320
+ in a different way.
+
+00:06:20.320 --> 00:06:24.000
+ Since I'm using a large font, I'll widen this window
+
+00:06:24.000 --> 00:06:27.000
+ so we can see everything going on in the peer list.
+
+00:06:27.000 --> 00:06:31.200
+ We see that the root Hyperdrive is pet name, my friend Alice,
+
+00:06:31.200 --> 00:06:34.800
+ nickname Alice, public key DM1 and so on.
+
+00:06:34.800 --> 00:06:38.160
+ We've set the sources max hops to three, which
+
+00:06:38.160 --> 00:06:41.960
+ means that we will go out at most three hops from Alice
+
+00:06:41.960 --> 00:06:44.200
+ in order to find sources.
+
+00:06:44.200 --> 00:06:49.240
+ So one hop from Alice, our Bob and Eve.
+
+00:06:49.240 --> 00:06:55.320
+ One hop from Eve is kb3, which is two hops from Alice.
+
+00:06:55.320 --> 00:06:58.200
+ Now we've set the max hops for sources to three.
+
+00:06:58.200 --> 00:07:00.760
+ But in this case, the network is small.
+
+00:07:00.760 --> 00:07:03.000
+ And kb3 has no sources.
+
+00:07:03.000 --> 00:07:05.640
+ And so we can only go out two hops from Alice
+
+00:07:05.640 --> 00:07:07.800
+ until we run out of sources.
+
+00:07:07.800 --> 00:07:10.160
+ In the future, we plan to add a search feature
+
+00:07:10.160 --> 00:07:12.280
+ based on this list of sources.
+
+00:07:12.280 --> 00:07:14.920
+ You type in a query, and you get back a list of results
+
+00:07:14.920 --> 00:07:18.680
+ published by Eve, Bob, or kb3.
+
+00:07:18.680 --> 00:07:21.200
+ It's also possible to block peers.
+
+00:07:21.200 --> 00:07:25.640
+ I'll open the transient menu by pressing question mark.
+
+00:07:25.640 --> 00:07:29.760
+ For now, let's turn on showing blocked peers.
+
+00:07:29.760 --> 00:07:35.440
+ So I'll press S, X, and now it says blocked sources.
+
+00:07:35.440 --> 00:07:37.880
+ Now we can see Mallory also shows up.
+
+00:07:37.880 --> 00:07:40.840
+ Mallory has been included as a source by Eve,
+
+00:07:40.840 --> 00:07:42.600
+ but is blocked.
+
+00:07:42.600 --> 00:07:45.120
+ And so in the end result, she does not show up
+
+00:07:45.120 --> 00:07:46.640
+ in the list of sources.
+
+00:07:46.640 --> 00:07:49.960
+ Instead, she shows up as a blocked source.
+
+00:07:49.960 --> 00:07:53.640
+ But how is it that Mallory ended up being blocked?
+
+00:07:53.640 --> 00:07:56.240
+ Let's open up the transient menu once more,
+
+00:07:56.240 --> 00:08:01.880
+ and click S, B to show blockers.
+
+00:08:01.880 --> 00:08:05.600
+ Now we can see that Bob has blocked Mallory.
+
+00:08:05.600 --> 00:08:09.440
+ This means that Bob is not interested in seeing search
+
+00:08:09.440 --> 00:08:12.200
+ results from Mallory.
+
+00:08:12.200 --> 00:08:16.240
+ Since Alice has included Bob as a blocker,
+
+00:08:16.240 --> 00:08:22.120
+ that means that Alice trusts Bob to block people on her behalf.
+
+00:08:22.120 --> 00:08:25.040
+ And so since Bob has blocked Mallory,
+
+00:08:25.040 --> 00:08:30.000
+ Mallory does not show up in Alice's peer graph as a source.
+
+00:08:30.000 --> 00:08:33.120
+ Well, now I'm curious to see what it is Mallory published
+
+00:08:33.120 --> 00:08:35.440
+ that drove Bob to block her.
+
+00:08:35.440 --> 00:08:37.440
+ So I'll right click on Mallory.
+
+00:08:37.440 --> 00:08:41.160
+ And in the context menu, open hyperdrive.
+
+00:08:41.160 --> 00:08:45.560
+ And wingsuit flying grand canyon point of view, not clickbait.
+
+00:08:45.560 --> 00:08:46.560
+ I got to check this out.
+
+00:08:46.560 --> 00:08:51.520
+ No.
+
+00:08:51.520 --> 00:08:53.160
+ Disgusting.
+
+00:08:53.160 --> 00:08:55.880
+ No wonder Bob blocked Mallory.
+
+00:08:55.880 --> 00:08:59.600
+ Let's go back to Alice's peer graph.
+
+00:08:59.600 --> 00:09:02.520
+ So Mallory is a blocked source.
+
+00:09:02.520 --> 00:09:06.520
+ Are there any peers who are blocked, but who aren't sources?
+
+00:09:06.520 --> 00:09:11.560
+ I'll open the transient menu, and I'll press S, X.
+
+00:09:11.560 --> 00:09:15.200
+ Now we're looking at blocked non-sources.
+
+00:09:15.200 --> 00:09:17.960
+ Darth, who's been blocked by Bob,
+
+00:09:17.960 --> 00:09:21.840
+ has not been added by any of Alice's sources as a source.
+
+00:09:21.840 --> 00:09:25.160
+ And so Darth is a blocked non-source.
+
+00:09:25.160 --> 00:09:29.400
+ I'll open the transient menu again, and I'll press S, X.
+
+00:09:29.400 --> 00:09:33.120
+ And now we're looking at all blocked peers.
+
+00:09:33.120 --> 00:09:35.680
+ So both Mallory and Darth show up.
+
+00:09:35.680 --> 00:09:37.160
+ If I scroll down in the peer list,
+
+00:09:37.160 --> 00:09:40.440
+ we'll see that Mallory is listed under blocked sources.
+
+00:09:40.440 --> 00:09:44.240
+ And Darth is listed under blocked non-sources.
+
+00:09:44.240 --> 00:09:46.360
+ This view has gotten a little bit busy.
+
+00:09:46.360 --> 00:09:49.640
+ Let's say that we're only interested in how Alice
+
+00:09:49.640 --> 00:09:51.640
+ relates to Mallory.
+
+00:09:51.640 --> 00:09:54.160
+ So I'll open the transient menu,
+
+00:09:54.160 --> 00:09:59.080
+ and I will filter the graph to show paths only to Mallory.
+
+00:09:59.080 --> 00:10:04.360
+ I'll press O, A, type in Mallory, and hit Enter.
+
+00:10:04.360 --> 00:10:08.320
+ And now we see that Mallory has a bold border.
+
+00:10:08.320 --> 00:10:12.720
+ And KB3 and Darth are missing from the graph.
+
+00:10:12.720 --> 00:10:16.840
+ Eves shows up because there is a path from Alice
+
+00:10:16.840 --> 00:10:21.680
+ to Mallory that goes through E, same for Bob.
+
+00:10:21.680 --> 00:10:26.680
+ We can also add more than one peer in this view.
+
+00:10:26.680 --> 00:10:29.280
+ So I'll press O, A again.
+
+00:10:29.280 --> 00:10:32.880
+ And this time I'll choose Darth.
+
+00:10:32.880 --> 00:10:35.400
+ Now Darth and Mallory have bold borders,
+
+00:10:35.400 --> 00:10:37.640
+ and KB3 is still missing.
+
+00:10:37.640 --> 00:10:41.120
+ We can remove Mallory and Darth one at a time with O, R,
+
+00:10:41.120 --> 00:10:45.360
+ or we can press Ctrl U, the universal prefix argument,
+
+00:10:45.360 --> 00:10:50.240
+ and then O, R to remove both Mallory and Darth from the list.
+
+00:10:50.240 --> 00:10:53.200
+ Now we're back to seeing everybody.
+
+00:10:53.200 --> 00:10:56.000
+ This view of the graph is somewhat simplified
+
+00:10:56.000 --> 00:11:00.200
+ because we're showing only the shortest paths between peers.
+
+00:11:00.200 --> 00:11:06.120
+ If I press Shift S, now we're looking at all paths.
+
+00:11:06.120 --> 00:11:08.760
+ And here we can see that in addition
+
+00:11:08.760 --> 00:11:12.720
+ to going from Alice to Bob as a source directly,
+
+00:11:12.720 --> 00:11:19.240
+ we also go from Alice to Bob through E, as a source.
+
+00:11:19.240 --> 00:11:23.800
+ Let's go back to showing only the shortest paths.
+
+00:11:23.800 --> 00:11:27.960
+ Currently, the max hops for sources and for blockers
+
+00:11:27.960 --> 00:11:29.440
+ is set to three.
+
+00:11:29.440 --> 00:11:35.800
+ Let's see what happens if we set the blockers max hops to zero.
+
+00:11:35.800 --> 00:11:38.600
+ So after the graph reloads, we now see
+
+00:11:38.600 --> 00:11:43.120
+ that Mallory shows up as a source, not as a blocked source.
+
+00:11:43.120 --> 00:11:47.640
+ And this is because Bob, who is one hop away from Alice,
+
+00:11:47.640 --> 00:11:50.120
+ is no longer included as a blocker,
+
+00:11:50.120 --> 00:11:53.240
+ because we've set the blockers max hops to zero.
+
+00:11:53.240 --> 00:11:55.640
+ And since Bob is not a blocker, the fact
+
+00:11:55.640 --> 00:11:59.160
+ that Bob blocks Mallory doesn't factor in.
+
+00:11:59.160 --> 00:12:02.560
+ While Alice is the only one who gets to decide who
+
+00:12:02.560 --> 00:12:06.600
+ her direct sources, blockers, and blocked peers are,
+
+00:12:06.600 --> 00:12:10.080
+ anyone can view Alice's paragraph, tinker
+
+00:12:10.080 --> 00:12:12.680
+ with the sources or blockers max hops,
+
+00:12:12.680 --> 00:12:16.880
+ and use her list of sources to do a search.
+
+00:12:16.880 --> 00:12:22.520
+ Let's see what happens if we set sources max hops to two.
+
+00:12:22.520 --> 00:12:25.280
+ Well, the graph doesn't change because we only ever went out
+
+00:12:25.280 --> 00:12:27.280
+ two hops anyway.
+
+00:12:27.280 --> 00:12:30.560
+ Let's set sources max hops to one.
+
+00:12:30.560 --> 00:12:35.440
+ And now we only see Bob and Eve, since KB3 and Mallory
+
+00:12:35.440 --> 00:12:37.920
+ are two hops out.
+
+00:12:37.920 --> 00:12:40.560
+ Source hops zero.
+
+00:12:40.560 --> 00:12:44.360
+ And now we're left with just Alice.
+
+00:12:44.360 --> 00:12:47.880
+ Now I'd like to create a new hyperdrive and add Alice
+
+00:12:47.880 --> 00:12:49.320
+ as a source.
+
+00:12:49.320 --> 00:12:52.720
+ I'll run MetaX hyperdrive new.
+
+00:12:52.720 --> 00:12:55.800
+ Now it's prompting me for a new hyperdrive seed.
+
+00:12:55.800 --> 00:12:58.000
+ Seed is the string of characters that's
+
+00:12:58.000 --> 00:13:00.640
+ combined with your secret key, which
+
+00:13:00.640 --> 00:13:03.360
+ is generated for you by the gateway program,
+
+00:13:03.360 --> 00:13:08.000
+ in order to create a new public key for this new hyperdrive.
+
+00:13:08.000 --> 00:13:12.080
+ I'll type in Joseph, a new drive.
+
+00:13:12.080 --> 00:13:15.080
+ Now I'll right click on my own name.
+
+00:13:15.080 --> 00:13:20.280
+ And in the context menu, I'll choose set relation from.
+
+00:13:20.280 --> 00:13:30.280
+ From Joseph to Alice as a source.
+
+00:13:30.280 --> 00:13:32.760
+ Now I'll right click on my name again
+
+00:13:32.760 --> 00:13:36.040
+ and click on pier graph.
+
+00:13:36.040 --> 00:13:40.520
+ Max hops, let's say three.
+
+00:13:40.520 --> 00:13:41.920
+ And for blockers as well.
+
+00:13:41.920 --> 00:13:50.120
+ And here's the pier graph from my newly created hyperdrive's
+
+00:13:50.120 --> 00:13:52.800
+ perspective.
+
+00:13:52.800 --> 00:13:55.040
+ Mallory is included as a source.
+
+00:13:55.040 --> 00:13:57.400
+ Three hops from the root.
+
+00:13:57.400 --> 00:13:58.600
+ Let's open the list view.
+
+00:14:01.640 --> 00:14:06.080
+ If we were to mark Alice as a blocker by clicking
+
+00:14:06.080 --> 00:14:09.720
+ on this button in the blocker column next to the pet name
+
+00:14:09.720 --> 00:14:14.560
+ for Alice, then we see that Mallory shows up
+
+00:14:14.560 --> 00:14:16.640
+ as a blocked source.
+
+00:14:16.640 --> 00:14:20.560
+ Only now that Joseph includes Alice as a blocker
+
+00:14:20.560 --> 00:14:25.600
+ does the fact that Bob blocked Mallory take effect.
+
+00:14:25.600 --> 00:14:28.360
+ You can click on another pier to set them
+
+00:14:28.360 --> 00:14:30.200
+ as the root hyperdrive.
+
+00:14:30.200 --> 00:14:32.840
+ I'll click on eith.
+
+00:14:32.840 --> 00:14:36.760
+ Now we're looking at the pier graph from eith's perspective.
+
+00:14:36.760 --> 00:14:39.240
+ This pier graph view has a history.
+
+00:14:39.240 --> 00:14:41.080
+ If I open the transient menu, you'll
+
+00:14:41.080 --> 00:14:43.520
+ see here there's a back and a forward button.
+
+00:14:43.520 --> 00:14:46.480
+ Back is bound to L for left.
+
+00:14:46.480 --> 00:14:50.480
+ If I press L, we're looking at the graph from Joseph's
+
+00:14:50.480 --> 00:14:51.640
+ perspective.
+
+00:14:51.640 --> 00:14:57.280
+ If I press L again, now we're looking at Alice as at the beginning.
+
+00:14:57.280 --> 00:15:01.080
+ I'll press R to go forward, and R again,
+
+00:15:01.080 --> 00:15:03.280
+ and now we're back at eith.
+
+00:15:03.280 --> 00:15:06.040
+ Now I'd like to show you the hyperdrive org
+
+00:15:06.040 --> 00:15:08.320
+ transclusion package we published.
+
+00:15:08.320 --> 00:15:09.920
+ I'll open up the hyperdrive manual
+
+00:15:09.920 --> 00:15:11.040
+ to see how to install it.
+
+00:15:11.040 --> 00:15:20.560
+ Now from here, I'll press M and type in Transclusion
+
+00:15:20.560 --> 00:15:23.160
+ to jump straight to the org transclusion integration
+
+00:15:23.160 --> 00:15:25.040
+ section of the manual.
+
+00:15:25.040 --> 00:15:28.200
+ To summarize, we can install hyperdrive org transclusion
+
+00:15:28.200 --> 00:15:34.000
+ with MetaX, package install, hyperdrive org transclusion.
+
+00:15:34.000 --> 00:15:43.800
+ Then, once this is done, we will copy the following snippet
+
+00:15:43.800 --> 00:15:46.280
+ and add it either to our init.el file,
+
+00:15:46.280 --> 00:15:50.120
+ or in this case, I'll just evaluate it.
+
+00:15:50.120 --> 00:15:52.920
+ Now, hyperdrive org transclusion mode is enabled.
+
+00:15:52.920 --> 00:16:02.240
+ Let's go back to the Hello.org file in Alice's hyperdrive.
+
+00:16:02.240 --> 00:16:06.920
+ I'll right-click on Alice, then click Open Hyperdrive,
+
+00:16:06.920 --> 00:16:09.400
+ and hit Enter on Hello.org.
+
+00:16:09.400 --> 00:16:12.440
+ This time, I'm not prompted to mark Alice's hyperdrive
+
+00:16:12.440 --> 00:16:16.080
+ as safe since we did it already.
+
+00:16:16.080 --> 00:16:20.240
+ I'll navigate to the checkout My Piers heading,
+
+00:16:20.240 --> 00:16:26.600
+ then I'll run MetaX, org store link.
+
+00:16:26.600 --> 00:16:29.800
+ Now, I'll create a new file in my hyperdrive
+
+00:16:29.800 --> 00:16:34.160
+ by running MetaX, hyperdrive find file.
+
+00:16:34.160 --> 00:16:38.480
+ I'll select my hyperdrive, and I'll call this new file
+
+00:16:38.480 --> 00:16:46.440
+ response to Alice.org.
+
+00:16:46.440 --> 00:16:50.960
+ Now, I'll paste in a response that I've written.
+
+00:16:50.960 --> 00:16:58.120
+ I'll go to the bottom, and I will run MetaX, org insert link,
+
+00:16:58.120 --> 00:17:02.480
+ and I'll insert the link that I stored earlier.
+
+00:17:02.480 --> 00:17:12.960
+ As the link description, I'll change it to SNIP it from Alice's hyperdrive file.
+
+00:17:12.960 --> 00:17:18.680
+ And I'll save my hyperdrive file.
+
+00:17:18.680 --> 00:17:24.120
+ Now, to show that the link works, I'll just kill this buffer showing the Hello.org file,
+
+00:17:24.120 --> 00:17:27.400
+ and I'll click on the link.
+
+00:17:27.400 --> 00:17:31.520
+ Now, in addition to linking from my file to the heading in Alice's file,
+
+00:17:31.520 --> 00:17:35.680
+ I'd like to transclude this heading's content in my file.
+
+00:17:35.680 --> 00:17:45.440
+ So I'll go to the link in my file, and run MetaX, org transclusion make from link.
+
+00:17:45.440 --> 00:17:48.000
+ And I'll save my file again.
+
+00:17:48.000 --> 00:17:54.480
+ All that's been added is another link prefixed with this transclude keyword.
+
+00:17:54.480 --> 00:18:01.880
+ To make the transclusion show up in line, I'll run MetaX, org transclusion add.
+
+00:18:01.880 --> 00:18:06.840
+ The content of Alice's file hasn't been copied into mind, it's just being transcluded.
+
+00:18:06.840 --> 00:18:15.360
+ So if I run MetaX, org transclusion, remove, you'll see that the underlying content is still
+
+00:18:15.360 --> 00:18:21.800
+ just the transclude keyword and the link.
+
+00:18:21.800 --> 00:18:26.440
+ Now, some time has passed and Alice has updated her hyperdrive file.
+
+00:18:26.440 --> 00:18:29.840
+ She wrote, "Please add me as a source.
+
+00:18:29.840 --> 00:18:34.700
+ Since the transclude link that I added in my file does not specify a version, it will
+
+00:18:34.700 --> 00:18:39.600
+ always transclude the latest version of Alice's Hello.org file.
+
+00:18:39.600 --> 00:18:46.040
+ So if I run MetaX, org transclusion add once more, we'll see that the latest version
+
+00:18:46.040 --> 00:18:50.920
+ of Alice's file gets transcluded into mind.
+
+00:18:50.920 --> 00:18:55.840
+ Let's say that I want to transclude the previous version of Alice's Hello.org file.
+
+00:18:55.840 --> 00:19:00.600
+ And I don't want my transclusion to change when Alice updates her file.
+
+00:19:00.600 --> 00:19:01.600
+ That's possible too.
+
+00:19:01.600 --> 00:19:09.640
+ I'll go over to her file and run MetaX, hyperdrive, open previous version.
+
+00:19:09.640 --> 00:19:15.160
+ Now when I widen the window a little, we can see in the mode line that this is version
+
+00:19:15.160 --> 00:19:21.440
+ 57. For an explanation of what the version numbers mean, check out the last video or the
+
+00:19:21.440 --> 00:19:23.080
+ info manual.
+
+00:19:23.080 --> 00:19:31.880
+ For now, I'll go down to her checkout my peers heading and run MetaX, org store link.
+
+00:19:31.880 --> 00:19:37.360
+ Now in my response to Alice, I'll insert the link.
+
+00:19:37.360 --> 00:19:41.920
+ I'll run org transclusion make from link.
+
+00:19:41.920 --> 00:19:44.080
+ And now there are two transclusions.
+
+00:19:44.080 --> 00:19:49.720
+ The first transclusion will update whenever Alice updates her file and the second transclusion
+
+00:19:49.720 --> 00:19:52.880
+ is pinned to version 57.
+
+00:19:52.880 --> 00:19:58.400
+ That covers hyperdrive install, the peer graph, and hyperdrive org transclusion.
+
+00:19:58.400 --> 00:20:04.160
+ Feel free to check out the hyperdrive.el info manual in the ush and hyperdrive here, or
+
+00:20:04.160 --> 00:20:06.400
+ on the ush.org website.
+
+00:20:06.400 --> 00:20:11.680
+ Thanks to the folks at Supranica, we have a public xmpp group chat you can join either using
+
+00:20:11.680 --> 00:20:15.600
+ an xmpp client or anonymously from your browser.
+
+00:20:15.600 --> 00:20:18.560
+ If you use matrix, there's also a bridge.
+
+00:20:18.560 --> 00:20:23.000
+ Thank you for watching, and thank you to the EMAX comp organizers and all the presenters
+
+00:20:23.000 --> 00:20:24.760
+ who made this wonderful event possible.
+

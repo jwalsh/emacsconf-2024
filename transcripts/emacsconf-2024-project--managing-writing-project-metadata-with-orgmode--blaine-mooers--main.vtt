@@ -1,0 +1,497 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.260
+ Good morning. I'm Glenn Moore's, I'm an Associate Professor of Biochemistry and Physiology
+
+00:00:12.260 --> 00:00:17.880
+ at the University of Oklahoma Health Sciences in Oklahoma City. I'll be talking about the
+
+00:00:17.880 --> 00:00:26.700
+ utilization of ORD mode to write a specific kind of log file for thinking about writing
+
+00:00:26.700 --> 00:00:33.580
+ projects and particular research articles. I have stored a template for this file on
+
+00:00:33.580 --> 00:00:39.740
+ GitHub. You can find it at Moore's Lab if you go to the landing page and scroll down
+
+00:00:39.740 --> 00:00:47.280
+ to EMAX/LATED. You'll find a link to it.
+
+00:00:47.280 --> 00:00:53.220
+ I am a Structural Biologist and utilize extraterrestrial started feed and terminus structures of proteins
+
+00:00:53.220 --> 00:00:59.860
+ and nucleic acids that are important in human health. Our workflow is shown across
+
+00:00:59.860 --> 00:01:06.520
+ the top. We start out with purified material that we crystallized as shown by that elongated
+
+00:01:06.520 --> 00:01:13.980
+ rod shaped crystal on the left. We will mount that in a cold stream and collect diffraction
+
+00:01:13.980 --> 00:01:21.140
+ data with x-rays in the instrument to the right. That instrument will generate an image
+
+00:01:21.140 --> 00:01:26.180
+ like the one to the right. We see a bunch of spots. That's a diffraction pattern from
+
+00:01:26.180 --> 00:01:31.220
+ the crystal. After rotating the crystal for one degree, we'll rotate the crystal 180
+
+00:01:31.220 --> 00:01:37.820
+ degrees, get a full data set that will process with a computer. This will lead to the check
+
+00:01:37.820 --> 00:01:47.380
+ and wire map of the electron density shown further to the right. Then, on a far right,
+
+00:01:47.380 --> 00:01:55.940
+ we have a compared electro structures of two drug molecules from two different structures
+
+00:01:55.940 --> 00:02:02.900
+ overlap after a superimposing wild-type protein and mutant protein. We're trying to analyze
+
+00:02:02.900 --> 00:02:09.380
+ how the mutant was preventing one of the drugs from binding. These analyses can develop
+
+00:02:09.380 --> 00:02:20.600
+ better drugs. In this case, the drugs are being used to treat lung cancer. When I start
+
+00:02:20.600 --> 00:02:29.220
+ a new writing project, I will sign it a number. In this case, I'm developing a review article
+
+00:02:29.220 --> 00:02:34.180
+ about the detection of crystals in images collected with microscopes like the image in the upper
+
+00:02:34.180 --> 00:02:46.260
+ left. In articles about the utilization of AI to help with that detection of crystals. I
+
+00:02:46.260 --> 00:02:55.060
+ start the name of the folder with this index number. I store the manuscript folders in the
+
+00:02:55.060 --> 00:03:01.940
+ top level of my home directory, the E's navigation. Whenever I pop open a terminal window, I just
+
+00:03:01.940 --> 00:03:08.580
+ enter 0573. It tabbed on a complete name of the folder, and I'll be writing the appropriate folder.
+
+00:03:08.580 --> 00:03:15.620
+ I also use that index number to label the names of the files. I start every project with three files,
+
+00:03:15.620 --> 00:03:21.780
+ a manuscript, the log file that I'll be talking about today, and a annotated bibliography, which
+
+00:03:21.780 --> 00:03:28.260
+ is kind of like one on steroids. The annotated bibliography for the 21st century, not the 20th
+
+00:03:28.260 --> 00:03:38.820
+ century annotated bibliography, worked on as an undergraduate. I have developed templates, not only
+
+00:03:38.820 --> 00:03:46.340
+ for own mode, but also for other markup languages like R markdown and Latteck actually developed this
+
+00:03:46.340 --> 00:03:56.580
+ log file template over a dozen years ago in Latteck. I also have developed it for types,
+
+00:03:56.580 --> 00:04:04.180
+ as independent of Latteck. It's inspired by Latteck, but it's built, written and rust, and it's
+
+00:04:04.180 --> 00:04:13.220
+ extremely fast. So my writing process involves having the writing log at the center of the process,
+
+00:04:13.220 --> 00:04:20.180
+ is where I begin the writing project. On the right I have the manuscript, all its components
+
+00:04:20.180 --> 00:04:28.180
+ highlighted in yellow, and on the rough, on the, hopefully I said on the right, I have the manuscript
+
+00:04:28.180 --> 00:04:34.500
+ with all its components highlighted in yellow. On the left I have the annotated bibliography.
+
+00:04:34.500 --> 00:04:47.220
+ So when I start a research paper, I will do this after I have built up a strong idea from various
+
+00:04:47.220 --> 00:04:56.340
+ sources, and then I'll sit down and go through a series of steps outlined in the writing log to
+
+00:04:56.340 --> 00:05:03.780
+ develop that central hypothesis into a several paragraphs that are used in the introduction of
+
+00:05:03.780 --> 00:05:10.580
+ the manuscript. The rest of the manuscripts built around that central hypothesis, so the results
+
+00:05:10.580 --> 00:05:18.020
+ section will include experiments that address the central hypothesis, and it will exclude experiments
+
+00:05:18.020 --> 00:05:23.140
+ and nothing to do with it. Likewise, the discussion points address the central hypothesis.
+
+00:05:23.140 --> 00:05:32.180
+ So when I've done developing that introduction in, say, three or four hours, I'll have a outline in
+
+00:05:32.180 --> 00:05:39.460
+ hand, at least for the results and the discussion section, the outline will be detailed down to, at
+
+00:05:39.460 --> 00:05:48.340
+ least, the sub-heading level, and I'll move those components over to the manuscript on the right.
+
+00:05:48.340 --> 00:05:55.300
+ And as work is done to address that central hypothesis, the manuscript will be updated,
+
+00:05:55.300 --> 00:06:03.140
+ and also as an exploration of literature continues, new ideas will flow in to the manuscript
+
+00:06:03.140 --> 00:06:06.100
+ through the log file.
+
+00:06:06.260 --> 00:06:15.540
+ You've probably heard of another kind of writing log, which is more of a accountability tool.
+
+00:06:15.540 --> 00:06:21.220
+ A tool you use to hold yourself accountable in terms of your commitment to work on your writing
+
+00:06:21.220 --> 00:06:31.860
+ with projects. So this idea of a fault of carrying out this documentation is supported by
+
+00:06:31.860 --> 00:06:39.540
+ research done by Robert Boyce, Ethan of those academics who record their writing are four times
+
+00:06:39.540 --> 00:06:44.820
+ more productive of those that do not, and those that actually shared their writing with colleagues
+
+00:06:44.820 --> 00:06:51.380
+ are nine times more productive. This is sort of a case in point. This is a snapshot of a Google
+
+00:06:51.380 --> 00:07:03.940
+ sheet of such a writing log that I was sharing as part of a Google workbook, sharing it with
+
+00:07:03.940 --> 00:07:13.380
+ that three other colleagues. So I had the possibility of them taking a peek at my Google sheet and
+
+00:07:13.380 --> 00:07:22.020
+ that possibility I thought would be highly motivating. As you can see, July 24, 2023, I worked on five
+
+00:07:22.020 --> 00:07:26.420
+ different writing projects. This would not have been possible if it had not been for the
+
+00:07:26.420 --> 00:07:32.020
+ having five separate writing logs where I could figure out where I had started and where I would
+
+00:07:32.020 --> 00:07:38.660
+ report the day's progress before maybe taking a break and then switching to another writing project.
+
+00:07:39.620 --> 00:07:46.020
+ So that writing log helps reduce switching costs between projects.
+
+00:07:46.020 --> 00:08:02.100
+ My motivation for developing this project specific log that I'm presenting here is to support
+
+00:08:02.100 --> 00:08:08.580
+ clear thinking about the science I'm trying to do, hopefully leading to better science, as well as
+
+00:08:08.580 --> 00:08:14.180
+ accelerating the completion of the writing project. The secondary purpose is to enable working on
+
+00:08:14.180 --> 00:08:21.060
+ multiple writing projects in parallel. This is important to be able to harness your subconscious.
+
+00:08:21.060 --> 00:08:26.900
+ So if you work on project A for a few hours in the morning, say early morning, then late morning,
+
+00:08:26.900 --> 00:08:35.620
+ you work on project B, while you're working on project B, your subconscious is busy working
+
+00:08:35.620 --> 00:08:42.260
+ the way on project A. So as a result, perhaps the following morning,
+
+00:08:42.260 --> 00:08:50.180
+ while when you wake up or while you're taking a shower or commuting, your new ideas will emerge
+
+00:08:50.180 --> 00:08:55.940
+ for projects A and B, as a result of these background jobs that you have launched. If you don't work on
+
+00:08:55.940 --> 00:09:00.340
+ project A, then you're not going to get the benefit of the following morning.
+
+00:09:02.660 --> 00:09:07.780
+ The side effects of using this writing log are that it reduces the fear of forgetting and also
+
+00:09:07.780 --> 00:09:15.460
+ reduces the fear of losing momentum. These are two barriers to attempt to carry out work on
+
+00:09:15.460 --> 00:09:20.820
+ multiple writing projects in a given day. This problem of dealing with multiple writing projects
+
+00:09:20.820 --> 00:09:26.820
+ is one that is not discussed in books about writing. It's apparently a very difficult problem.
+
+00:09:26.820 --> 00:09:31.940
+ I think by writing log is a successful solution to that problem.
+
+00:09:31.940 --> 00:09:41.700
+ This is a overview of the writing log in or mode. So it has various components. I don't have
+
+00:09:41.700 --> 00:09:48.660
+ time to go through all of them in detail. But you can see its structure. We get this
+
+00:09:48.660 --> 00:10:00.020
+ summary view and you open up the file. If you have this in the header for a startup command overview
+
+00:10:00.020 --> 00:10:08.740
+ and then I just click on the heading, hit tab to see the contents below. So normally I'm just going
+
+00:10:08.740 --> 00:10:18.020
+ to go straight to the daily log, which is in this case it starts on line 944. I don't have to scroll
+
+00:10:18.020 --> 00:10:23.940
+ away down to it because of thanks to the support for folding these sections in or mode.
+
+00:10:23.940 --> 00:10:32.100
+ If I open up the drawer label preamble, I see that you can see that I have imported a number of
+
+00:10:32.100 --> 00:10:41.060
+ a lot of packages to enhance the format of the PDF file that is upon XB.
+
+00:10:42.500 --> 00:10:49.780
+ I have commands that are listed below at the bottom for providing a fancy header. This header has
+
+00:10:49.780 --> 00:10:56.500
+ the current date as well as the running title and the current page number and total number of pages.
+
+00:10:56.500 --> 00:11:05.940
+ So you can see in the center the header at the start page 2. We see the bottom page 1 where the
+
+00:11:07.860 --> 00:11:15.860
+ page number is at the bottom of the page. So this, these headers are very useful if you
+
+00:11:15.860 --> 00:11:23.620
+ have them to print out several log files and their corresponding manuscripts and take them with you
+
+00:11:23.620 --> 00:11:29.780
+ to work on them while traveling and variably the pages will get intermingled and we'll have to sort
+
+00:11:29.780 --> 00:11:38.820
+ about when you return home. So these headers ease that problem. You can see that the table contents
+
+00:11:38.820 --> 00:11:46.500
+ that begin the writing log is hyperlinked to various sections. In addition to the table contents,
+
+00:11:46.500 --> 00:11:52.820
+ the log file course will support various graphical objects like images, tables, equations,
+
+00:11:52.820 --> 00:12:00.420
+ code listings. I also added to the tech support for index, lists of acronyms, glossary, math
+
+00:12:00.420 --> 00:12:08.980
+ implementation, or literature cited. It takes no effort to add these in so why not have them available.
+
+00:12:08.980 --> 00:12:15.380
+ These features are also available in the annotated bibliography template which helps support
+
+00:12:15.380 --> 00:12:26.420
+ make that annotated bibliography far more relevant and interesting. So this shows a list of
+
+00:12:26.420 --> 00:12:32.820
+ four workflows that I'm going to discuss. Since I don't have time to go for each of the
+
+00:12:32.820 --> 00:12:38.900
+ items, so obviously there's project initiation occurs on day one. If I have a three or four hour
+
+00:12:38.900 --> 00:12:47.540
+ block at time, that's sufficient to finish project initiation. And then the daily workflow is
+
+00:12:47.540 --> 00:12:54.500
+ obviously what a person today to move the project forward and the periodic assessments are done
+
+00:12:54.500 --> 00:13:00.500
+ on a monthly weekly basis, generally on a weekly basis as the submission deadline approaches.
+
+00:13:00.500 --> 00:13:08.420
+ And then after you have received the gallery proofs and sent them back there are a few chores that
+
+00:13:08.420 --> 00:13:14.180
+ need to be done in terms of project close-up. And so this is an example of a protocol that could be
+
+00:13:14.180 --> 00:13:21.060
+ followed to do that. And an example of the kinds of more or less appendix material that could be
+
+00:13:21.060 --> 00:13:30.500
+ included in the writing log to help that this is done. So this shows a project initiation section
+
+00:13:30.500 --> 00:13:41.540
+ of the workflow. So I go through a series of sections that include advice about what I need to do
+
+00:13:41.540 --> 00:13:51.140
+ to complete each section. So the rationale section asked me like why are you doing this? Why should you
+
+00:13:51.140 --> 00:13:59.380
+ do this? Why not somebody else? Those sort of fundamental questions. And then I have
+
+00:13:59.380 --> 00:14:08.500
+ a drawer called label guidance that I have and that headline me or above, I have this no export
+
+00:14:08.500 --> 00:14:16.740
+ to keyword. So that guidance is not written out upon export to the PDF. Unless you want it,
+
+00:14:16.740 --> 00:14:22.660
+ if you want it, you have to remove the no export tag. Then I have a response to these questions.
+
+00:14:22.660 --> 00:14:29.140
+ In this case, the list of journals that I'm targeting for submission of this review article.
+
+00:14:29.140 --> 00:14:38.260
+ I have a plan B journal picked out in case the first choice is leads to the editors decide to
+
+00:14:38.260 --> 00:14:50.500
+ reject it. So having a plan D journal picked out is a decision can make at the time of submission
+
+00:14:50.500 --> 00:14:56.740
+ so that you're prepared to move quickly after the article is rejected.
+
+00:14:56.740 --> 00:15:07.220
+ This shows the daily workflow section. So each entry has a date. I sometimes annotate the
+
+00:15:07.220 --> 00:15:14.180
+ dated entries with a small phrase to highlight certain events. Within a given entry,
+
+00:15:14.180 --> 00:15:19.540
+ I have a list of accomplishments. That's sort of the bare minimum what I include. This just
+
+00:15:19.540 --> 00:15:26.260
+ demonstrates how relatively brief these entries are. They're just whatever distinct
+
+00:15:26.260 --> 00:15:37.140
+ accomplishments for me are listed. Sometimes I'll include the goals for that day. Sometimes I'll
+
+00:15:37.140 --> 00:15:42.740
+ always include the correspondence related to the project. So I'll copy and paste an email
+
+00:15:42.740 --> 00:15:54.260
+ into a quote environment from La Tech. And I have a snippet template for our generating these
+
+00:15:54.260 --> 00:16:03.140
+ entries. It will insert the date, for example, in the subheading. Then below that, I'll have the
+
+00:16:03.140 --> 00:16:08.260
+ next action. So following David Allen's, getting things done approach where you identify the next
+
+00:16:08.260 --> 00:16:14.100
+ thing that is begun. That may have come from a to-do list that's indicated below that.
+
+00:16:14.100 --> 00:16:22.580
+ And then beyond that, there's sections for writing accountability and then a reminder to go
+
+00:16:22.580 --> 00:16:30.660
+ about updating your central casting and org role that you have come across any nuggets for
+
+00:16:30.660 --> 00:16:37.700
+ knowledge you want to add to your org role. Then below that, there's a new another section for the
+
+00:16:37.700 --> 00:16:44.900
+ storage of additions to be made to the manuscript. Maybe they're not ready to go yet. So this provides
+
+00:16:44.900 --> 00:16:52.500
+ a spot for them to be incubated, a sandbox, if you will, where you have room to develop them further
+
+00:16:52.500 --> 00:16:58.820
+ before you, they're ready to be transferred over to the main manuscript. I also have a section
+
+00:16:58.820 --> 00:17:08.420
+ there too for the incubation of new ideas for new projects. So these, this kind of meta-data
+
+00:17:08.420 --> 00:17:14.580
+ or meta-cognition about the project are often stored and commented out regions are in comments
+
+00:17:14.580 --> 00:17:21.140
+ and like MS Word documents. These are often stripped out and rushed to submit the manuscript and
+
+00:17:21.140 --> 00:17:28.260
+ are quite often lost yet they can be invaluable. Not only for the preparation of future manuscripts,
+
+00:17:28.260 --> 00:17:35.620
+ but there can be very invaluable for responding to pre-teaks by reviewers.
+
+00:17:35.620 --> 00:17:46.660
+ So this writing log provides ample room for the safe storage of such information, such knowledge.
+
+00:17:48.740 --> 00:17:57.060
+ Then periodically every several months are weeks carry out a assessment of the project.
+
+00:17:57.060 --> 00:18:04.980
+ And so we go through a checklist for the completion of the manuscript. We also have a timeline
+
+00:18:04.980 --> 00:18:14.260
+ with milestones identified. And then course org has these wonderful tables that are very dynamic.
+
+00:18:15.140 --> 00:18:22.740
+ If you need a wider column to accommodate a new entry, it self-adjusts. So these are self-adjusting
+
+00:18:22.740 --> 00:18:30.260
+ tables on one reason why I was attracted to org mode because that coming from left tech,
+
+00:18:30.260 --> 00:18:34.180
+ we're working with trying to make changes to tables is quite difficult.
+
+00:18:34.180 --> 00:18:41.140
+ Then below that is a section to make assessments or four questions that I address about to the status
+
+00:18:41.140 --> 00:18:46.660
+ of the project. So one really good question is why can't you submit this project today? What's
+
+00:18:46.660 --> 00:18:56.820
+ going to do that back? And so other such existential questions are important to ask from time to time.
+
+00:18:56.820 --> 00:19:07.380
+ And finally the project clues out workflow. So this is in the form of a checklist. This checklist
+
+00:19:07.380 --> 00:19:14.740
+ in the main template is already included, but you could include it as from an external file.
+
+00:19:14.740 --> 00:19:22.340
+ Of course that checklist won't be only in the PDF when it's included in this fashion. It won't
+
+00:19:22.340 --> 00:19:30.500
+ be in the org file, but you can view that checklist by clicking on its file path. It serves a link
+
+00:19:30.500 --> 00:19:40.500
+ that will open up in a org buffer. The advantage of taking a modular approach to this sort of
+
+00:19:40.500 --> 00:19:46.100
+ appendix material is that you can update your protocols and updated protocols will be available
+
+00:19:46.100 --> 00:19:56.260
+ to all log files across all projects. So in conclusion this project specific log file helps
+
+00:19:56.260 --> 00:20:05.380
+ narrow the focus on one project. It provides space to harbor thinking about that project and it
+
+00:20:05.380 --> 00:20:16.660
+ helps support project initiation and sustain this momentum and facilitate its completion.
+
+00:20:17.700 --> 00:20:27.860
+ The side effects of using this log file for one project is that it dampens the fear of forgetting
+
+00:20:27.860 --> 00:20:34.180
+ the fear of losing momentum, which inhibits working on more than one project in a given day.
+
+00:20:34.180 --> 00:20:45.380
+ I would like to thank my friends at an Oklahoma data science workshop. We hold this workshop
+
+00:20:45.380 --> 00:20:53.940
+ every third Friday at noon, central time, by Zoom. It's open to participation by people from all
+
+00:20:53.940 --> 00:21:00.020
+ around the world. Send an email if you are interested in the applications of computing to
+
+00:21:00.020 --> 00:21:09.380
+ scientific research. I participate occasionally in these EVACs meetups and I have shared this writing
+
+00:21:09.380 --> 00:21:19.860
+ log with members of the UK research software engineer group through the MX Research Slack Channel.
+
+00:21:19.860 --> 00:21:29.220
+ My efforts are supported by funding from these grants. I'll be happy to take any questions.
+
+00:21:29.220 --> 00:21:39.220
+ [Music]
+

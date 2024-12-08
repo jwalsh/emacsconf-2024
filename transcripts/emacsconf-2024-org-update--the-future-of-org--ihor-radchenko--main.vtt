@@ -1,0 +1,1001 @@
+WEBVTT
+
+00:00:00.640 --> 00:00:05.200
+ Hello everyone, my name is Igor Rachenko and I am the new official org mode maintainer.
+
+00:00:05.200 --> 00:00:13.120
+ Today I will briefly introduce myself and then share my ideas about the future of org mode development.
+
+00:00:13.120 --> 00:00:20.560
+ I will start by passing the word from bushing in the previous maintainer. Then I will tell you a
+
+00:00:20.560 --> 00:00:25.280
+ little bit about my story starting from earlier org mode user all the way to the maintainer.
+
+00:00:25.920 --> 00:00:33.520
+ Then I will detail the new directions of development and specific features which I want to see
+
+00:00:33.520 --> 00:00:40.240
+ in org mode in the coming years. And I will conclude by asking you org mode users to
+
+00:00:40.240 --> 00:00:48.160
+ contribute to org mode because all the features we shot too many can only be implemented with
+
+00:00:48.160 --> 00:00:53.360
+ the help of the community, the help of more contributors. And for that of course I will also talk
+
+00:00:53.360 --> 00:01:01.040
+ about org community and how I see to how I see it evolve and so that we have a good communication
+
+00:01:01.040 --> 00:01:09.440
+ between the development of org mode and community ideas. Let me first pass the word to bushing in.
+
+00:01:09.440 --> 00:01:19.680
+ Hello everyone, Igor Rachenko is the new org mode maintainer. He's been acting as such for
+
+00:01:19.680 --> 00:01:24.000
+ a couple of years now and I'm really glad he's finally agreed to take on the role officially.
+
+00:01:24.000 --> 00:01:29.280
+ As maintainer I have probably done a few things right and certainly made many mistakes.
+
+00:01:29.280 --> 00:01:33.760
+ Here are four lessons I've learned in 14 years. The first is that maintaining
+
+00:01:33.760 --> 00:01:39.920
+ org mode isn't just about code, it's mostly about users. Of course some of them will never learn
+
+00:01:39.920 --> 00:01:45.120
+ how to report bugs, some of them will behave like spoiled children and most of them will expect
+
+00:01:45.120 --> 00:01:51.280
+ you to work for free forever. Nevertheless the time is as valuable as yours, whatever the request
+
+00:01:51.280 --> 00:01:56.640
+ there is always something that can lead to a positive outcome for org mode or its community.
+
+00:01:56.640 --> 00:02:02.080
+ The second lesson is that maintenance isn't just about technical choices,
+
+00:02:02.080 --> 00:02:06.800
+ it's also about predictability, be very clear and very loud about what users and
+
+00:02:06.800 --> 00:02:12.240
+ contributors can expect of your time, skills and motivations. Stick to the robustness
+
+00:02:12.240 --> 00:02:17.040
+ principle by being liberal in what you accept and strict in what you produce.
+
+00:02:17.040 --> 00:02:23.200
+ Thirdly, it's all about learning. Let's build a culture together where it's okay to ask stupid
+
+00:02:23.200 --> 00:02:28.560
+ questions. No one is born knowing how to write in English how to report a bug or how to maintain
+
+00:02:28.560 --> 00:02:33.440
+ a large piece of code. Remember that all diamonds when newbies and that newbies could become
+
+00:02:33.440 --> 00:02:37.760
+ maintainers. We all have a lot to learn, even if it's just how to respect each other.
+
+00:02:38.640 --> 00:02:43.920
+ Finally, as a maintainer, think about the next one. Who will be in your shoes next? What kind of
+
+00:02:43.920 --> 00:02:49.600
+ maintainer do you want for a software you will be using for decades? It's also a responsibility
+
+00:02:49.600 --> 00:02:55.760
+ of the org mode community. How can we collectively attract a maintainer that want to help us use
+
+00:02:55.760 --> 00:03:02.320
+ and enhance this wonderful little tool? How can we, as org mode users, help ego pay the way for the
+
+00:03:02.320 --> 00:03:09.120
+ next maintainers? Enough said, I'm confident org mode is in good hands and I'm very happy user.
+
+00:03:09.120 --> 00:03:11.840
+ Thanks everyone for all these years of fun and learning.
+
+00:03:11.840 --> 00:03:23.280
+ I'll back to my talk. Let me start by briefly introducing myself. I'm actually not a programmer
+
+00:03:23.280 --> 00:03:29.040
+ by training on material scientists and I only started using EMAX and org mode and we'll naturally
+
+00:03:29.040 --> 00:03:36.240
+ do it in programming because that's EMAX. When I was doing my PhD and I wanted to use org mode
+
+00:03:36.240 --> 00:03:44.080
+ to tame my research work. A couple of years I was just an ordinary user until I learned enough
+
+00:03:44.080 --> 00:03:50.640
+ and got enough courage to report my first bug and then it all evolved over the years.
+
+00:03:50.640 --> 00:03:58.400
+ I started bicepating in the main list. I started learning more about elisp. I reported more
+
+00:03:58.400 --> 00:04:10.160
+ complex bugs. I eventually got around to go and fix the tricky bugs. Then I started participating
+
+00:04:10.160 --> 00:04:18.000
+ more in org mailing list in help in fixing bugs. In selected areas of org mode and eventually
+
+00:04:18.000 --> 00:04:27.680
+ switching to all parts of org. So at some point I ended up doing the de-park to maintainers job
+
+00:04:27.680 --> 00:04:34.000
+ to get a bit passed in and got an actual maintenance offer which I accepted recently.
+
+00:04:34.000 --> 00:04:41.200
+ The key takeaway I want you to get from here is that you don't have to be a programmer. You don't have
+
+00:04:41.200 --> 00:04:49.280
+ to know elisp to contribute. You don't and you don't even have to be like that to become a maintainer.
+
+00:04:49.280 --> 00:04:56.960
+ All it takes is slow methodical persistent learning over the years participating in the community
+
+00:04:56.960 --> 00:05:03.200
+ and eventually submitting your purchase upstream and eventually you can become a maintainer.
+
+00:05:03.200 --> 00:05:12.400
+ Oh, not a maintainer, it's as you wish. Enough about me. Let's talk about what I think should
+
+00:05:12.400 --> 00:05:21.760
+ happen with org mode and what my proposal on org mode is. The first and top priority for me is the
+
+00:05:23.120 --> 00:05:30.320
+ basics. The basics, the code-based stability, basically all the foundations, all the APIs in org mode,
+
+00:05:30.320 --> 00:05:38.880
+ all the basic libraries for which everything builds upon so that we have fewer bugs and we have
+
+00:05:38.880 --> 00:05:44.640
+ more understandable code so that others who want to contribute have easier time understanding what
+
+00:05:44.640 --> 00:05:51.280
+ is going on in the code base and contribute without much of a problem or confusion.
+
+00:05:52.240 --> 00:05:59.040
+ Second, equally important direction is the org community because a single person even
+
+00:05:59.040 --> 00:06:05.840
+ a couple of people cannot really develop such a big project as org mode and we always want new
+
+00:06:05.840 --> 00:06:10.640
+ contributors which are not coming from nowhere. We need to have the community of users, we have
+
+00:06:10.640 --> 00:06:16.240
+ community of people who participate in discussions, who later submit purchase and
+
+00:06:16.240 --> 00:06:24.080
+ we code and that's where we get all most of the new features. So I would like to improve the
+
+00:06:24.080 --> 00:06:31.280
+ communication between our community and the development. The third direction I want to pursue is
+
+00:06:31.280 --> 00:06:38.960
+ making life easier for a third-party packages because it's not, you don't only have org mode
+
+00:06:38.960 --> 00:06:42.880
+ as it's distributed within a month. We have a lot of alpha packages, we have a lot of
+
+00:06:42.880 --> 00:06:49.040
+ multiple packages and people, one who want some specific features on top of org mode,
+
+00:06:49.040 --> 00:06:55.280
+ do develop these packages which are widely used and also widely used and it's not only about
+
+00:06:55.280 --> 00:07:01.680
+ amongst we have a lot of mobile apps that can work with org files. We have a lot of parts which
+
+00:07:01.680 --> 00:07:08.160
+ enable these mobile apps or in general programs outside the list for understand org files.
+
+00:07:10.880 --> 00:07:17.920
+ What's direction is the org markup as a foundation of org mode as a major mode because we have a lot
+
+00:07:17.920 --> 00:07:23.520
+ of functionality in org mode itself inside the max but it's all based on the underlying markup
+
+00:07:23.520 --> 00:07:29.360
+ and markup should have enough features to support the pungulance we want to see there.
+
+00:07:29.360 --> 00:07:39.040
+ And last direction is somewhat less important mostly because I don't have that much time to
+
+00:07:39.040 --> 00:07:46.720
+ focus on everything is the new features. I do want to see certain important features in org mode
+
+00:07:46.720 --> 00:07:52.000
+ but I usually cannot span too much time on them because of the previous more important parts.
+
+00:07:52.000 --> 00:07:58.240
+ So I do rely on the org community and the contributors to implement these new features
+
+00:07:58.240 --> 00:08:03.600
+ and my idea is that I want to direct which features and how they should be implemented
+
+00:08:03.600 --> 00:08:07.200
+ but the actual people who implement them should come from the community.
+
+00:08:07.200 --> 00:08:16.800
+ Now let's go into the details. The code base. As a bit of motivation I would like to share this
+
+00:08:16.800 --> 00:08:27.680
+ email from Wichest Poman who years ago asked about improving org mode by making it more modular.
+
+00:08:27.680 --> 00:08:35.920
+ So that's directly ask about improvements or foundations of the code and that's what might
+
+00:08:35.920 --> 00:08:43.120
+ you have what I think is important direction as well. Here is an example. We have a lot of really
+
+00:08:43.120 --> 00:08:50.000
+ really large org libraries like org.io which is like one megabyte or something or org agenda,
+
+00:08:50.000 --> 00:08:56.080
+ org table, org east and a number of parts which are really really large and what is worse they are
+
+00:08:56.080 --> 00:09:01.600
+ hard to understand sometimes. I even have an example that an author of our complaint that
+
+00:09:02.160 --> 00:09:07.600
+ he part of his motivation to write org yell and specifically his agenda part,
+
+00:09:07.600 --> 00:09:14.160
+ a gentle light part was because org agenda is so hard to understand that it's easier to start
+
+00:09:14.160 --> 00:09:21.120
+ from scratch. I don't want such situations to happen in future if possible at all so one of the
+
+00:09:21.120 --> 00:09:27.440
+ projects I am currently working on is working progress now is splitting live org libraries into
+
+00:09:27.440 --> 00:09:36.400
+ smaller parts into more documented parts into the APRs which are actually documented and explained
+
+00:09:36.400 --> 00:09:45.440
+ in the code at least so that people who just open org mode code cannot be scared away and go and read
+
+00:09:45.440 --> 00:09:51.600
+ the comments and understand what is happening that easier. At this point I have like almost doubled
+
+00:09:51.600 --> 00:09:56.000
+ the number of libraries it's still working progress so there is a lot of room for improvement in this area.
+
+00:09:56.000 --> 00:10:09.600
+ Another direction which is somewhat reasonable in relation to splitting things down
+
+00:10:09.600 --> 00:10:18.080
+ is that some libraries are really generically not moved because org mode often has a functionality
+
+00:10:18.080 --> 00:10:23.440
+ which is really new and for that it had to implement some very unique functionality that doesn't
+
+00:10:23.440 --> 00:10:28.400
+ have to be used just for more this can be generalized for EMAX in general. So there is a number of
+
+00:10:28.400 --> 00:10:36.400
+ libraries which we may or may not upstream to EMAX depending on what EMAX my internet think.
+
+00:10:36.400 --> 00:10:42.640
+ As one example is org capture because it's very obvious example org capture started to support
+
+00:10:42.640 --> 00:10:47.680
+ from remember dotial which is still a part of EMAX so it has more features than remember dotial which
+
+00:10:47.680 --> 00:10:53.760
+ were required for org but you know these features can be backwarded why not and then we can
+
+00:10:53.760 --> 00:11:00.480
+ not only org mode but other EMAX libraries can benefit from these features we have in org now only.
+
+00:11:00.480 --> 00:11:07.680
+ Similarly I have I can have a long list of different libraries that can be shared.
+
+00:11:11.920 --> 00:11:20.800
+ Yeah but some I'm not sure but in general there is a lot of work that may be done and may be discussed
+
+00:11:20.800 --> 00:11:32.080
+ in the future. Third priority about the basics is making use of the new EMAX libraries.
+
+00:11:32.080 --> 00:11:39.520
+ EMAX in general is quite well written in terms of EMAX integration. We do support many of the
+
+00:11:39.520 --> 00:11:46.800
+ EMAX features and libraries which are generic. However in more recent EMAX versions we start
+
+00:11:46.800 --> 00:11:52.000
+ to get in some new features and we do want to make use them in org. For example recently we
+
+00:11:52.000 --> 00:12:00.480
+ contributed Yant Media support for clipboard based in drug and drop so now it is supported in
+
+00:12:00.480 --> 00:12:06.000
+ org mode already in the release release version and eventually we want to support transient dotial
+
+00:12:06.720 --> 00:12:12.880
+ because now org uses a network system and it's of course much better to use existing and more powerful
+
+00:12:12.880 --> 00:12:18.560
+ menus which implement an impatriation. It even has some initial work and progress implementation.
+
+00:12:18.560 --> 00:12:21.120
+ I hope it can be eventually extended to the whole org.
+
+00:12:21.120 --> 00:12:31.520
+ There are other things like compatibility which there is an excellent EMAX library
+
+00:12:31.520 --> 00:12:37.760
+ compact dotial that provides a backwards compatibility and org also has something like this in org
+
+00:12:37.760 --> 00:12:43.840
+ compact and we don't have to write it ourselves again. We can make use of the existing libraries in
+
+00:12:43.840 --> 00:12:51.920
+ large recent very very new library track changes for tracking changes in real time and eventually if
+
+00:12:51.920 --> 00:12:57.600
+ you want to support context many more maybe touchscreen, one Android support I don't know but I
+
+00:12:57.600 --> 00:13:04.720
+ hope it can be done by someone and some modernary leverage listing at that point.
+
+00:13:04.720 --> 00:13:16.880
+ That's about using external APIs. Now about the internal org APIs. One important
+
+00:13:16.880 --> 00:13:23.280
+ probably one of the most important parts of org is the parser, how org itself understand the org
+
+00:13:23.280 --> 00:13:29.440
+ files and the situation is that we have two parsers in org mode. One is the org element, the
+
+00:13:29.440 --> 00:13:35.200
+ proper parser which we use as a reference but many parser works still using regular expressions
+
+00:13:35.200 --> 00:13:41.120
+ which are approximated. So like these two parsers are not exactly consistent which is really bad
+
+00:13:41.120 --> 00:13:49.520
+ and I hope to solve this. So I always started doing some work by factoring all some part of
+
+00:13:49.520 --> 00:13:57.920
+ abstract syntax tree and working on real time parser, incremental parser which is enabled by default
+
+00:13:57.920 --> 00:14:02.160
+ in organizing but there's still parts which I need to work on and eventually I want to catch
+
+00:14:02.160 --> 00:14:06.480
+ the ease of regular expression based parser completely so that we don't have any inconsistencies inside
+
+00:14:06.480 --> 00:14:14.000
+ org mode. One of the examples of this pars that I still use in regular expression is quantification
+
+00:14:14.000 --> 00:14:21.520
+ which is often simple one, especially in some edge cases and we really want to use the proper parser
+
+00:14:21.520 --> 00:14:30.960
+ in this area. Maybe even editing org files using the parser syntax tree but that might be tricky
+
+00:14:30.960 --> 00:14:35.680
+ although there is existing library that implements some ideas from here for this.
+
+00:14:35.680 --> 00:14:42.240
+ The key point is that org element API, the parser where it should eventually be used to
+
+00:14:42.240 --> 00:14:47.840
+ revise so that everything is consistent. The second important API is the org label.
+
+00:14:47.840 --> 00:14:58.400
+ Currently org label does have some API but both is not well documented. Second, it's sometimes
+
+00:14:58.400 --> 00:15:07.440
+ awkwardly designed, especially compared with the exporter. So I do want org label APIs to be more
+
+00:15:07.440 --> 00:15:15.360
+ consistent. Another thing about org label is not exactly API but you know that the
+
+00:15:15.360 --> 00:15:20.160
+ documentation for most of the label backends are not even in the org manual even though
+
+00:15:20.160 --> 00:15:27.280
+ the backends are built in. They are not tricky and they do want to move them to the manual eventually.
+
+00:15:27.280 --> 00:15:34.880
+ That's important part and it should be done. Those are some obstacles like not all the features
+
+00:15:34.880 --> 00:15:40.560
+ are properly implemented and that's a bit of an extra votes to that should be done.
+
+00:15:40.560 --> 00:15:46.880
+ Another small thing which sends to Bruno or Pierre is being done in the progress.
+
+00:15:46.880 --> 00:15:53.440
+ We should have a more robust testing for an SAPI, for example. I hope it can progress further
+
+00:15:53.440 --> 00:16:00.480
+ from now it already progressed quite far. That's all about the basics, the underlying backbone of
+
+00:16:00.480 --> 00:16:06.560
+ the org hold base. So let's move to the second important direction which is
+
+00:16:06.560 --> 00:16:17.600
+ the third-party packages and basically the parsers for mobile apps. I will both point the community
+
+00:16:17.600 --> 00:16:27.120
+ to them because I want to have a focus on the user at that. So for third-party packages, I would like to
+
+00:16:28.960 --> 00:16:36.720
+ remind you that org mode used to have something called org-conch-trip as a part of org mode which is
+
+00:16:36.720 --> 00:16:44.560
+ a collection of small libraries, small packages that didn't have appropriate operators. I'm
+
+00:16:44.560 --> 00:16:51.520
+ in basically but more or less part of org mode. This is not only in the case. Now what we did
+
+00:16:51.520 --> 00:16:58.720
+ is we moved a number of very rarely used libraries from org couriers south to org-conch-trip
+
+00:16:58.720 --> 00:17:05.920
+ and now we treat org-conch-trip as basically the libraries that really want someone to take
+
+00:17:05.920 --> 00:17:12.720
+ responsibility for. We want the new maintenance for everything that is in org-conch-trip and from
+
+00:17:12.720 --> 00:17:21.920
+ me and other org team. We do not spend too much time maintaining this package, just do some
+
+00:17:21.920 --> 00:17:29.840
+ most basic backfixing and that's all. So if you see some libraries from org-conch-trip and you use them
+
+00:17:29.840 --> 00:17:35.040
+ and you know Elis, please volunteer to be my maintainer because otherwise there will be not much
+
+00:17:35.040 --> 00:17:42.080
+ progress in these libraries. As a natural extension of this and inspired by Tarsius or Imax
+
+00:17:42.080 --> 00:17:50.320
+ orphanage idea, we also maintain a small page basically listing the libraries, some others like
+
+00:17:50.320 --> 00:17:58.160
+ packages, Imax packages that are not really maintained. So if you are a maintainer of a library
+
+00:17:58.160 --> 00:18:04.400
+ and you don't have time to do it, you can write to org main list and we can add your library to
+
+00:18:04.400 --> 00:18:12.720
+ this page so that we can search for new maintainers in a more centralized way and if you are
+
+00:18:12.720 --> 00:18:19.760
+ Elis hacker and you want to help something for org mode, you can check that page and see
+
+00:18:20.320 --> 00:18:32.000
+ where you can help. Now away from Imax or mobile apps, we have quite a lot of mobile apps at this point.
+
+00:18:32.000 --> 00:18:43.440
+ Unfortunately it's very hard for me and many other Elis contributors to contribute to this app
+
+00:18:43.440 --> 00:18:49.360
+ because they are not originally Elis naturally but these applications heavily rely on org markup
+
+00:18:49.360 --> 00:18:57.840
+ and I do hope that we can keep org markup consistent enough and reach enough so that people don't
+
+00:18:57.840 --> 00:19:07.600
+ happen when extensions to org like what happened to mark them. So I really want to emphasize that
+
+00:19:07.600 --> 00:19:16.560
+ I want to see more org parses in different languages so that they can be used by developers
+
+00:19:16.560 --> 00:19:27.040
+ and for people who are writing these parsers, I want to share the link, it's the org syntax reference,
+
+00:19:27.040 --> 00:19:35.360
+ it is the official org syntax which what we think it should be, it's described in plain
+
+00:19:35.360 --> 00:19:40.960
+ human language is not a code and all details should be listed there so please use it as a reference
+
+00:19:40.960 --> 00:19:51.360
+ if you are writing the parser. Imagine this document will be submitted to iatf I hope and in the future
+
+00:19:51.360 --> 00:19:57.440
+ I hope to write a setup test which will work as benchmarks so basically we have some existing
+
+00:19:57.440 --> 00:20:05.200
+ tests for our internal parser and I want to factor out this test so that can be used by any parser
+
+00:20:05.200 --> 00:20:09.360
+ so that we can compare the performance and which parts of org mode are parsed and which parts of it.
+
+00:20:09.360 --> 00:20:22.000
+ I mentioned that we want to submit to iatf which means that org markup will become the actual
+
+00:20:22.000 --> 00:20:31.760
+ registrars format but before we do that and thus fix org markup in the stone because it's very
+
+00:20:31.760 --> 00:20:36.560
+ hard to change since in the iatf it's important to address important problems
+
+00:20:36.560 --> 00:20:44.480
+ existing problems with org syntax there are some problems like I mentioned the inconsistencies
+
+00:20:44.480 --> 00:20:52.320
+ between the two existing parses in our mode there are also some parts like there are some examples
+
+00:20:52.320 --> 00:20:56.560
+ like the problems with numeric priorities for example which are not treated consistently
+
+00:20:57.680 --> 00:21:05.200
+ and the problem is more general problems with org syntax when people request some edge cases
+
+00:21:05.200 --> 00:21:10.640
+ which should be addressed like it's very very hard to do into a org markup and like we have zero
+
+00:21:10.640 --> 00:21:15.440
+ means space work around but many people dislike it so maybe we want to do something about it
+
+00:21:15.440 --> 00:21:22.320
+ we have some edge cases when we combine and process these links we have some edge cases and we have
+
+00:21:22.320 --> 00:21:26.640
+ double blank lines inside some source blocks for example and combination in the list
+
+00:21:27.120 --> 00:21:36.080
+ and I hope we can somehow address it it's it's not impossible to do it as request time one annoying
+
+00:21:36.080 --> 00:21:41.840
+ part is the inline time syntax it's annoying pause from the programming perspective internally
+
+00:21:41.840 --> 00:21:48.160
+ as implementation and from the neural perspective because there are too many stars and we probably
+
+00:21:48.160 --> 00:21:52.880
+ should redesign it eventually maybe in backwards compatible way but we will see how it goes
+
+00:21:56.320 --> 00:22:03.360
+ another part is not just fixing the edge cases or problems is the new completely new syntax features
+
+00:22:03.360 --> 00:22:08.720
+ that's probably done after the simulator area but there are important things that people
+
+00:22:08.720 --> 00:22:16.720
+ open request like timezone support in timezone better repeaters like more flexible repeaters
+
+00:22:16.720 --> 00:22:24.480
+ that we can that that's really frequent request also another idea is some custom markup
+
+00:22:25.200 --> 00:22:32.560
+ which is coming to various requests like for example people often ask to
+
+00:22:32.560 --> 00:22:40.880
+ highlight some words it is a color for example or it's like some other special way and
+
+00:22:40.880 --> 00:22:48.480
+ then export it in special way just as we do with special blocks basically so what I want to
+
+00:22:48.480 --> 00:22:57.200
+ introduce is the ability to do it on markup or inline the pause new syntax feature which I
+
+00:22:57.200 --> 00:23:02.880
+ wish we could have is the multi line cells in tables it's very frequent request as well but I
+
+00:23:02.880 --> 00:23:09.200
+ really have no clue how to do it it's like we had we had a discussion about this and there were
+
+00:23:09.200 --> 00:23:15.840
+ previous discussions but there was no conclusion we don't see a good way how to implement it syntax wise
+
+00:23:15.840 --> 00:23:20.800
+ so unlike time zones where we decided exactly the syntax how it could be and we just
+
+00:23:20.800 --> 00:23:26.400
+ need batches to be submitted here even the idea of syntax is not clear so please do participate
+
+00:23:26.400 --> 00:23:34.640
+ in these discussions if you have ideas the last direction is the new features and in general
+
+00:23:34.640 --> 00:23:40.240
+ I welcome all kinds of good features but there's certain things which I explicitly want to see
+
+00:23:40.240 --> 00:23:46.080
+ and I hope to see submitted so if you are interested please do submit batches
+
+00:23:46.080 --> 00:23:52.640
+ one and probably many people aware about it is the asynchronous latte preview they're open by
+
+00:23:52.640 --> 00:23:59.200
+ too much encoding I hope it can be finalized eventually and the upstream it is pretty much
+
+00:23:59.200 --> 00:24:07.600
+ in registered but on the technical level it should be discussed further and revised the second is
+
+00:24:07.600 --> 00:24:18.000
+ or kill by Adam I hope it can get summed so it's also work in progress it's just a question of
+
+00:24:18.000 --> 00:24:24.640
+ pre-time for Adam most I think and me or that's another important part new feature
+
+00:24:24.640 --> 00:24:33.600
+ this already is the so-called multi-page expert the idea is the same as many packages for blog posts
+
+00:24:33.600 --> 00:24:40.000
+ so that you have a single org file and then you can export multiple HTML pages for example
+
+00:24:40.000 --> 00:24:45.040
+ or PDF pages or anything like that this work in progress by arm thanks for him
+
+00:24:45.040 --> 00:24:52.480
+ although it was a little bit stung because I am not exactly sure how to best integrate it into
+
+00:24:52.480 --> 00:25:00.400
+ existing APIs so if you are a developer of one of the blogging packages I would appreciate if
+
+00:25:00.400 --> 00:25:09.200
+ you can chime in and probably share some ideas here next are the some wishes I wish we could have
+
+00:25:09.200 --> 00:25:14.160
+ but it is not very detailed like one is the multi-language support so that we can have
+
+00:25:14.160 --> 00:25:20.240
+ work documents in multiple languages or maybe when translations and the collaborative
+
+00:25:20.240 --> 00:25:26.240
+ addition that people many people would wish to have I think like things like tracking changes
+
+00:25:26.240 --> 00:25:32.560
+ have had in comments importing from some other org from us with the comments and changes so that
+
+00:25:32.560 --> 00:25:37.520
+ we can actually participate with all those Microsoft Word users and stuff like that
+
+00:25:37.520 --> 00:25:46.960
+ but that's really too much for me alone to handle so if you want to see one of these features
+
+00:25:46.960 --> 00:25:51.360
+ please consider contributing just write a mailing list about your interest and we can start from
+
+00:25:51.360 --> 00:25:59.360
+ there now the important part is you see I keep asking people like please contribute please
+
+00:25:59.360 --> 00:26:04.160
+ contribute but who should contribute so I want to improve communication between the community
+
+00:26:04.160 --> 00:26:16.800
+ and the mailing list now people open discuss new features or ideas on all kinds of places like
+
+00:26:16.800 --> 00:26:22.800
+ credit, mastodon like all kinds of mathematics are such as you know meetups some non-English language
+
+00:26:22.800 --> 00:26:30.800
+ that's very nice that we have this community but not all the ideas are visible to the developers
+
+00:26:30.800 --> 00:26:38.560
+ so I do do wish that the most important things that people want to see should end up on the mailing
+
+00:26:38.560 --> 00:26:45.440
+ list one way or another and I'll later talk about the summary is how I think it can be done
+
+00:26:45.840 --> 00:26:56.240
+ and another part is we have org wiki and I hope that we can make it more centralized space for
+
+00:26:56.240 --> 00:27:03.040
+ interesting org mode articles for tutorials for blog posts at least link to blog posts so if you
+
+00:27:03.040 --> 00:27:10.640
+ have some idea about good blog posts it would be nice if you submit a patch to work or at least
+
+00:27:10.640 --> 00:27:21.040
+ email about this link to the mailing list of course people not everyone likes to use mailing lists or
+
+00:27:21.040 --> 00:27:27.040
+ don't have a good setup to do it or even don't want to read everything on org mailing list because
+
+00:27:27.040 --> 00:27:32.320
+ there are things like bug reports people don't really want to see that so bastion actually
+
+00:27:32.320 --> 00:27:38.080
+ developed a tool that can help with this so if you want to monitor org mailing list and
+
+00:27:38.080 --> 00:27:44.400
+ but want to see only the most important discussions and maybe participate if you decide to you don't
+
+00:27:44.400 --> 00:27:53.680
+ have to register we have a book which is basically a web page that monitors or mailing lists but not
+
+00:27:53.680 --> 00:28:00.080
+ every mail does the most important nonsense some blog like posts or feature requests or some
+
+00:28:00.080 --> 00:28:05.120
+ discussions and then on this web page you can see it as HTML or you can subscribe to this
+
+00:28:05.120 --> 00:28:14.800
+ air says or even download in Oracle MD format. Thanks to Saturday to you as are also weekly news
+
+00:28:14.800 --> 00:28:24.320
+ about image in general but org must as well it also includes the new new features in our mode
+
+00:28:24.320 --> 00:28:29.840
+ on the development branch and the interesting new blog for post and discussions on various
+
+00:28:30.480 --> 00:28:38.080
+ the credit forms or mailing list everywhere. I did this little bit of experimental integration so
+
+00:28:38.080 --> 00:28:46.160
+ that mailing list can also be read kind of announced on the charts so for example in magic or
+
+00:28:46.160 --> 00:28:51.760
+ mode metrics room we have a book that connects to woofer assess so that all the news and
+
+00:28:51.760 --> 00:28:57.600
+ discussions are notified in the chat so that interview people can see if they are interested
+
+00:28:58.560 --> 00:29:05.360
+ and maybe hopefully participate. I wish we could also have similar kind of boss for read it must have
+
+00:29:05.360 --> 00:29:13.840
+ done on maybe RC that way we have mailing list connected to them more active and like more modern
+
+00:29:13.840 --> 00:29:19.840
+ forms and the charts so more people exposed to what is happening.
+
+00:29:19.840 --> 00:29:28.080
+ Another part is that we actually have web interface to org mailing list and you can even
+
+00:29:28.080 --> 00:29:33.360
+ reply from there but it's not always obvious unfortunately we have the
+
+00:29:33.360 --> 00:29:44.800
+ public inbox software to transform the mailing list into HTML pages and that's a decent interface
+
+00:29:44.800 --> 00:29:51.440
+ but it could be improved to look more form like so that people can easily find a reply button or
+
+00:29:51.440 --> 00:29:55.840
+ basically participate without too much effort even if they are not subscribed or they are just
+
+00:29:55.840 --> 00:30:01.440
+ currently reading. That would be nice if someone knowledgeable of CSS could help with this.
+
+00:30:01.440 --> 00:30:13.040
+ Again I cannot emphasize more that most of the org ideas of the new pictures
+
+00:30:13.040 --> 00:30:23.440
+ coming from people but open they are they got they are known either by some submission
+
+00:30:23.440 --> 00:30:28.640
+ in the parts to mailing list or submit an idea to mailing list and rarely it happens when someone
+
+00:30:28.640 --> 00:30:34.800
+ is reading post from ready to then share to the mailing list so if you think that there is some
+
+00:30:34.800 --> 00:30:41.920
+ important deal discussion happening on the port it would be nice that you can go ahead and
+
+00:30:41.920 --> 00:30:48.080
+ share it with org mailing list and we don't care about this like on topic off topic because
+
+00:30:48.960 --> 00:30:54.080
+ like you must that all we don't focus on development we can discuss some related to org
+
+00:30:54.080 --> 00:30:58.320
+ mode topics in the org mailing list just like on an ordinary report.
+
+00:30:58.320 --> 00:31:09.760
+ I would like to end my talk with the call for contributed for contributions. Let me explain
+
+00:31:09.760 --> 00:31:18.000
+ a little bit because you saw now I I shared many many ideas and I just found a lot of time on
+
+00:31:18.000 --> 00:31:22.560
+ org mode in fact like for for the last year I was finding like 30 hours per week or something
+
+00:31:22.560 --> 00:31:29.760
+ until the promise that I can spend a bit less but still even with that much of commitment
+
+00:31:29.760 --> 00:31:37.760
+ there is no way I can handle everything by myself so it's we really really need more people to
+
+00:31:37.760 --> 00:31:45.760
+ contribute so that org mode keeps moving forward and again I just shared ideas but I have some
+
+00:31:45.760 --> 00:31:50.800
+ many more I have more than 1000 ideas not to down yeah there's no way I can do it to myself
+
+00:31:50.800 --> 00:31:59.040
+ so I do need help for new contributions for new pictures if someone can help fixing but it would
+
+00:31:59.040 --> 00:32:05.840
+ be really great if someone know specialized things like for example open document format
+
+00:32:05.840 --> 00:32:12.320
+ which I don't know very well it would be really nice because things like audit the expert
+
+00:32:12.320 --> 00:32:18.800
+ require knowing that and if someone always has emotions it would be much easier to if that person
+
+00:32:18.800 --> 00:32:28.720
+ can help research things. Also in the coming years it's very important to have regular contributors
+
+00:32:28.720 --> 00:32:37.120
+ because my life is my life and things may happen so it would be nice to have some kind of backup
+
+00:32:37.120 --> 00:32:44.880
+ so that bugs keep being fixed and things like patches being accepted and stuff like that so that
+
+00:32:44.880 --> 00:32:51.840
+ some person can at least temporary take on my job yeah and I would like to emphasize that the
+
+00:32:51.840 --> 00:32:57.760
+ content contributors are the most important contributions or more all the other types are
+
+00:32:57.760 --> 00:33:06.480
+ less important really so I want to spend a couple of slides trying to motivate you to contribute
+
+00:33:06.480 --> 00:33:13.200
+ if you have if you ever consider it contributing or if you ever wish some to have some
+
+00:33:13.200 --> 00:33:21.200
+ cliche in our mode really don't wait because most most new features are contributed by people
+
+00:33:21.200 --> 00:33:26.720
+ they are not contributed by me I contribute few things but I am alone I cannot contribute many things
+
+00:33:26.720 --> 00:33:32.080
+ so most of the things are contributed by users who go ahead and submit patches
+
+00:33:33.200 --> 00:33:38.640
+ and even in both very commonly requested features it's usually someone who step up
+
+00:33:38.640 --> 00:33:45.360
+ so if you want something don't wait. Just go ahead right to my list you don't have to submit
+
+00:33:45.360 --> 00:33:49.520
+ partially immediately you can just say I am interested and I will start from there
+
+00:33:49.520 --> 00:33:57.920
+ yeah we'll start because that's my job and I will guide you through if you have
+
+00:33:57.920 --> 00:34:03.680
+ a productious organ channels I will explain because that's what I know and I will explain how to
+
+00:34:03.680 --> 00:34:08.000
+ implement things better but I need someone to actually do the job and write the code
+
+00:34:08.000 --> 00:34:18.480
+ even if you don't if you are not like exactly Elis, if you don't have 10 years experience
+
+00:34:18.480 --> 00:34:22.400
+ with Elis it doesn't matter you can learn on the way there are many examples of this in the
+
+00:34:22.400 --> 00:34:29.440
+ many list when we start slowly fix since one by one and eventually arrive to a good code even
+
+00:34:29.440 --> 00:34:36.080
+ the person is not experienced you just need to be ready to learn things spend your pre-time
+
+00:34:36.080 --> 00:34:44.000
+ that's as usual right and have the interest in specific thing you contribute don't be afraid to
+
+00:34:44.000 --> 00:34:51.360
+ be wrong I will be there to assist if you don't like emails if you don't like patches it doesn't matter
+
+00:34:51.360 --> 00:34:57.600
+ again you can share get get habling it's okay and you can go and modify some of what directly you
+
+00:34:57.600 --> 00:35:01.440
+ submit the multiple version it's also okay it's easy for me to create patches if I need to
+
+00:35:01.440 --> 00:35:09.920
+ if you don't like emails at all you don't want to participate in the many list it's all it's
+
+00:35:09.920 --> 00:35:16.960
+ not ideal but I can still work with this I am on RC animatrix you can ping me it's
+
+00:35:16.960 --> 00:35:24.880
+ you know time 92 we also have monthly meetup so you can go and ask by what we can just talk
+
+00:35:24.880 --> 00:35:34.640
+ in person discuss your ideas is also fine so the key point is that I always welcome new contributors
+
+00:35:34.640 --> 00:35:42.640
+ the more contributions toward mode is better to increase the motivation I just try to
+
+00:35:43.760 --> 00:35:50.080
+ show some benefits of contributing to all mode and free software in general it can be actually
+
+00:35:50.080 --> 00:35:55.280
+ useful for your CVPR programmer it doesn't matter that it is a list because you know like you can have
+
+00:35:55.280 --> 00:36:02.240
+ a bad project that demonstrates your skills that you can finish something to a usable state maybe
+
+00:36:02.240 --> 00:36:10.000
+ but a bad project usually demonstrate that you can work alone but it doesn't demonstrate anything
+
+00:36:10.000 --> 00:36:16.720
+ about your work in the team in the production team but when you contribute to leverage software
+
+00:36:16.720 --> 00:36:22.880
+ look I will work with a number of people who contribute and comment on your work
+
+00:36:22.880 --> 00:36:30.720
+ we'll have to learn the new code base you'll have to follow certain standards and all these things
+
+00:36:30.720 --> 00:36:38.480
+ by having a public record of contribution will be a valid point that prove your knowledge in your CV
+
+00:36:38.800 --> 00:36:45.840
+ I put a small quote which I'm not going to read in the interest of time from Rudolf Alemktovich
+
+00:36:45.840 --> 00:36:52.640
+ who is actually who is describing these three points in probably most of the first full way
+
+00:36:52.640 --> 00:37:01.200
+ yeah another benefit is you can actually get money from this thanks to a number of
+
+00:37:01.200 --> 00:37:06.960
+ org mode users who kindly contribute to org development we have some out of money
+
+00:37:07.760 --> 00:37:14.640
+ coming in and we don't hold on this money if we get another person who contributes to org regularly
+
+00:37:14.640 --> 00:37:24.800
+ we are happy to share this money because we do know that getting some maximum even a little bit
+
+00:37:24.800 --> 00:37:30.400
+ does improve motivation so we are really ready to share this so if you are serious about
+
+00:37:30.400 --> 00:37:38.800
+ contributing you can actually you can just request this and we can share a part of the nations to you
+
+00:37:38.800 --> 00:37:46.640
+ phenomenon programmers we also have a lot of work to do it's a lot of stuff we can do on the work
+
+00:37:46.640 --> 00:37:54.720
+ weekly especially with CSS styles with improve like updating articles with adding links to tutorials
+
+00:37:54.720 --> 00:38:01.600
+ even writing tutorials about org mode it would be nice to have more screen because it would be nice
+
+00:38:01.600 --> 00:38:06.720
+ to improve org manual because that's the most difficult part for me because I'm too familiar with
+
+00:38:06.720 --> 00:38:13.600
+ the code but writing the manual when you know it internally it's very hard I just know too many things
+
+00:38:13.600 --> 00:38:19.920
+ I can assume that people know too much that the new users have no idea about certain things
+
+00:38:20.560 --> 00:38:25.600
+ and I can just meet those without being aware
+
+00:38:25.600 --> 00:38:36.000
+ and the final slide is that I would go to come back about the nations so again most important
+
+00:38:36.000 --> 00:38:44.560
+ is contributing code but I do hope that the nations can increase the number of contributors
+
+00:38:44.560 --> 00:38:50.800
+ and I don't know I know for sure because some people activity who is participating in this
+
+00:38:50.800 --> 00:38:59.280
+ he did find the nations helpful especially for more boring stuff like bug fixing and to move things
+
+00:38:59.280 --> 00:39:09.040
+ when over the long time so if you cannot contribute by other means it would be appreciated
+
+00:39:09.040 --> 00:39:16.000
+ by to contribute money and we came to the end of my talk and thank you for your attention
+
+00:39:16.000 --> 00:39:23.040
+ if you have any questions please feel free to ask think we can even discuss further during
+
+00:39:23.040 --> 00:39:30.560
+ the next org meet up in the coming week so there are if you have more detailed questions we can
+
+00:39:30.560 --> 00:39:34.720
+ continue discussing apart from what happens after this presentation
+

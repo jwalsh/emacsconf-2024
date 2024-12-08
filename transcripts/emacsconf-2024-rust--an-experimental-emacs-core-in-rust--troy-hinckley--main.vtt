@@ -1,0 +1,725 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:06.880
+ Hello, EmacsConf, my name is Troy Hinckley, and this is my talk on Roon, a Rust implementation
+
+00:00:06.880 --> 00:00:11.960
+ in Emacs. We started to be bug compatible with Emacs, so you can use the same elisp. It's
+
+00:00:11.960 --> 00:00:18.280
+ still a barely early stage experimental project, and we have some basic things implemented.
+
+00:00:18.280 --> 00:00:22.300
+ So before I get started, I want to talk a bit more about what the core is. So the Emacs
+
+00:00:22.300 --> 00:00:25.880
+ core, it includes the runtime, the interpreter, garbage collector, everything used to run
+
+00:00:25.880 --> 00:00:30.440
+ the code, it includes the GUI, it includes all the data structures, if you look underneath
+
+00:00:30.440 --> 00:00:35.000
+ all the elisp data structures, there's C code underneath there, as well as the auxiliary
+
+00:00:35.000 --> 00:00:39.240
+ functions of which there's about 1500. And in making this talk, I don't want to give
+
+00:00:39.240 --> 00:00:42.520
+ the impression that I'm saying the core is outdated or that needs to be replaced or that
+
+00:00:42.520 --> 00:00:46.760
+ can't be involved on its own, because clearly it has continued to evolve. If we look in
+
+00:00:46.760 --> 00:00:50.000
+ just the last few years, we can see that we've had a native compilation, we've had a tree
+
+00:00:50.000 --> 00:00:53.880
+ sitter support, we've had a color emoji, and there's work right now to add a new garbage
+
+00:00:53.880 --> 00:01:01.620
+ collector to Emacs as well. So I create this project. Emacs is a long history, it has a lot
+
+00:01:01.620 --> 00:01:06.120
+ of users, it needs to support a big community. And so because of that, it has to be very
+
+00:01:06.120 --> 00:01:11.400
+ conservative about what things that can allow into the project. And forks like this create
+
+00:01:11.400 --> 00:01:16.800
+ an opportunity to experiment and try new approaches. And this is particularly a good use case
+
+00:01:16.800 --> 00:01:20.840
+ for Rust, because the C core, it's pretty well tested. It's been around for a long time,
+
+00:01:20.840 --> 00:01:24.520
+ a lot of bugs have been ironed out, but when you're doing a new Greenfield project, it's very
+
+00:01:24.520 --> 00:01:30.840
+ easy to introduce new undefined behavior and memory unsafety and stuff like that. And Rust protects
+
+00:01:30.840 --> 00:01:36.360
+ us from most of that, but it also gives us the ability to be fast and has a strong ecosystem behind it.
+
+00:01:36.360 --> 00:01:43.320
+ Rust is also really good at multi-threading. Their phrase in the community is fearless concurrency,
+
+00:01:43.320 --> 00:01:48.920
+ that she built the right concurrent programs without having to worry about data races. It's also
+
+00:01:48.920 --> 00:01:53.560
+ really high performance, it has a really good rejects engine, it's known for its non-copy I/O as well.
+
+00:01:53.560 --> 00:01:59.640
+ So how does it compare to other Rust and Emacs projects, and what there's been a couple?
+
+00:01:59.640 --> 00:02:04.680
+ The first is Remax. So this project was the first, it took it outside in approach. So basically,
+
+00:02:04.680 --> 00:02:09.800
+ you could take a C function and replace it with a Rust function and build it together as one
+
+00:02:09.800 --> 00:02:14.760
+ executable. And this is pretty easy to do, because they can both talk over the CABI, and you could swap
+
+00:02:14.760 --> 00:02:19.160
+ out functions once at a time. So they made really good progress at first, but eventually they
+
+00:02:19.160 --> 00:02:23.560
+ ran into the problem that as you get down to the really core parts of it, you can't just replace
+
+00:02:23.560 --> 00:02:27.400
+ one function at a time anymore, because some of that functionality is connected to other things.
+
+00:02:27.400 --> 00:02:31.320
+ Like for example, you can't replace the garbage collector without replacing the entire garbage
+
+00:02:31.320 --> 00:02:36.600
+ collection system, and so the progress really kind of slowed down. Another issue with it was,
+
+00:02:36.600 --> 00:02:40.680
+ is that they were doing a one-to-one rewrite, so they weren't adding any new features or functionality,
+
+00:02:40.680 --> 00:02:45.160
+ just taking the same code and replacing it in Rust, which doesn't add any advantages in and of
+
+00:02:45.160 --> 00:02:51.000
+ itself. So this spawned Emacs and G, which was kind of the spiritual successor to Remax,
+
+00:02:51.000 --> 00:02:55.320
+ where they decided to add new functionality, the biggest one being a JavaScript runtime,
+
+00:02:55.320 --> 00:02:59.720
+ as well as some new renders to Emacs. This is no longer actively developed, though.
+
+00:02:59.720 --> 00:03:06.520
+ So in this project, one of the big focuses we have is on multi-threading. The C core itself is
+
+00:03:07.400 --> 00:03:11.640
+ everything is designed around being single-threaded, all the data structures and everything like that,
+
+00:03:11.640 --> 00:03:16.440
+ and Rust has a great concurrency story. In Rust, everything is intended to be multi-threaded.
+
+00:03:16.440 --> 00:03:20.520
+ That doesn't mean that everything has to run on multiple threads, but you can't write something
+
+00:03:20.520 --> 00:03:25.160
+ that is limited to only running in a single-threaded environment. And so this makes it really easy to
+
+00:03:25.160 --> 00:03:29.880
+ use all the existing packages and build something that is concurrency-safe, which is what we've done
+
+00:03:29.880 --> 00:03:35.000
+ here, and that was relatively easy to do. But adding it to E-Lisp is the hard part, because we got
+
+00:03:35.000 --> 00:03:41.240
+ to come up a good model for the list, and E-Lisp is just a giant ball mutable state. So we need to find
+
+00:03:41.240 --> 00:03:46.520
+ some way to tame that so we can make you workable concurrency out of it. And there's really two ways
+
+00:03:46.520 --> 00:03:51.720
+ you can do this. One is what I call the no-gyle method. This is what Python is doing, where you take
+
+00:03:51.720 --> 00:03:56.840
+ all your data structures, you make them concurrency-safe, and then you just leave it up to the programmer
+
+00:03:56.840 --> 00:04:01.320
+ to decide what they're going to do with it. They've got to build safe abstractions on top of that.
+
+00:04:01.320 --> 00:04:06.120
+ One of the big downsides with this is that it comes to the pretty high cost. The last benchmarks I've
+
+00:04:06.120 --> 00:04:12.680
+ seen is that by making everything concurrency-safe and Python, single-threaded code is about 20% slower
+
+00:04:12.680 --> 00:04:19.320
+ in some benchmarks. And so this has, and since most code is single-threaded, this has a big performance
+
+00:04:19.320 --> 00:04:23.640
+ impact for most code that isn't taking advantage of the multi-threading. The other thing is this
+
+00:04:23.640 --> 00:04:27.720
+ introduces a lot of nasty concurrency bugs because you can have anything mutating any part of the
+
+00:04:27.720 --> 00:04:34.520
+ data from any thread, even if you can't have memory unsafety per se. The other option is actors,
+
+00:04:34.520 --> 00:04:38.920
+ which are a really known way to approach this, where you trade some of that flexibility that you get
+
+00:04:38.920 --> 00:04:45.160
+ with fully concurrent for more control. And code and functions are shared between all the different
+
+00:04:45.160 --> 00:04:51.960
+ threads, but data has to be passed along channels between different actors. So we want functions to be
+
+00:04:51.960 --> 00:04:56.840
+ shared, and this should be pretty easy because we don't mutate functions like we do data, except when
+
+00:04:56.840 --> 00:05:03.560
+ we do. So in Lisp, functions are just lists like anything else, and so you can mutate them just like
+
+00:05:03.560 --> 00:05:09.160
+ lists. And even if you're not talking about interpretive code, like if you have a native compiled
+
+00:05:09.160 --> 00:05:13.640
+ function, you can still mutate the constants inside the function. For example, here we have a
+
+00:05:13.640 --> 00:05:18.520
+ function return to string. We track that string out, we mutate that string, and now the function
+
+00:05:18.520 --> 00:05:25.320
+ returns a different string. So in Rune, we enforce that all functions and their constants are immutable.
+
+00:05:25.320 --> 00:05:29.000
+ You can't mutate the insides of a function. You can still swap out functions and redefine them,
+
+00:05:29.000 --> 00:05:33.480
+ but you can't mutate the inside of a function. So this enables them to be safely shared across
+
+00:05:33.480 --> 00:05:38.200
+ threads. However, there are some caveats to this. For example, some functions actually do need to
+
+00:05:38.200 --> 00:05:44.120
+ mutate their own data. The example that we run into is CL generic. It uses a method cache. And so it
+
+00:05:44.120 --> 00:05:48.840
+ has to be able to update that cache. And in this case, we just made a special case for this particular
+
+00:05:48.840 --> 00:05:53.080
+ situation, but we don't know what more of these we're going to run into the future, where this is
+
+00:05:53.080 --> 00:06:00.360
+ needed behavior to be able to mutate a function. Okay, so functions are pretty easy. They just can be
+
+00:06:00.360 --> 00:06:06.040
+ shared between threads, but data can't be immutable, you know, at least the nods of the model that
+
+00:06:06.040 --> 00:06:11.480
+ Emax currently has. So we have two different ways to handle this. One is we require whenever you're
+
+00:06:11.480 --> 00:06:15.560
+ calling some other code in a different thread, you have to send all the variables that it's going to
+
+00:06:15.560 --> 00:06:19.960
+ need over to that thread. And this is how you traditionally do inside actors. Any data that needs
+
+00:06:19.960 --> 00:06:24.360
+ to go to a different actor needs to be sent over a channel. It's relatively easy implementation.
+
+00:06:24.360 --> 00:06:30.200
+ But this is difficult in the Emax case because everything is going to be accessing different variables.
+
+00:06:30.200 --> 00:06:33.480
+ And that means when you call something, you have to know ahead of time all the different variables
+
+00:06:33.480 --> 00:06:36.920
+ that are going to be accessed inside that other thread and put those in when you call it.
+
+00:06:36.920 --> 00:06:42.440
+ So the other option we're using is we're copying values to the other threads on demand. So if you're
+
+00:06:42.440 --> 00:06:46.600
+ running a thread, it tries to look at the variable. It doesn't have any value for that variable.
+
+00:06:46.600 --> 00:06:50.440
+ It will go back and ask the main thread and it will copy that value into that thread and
+
+00:06:50.440 --> 00:06:54.280
+ continue execution. This is nice because you can just launch some code and it'll take care of
+
+00:06:54.280 --> 00:07:00.600
+ handling all the data transfer for you. But we don't want to be copying around is buffers because
+
+00:07:00.600 --> 00:07:06.680
+ they can be really large. So in this case, we have a mutex. Each thread could only have one
+
+00:07:06.680 --> 00:07:13.160
+ current buffer that it has an exclusive lock to. This comes with some trade-offs.
+
+00:07:13.160 --> 00:07:17.480
+ Big one being that if the user tries to access some buffer, they want to type something.
+
+00:07:17.480 --> 00:07:20.680
+ And a background thread is holding on to that buffer. What do we do in that situation?
+
+00:07:20.680 --> 00:07:25.640
+ And we still need to hold an exclusive lock even if we're only going to read a buffer.
+
+00:07:25.640 --> 00:07:29.160
+ If you have multiple readers, they each still need to take turns because we can't determine
+
+00:07:29.160 --> 00:07:33.080
+ if at some point a thread is going to try and mutate the buffer. So it has to be an exclusive lock.
+
+00:07:33.080 --> 00:07:38.200
+ The other issue is buffer locals. And this is less of an implementation issue as much as it
+
+00:07:38.200 --> 00:07:42.280
+ is a technical issue. Because you think about when we switch to a buffer, it has some buffer local
+
+00:07:42.280 --> 00:07:46.120
+ data and we have some thread local data. And as we go through, we're mutating everything,
+
+00:07:46.120 --> 00:07:49.960
+ those can get intertwined and pointing to each other. And then when we switch away from that buffer,
+
+00:07:49.960 --> 00:07:53.640
+ we need some quick way to be able to separate those out. So the buffer locals can go with the buffer
+
+00:07:53.640 --> 00:07:57.160
+ locals and the thread data can stay with thread data and make copies of anything that was pointing
+
+00:07:57.160 --> 00:08:02.760
+ to the other side. But we don't have a good method to determine how to separate those two,
+
+00:08:02.760 --> 00:08:07.160
+ like what data belongs to this and what data belongs to this so that we can do that quickly.
+
+00:08:07.160 --> 00:08:10.040
+ And we haven't found a good solution to that yet, but something we're still working on.
+
+00:08:11.640 --> 00:08:16.280
+ So the question is, would this actually be useful for doing real work at EMAX? And I would say, yes,
+
+00:08:16.280 --> 00:08:19.320
+ there's a lot of things you could do with this. You could handle process output in the background.
+
+00:08:19.320 --> 00:08:25.080
+ You can do syntax highlighting. You can do buffer search in parallel. You can do LSP. You can do fetching
+
+00:08:25.080 --> 00:08:29.880
+ your mail in the background. You can have a window manager that doesn't block your window manager
+
+00:08:29.880 --> 00:08:33.640
+ when EMAX is blocked. And as well as you could do something like a file system watcher that keeps
+
+00:08:33.640 --> 00:08:38.680
+ up on files without blocking EMAX. This wouldn't be so great for building a current data structures or
+
+00:08:38.680 --> 00:08:43.240
+ operating on shared data or building your own abstractions because the tradeoffs that we've made here.
+
+00:08:43.240 --> 00:08:48.360
+ Okay, so that's talking about multi-threading. The other thing we're going to talk about is precise
+
+00:08:48.360 --> 00:08:54.760
+ garbage collection. In Roon, we have a safe, precise garbage collection because of the rest type system.
+
+00:08:54.760 --> 00:09:00.040
+ So let's look at what the problem is with garbage collection in the first place. And really the tricky
+
+00:09:00.040 --> 00:09:05.560
+ part about garbage collection is rooting. How do we find out what the roots are? And these are all
+
+00:09:05.560 --> 00:09:09.640
+ the values that are on the stack or into the registers. So in this example here, we allocate an object.
+
+00:09:09.640 --> 00:09:14.360
+ We call garbage collect. That object is collected. And then we try and return it. It's in no longer valid.
+
+00:09:14.360 --> 00:09:21.560
+ So let's look at how EMAX used to deal with this problem way back in the day. There was a system
+
+00:09:21.560 --> 00:09:27.560
+ called GC Pro or GC Protect, which is basically designed that every time a value needed to survive past
+
+00:09:27.560 --> 00:09:32.520
+ a garbage collection point, you had to try and protect it. And in order to do this, you had to clear
+
+00:09:32.520 --> 00:09:37.560
+ a struct. You had to put a macro around it to root the object. And then you had to unroot it when you
+
+00:09:37.560 --> 00:09:42.840
+ were done, past a garbage collection. And now the value is safe. You can see down here, I pulled these
+
+00:09:42.840 --> 00:09:47.000
+ eight rules out from a really old version of the EMAX manual about all the things you had to keep
+
+00:09:47.000 --> 00:09:52.280
+ track of when you were trying to use this system. All right, so there was a special handling for
+
+00:09:52.280 --> 00:09:57.160
+ nested GC protects. You had to make sure the memory was initialized. You had to make sure that
+
+00:09:57.160 --> 00:10:01.560
+ traps couldn't occur between allocating and when GC protect would happen. And it can be tricky
+
+00:10:01.560 --> 00:10:07.160
+ because you don't always know in a function that's getting called could potentially call garbage collection.
+
+00:10:07.160 --> 00:10:12.600
+ And so if you got something wrong, you also might not catch it for a long time because garbage
+
+00:10:12.600 --> 00:10:18.200
+ collection may only get called one out of 99 times. The other 99 times is just fine. And that one time
+
+00:10:18.200 --> 00:10:23.560
+ it happens and you can't reproduce the issue. And when you do get this wrong and something doesn't
+
+00:10:23.560 --> 00:10:26.920
+ get rooted and it gets overwritten, it generally doesn't show up right where the problem is. It gets
+
+00:10:26.920 --> 00:10:31.080
+ shut up way later when you actually try and access the value and the values in valid and you're going to
+
+00:10:31.080 --> 00:10:36.760
+ track it back to where that thing did not get properly rooted. So it's a huge source of bugs and
+
+00:10:36.760 --> 00:10:41.000
+ very hard to maintain. So the EMAX decided to go with a different path which we call conservative
+
+00:10:41.000 --> 00:10:45.400
+ stack scanning. So basically the garbage collector just looks at the stack and all the registers
+
+00:10:45.400 --> 00:10:49.800
+ and any data inside there looks like it could be a pointer. It treats it as a pointer.
+
+00:10:49.800 --> 00:10:56.040
+ This is nice because you get really easy route tracking but it also comes with some trade-offs.
+
+00:10:56.040 --> 00:11:03.000
+ Mostly that your objects are no longer movable. So why would we want movable objects in EMAX?
+
+00:11:03.000 --> 00:11:07.240
+ There's a couple of different reasons. One is compaction. You can take all your heap, you can pack
+
+00:11:07.240 --> 00:11:11.560
+ that on down because you can coalesce all your objects together. Another is that it's easy to
+
+00:11:11.560 --> 00:11:15.240
+ implement generational garbage collection. You can just copy everything out of your minor heap
+
+00:11:15.240 --> 00:11:23.160
+ into your older heap. And really EMAX is kind of uniquely ideal for generational collection
+
+00:11:23.160 --> 00:11:28.360
+ because the typical way we interact with EMAX is as a series of commands. You execute some command,
+
+00:11:28.360 --> 00:11:31.960
+ you execute the next command, you execute command. You can be happening every heap press, you can be
+
+00:11:31.960 --> 00:11:40.040
+ happening with MX. And however long that command is, that is the ideal length for the minor collection
+
+00:11:40.040 --> 00:11:44.360
+ generation, the first generation. Because once you're done with that generation, anything that's
+
+00:11:44.360 --> 00:11:49.240
+ still existing is going to be around for a very long time. And so that works out really well
+
+00:11:49.240 --> 00:11:54.440
+ for EMAX. So we want to make this a generational collector. The other thing is with object layout.
+
+00:11:54.440 --> 00:12:01.080
+ We use a lot of lists inside EMAX Lisp. And every time you go to the CDR, you've got to be chasing
+
+00:12:01.080 --> 00:12:05.480
+ a pointer around the heap and following that. And that can potentially result in cache misses
+
+00:12:05.480 --> 00:12:09.080
+ and all sorts of other things like that. And so it can take a long time. It can be quite slow.
+
+00:12:09.080 --> 00:12:16.520
+ But if you have the ability to move objects, you can just relocate an entire list and lay it out
+
+00:12:16.520 --> 00:12:21.800
+ in an array right next to each other inside memory. And so iterating over it is just as fast as iterating
+
+00:12:21.800 --> 00:12:26.920
+ over an array. But you can only do that if you have move objects. And I'll point out here too that
+
+00:12:26.920 --> 00:12:31.480
+ with conservative stack scanning, it's not that all objects are removable. It's only ones that are
+
+00:12:31.480 --> 00:12:36.200
+ pointed to from the stack or from the registers that have to become removable.
+
+00:12:36.200 --> 00:12:42.440
+ So let's look at how Rust makes precise garbage collection easy.
+
+00:12:43.160 --> 00:12:47.240
+ So here I have some Rust code to show kind of how the lifetime system works and what we call
+
+00:12:47.240 --> 00:12:52.280
+ XOR mutability, where we can only have one mutable reference or multiple immutable references to
+
+00:12:52.280 --> 00:12:57.800
+ the same thing. So here we declare a vector. We take a reference to the first element of the vector.
+
+00:12:57.800 --> 00:13:02.200
+ And then we mutate the vector. Now this can potentially resize the vector and move it to a
+
+00:13:02.200 --> 00:13:06.760
+ different location in memory. And so that reference is no longer valid. And the nice thing is,
+
+00:13:06.760 --> 00:13:11.080
+ Rust catches this for us. It says, hey, this is no longer valid. This reference can't survive
+
+00:13:11.080 --> 00:13:17.160
+ past when you mutated it. Okay. That's exactly what we want or a garbage collector.
+
+00:13:17.160 --> 00:13:21.640
+ You can see here we take this in a garbage collection context. We create a new context object.
+
+00:13:21.640 --> 00:13:25.640
+ We add an object. We call garbage collect. Then we try and access that object.
+
+00:13:25.640 --> 00:13:30.760
+ It's no longer accessible. And Rust will prevent us from trying to access that variable. It's good.
+
+00:13:30.760 --> 00:13:34.760
+ And so how do we solve this? We have a root macro.
+
+00:13:35.640 --> 00:13:41.960
+ We declare this root macro. It lets us take the object and let it live past garbage collection.
+
+00:13:41.960 --> 00:13:46.200
+ And everything works out. And the nice thing is, this root macro will get dropped when it's out of
+
+00:13:46.200 --> 00:13:52.760
+ scopes. We don't have to worry about the un-gc protect step of this. So statically, Rust will verify
+
+00:13:52.760 --> 00:13:57.480
+ and tell us any object that needs to be rooted. If we try and access it, it'll tell us it's
+
+00:13:57.480 --> 00:14:01.960
+ invalid. We have this new root macro. And then we can access it. And so in that way, we have
+
+00:14:01.960 --> 00:14:05.960
+ safe, precise garbage collection without any chance of introducing undefined behavior.
+
+00:14:05.960 --> 00:14:11.320
+ Which is really, really powerful. And it's really easy because the type system will catch it all for us.
+
+00:14:11.320 --> 00:14:16.840
+ There's some other rust niceties that want to kind of talk through that are useful but are not,
+
+00:14:16.840 --> 00:14:22.360
+ you know, star features. One is Brock macros. So you can see up on the top, you can see how you
+
+00:14:22.360 --> 00:14:27.880
+ declare a function inside the C core. All right, you have to use the macro. You have to put the
+
+00:14:27.880 --> 00:14:31.320
+ list type, the function type, the struct type, the different types of arguments, or different number
+
+00:14:31.320 --> 00:14:35.000
+ of arguments, the doc string, and then you can put your argument list in downside there.
+
+00:14:35.000 --> 00:14:40.040
+ On the rest side, we just write this like we would and the other rust function. And then we put the
+
+00:14:40.040 --> 00:14:44.360
+ defund Brock macro on there and takes care of everything for us behind the scenes. And a couple
+
+00:14:44.360 --> 00:14:48.520
+ cool additional things we can do with this is that we don't have to make everything just an object.
+
+00:14:48.520 --> 00:14:54.280
+ We can actually make things more specific types. So here, we have symbols. And as well as you can
+
+00:14:54.280 --> 00:14:59.240
+ see sub feature, it's an optional parameter and we just make it an option inside rust and it automatically
+
+00:14:59.240 --> 00:15:05.720
+ make it an optional inside elis. This makes them really easy to write. And I can't take credit for
+
+00:15:05.720 --> 00:15:09.480
+ this is because this is something that I saw inside remax and I stole from them, but it makes the
+
+00:15:09.480 --> 00:15:15.000
+ functions really easy to call from each other and really easy to write as well. Another thing that's
+
+00:15:15.000 --> 00:15:22.200
+ really nice is some types. So in the C core, if I wanted to get a string out of an object, I would
+
+00:15:22.200 --> 00:15:28.680
+ first need to check that it's a string and then dereference it is a string. But if it's not a string,
+
+00:15:28.680 --> 00:15:32.440
+ I'm going to introduce undefined behavior. And so complicated code, I have to make sure that I have
+
+00:15:32.440 --> 00:15:36.520
+ always checked what type it is before I try and dereference of that type. We don't have to worry
+
+00:15:36.520 --> 00:15:41.080
+ about any of that inside rust because we can untag a value and we can use their some types,
+
+00:15:41.080 --> 00:15:46.040
+ basically create an enum and we can match on what the different values can be. And then we only
+
+00:15:46.040 --> 00:15:51.400
+ get out the types that are viable or are actually there. And so we never accidentally get something out
+
+00:15:51.400 --> 00:15:55.400
+ of an object that we didn't mean to or dereference it something that doesn't really exist. We can just
+
+00:15:55.400 --> 00:15:58.760
+ match on it and we can get out the values that we need, which is really, really powerful.
+
+00:15:58.760 --> 00:16:05.960
+ So there's some of the rust nice to tease as well, working with here. One is the Regix engine inside
+
+00:16:05.960 --> 00:16:11.880
+ rust is really fast, high performance. And we are using that for the e-list Regix engine to give
+
+00:16:11.880 --> 00:16:18.520
+ it high performance and worst case guarantees. The other is that rust has a lot of really good
+
+00:16:18.520 --> 00:16:23.880
+ parsers for things like JSON that are no copy parsers that are high performance and we can use those
+
+00:16:23.880 --> 00:16:31.240
+ inside rune as well. There's a handful of other changes we're working on that are not rust-specific,
+
+00:16:31.240 --> 00:16:37.480
+ but we'd like to see. The first is being GUI first terminal second. So this means two things. First is
+
+00:16:37.480 --> 00:16:42.680
+ that we have all of our key bindings. Right now, it's an EMax, Control-I, and Tab are bound to
+
+00:16:42.680 --> 00:16:46.920
+ the same key binding by default because that's how it works since of the terminal. In the GUI,
+
+00:16:46.920 --> 00:16:53.400
+ you shouldn't have that limitation. The second is that the GUI should not block when Lisp is blocked.
+
+00:16:53.400 --> 00:16:57.320
+ It should be independent of that. So your GUI can still continue to operate when Lisp is running.
+
+00:16:57.320 --> 00:17:02.520
+ The other is the ability to have an off-screen cursor so that you can be typing on something,
+
+00:17:02.520 --> 00:17:06.440
+ you can scroll up and down and the point doesn't have to follow you where you lose your place where
+
+00:17:06.440 --> 00:17:10.840
+ you were before. You don't have to intentionally set a mark. You can just scroll and then start typing
+
+00:17:10.840 --> 00:17:15.400
+ and you'll go back up to where it was before, like it works in most applications. And this can be optional.
+
+00:17:16.120 --> 00:17:21.000
+ The other is image flow. We want it so that you can easily flow images and you can have large images
+
+00:17:21.000 --> 00:17:27.960
+ and scroll past them without jumping and you can flow text around images. How are we testing this
+
+00:17:27.960 --> 00:17:33.400
+ project? Because there's a lot of things that you could get wrong here. One thing we're doing is we're
+
+00:17:33.400 --> 00:17:42.200
+ using ERT. So EMax ships with over 7,000 built-in tests, E-list tests. And we are using this test suite
+
+00:17:42.200 --> 00:17:46.520
+ to test our project as well. So we can kind of use this as a dashboard of saying how close are we to
+
+00:17:46.520 --> 00:17:52.520
+ getting to parity with a new EMax. The other thing that we have is a tool called L-PROP, which is
+
+00:17:52.520 --> 00:17:58.600
+ external utility that basically tests for correctness. Because really, the correctness of rune is
+
+00:17:58.600 --> 00:18:03.400
+ whatever EMax does, because there's no official spec on how things should behave. And so to do this,
+
+00:18:03.400 --> 00:18:07.800
+ we can go look at the Rust function signature. And we know what the arguments are, we know how many
+
+00:18:07.800 --> 00:18:12.040
+ they are, and we know what types they should be. And given that information, we can generate a whole
+
+00:18:12.040 --> 00:18:17.880
+ bunch of random functions feeding those types in. And then we send a copy over to EMax, we send a
+
+00:18:17.880 --> 00:18:22.120
+ copy over to rune, they each evaluate it, and they return the result. And we make sure the results
+
+00:18:22.120 --> 00:18:26.360
+ are the same. And we do that for thousands of different implementations of the function,
+
+00:18:26.360 --> 00:18:30.120
+ and we help us find corner cases really easy without no hand right, a whole bunch of different
+
+00:18:30.120 --> 00:18:33.880
+ cases to test things and say where are these two functions different.
+
+00:18:36.120 --> 00:18:41.320
+ So the current status, we already have a multi-threaded ELIS interpreter and byte code engine
+
+00:18:41.320 --> 00:18:45.640
+ inside there. There's no actual text editor in there yet, but the primitives are there,
+
+00:18:45.640 --> 00:18:50.120
+ like you can insert text, move point around, delete text, do different things like that.
+
+00:18:50.120 --> 00:18:55.160
+ But we don't have a GUI hooked up to different key bindings to actually type on. There's just a
+
+00:18:55.160 --> 00:19:01.720
+ REPL to operate in. We have about 250 of the 1500 built-in functions already implemented inside
+
+00:19:01.720 --> 00:19:07.400
+ there. There's a lot of low-hanging fruit inside this area to still be implemented. The next
+
+00:19:07.400 --> 00:19:13.000
+ directions we're working on is we're optimizing the GC. We want to make it generational, like I said,
+
+00:19:13.000 --> 00:19:17.640
+ right now it's just a simple semi-space copy GC. We want to add proper GUI. We need implement text
+
+00:19:17.640 --> 00:19:23.400
+ properties, overlays, process, and job control, all that goodness right there. So how can you get involved?
+
+00:19:23.400 --> 00:19:28.200
+ This is hosted on GitHub. You can come on over. If you have any ideas about how to implement
+
+00:19:28.200 --> 00:19:31.320
+ something or something you'd like to see done, go ahead and open just open an issue so we have a
+
+00:19:31.320 --> 00:19:34.600
+ discussion about it. We've had lots of interesting discussions with different people coming in to
+
+00:19:34.600 --> 00:19:39.960
+ the GitHub repo. If you're interested in contributing, the easiest way is probably to run lprop,
+
+00:19:39.960 --> 00:19:44.040
+ pick some function, run lprop on it. I promise it won't take long to find some issues, some
+
+00:19:44.040 --> 00:19:48.520
+ discrepancy between emacs and rune, and that lets you dive into the Russ code and figure out
+
+00:19:48.520 --> 00:19:52.440
+ and the C code and figure out what the difference is between the two. Or come along and help
+
+00:19:52.440 --> 00:19:56.120
+ implement your favorite functionality. This has been a really interesting project so far,
+
+00:19:56.120 --> 00:20:00.520
+ and we've had a handful of different contributors on it, which kind of want to learn,
+
+00:20:00.520 --> 00:20:05.720
+ rust, or get more into systems level programming. Thank you.
+

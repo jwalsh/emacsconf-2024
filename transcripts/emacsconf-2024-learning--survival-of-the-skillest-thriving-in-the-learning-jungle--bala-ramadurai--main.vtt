@@ -1,0 +1,974 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:07.200
+ Oh wow, I am going to tell you about how I am learning this new thing.
+
+00:00:07.200 --> 00:00:15.500
+ Okay, dude, I am recording, okay, so I will call you back.
+
+00:00:15.500 --> 00:00:18.500
+ Yeah, yeah, I am doing learning the new thing.
+
+00:00:18.500 --> 00:00:20.500
+ Yeah, yeah, yeah, later, later, later.
+
+00:00:20.500 --> 00:00:23.500
+ Not right now, later, later, later, later.
+
+00:00:23.500 --> 00:00:25.000
+ Sorry about that.
+
+00:00:25.000 --> 00:00:29.800
+ Okay, as I was saying, I am going to tell you all about how I am learning this.
+
+00:00:29.800 --> 00:00:31.800
+ New thing.
+
+00:00:31.800 --> 00:00:36.300
+ Ooh, such a Chua's Emacs newsletter is out.
+
+00:00:36.300 --> 00:00:38.800
+ Maybe I should spend some time.
+
+00:00:38.800 --> 00:00:43.800
+ Wait a second, I have to learn this new thing.
+
+00:00:43.800 --> 00:00:56.800
+ Okay, so I am going to tell you how we can learn new skills in the middle of so many other wonderful things that you want to do and to speak to wonderful people that you would speak to.
+
+00:00:56.800 --> 00:01:04.300
+ My name is Bala Ramadurai and I am going to be talking about the survival of the skill list.
+
+00:01:04.300 --> 00:01:07.300
+ That's what I call it, okay.
+
+00:01:07.300 --> 00:01:11.800
+ Survey of the skill list, learning or thriving in the learning jungle.
+
+00:01:11.800 --> 00:01:17.800
+ Here, I am going to give you some tips and techniques as to how you can learn skills, new skills.
+
+00:01:17.800 --> 00:01:27.800
+ I am going to give you a quote from a multi-talented teacher. It was the second president of my country, India.
+
+00:01:27.800 --> 00:01:32.800
+ As Radhakshan, he says, "When we think we know, we cease to learn."
+
+00:01:32.800 --> 00:01:34.800
+ That was his quote.
+
+00:01:34.800 --> 00:01:36.800
+ What is the skill?
+
+00:01:36.800 --> 00:01:42.800
+ The skill is the knowledge and the ability that enables you to do something well.
+
+00:01:42.800 --> 00:01:47.800
+ That's the knowledge, first and the ability and you have to do it well, right.
+
+00:01:47.800 --> 00:01:50.800
+ So, why should you learn a new skill?
+
+00:01:50.800 --> 00:01:57.800
+ Now, if you can pause this video watching streaming part of the video, then come up with your own reasons.
+
+00:01:57.800 --> 00:02:01.800
+ I am going to give you my top three reasons that you might want to learn a new skill.
+
+00:02:01.800 --> 00:02:03.800
+ Get ahead in your career.
+
+00:02:03.800 --> 00:02:10.800
+ Look good or cool in your community or peer group or someone forced you to.
+
+00:02:10.800 --> 00:02:13.800
+ Now, what skills should you learn?
+
+00:02:13.800 --> 00:02:15.800
+ There could be a whole list.
+
+00:02:15.800 --> 00:02:25.800
+ Let me take a stab at some of the ones that I think could be cool, bunch of jumping, teaching your pet to pick up the newspaper without tearing it to shreds.
+
+00:02:25.800 --> 00:02:30.800
+ Perhaps with Python rearing, I mean coding, coding, you can do learning coding.
+
+00:02:30.800 --> 00:02:35.800
+ So, you could list your own skills that you have to learn, you want to learn.
+
+00:02:35.800 --> 00:02:38.800
+ But what stops you from learning new skills?
+
+00:02:38.800 --> 00:02:42.800
+ The most common reason that I've heard in the past is lack of time.
+
+00:02:42.800 --> 00:02:45.800
+ Oh, Bala, I have to do so many things.
+
+00:02:45.800 --> 00:02:47.800
+ I don't have the time to learn any new skills.
+
+00:02:47.800 --> 00:02:50.800
+ Like a motivation could be another reason.
+
+00:02:50.800 --> 00:02:56.800
+ Or you just are rebel, I don't know who is he or who is he to tell me what I should learn.
+
+00:02:56.800 --> 00:02:57.800
+ I'm going to learn things like that.
+
+00:02:57.800 --> 00:03:00.800
+ So, then stops you from learning a new skill.
+
+00:03:00.800 --> 00:03:06.800
+ But there's even more fundamental reason for why we don't learn a new skill so easily.
+
+00:03:06.800 --> 00:03:09.800
+ And this comes from this story of scholar in the T cup.
+
+00:03:09.800 --> 00:03:11.800
+ I can pass on the link later to you.
+
+00:03:11.800 --> 00:03:15.800
+ You can watch this, my own version of this story.
+
+00:03:15.800 --> 00:03:23.800
+ The ultimate truth in this story or the moral in this story is that we are filled with preconceived ideas.
+
+00:03:23.800 --> 00:03:27.800
+ And the Zen Master in the story says, it's like a full T cup.
+
+00:03:27.800 --> 00:03:32.800
+ You want to learn new skills, you have to empty your T cup.
+
+00:03:32.800 --> 00:03:34.800
+ Now, how do you empty your T cup?
+
+00:03:34.800 --> 00:03:37.800
+ You just can't pour everything out of your head.
+
+00:03:37.800 --> 00:03:40.800
+ So, how do you really empty your T cup?
+
+00:03:40.800 --> 00:03:48.800
+ So, the way to empty your T cup, simplest way to do it is write down your thoughts as simple as that.
+
+00:03:48.800 --> 00:03:51.800
+ Just take a piece of paper and write it down.
+
+00:03:51.800 --> 00:03:58.800
+ Or, if you want electronic means, use emacs or mode and type out your thoughts.
+
+00:03:58.800 --> 00:04:00.800
+ They'll task for you right now.
+
+00:04:00.800 --> 00:04:06.800
+ What you have to do is to create a folder in your documents, folder called inbox, create one.
+
+00:04:06.800 --> 00:04:09.800
+ And create a new file called to do.org.
+
+00:04:09.800 --> 00:04:14.800
+ If you are paper based, you can use a notebook or any other forms of the same file.
+
+00:04:14.800 --> 00:04:19.800
+ In that, write down all your unfinished tasks, personal and professional.
+
+00:04:19.800 --> 00:04:22.800
+ Write down some things that have been worrying you.
+
+00:04:22.800 --> 00:04:25.800
+ Whatever worries you right now, just write it down.
+
+00:04:25.800 --> 00:04:26.800
+ The whole thing.
+
+00:04:26.800 --> 00:04:31.800
+ Write down some tasks or actions that you are waiting for someone else.
+
+00:04:31.800 --> 00:04:34.800
+ Somebody else that could also be part of your list here.
+
+00:04:34.800 --> 00:04:35.800
+ Great.
+
+00:04:35.800 --> 00:04:39.800
+ Now, that empty your T cup, I am going to tell you the origin of these ideas.
+
+00:04:39.800 --> 00:04:42.800
+ These come from getting things done by David Allen.
+
+00:04:42.800 --> 00:04:43.800
+ It's a great book.
+
+00:04:43.800 --> 00:04:44.800
+ I've read it multiple times.
+
+00:04:44.800 --> 00:04:45.800
+ Fantastic.
+
+00:04:45.800 --> 00:04:51.800
+ And he says, your mind is for having ideas, not holding them.
+
+00:04:51.800 --> 00:04:56.800
+ You have to hold on to this idea in your mind.
+
+00:04:56.800 --> 00:05:00.800
+ Keep it in your mind saying it's for having ideas, not holding them.
+
+00:05:00.800 --> 00:05:01.800
+ All right.
+
+00:05:01.800 --> 00:05:04.800
+ Perform one of four actions on your task list.
+
+00:05:04.800 --> 00:05:05.800
+ Okay.
+
+00:05:05.800 --> 00:05:07.800
+ The one that you just wrote down.
+
+00:05:07.800 --> 00:05:08.800
+ You delete them.
+
+00:05:08.800 --> 00:05:09.800
+ Okay.
+
+00:05:09.800 --> 00:05:10.800
+ As simple as that.
+
+00:05:10.800 --> 00:05:11.800
+ Strike through the task.
+
+00:05:11.800 --> 00:05:15.800
+ Hit the delete or change the state to cancel.
+
+00:05:15.800 --> 00:05:16.800
+ Okay.
+
+00:05:16.800 --> 00:05:17.800
+ All right.
+
+00:05:17.800 --> 00:05:19.800
+ If you don't want to delete it, you want to defer it.
+
+00:05:19.800 --> 00:05:21.800
+ Add it to your calendar.
+
+00:05:21.800 --> 00:05:23.800
+ Add a reminder to it if you want.
+
+00:05:23.800 --> 00:05:29.800
+ Or in Emacs org mode, use Ctrl+C, Ctrl+S to schedule it to a different time.
+
+00:05:29.800 --> 00:05:32.800
+ That you feel you would be able to do that task.
+
+00:05:32.800 --> 00:05:34.800
+ Or just delegate it to somebody else.
+
+00:05:34.800 --> 00:05:39.800
+ Maybe you are not the best person to do it or you probably won't find time to do this.
+
+00:05:39.800 --> 00:05:42.800
+ Send it to your colleague, student, assistant.
+
+00:05:42.800 --> 00:05:46.800
+ Maybe even your favorite LLM to do this.
+
+00:05:46.800 --> 00:05:49.800
+ LLM being large language model.
+
+00:05:49.800 --> 00:05:51.800
+ Or just do it.
+
+00:05:51.800 --> 00:05:53.800
+ As they say, just do it.
+
+00:05:53.800 --> 00:05:55.800
+ Set a timer for two minutes and do the task.
+
+00:05:55.800 --> 00:05:57.800
+ Finish the task right here right now.
+
+00:05:57.800 --> 00:05:58.800
+ Nothing stopping you.
+
+00:05:58.800 --> 00:05:59.800
+ Finish it.
+
+00:05:59.800 --> 00:06:00.800
+ Oh, great.
+
+00:06:00.800 --> 00:06:01.800
+ I'm going to do this.
+
+00:06:01.800 --> 00:06:04.800
+ But set yourself two minutes because sometimes it may spill over to half an hour.
+
+00:06:04.800 --> 00:06:06.800
+ And you still haven't processed the real list.
+
+00:06:06.800 --> 00:06:08.800
+ That's why there's a timer for two minutes.
+
+00:06:08.800 --> 00:06:13.800
+ One tip I'm going to give you is don't skip any of the items from your list.
+
+00:06:13.800 --> 00:06:15.800
+ Because it's tougher.
+
+00:06:15.800 --> 00:06:16.800
+ You've been trying to avoid it.
+
+00:06:16.800 --> 00:06:17.800
+ Don't do that.
+
+00:06:17.800 --> 00:06:20.800
+ Be rigorous and finish it off.
+
+00:06:20.800 --> 00:06:22.800
+ Processing at least.
+
+00:06:22.800 --> 00:06:26.800
+ Now you can do the absolute same process on your email inbox.
+
+00:06:26.800 --> 00:06:27.800
+ I know.
+
+00:06:27.800 --> 00:06:31.800
+ I know some of you have 55,000 emails in your inbox.
+
+00:06:31.800 --> 00:06:33.800
+ How am I going to process all of them?
+
+00:06:33.800 --> 00:06:38.800
+ Well, Tiago Forte whose method I'm going to be also talking about says.
+
+00:06:38.800 --> 00:06:42.800
+ Archive them all and pull out the top 100.
+
+00:06:42.800 --> 00:06:45.800
+ The last latest 100 and process that.
+
+00:06:45.800 --> 00:06:47.800
+ That's a cool way to do it.
+
+00:06:47.800 --> 00:06:48.800
+ Okay.
+
+00:06:48.800 --> 00:06:52.800
+ So you're not stuck to those 50,000 but just the top 100 of those.
+
+00:06:52.800 --> 00:06:57.800
+ You can do the same absolutely the same thing to any of your messaging apps as well.
+
+00:06:57.800 --> 00:07:01.800
+ WhatsApp, Matrix, Slack, whatever you choose.
+
+00:07:01.800 --> 00:07:04.800
+ Even to your physical inbox, you can do the absolute same things.
+
+00:07:04.800 --> 00:07:08.800
+ Put your items and see if you can need to process them.
+
+00:07:08.800 --> 00:07:09.800
+ Okay.
+
+00:07:09.800 --> 00:07:14.800
+ What if the email or message or task is something that you might need in the future?
+
+00:07:14.800 --> 00:07:15.800
+ Great.
+
+00:07:15.800 --> 00:07:19.800
+ Archive them or move it to a place you may refer to later.
+
+00:07:19.800 --> 00:07:25.800
+ So you have plenty of storage in your cloud space, in your email space, in your computer space.
+
+00:07:25.800 --> 00:07:26.800
+ Use that.
+
+00:07:26.800 --> 00:07:27.800
+ You know, Archive it.
+
+00:07:27.800 --> 00:07:28.800
+ You can refer to it later.
+
+00:07:28.800 --> 00:07:29.800
+ Not over it.
+
+00:07:29.800 --> 00:07:30.800
+ Don't want it right in front of you.
+
+00:07:30.800 --> 00:07:32.800
+ That's the only thing here.
+
+00:07:32.800 --> 00:07:38.800
+ Now another question that pops you ahead is what if something that requires multiple steps, right?
+
+00:07:38.800 --> 00:07:40.800
+ Not all steps are created.
+
+00:07:40.800 --> 00:07:42.800
+ Not all tasks are created alike.
+
+00:07:42.800 --> 00:07:44.800
+ You have multiple steps to the task.
+
+00:07:44.800 --> 00:07:46.800
+ That's when the task becomes a project.
+
+00:07:46.800 --> 00:07:47.800
+ Okay.
+
+00:07:47.800 --> 00:07:53.800
+ An example or a few examples of those are finishing a course on say Courser or NPTEL or UDME.
+
+00:07:53.800 --> 00:07:57.800
+ Teaching of course, if you're a teacher in your college or school.
+
+00:07:57.800 --> 00:08:01.800
+ If you're organizing a conference such as the EMAX conference.
+
+00:08:01.800 --> 00:08:03.800
+ It's a huge project.
+
+00:08:03.800 --> 00:08:09.800
+ You will need to use, it's a project, arranging a birthday party for your spouse.
+
+00:08:09.800 --> 00:08:11.800
+ That's sweet, but it's still a project.
+
+00:08:11.800 --> 00:08:12.800
+ You will have many tasks in it.
+
+00:08:12.800 --> 00:08:14.800
+ So these are examples of projects.
+
+00:08:14.800 --> 00:08:17.800
+ Here's how one can handle projects.
+
+00:08:17.800 --> 00:08:19.800
+ Create a folder for each project.
+
+00:08:19.800 --> 00:08:22.800
+ Create a text or word doc or title.
+
+00:08:22.800 --> 00:08:25.800
+ It has to do.text or to do.docx or to do.docx or to do.docx.
+
+00:08:25.800 --> 00:08:28.800
+ I prefer.docx and you can do it.
+
+00:08:28.800 --> 00:08:34.800
+ And in that, write down the success criteria, the goal or the deadline of the project.
+
+00:08:34.800 --> 00:08:37.800
+ Write down all the tasks that need to be done.
+
+00:08:37.800 --> 00:08:39.800
+ You don't have to think about all of it.
+
+00:08:39.800 --> 00:08:45.800
+ But whatever comes to your mind, just put it in there as some tasks that you need to get done inside this project.
+
+00:08:45.800 --> 00:08:53.800
+ Now, write, identify the immediate action that needs to be done for the project to move forward.
+
+00:08:53.800 --> 00:08:56.800
+ That's usually something that's stopping the project from progressing.
+
+00:08:56.800 --> 00:09:00.800
+ So identify that and say, that's the next thing I'm going to do.
+
+00:09:00.800 --> 00:09:03.800
+ An example of a project is right here.
+
+00:09:03.800 --> 00:09:08.800
+ The goal of the project is to deliver a talk about my organizing system, organization system.
+
+00:09:08.800 --> 00:09:12.800
+ Make it like a workshop for pa and with pauses for activities.
+
+00:09:12.800 --> 00:09:15.800
+ You can see that this is the talk that I'm delivering right now.
+
+00:09:15.800 --> 00:09:18.800
+ And right now, if you see, recording the talk.
+
+00:09:18.800 --> 00:09:24.800
+ Of course, the next one I'm going to do after this is going to be sending the recorded talk the file and the PDF for the talk.
+
+00:09:24.800 --> 00:09:28.800
+ Now, if you want, you can add some sub steps and all that also into this.
+
+00:09:28.800 --> 00:09:34.800
+ Of course, I'd like to thank the coordinators for their absolutely wonderful work that they're doing throughout this.
+
+00:09:34.800 --> 00:09:36.800
+ Now, task for you.
+
+00:09:36.800 --> 00:09:42.800
+ You can take your time and first of all, think of a project that you have to get absolutely get done.
+
+00:09:42.800 --> 00:09:49.800
+ Create a project, sorry, create a folder on your computer or phone with the name of the project.
+
+00:09:49.800 --> 00:09:53.800
+ Create a to do dot org.
+
+00:09:53.800 --> 00:09:56.800
+ If you want to use a notebook, you can use a fresh leaf.
+
+00:09:56.800 --> 00:10:00.800
+ Write down the tasks, all the tasks associated with this project.
+
+00:10:00.800 --> 00:10:02.800
+ That's going to be how you handle it.
+
+00:10:02.800 --> 00:10:04.800
+ Now, what if you have multiple projects?
+
+00:10:04.800 --> 00:10:07.800
+ Not many of us have only one project.
+
+00:10:07.800 --> 00:10:09.800
+ In fact, many of us have multiple projects.
+
+00:10:09.800 --> 00:10:11.800
+ What do we do in that situation?
+
+00:10:11.800 --> 00:10:13.800
+ Well, the answer is simple.
+
+00:10:13.800 --> 00:10:15.800
+ Create a folder for each project.
+
+00:10:15.800 --> 00:10:25.800
+ Add this org file called to do into each of those folders and write down the tasks for all of these projects as well.
+
+00:10:25.800 --> 00:10:28.800
+ Write down all of the tasks and mark one of them as next.
+
+00:10:28.800 --> 00:10:30.800
+ There can be only one next action.
+
+00:10:30.800 --> 00:10:32.800
+ It can't be multiple next action.
+
+00:10:32.800 --> 00:10:37.800
+ That's the immediate thing that has to be done to take this project forward.
+
+00:10:37.800 --> 00:10:40.800
+ What are the project stops before completion?
+
+00:10:40.800 --> 00:10:41.800
+ There are possibilities.
+
+00:10:41.800 --> 00:10:42.800
+ Sometimes you lose interest.
+
+00:10:42.800 --> 00:10:44.800
+ Sometimes the collaborator loses interest.
+
+00:10:44.800 --> 00:10:46.800
+ What do you do in those situations?
+
+00:10:46.800 --> 00:10:51.800
+ Have a folder in your computer or phone for abandoned projects called resources.
+
+00:10:51.800 --> 00:11:01.800
+ Oh, by the way, for your project's folder, create an overarching project's folder and inside that are all the project folders.
+
+00:11:01.800 --> 00:11:03.800
+ I forgot to tell you that.
+
+00:11:03.800 --> 00:11:06.800
+ Same way, on the same level, create a resources folder.
+
+00:11:06.800 --> 00:11:12.800
+ That's for all your abandoned projects or even could be even your research material as well,
+
+00:11:12.800 --> 00:11:14.800
+ which you're not currently working on.
+
+00:11:14.800 --> 00:11:20.800
+ Move this particular project that's abandoned or stopped somewhere in between to that folder.
+
+00:11:20.800 --> 00:11:23.800
+ Now, there's a possibility you might successfully come to.
+
+00:11:23.800 --> 00:11:26.800
+ I hope your all your projects end up being successful.
+
+00:11:26.800 --> 00:11:32.800
+ But there are quite a few which will end up in this where quite a few which will end up in the abandoned as well.
+
+00:11:32.800 --> 00:11:36.800
+ Now, I write an end report so that I can learn from this.
+
+00:11:36.800 --> 00:11:38.800
+ What did I enjoy most in the project?
+
+00:11:38.800 --> 00:11:40.800
+ What could have been better?
+
+00:11:40.800 --> 00:11:43.800
+ What did I learn from this particular project?
+
+00:11:43.800 --> 00:11:47.800
+ Now, you will need to move that folder to folder called archives.
+
+00:11:47.800 --> 00:11:51.800
+ This is the final resting place for the project, completed projects.
+
+00:11:51.800 --> 00:11:56.800
+ Because if you come up with another project which sounds similar to the archives one,
+
+00:11:56.800 --> 00:11:58.800
+ you can pick that out and create that as a template.
+
+00:11:58.800 --> 00:12:00.800
+ Use that as a template.
+
+00:12:00.800 --> 00:12:07.800
+ Now, why would I have one folder per project when there's only one file sitting in it like call to do dot R?
+
+00:12:07.800 --> 00:12:13.800
+ Well, most projects also have some project files and this folder can be a storehouse of all of that.
+
+00:12:13.800 --> 00:12:15.800
+ And you can access all of them at one shot.
+
+00:12:15.800 --> 00:12:17.800
+ That's the advantage.
+
+00:12:17.800 --> 00:12:23.800
+ What if the project is ongoing and doesn't really end that doesn't seem to have a deadline or an ending point?
+
+00:12:23.800 --> 00:12:25.800
+ That's called an area.
+
+00:12:25.800 --> 00:12:27.800
+ This is now an area.
+
+00:12:27.800 --> 00:12:31.800
+ Examples of areas, gardening, paying bills, never stops.
+
+00:12:31.800 --> 00:12:39.800
+ Blogging, these are all some examples of areas that really don't have a definite deadline.
+
+00:12:39.800 --> 00:12:43.800
+ For areas also, create a folder for each of them.
+
+00:12:43.800 --> 00:12:50.800
+ You can create a parent folder called areas and under them you can have those areas.
+
+00:12:50.800 --> 00:12:53.800
+ And have a to do in each of those folders.
+
+00:12:53.800 --> 00:12:56.800
+ Now, what do we forget to visit the to do files?
+
+00:12:56.800 --> 00:13:03.800
+ Which in my case often happens, I forget to visit those to do files and see what the task needs to be done.
+
+00:13:03.800 --> 00:13:10.800
+ You can of course, or add all of this to do dot org and into your org agenda files variable.
+
+00:13:10.800 --> 00:13:14.800
+ So that when you pull up your org agenda, all of them show up.
+
+00:13:14.800 --> 00:13:15.800
+ That's a good area.
+
+00:13:15.800 --> 00:13:18.800
+ You need to have a weekly review with yourself.
+
+00:13:18.800 --> 00:13:26.800
+ Now, weekly review is essentially a weekly appointment with yourself for you to stay in control of your life or career.
+
+00:13:26.800 --> 00:13:28.800
+ To keep things in track, on track.
+
+00:13:28.800 --> 00:13:32.800
+ In the weekly review, you need to empty your T cup.
+
+00:13:32.800 --> 00:13:34.800
+ That's the first and foremost.
+
+00:13:34.800 --> 00:13:38.800
+ Then process all your items in the to do file.
+
+00:13:38.800 --> 00:13:41.800
+ Process all your emails from the last week.
+
+00:13:41.800 --> 00:13:44.800
+ Use the exact same structure or do delete, defer delegate.
+
+00:13:44.800 --> 00:13:47.800
+ This is the four days that you can use.
+
+00:13:47.800 --> 00:13:51.800
+ Process all your messaging app messages from the last week.
+
+00:13:51.800 --> 00:13:56.800
+ So last one whole week, whatever has come up, you need to process all of them.
+
+00:13:56.800 --> 00:14:03.800
+ In the weekly review, you also need to archive all your emails and messaging app messages that you have processed.
+
+00:14:03.800 --> 00:14:05.800
+ You've already taken care of it.
+
+00:14:05.800 --> 00:14:07.800
+ You don't need to have it right in front of you.
+
+00:14:07.800 --> 00:14:09.800
+ You can move them all into archive.
+
+00:14:09.800 --> 00:14:14.800
+ Most messaging apps and email systems have archives as part of their features.
+
+00:14:14.800 --> 00:14:19.800
+ Look through the project to do files to see if the next action is marked.
+
+00:14:19.800 --> 00:14:25.800
+ Now, look through the project folder list to see if some of them need to be archived or move to resources.
+
+00:14:25.800 --> 00:14:27.800
+ Some may be abandoned, some may be done.
+
+00:14:27.800 --> 00:14:32.800
+ You can move them successfully to all of where it needs to belong.
+
+00:14:32.800 --> 00:14:33.800
+ Now, task for you.
+
+00:14:33.800 --> 00:14:35.800
+ You can pause this of course and do this.
+
+00:14:35.800 --> 00:14:41.800
+ Set an appointment with yourself, sacrifice time with only with yourself and title it weekly review.
+
+00:14:41.800 --> 00:14:43.800
+ Start with half an hour.
+
+00:14:43.800 --> 00:14:45.800
+ Perhaps you can have it longer later on.
+
+00:14:45.800 --> 00:14:49.800
+ As you need more time, you can have more time with yourself.
+
+00:14:49.800 --> 00:14:52.800
+ And make it repeating every week.
+
+00:14:52.800 --> 00:14:54.800
+ Now, you can complain.
+
+00:14:54.800 --> 00:14:55.800
+ I can hear some of you complain.
+
+00:14:55.800 --> 00:14:58.800
+ Oh, this is such a microscopic view of my life.
+
+00:14:58.800 --> 00:14:59.800
+ What about the big picture?
+
+00:14:59.800 --> 00:15:01.800
+ Well, there is quarterly review.
+
+00:15:01.800 --> 00:15:10.800
+ Once every 13 weeks, you can mark an appointment with yourself right after your weekly review to do your quarterly review.
+
+00:15:10.800 --> 00:15:18.800
+ And also, every year, mark yourself, it could be at the start of the end of an academic year or a calendar year.
+
+00:15:18.800 --> 00:15:22.800
+ Mark yourself an appointment again with yourself called yearly review.
+
+00:15:22.800 --> 00:15:26.800
+ And this contains some big life questions.
+
+00:15:26.800 --> 00:15:32.800
+ Now, I will give you some examples, but feel free to modify it, have it as your own.
+
+00:15:32.800 --> 00:15:34.800
+ How much money did I make?
+
+00:15:34.800 --> 00:15:36.800
+ How much money did I save?
+
+00:15:36.800 --> 00:15:38.800
+ And how many people did I help?
+
+00:15:38.800 --> 00:15:42.800
+ How many do I plan to help in the future?
+
+00:15:42.800 --> 00:15:44.800
+ What projects did I enjoy?
+
+00:15:44.800 --> 00:15:47.800
+ Look through your archives and resources.
+
+00:15:47.800 --> 00:15:49.800
+ Which one didn't I, are best avoided?
+
+00:15:49.800 --> 00:15:51.800
+ I don't want to get on to this.
+
+00:15:51.800 --> 00:15:59.800
+ Okay, or you can look through your personal and private, I'm sorry, personal and professional and see how much is there a balance between all of this.
+
+00:15:59.800 --> 00:16:02.800
+ These are some questions you can answer.
+
+00:16:02.800 --> 00:16:09.800
+ Now that you know how to manage the now, so far we have looked at the now, how do you plan for the future, like really into the future?
+
+00:16:09.800 --> 00:16:12.800
+ Well, I have a trick called nine windows for you.
+
+00:16:12.800 --> 00:16:17.800
+ Nine windows are essentially the, it's like a tic-tac-toe grid.
+
+00:16:17.800 --> 00:16:24.800
+ And the left one is the left column is your past.
+
+00:16:24.800 --> 00:16:30.800
+ The middle column is your present and the right column is your future.
+
+00:16:30.800 --> 00:16:37.800
+ Okay, and the bottom row is your skill set.
+
+00:16:37.800 --> 00:16:40.800
+ The middle row is what you do, what you do.
+
+00:16:40.800 --> 00:16:46.800
+ And the top row is whom do you work for or whom do you serve, right?
+
+00:16:46.800 --> 00:16:50.800
+ So you are doing something for an organization.
+
+00:16:50.800 --> 00:16:52.800
+ So those could be in your top row.
+
+00:16:52.800 --> 00:16:55.800
+ Let me give an example from my own life.
+
+00:16:55.800 --> 00:16:58.800
+ This I made about 10 years ago.
+
+00:16:58.800 --> 00:17:05.800
+ Okay, so the middle column is the, what I did 10 years ago.
+
+00:17:05.800 --> 00:17:08.800
+ So that is the now, let's keep it as the now.
+
+00:17:08.800 --> 00:17:12.800
+ Okay, so five years before that, I used to work for General Electric GE.
+
+00:17:12.800 --> 00:17:14.800
+ I was a research scientist for them.
+
+00:17:14.800 --> 00:17:21.800
+ And the skills that I had was, I had a PhD for you, which you was used in this profession.
+
+00:17:21.800 --> 00:17:24.800
+ I had writing skills, I had some speaking skills.
+
+00:17:24.800 --> 00:17:28.800
+ And I love to interact and learn from my teammates.
+
+00:17:28.800 --> 00:17:35.800
+ Then I'll join my tree, which was the current job when I did this software services company.
+
+00:17:35.800 --> 00:17:40.800
+ I co-founded Tris India also, these are two organizations that I served.
+
+00:17:40.800 --> 00:17:44.800
+ And facilitator, that was the main profession that I was in.
+
+00:17:44.800 --> 00:17:51.800
+ And the skills I had was Tris, people interacting with people outside of my team.
+
+00:17:51.800 --> 00:17:54.800
+ And I could align well with my organization.
+
+00:17:54.800 --> 00:17:58.800
+ I knew exactly where they were going and how to align myself, my goals with that.
+
+00:17:58.800 --> 00:18:04.800
+ Now, I said five years later, I want to be an entrepreneur and an author.
+
+00:18:04.800 --> 00:18:11.800
+ And I want to do this for, I want to really work with academia and corporate companies.
+
+00:18:11.800 --> 00:18:12.800
+ That was my goal.
+
+00:18:12.800 --> 00:18:19.800
+ So the skills I needed to have were marketing, writing, sales, hiring, people management, all of that I needed to have.
+
+00:18:19.800 --> 00:18:20.800
+ And I had to plan that.
+
+00:18:20.800 --> 00:18:28.800
+ So I used the para structure to manage how I'm going to learn all of these skills and invite those and get better at it.
+
+00:18:28.800 --> 00:18:30.800
+ So that's where I used this.
+
+00:18:30.800 --> 00:18:36.800
+ Okay, you're done, you can pause this video and build your own nine windows to plan for the future.
+
+00:18:36.800 --> 00:18:42.800
+ So in summary, you need to empty your teacup before engaging with the work in front of you.
+
+00:18:42.800 --> 00:18:48.800
+ Use the para structure, projects, area, resources and archives, create this folder structure.
+
+00:18:48.800 --> 00:18:53.800
+ And use reviews regularly, weekly, quarterly and yearly.
+
+00:18:53.800 --> 00:18:56.800
+ Use the nine windows to your advantage for your future career planning.
+
+00:18:56.800 --> 00:19:01.800
+ And of course, apply para to your future plans to plan for those as well.
+
+00:19:01.800 --> 00:19:12.800
+ Okay, now these are the references I've used heavily borrowed up on Tiago for this para, David Allen's getting things done and Thashin's way to implement this in a maximum hormone.
+
+00:19:12.800 --> 00:19:14.800
+ These are some acknowledgments.
+
+00:19:14.800 --> 00:19:17.800
+ I use some generative AI for this.
+
+00:19:17.800 --> 00:19:19.800
+ And this is a question to you.
+
+00:19:19.800 --> 00:19:21.800
+ What parts of this talk?
+
+00:19:21.800 --> 00:19:23.800
+ Talk, are you planning on implementing?
+
+00:19:23.800 --> 00:19:25.800
+ Please write this in the ether pad.
+
+00:19:25.800 --> 00:19:26.800
+ Thank you so much.
+
+00:19:26.800 --> 00:19:30.800
+ If you have any questions, let me know in the ether pad as well.
+
+00:19:30.800 --> 00:19:36.800
+ Good luck managing your tasks, emptying your teacup and planning for the future.
+
+00:19:36.800 --> 00:19:45.800
+ [BLANK_AUDIO]
+

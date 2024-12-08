@@ -1,0 +1,758 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:15.180
+ >> Hello. I'm Danny McClennahan. This is EMAX-2024, and this presentation is ostensibly
+
+00:00:15.180 --> 00:00:25.240
+ about EMAX-REJECS compilation, but it'll lead a lot more in future directions. Thanks
+
+00:00:25.240 --> 00:00:37.120
+ for coming on this journey with me. This presentation is 50 slides, 50 footnotes, and that's intended
+
+00:00:37.120 --> 00:00:42.440
+ for it to be a resource later on figure perusal, where unfortunately not going to be able
+
+00:00:42.440 --> 00:00:48.520
+ to go into all of it, but I will try to be within 20 minutes so we can make it throughout
+
+00:00:48.520 --> 00:01:00.000
+ Q&A. So this is the structure of the talk, but enough about me. Who are you? And why
+
+00:01:00.000 --> 00:01:13.160
+ are you here? So I'm Danny McClennahan. My experience is a lot of build tools, especially
+
+00:01:13.160 --> 00:01:21.520
+ in the package managers, and that started because I realized I was wasting a lot of time,
+
+00:01:21.520 --> 00:01:27.640
+ and then I didn't like that. And so I started wasting a lot of time trying to avoid wasting
+
+00:01:27.640 --> 00:01:36.760
+ time. And then I ended up going so far around that I ended up stopping other people from
+
+00:01:36.760 --> 00:01:45.080
+ wasting their own time, in this case, regarding failing builds, but this is a kind of pattern
+
+00:01:45.080 --> 00:01:50.560
+ that you'll see. I'm talking a lot about patterns in this presentation. So parsing in text
+
+00:01:50.560 --> 00:01:58.040
+ is another one of those tendencies that I have. And why am I here? I've got a lot of
+
+00:01:58.040 --> 00:02:06.860
+ feelings about text, and for the next 20 minutes, I'm making it your problem. So first off,
+
+00:02:06.860 --> 00:02:12.240
+ a huge shout out to EMAX DeVel and the EMAX community in general. I spent a lot of time learning
+
+00:02:12.240 --> 00:02:17.160
+ about what I'm about to kind of talk about. I was definitely super confused at first. And
+
+00:02:17.160 --> 00:02:22.120
+ then when I became less confused and I decided I was going to look at the regular expressions
+
+00:02:22.120 --> 00:02:28.000
+ of the magic engine. I was like, oh, it's old C code, it's normal. You know, we can just
+
+00:02:28.000 --> 00:02:33.840
+ use modern techniques. And it turns out, you know, that's wrong for kind of two reasons. One
+
+00:02:33.840 --> 00:02:42.040
+ because these other using modern techniques or other engines don't necessarily do what EMAX
+
+00:02:42.040 --> 00:02:48.400
+ Reddix engine currently does. And then secondarily, that's not actually as interesting as the other
+
+00:02:48.400 --> 00:02:54.720
+ kind of larger goals that EMAX DeVel discussed. Thank you, Eli Zaretski so, so much, especially
+
+00:02:54.720 --> 00:03:00.040
+ and Pipset and everyone else as well. I leave Pipset. I hope I'm pronouncing that correctly.
+
+00:03:00.040 --> 00:03:03.600
+ Thank you so much. And I'll be shutting you out later as well. And then I, these larger
+
+00:03:03.600 --> 00:03:08.560
+ goals ended up overlapping a lot with my own research interests. And that's very exciting.
+
+00:03:08.560 --> 00:03:13.600
+ So I'm hoping it's exciting for you too. So what is a regular expression? And when
+
+00:03:13.600 --> 00:03:17.960
+ and how does implementation match for all theory? So what does formal theory mean? And you'll
+
+00:03:17.960 --> 00:03:29.160
+ talk about that. So so what is a regular expression? So I might ask you this question and you might
+
+00:03:29.160 --> 00:03:33.720
+ give an answer. None of mine asked someone else and they might have an answer. And then I
+
+00:03:33.720 --> 00:03:41.000
+ might ask myself and I might try to think of an answer. And our answers would, you know, see
+
+00:03:41.000 --> 00:03:45.640
+ the thing is they'd all be correct, but they probably be slightly different and they'd be
+
+00:03:45.640 --> 00:03:52.280
+ different in kind of important ways. And so I'm using formal theory to kind of describe
+
+00:03:52.280 --> 00:04:00.920
+ what unifies these interpretations and what causes this sort of divergence both over time
+
+00:04:00.920 --> 00:04:06.840
+ and then, you know, across to a basis. So I'm kind of, you know, putting a flag in the ground
+
+00:04:06.840 --> 00:04:13.400
+ here and saying formal theory is actually really, really negative influence. I think, but it can
+
+00:04:13.400 --> 00:04:19.160
+ be better and that's what I'm going to talk about in this in this presentation. So we might ask,
+
+00:04:19.160 --> 00:04:25.960
+ how did this happen? And we might, you know, try to find a, you know, a start state. And we
+
+00:04:25.960 --> 00:04:32.840
+ might put that place at the series of formal languages that kind of arose, especially, you know,
+
+00:04:32.840 --> 00:04:38.440
+ post a, a turning and post Chomsky. And especially there is a really, really interesting and powerful
+
+00:04:38.440 --> 00:04:45.560
+ relationship with formal languages between representation and computation. And then on top of that,
+
+00:04:45.560 --> 00:04:52.040
+ we have red X as this really powerful union of theory and practice. And then, like I mentioned,
+
+00:04:52.040 --> 00:04:57.000
+ this is kind of divergence that kind of occurs. And so this divergence, you know, happens for a good
+
+00:04:57.000 --> 00:05:01.640
+ reason. This happens because people were adding implementations and the people, adding people
+
+00:05:01.640 --> 00:05:05.720
+ adding features to implementations. And while the people adding these features were often
+
+00:05:05.720 --> 00:05:09.880
+ academics, they were industries, people there were hobbyists, they were interested in building
+
+00:05:09.880 --> 00:05:15.160
+ practical tools. This is a good thing. And this is still a good thing, even though it moves a little
+
+00:05:15.160 --> 00:05:20.760
+ bit away from formal theory. But we start seeing some cracks to developing. And we'll go into that in
+
+00:05:20.760 --> 00:05:28.600
+ a second. We're just going to kind of electric slide into the 1980s here. And we're going to be
+
+00:05:28.600 --> 00:05:35.480
+ confronted with two occurrences very similarly. We might call it, you know, simultaneous discovery.
+
+00:05:35.480 --> 00:05:41.960
+ In 1993, you have Michael Jackson demonstrating the moonwalk. Three years later, we have backtracking
+
+00:05:41.960 --> 00:05:46.840
+ developed to stimulate e-crap style regular expressions. And these would both be incredibly
+
+00:05:46.840 --> 00:05:54.280
+ influential in their own kind of branching paths. So here's where the gloves come off.
+
+00:05:55.880 --> 00:06:02.680
+ Formal theory, I claim, remains largely concerned with incremental improvements to artificial
+
+00:06:02.680 --> 00:06:09.640
+ benchmarks. And much less with expanding models to cover actual user needs. And this isn't just about,
+
+00:06:09.640 --> 00:06:15.240
+ oh, you know, if you listened to users, you know, that you'd be a nicer person, you know,
+
+00:06:15.240 --> 00:06:20.600
+ be a better engineer. What I'm actually saying is that they're missing out. When you don't listen
+
+00:06:20.600 --> 00:06:27.480
+ to applications, you miss out on a lot of fantastic opportunities for novel theory. And so this is,
+
+00:06:27.480 --> 00:06:33.880
+ again, my complaint with formal theory as it stands, but we're going to do better. So before we get
+
+00:06:33.880 --> 00:06:38.600
+ better, we're going to get a little bit worse for a bit. We're going to actually get a little bit
+
+00:06:38.600 --> 00:06:43.160
+ worse as better. And what I mean by that is, you know, by the 1990s, we start looking into these
+
+00:06:43.160 --> 00:06:48.360
+ non-backtracking engines. And this is a bit of a reaction to backtracking. And the current ones
+
+00:06:49.080 --> 00:06:54.920
+ include RE2, hyperscan, and the rest redics library. And these are all great. I'll talk about them later
+
+00:06:54.920 --> 00:06:59.000
+ as well. And they make use of these, you know, they kind of call back to the earlier formal theory,
+
+00:06:59.000 --> 00:07:08.280
+ they have linear runtime for well-specified search tasks. So what happens if that doesn't fit your needs?
+
+00:07:08.280 --> 00:07:12.200
+ We're going to talk about that. So we're going to table that for a second. And we're going to
+
+00:07:12.840 --> 00:07:19.720
+ focus more on EMX, the subject of this conference. So what are rejects used for? And in this particular
+
+00:07:19.720 --> 00:07:26.200
+ case, they're used for lots of things, with practically, and I think they should be. But more specifically,
+
+00:07:26.200 --> 00:07:32.280
+ how do EMX users use them? And I'm going to focus in on this text as input and output. And I'll be
+
+00:07:32.280 --> 00:07:41.320
+ kind of elaborating on this analogy as we continue. So why is text powerful? Text as I am.
+
+00:07:42.120 --> 00:07:47.400
+ The reason text programming languages, and not just programming languages, but languages themselves,
+
+00:07:47.400 --> 00:07:52.760
+ the reason why they're successful, why they propagate, I claim, is because text is both input,
+
+00:07:52.760 --> 00:07:58.280
+ readable, and output, writeable. And so what this means is that, you know, if you receive, you know,
+
+00:07:58.280 --> 00:08:03.480
+ something in text, you can read it. And then you can also write it. You can modify it, and you could
+
+00:08:03.480 --> 00:08:07.640
+ produce a new version of it. And you're on the same, you're on a kind of level playing field.
+
+00:08:07.640 --> 00:08:14.920
+ But that's not always the case, though. You recall that I worked a lot with the build systems and
+
+00:08:14.920 --> 00:08:22.760
+ package managers. There's a discussion that goes by the name of software supply chain security.
+
+00:08:22.760 --> 00:08:30.280
+ I think it's a massive joke. And the reason why is because people largely raise it to explain why,
+
+00:08:30.280 --> 00:08:36.200
+ you know, their, you know, for-profit company with their, their, you know, for-profit product is
+
+00:08:36.200 --> 00:08:40.120
+ going to solve the problem for you, as opposed to the, you know, the commons of open source.
+
+00:08:40.120 --> 00:08:46.200
+ If you are unable to modify or deploy your code without employing an opaque external system,
+
+00:08:46.200 --> 00:08:53.560
+ I claim, then you have a hidden dependency. And you don't remove a dependency. You just, you know,
+
+00:08:53.560 --> 00:08:59.000
+ by, you know, for example, paying into, you know, a for-profit product or using, you know, I kind of,
+
+00:08:59.000 --> 00:09:02.680
+ you know, closed-off supply chain, you ended up just having a hidden dependency. You ended up just
+
+00:09:02.680 --> 00:09:07.800
+ displacing that. And so this can actually exert arbitrary control over your, your programming output
+
+00:09:07.800 --> 00:09:14.280
+ and potentially even your, your thoughts. This is really important. I'm going to dive in a little
+
+00:09:14.280 --> 00:09:19.240
+ bit deeper and I'm going to overload the term locality here. And I'm going to say if you cannot
+
+00:09:19.240 --> 00:09:24.920
+ reproduce a system locally, it becomes an opaque external system. And I'm going to give examples
+
+00:09:24.920 --> 00:09:29.320
+ here. And these are going to be a bit of a hot take. So first off, gooey IDEs. I think we might,
+
+00:09:29.320 --> 00:09:35.480
+ well, some of us might agree with that here. I say development environments that only allow you to
+
+00:09:35.480 --> 00:09:42.040
+ use a graphical interface. Do not expose interaction with text or explicitly trying to kind of
+
+00:09:42.040 --> 00:09:49.080
+ place you on a separate kind of plain, plain, where you're not an equal contributor to the people who
+
+00:09:49.080 --> 00:09:53.400
+ make the development environment and to make, you know, the development kind of frameworks here,
+
+00:09:53.400 --> 00:09:59.720
+ we'll go one further. Cloud services are precisely, you know, they're useful for things that, you know,
+
+00:09:59.720 --> 00:10:05.640
+ that require large degree of computation, computation. But, you know, Twitter, for example,
+
+00:10:05.640 --> 00:10:10.920
+ you didn't actually ever use any cloud services external ones because it was really important for
+
+00:10:10.920 --> 00:10:16.440
+ them to actually own their own hardware, their own computation, their own, you know, thinking.
+
+00:10:16.440 --> 00:10:23.320
+ And cloud services are a way to ensure that you're unable to reproduce a system without
+
+00:10:23.320 --> 00:10:28.360
+ paying an amount per month, an amount per day, an amount per second, an amount per cycle,
+
+00:10:28.360 --> 00:10:33.960
+ to an external, you know, entity. And I'm just going to kind of conclude this with, I say,
+
+00:10:33.960 --> 00:10:39.160
+ the argument I'm going to add absurdum here, where large language models are all of these at once.
+
+00:10:39.160 --> 00:10:46.040
+ They are a cloud service, specifically, and this is what makes them very evil, to make it so that
+
+00:10:46.920 --> 00:10:53.640
+ similar to GUI IDs, so that text itself loses that ability to be able to readable and writeable.
+
+00:10:53.640 --> 00:10:58.600
+ Instead, text is both unreadable because it's produced by a machine, and then also unreadable
+
+00:10:58.600 --> 00:11:04.040
+ because you're subservient and subjugated to the machine to the large language model,
+
+00:11:04.040 --> 00:11:08.120
+ to produce the code in the first place. So you lose this input, output, readable,
+
+00:11:08.120 --> 00:11:16.840
+ readable behavior that I claim text has specifically. So to underline this, what is text?
+
+00:11:16.840 --> 00:11:24.680
+ Text is local. So finally, we're at the subject of this conference, EMAX, I have double hearts
+
+00:11:24.680 --> 00:11:30.280
+ with text. I start off the slide saying, EMAX is a text editor. I think it's a good start.
+
+00:11:30.280 --> 00:11:36.280
+ And which implements much of its own logic and user interface via text. And so with this means is that,
+
+00:11:36.840 --> 00:11:42.600
+ I say without trying, EMAX tries very hard, but without trying social hard,
+
+00:11:42.600 --> 00:11:49.880
+ EMAX is imbued with all of the capabilities that text has specifically. And when you use text
+
+00:11:49.880 --> 00:11:56.520
+ like EMAX does, and particularly, you then start offering mechanisms to query, to transform,
+
+00:11:56.520 --> 00:12:04.040
+ and to generally metaprogram text itself, you don't just have the ability to edit code in new ways.
+
+00:12:04.040 --> 00:12:08.680
+ And this is something that I think is often lost, maybe not by participants of this conference,
+
+00:12:08.680 --> 00:12:13.640
+ but you particularly start being able to not only just edit code differently,
+
+00:12:13.640 --> 00:12:18.920
+ but to change the way that you think about code, and actually to expand your range of thought,
+
+00:12:18.920 --> 00:12:23.480
+ the range of actions that you can perform, and you can actually start then editing at the speed of thought.
+
+00:12:23.480 --> 00:12:28.200
+ And this is where, especially, rejects kind of comes into play. So finally, we get,
+
+00:12:28.200 --> 00:12:33.800
+ you know, to the subject of the title of this talk, and I'm about to disappoint a lot of people,
+
+00:12:33.800 --> 00:12:39.960
+ and I claim for good reason. Unfortunately, it's a very brief walkthrough,
+
+00:12:39.960 --> 00:12:43.720
+ but I'm going to go over what the current EMAX redx engine is, and this is going to give us
+
+00:12:43.720 --> 00:12:50.760
+ enough context for the next section on future directions. So quickly, it's a backtracking engine
+
+00:12:50.760 --> 00:12:55.160
+ over multi-bite code points. I'll define what that means, and it's in redxemax.c.
+
+00:12:55.160 --> 00:13:01.240
+ It's invoked in two ways, which you'll see is actually the same way over a single contiguous
+
+00:13:01.240 --> 00:13:05.560
+ string input. So this is a, you know, a list string that you passed in, or over the two halves
+
+00:13:05.560 --> 00:13:11.800
+ of the gap buffers. This is when you match against a buffer text, and we'll go into that a little bit
+
+00:13:11.800 --> 00:13:16.200
+ more, but this is one of the really actually interesting and specific things about EMAX redx engine
+
+00:13:16.200 --> 00:13:22.120
+ as it stands. So very, very quickly, this is the data layout. This is just, if you're interested,
+
+00:13:22.120 --> 00:13:29.160
+ this is where the code lies. So redxemax.h has RE pattern buffer, which is a, you know,
+
+00:13:29.160 --> 00:13:35.400
+ a struct, with actually, you know, I love, by the way, I love the EMAX source code. It's so nice
+
+00:13:35.400 --> 00:13:41.080
+ to read. It made all this so, so, so easy. I really appreciate it. So in this particular case,
+
+00:13:41.080 --> 00:13:45.800
+ I'm just going to focus on RE pattern buffer actually has the compiled index. So it's a C struct.
+
+00:13:45.800 --> 00:13:51.160
+ It has every single thing that is needed to execute the regular expression against a string
+
+00:13:51.160 --> 00:13:59.000
+ input or it is the buffer input. And this buffer is not the, you know, an EMAX buffer. It refers to
+
+00:13:59.000 --> 00:14:05.480
+ just the instruction table. And the match loop, and again, this is very, very brief, but I want to
+
+00:14:05.480 --> 00:14:11.400
+ specifically focus on the first part. So this is the, this inner matching loop. And there's a,
+
+00:14:11.400 --> 00:14:15.480
+ you know, a pro, a prologue. And then there's, you know, a loop body. And then there's an epilogue.
+
+00:14:15.480 --> 00:14:21.640
+ And the prologue is the really, really interesting part. I say extract current and next car. So what EMAX
+
+00:14:21.640 --> 00:14:27.000
+ does here, it, it, it doesn't just, you know, reach for the next bite. It actually will perform,
+
+00:14:27.720 --> 00:14:35.400
+ lazily, in some sense, this very, very well integer size variant decoding for multi bite. And it'll
+
+00:14:35.400 --> 00:14:44.520
+ actually then decode the next one to four bites. So up to, you know, 32 bits at once. And then
+
+00:14:44.520 --> 00:14:50.120
+ it'll actually go to the, go into the loop. And so we'll talk about the implications of that later.
+
+00:14:50.120 --> 00:14:54.440
+ We next read the, in the body of the loop, we read the instruction from the instruction pointer,
+
+00:14:54.440 --> 00:14:58.280
+ which is the gain in that buffer field. And then we have this big switch statement, which is
+
+00:14:58.280 --> 00:15:02.440
+ actually, love a big switch statement, super easy to read, super easy to understand kind of what's
+
+00:15:02.440 --> 00:15:07.720
+ occurring. And then that's the loop body. And then at the end of it, we either increment the
+
+00:15:07.720 --> 00:15:12.200
+ instruction pointer. If it was, you know, matching a single character or something along those lines,
+
+00:15:12.200 --> 00:15:17.160
+ or if it was a jump, we don't do that. So I jump, however, though, it's not referring to, you know,
+
+00:15:17.160 --> 00:15:22.440
+ a jump in a sense of a go to, but a jump that's elsewhere within that, you know, a table that
+
+00:15:22.440 --> 00:15:28.120
+ buffer field. And if you've completed a capture, we write that end position there. And of course,
+
+00:15:28.120 --> 00:15:34.760
+ well, as you may recall, the zero capture is of course, any, you know, the entire match string.
+
+00:15:34.760 --> 00:15:39.240
+ And so if the capture is zero, then we know we've actually completed that match. And so that's really
+
+00:15:39.240 --> 00:15:44.120
+ quick. I would love to receive Q&A about this as well. I've spent a lot of time kind of learning
+
+00:15:44.120 --> 00:15:48.760
+ understanding it. But it's really interesting that this can be, you know, described in such a,
+
+00:15:48.760 --> 00:15:52.760
+ you know, in a single slide, because it's really simple. And that simplicity is actually a really
+
+00:15:52.760 --> 00:15:58.600
+ powerful thing. And I'll mention that in the next section. And I say, is that all, and I apologize for
+
+00:15:58.600 --> 00:16:03.960
+ not doing so, but please, please ask questions in Q&A or are messaging about this because I think
+
+00:16:03.960 --> 00:16:09.320
+ it's really, really interesting. And I can find the code relatively easy to read. And so now here's,
+
+00:16:09.320 --> 00:16:14.440
+ I think here, this is actually the point of the talk. The rest of it was, was, was, you know,
+
+00:16:14.440 --> 00:16:20.360
+ I think just me posturing this is the really, really interesting part. And this is the ways that we can
+
+00:16:20.360 --> 00:16:25.960
+ improve, well, not just weak, we improve stuff in Emax. But why those are the right things to improve.
+
+00:16:25.960 --> 00:16:33.880
+ And then also how that can be a model for even things outside of Emax. And so this is going to be
+
+00:16:33.880 --> 00:16:39.400
+ a lot of text. I'm not going to go through all of it. This is the one thing that I tried. This is
+
+00:16:39.400 --> 00:16:44.920
+ the thing that I thought, you know, a slam dunk easy solution. My initial thought process was, well,
+
+00:16:44.920 --> 00:16:53.640
+ we tried very hard to, you know, do an LRU cache here. You know, it works. It's actually very effective.
+
+00:16:53.640 --> 00:16:59.480
+ However, though, we don't actually give the user, you know, the list program or the ability to
+
+00:16:59.480 --> 00:17:04.760
+ then say, I know that this rejects is something that is going to be used again. So I made an artificial
+
+00:17:04.760 --> 00:17:10.920
+ benchmark. I made an artificial benchmark because I wanted to show there is one very specific case
+
+00:17:10.920 --> 00:17:16.600
+ that it does solve. But it's it's the same issue with the artificial benchmarks I mentioned earlier.
+
+00:17:16.600 --> 00:17:23.640
+ It's it's very specifically crafted in order to show that this particular solution would produce
+
+00:17:23.640 --> 00:17:28.360
+ some speedups. So what this means is it has, it just creates more than 20, you know,
+
+00:17:28.360 --> 00:17:32.520
+ rejects in a row. It compiles them. And then of course, because we just don't pay the compile
+
+00:17:32.520 --> 00:17:37.160
+ costs, but because, you know, we don't go through that cache eviction process and it's
+
+00:17:37.160 --> 00:17:42.680
+ being faster. But this doesn't really mean very much. Particularly, the goal here, you know,
+
+00:17:42.680 --> 00:17:46.840
+ the goal would have been to show that the compile cache is actually causing the performance
+
+00:17:46.840 --> 00:17:53.240
+ issue in comparison to pre-compiling it. And that's not something I've been able to show. And so
+
+00:17:53.240 --> 00:17:59.240
+ math overbites not cars. So this is when I said at the beginning, oh, I came in and I think, oh,
+
+00:17:59.240 --> 00:18:04.440
+ we can just use modern revx engine techniques. This is really what I meant. And in particular,
+
+00:18:04.440 --> 00:18:11.480
+ I mentioned in this match loop here that there's this, you know, prologue that does this
+
+00:18:11.480 --> 00:18:17.000
+ varring decoding. And what this means is that every single iteration of that loop is going to be
+
+00:18:17.000 --> 00:18:22.120
+ interspersed with this not being able to read a fixed number of bytes, but a variable number of
+
+00:18:22.120 --> 00:18:25.480
+ bytes, just depending upon, you know, the unit code character or the unit code pointer, the
+
+00:18:25.480 --> 00:18:30.680
+ multivite code point. So this ends up, again, being relatively difficult to optimize because
+
+00:18:30.680 --> 00:18:37.160
+ processors operate over bytes and not over code points. Yeah, we might have a, we could consider
+
+00:18:37.160 --> 00:18:42.840
+ a multivite CPU at some point. But this is a really, really simple thing. It's just generating a
+
+00:18:42.840 --> 00:18:48.920
+ tomata that operate over bytes as opposed to code points. This kind of goes into the much more
+
+00:18:48.920 --> 00:18:52.600
+ abstract one. And there's a lot of text here and we're not going to go into it. But the really,
+
+00:18:52.600 --> 00:18:58.600
+ really important point that I'm specifically mentioning here is this explicit control over
+
+00:18:58.600 --> 00:19:03.320
+ linguistic complexity. And that's like this, that's the abstract kind of point. So I want to
+
+00:19:03.320 --> 00:19:09.080
+ propose or, you know, introduce the inputs and the outputs. And basically when,
+
+00:19:09.080 --> 00:19:15.720
+ perform a search or a match or parse, those are different tasks. And they'll have different
+
+00:19:15.720 --> 00:19:21.400
+ expected inputs and different desired outputs. And so right now, EMAX, the API for the regular
+
+00:19:21.400 --> 00:19:26.920
+ expression engine and for matching, it doesn't allow specialization on this. So rather, if we do
+
+00:19:26.920 --> 00:19:31.800
+ specialize on particular inputs, if we have a heuristic check, if a red X is actually a literal
+
+00:19:31.800 --> 00:19:36.040
+ string, that's not something that the user actually has control over. So for example,
+
+00:19:36.040 --> 00:19:41.080
+ you can make a mistake escaping something and then you don't have a literal and then you accidentally
+
+00:19:41.080 --> 00:19:45.240
+ have behavior that you totally didn't expect. Not just correctness issues, but also performance
+
+00:19:45.240 --> 00:19:50.920
+ issues. So I really like this one. I like this a lot because I didn't think of it at all.
+
+00:19:50.920 --> 00:19:59.720
+ And I think it's better than all of my ideas. So this is, this is proposed, at least to me, to
+
+00:19:59.720 --> 00:20:03.880
+ me by Pipset. And I really hope that I'm pronouncing your name correctly. I'm sorry, I didn't ask you
+
+00:20:03.880 --> 00:20:09.480
+ beforehand. EMAX develop, in particular, this was after a couple of responses where I was trying to
+
+00:20:09.480 --> 00:20:15.800
+ say, oh, I want to give the list programmer way back, you know, in here. I want to give the list
+
+00:20:15.800 --> 00:20:21.560
+ programmer control, you know, the ability to control compilation in some sense. But, you know, he
+
+00:20:21.560 --> 00:20:28.680
+ mentioned, I think he is correct, you know, there's no real introspection. And that happens because
+
+00:20:28.680 --> 00:20:35.000
+ it's written in C. And so I was thinking, oh, if I try this into a list project that gives the
+
+00:20:35.000 --> 00:20:40.040
+ list programmer the power and you know, the ability to do more with that, but it doesn't actually,
+
+00:20:40.040 --> 00:20:45.640
+ because it's still in C. And at first I was thinking, oh, we can make C part more flexible,
+
+00:20:45.640 --> 00:20:51.320
+ but actually, especially if we want to do almost any of the things we previously mentioned,
+
+00:20:51.320 --> 00:20:56.760
+ I think basically this is, this is, I think that, you know, if I'm not going to do it,
+
+00:20:56.760 --> 00:20:59.800
+ somebody else really should do it. And I think we should maybe even do it together, because I think
+
+00:20:59.800 --> 00:21:04.600
+ this is really, I think how we can start experimenting and not just experimenting, but because,
+
+00:21:04.600 --> 00:21:09.560
+ as mentioned here, we have a live DCC jet, we have native compiler, we have the ability to opt,
+
+00:21:09.560 --> 00:21:14.520
+ like specifically to generate specific code for this. So why not implement D or A red X engine
+
+00:21:14.520 --> 00:21:18.840
+ itself in list? And this gives us the ability to introspect it. That's one of the things I mentioned
+
+00:21:18.840 --> 00:21:23.880
+ at the beginning, but it actually gives us the ability to then actually look at all the previous
+
+00:21:23.880 --> 00:21:30.760
+ implementations to explicitly compile a forehand to to to to match against fights, to specialize
+
+00:21:30.760 --> 00:21:35.720
+ in dispatch based upon input and output. And this is something that I, you know, it's super simple.
+
+00:21:35.720 --> 00:21:43.240
+ It's really, it's it's really smart and I'm really, really glad to mention this because it is,
+
+00:21:43.240 --> 00:21:47.720
+ I think the right way to I think to solve the rest of it. So we're at the final section,
+
+00:21:47.720 --> 00:21:53.640
+ and I've talked a lot about, you know, kind of abstract, you know, thoughts and I talked a little
+
+00:21:53.640 --> 00:21:59.800
+ about, you know, specific solutions, but I especially talked about, you know, what is reject
+
+00:21:59.800 --> 00:22:04.200
+ any max? And I don't know if I had a lot of specific examples of it. So I'm going to just describe
+
+00:22:04.200 --> 00:22:10.200
+ kind of my, my, I guess motivation, my impetus. And then I think something that's really something
+
+00:22:10.200 --> 00:22:15.720
+ that you want for the future. So do I have any concrete examples? Yes. Well, you can decide if they're
+
+00:22:15.720 --> 00:22:27.000
+ concrete. Or am I just posturing? Also, yes. Helm, RG, Helmurg. It's literally just mxCrep, but it uses
+
+00:22:27.000 --> 00:22:33.800
+ a rip grip, which is written by the same author of the rest red x3. So it happens to be very, very fast.
+
+00:22:33.800 --> 00:22:39.400
+ In particular, I, you know, use this tool with rip grip on the Twitter Mono repo, and I was able to
+
+00:22:39.400 --> 00:22:45.640
+ search very, very large amounts of code that were that was on my local machine that using regular
+
+00:22:45.640 --> 00:22:49.240
+ expressions. And I think that this is one thing that I think is really, really important because
+
+00:22:49.240 --> 00:22:54.600
+ when you want to, to, to, to scale, you know, there's, there's people say the word scaling and they,
+
+00:22:54.600 --> 00:22:58.760
+ they assume there's a specific kind of answer for that. And I've just found that text is not only
+
+00:22:58.760 --> 00:23:03.560
+ flexible. It's actually something that, you know, that can be more performant than the, than the
+
+00:23:03.560 --> 00:23:09.160
+ alternative, and not only more performant, but more productive. So it's again, it's just mxCrep using
+
+00:23:09.160 --> 00:23:13.160
+ rip grip. There's a tool dead grip by Wilford Hughes. It's also fantastic. I think it's actually better
+
+00:23:13.160 --> 00:23:18.760
+ than this. Um, but, you know, this one's mine. So I can mess around with it. But this tool is kind of
+
+00:23:18.760 --> 00:23:23.800
+ why, especially I started looking into e-max and looking into changing the way that, or at least
+
+00:23:23.800 --> 00:23:27.880
+ diving into how the regular expression matching actually kind of kinds of works, but within e-max
+
+00:23:27.880 --> 00:23:32.040
+ and then in rip grip. And so we'll go to the next one. So this is something that does exist
+
+00:23:32.920 --> 00:23:37.880
+ and continues to exist. This doesn't quite exist yet. So I'm following it to let me see grams.
+
+00:23:37.880 --> 00:23:45.400
+ It's, you know, it's the name, and it's very, you know, it doesn't work, but it's a coaster's tool
+
+00:23:45.400 --> 00:23:50.600
+ that, in this case, pre-compiles the database to execute NFAs again. So I was thinking how can I
+
+00:23:50.600 --> 00:23:55.880
+ beat rip grip? And the first thing I thought is, well, as I have worked on builds tools, and especially
+
+00:23:55.880 --> 00:23:59.320
+ in modern repos, one of the things that the pants build tool from Twitter does is,
+
+00:24:01.240 --> 00:24:07.800
+ using the file watcher to ensure that, instead of having to constantly read in the entire
+
+00:24:07.800 --> 00:24:11.640
+ contents of a file, which may be very, very large, it only does so when the file has been changed.
+
+00:24:11.640 --> 00:24:17.800
+ So finally, I want to conclude on this note, which is just that the stuff I didn't learn from
+
+00:24:17.800 --> 00:24:25.640
+ e-maxeDevil. I learned from Paul and Katie or Junior, who is the RE2 maintainer. And he taught me
+
+00:24:25.640 --> 00:24:35.320
+ quite a lot from 2023 to 2024. And I'm thankful for the time that I learned from you. So thank you, Paul.
+
+00:24:35.320 --> 00:24:44.680
+ With that, we're at point max. Call me if you want to reach me and/or hire me. These are places that
+
+00:24:44.680 --> 00:24:49.400
+ you can reach me at. There are probably others. Feel free to suggest other ways to kind of like me.
+
+00:24:49.400 --> 00:24:54.360
+ But for now, this is the end. Thank you so much for the time. I really appreciate it.
+
+00:24:54.360 --> 00:25:04.360
+ [BLANK_AUDIO]
+

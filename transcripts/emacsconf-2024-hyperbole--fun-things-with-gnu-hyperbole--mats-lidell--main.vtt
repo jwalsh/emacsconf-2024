@@ -1,0 +1,272 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:10.920
+ Hi, Max conference. I'm Mats Ledele. I'm the maintainer of the Knower Herbperboly together
+
+00:00:10.920 --> 00:00:20.360
+ with the author Bob Weiner. The title of the talk is "Fun things with Knower Herbperboly".
+
+00:00:20.360 --> 00:00:32.320
+ And that I intend to cover a different set of small things that is in the package.
+
+00:00:32.320 --> 00:00:41.080
+ So this will not be a tutorial of Herbperboly. For that you have to look for other sources.
+
+00:00:41.080 --> 00:00:48.440
+ And this is a short talk. So let's get started with the first thing.
+
+00:00:48.440 --> 00:00:55.400
+ Also we're going to talk about scrolling and with the subtitle using the end of line.
+
+00:00:55.400 --> 00:01:01.960
+ If you need to Herbperboly, you need to know about the action key and the assist key.
+
+00:01:01.960 --> 00:01:08.520
+ The action key is bound to meta-return and the assist key is bound by default to meta-return
+
+00:01:08.520 --> 00:01:16.040
+ with the prefix orbit. So both of these keys are used for performing actions on different
+
+00:01:16.040 --> 00:01:26.840
+ contexts. And in this case we'll look what happens when you use it on the end of the line.
+
+00:01:26.840 --> 00:01:38.880
+ So I have here the tutorial, the MX tutorial, and we see here a line inserting and deleting.
+
+00:01:38.880 --> 00:01:45.280
+ I move there and put the cursor on the end of the line. I then hit meta-return, the
+
+00:01:45.280 --> 00:01:54.880
+ action key, and it's moved to the top of the window. If I want to move it to the last row
+
+00:01:54.880 --> 00:02:03.360
+ on the window, I can press Ctrl U and then meta-return. So I use the assist key.
+
+00:02:03.360 --> 00:02:10.760
+ If I repeatedly hit meta-return, it will scroll. So the first time it moves to the top of
+
+00:02:10.760 --> 00:02:22.880
+ the window. But if I add the top of the window, it's meta-return again, it scrolls.
+
+00:02:22.880 --> 00:02:34.800
+ Now move to the next thing. So the next thing is to compose an email from Manares. Another
+
+00:02:34.800 --> 00:02:47.680
+ is the style of username at the main. Let's look into that. So here I have entered the file
+
+00:02:47.680 --> 00:02:56.360
+ in the MX distribution version control EL and at its top it has a lot of different email
+
+00:02:56.360 --> 00:03:07.360
+ addresses from contributors. This is in principle a normal text file. And by placing the cursor
+
+00:03:07.360 --> 00:03:14.880
+ over one of these addresses and hitting the action key, I probably identify that it's an
+
+00:03:14.880 --> 00:03:26.480
+ email address and tries to open or opens the email composo with that using that email address.
+
+00:03:26.480 --> 00:03:35.640
+ And if we go to the scotch buffer, prepare another name there. So just to demonstrate the
+
+00:03:35.640 --> 00:03:49.400
+ box in an buffer the same way. The next found thing is insert implicit link. I'm going
+
+00:03:49.400 --> 00:03:58.680
+ to give you an example with email, I'm to share an implicit link with someone. An implicit
+
+00:03:58.680 --> 00:04:05.520
+ link is a text pattern, just as we saw with the email address, something that I probably
+
+00:04:05.520 --> 00:04:14.480
+ recognize is just by how the text looks. So here we have the example. We have started
+
+00:04:14.480 --> 00:04:21.560
+ writing an email to the user at the main. And in the other window below the cursor control
+
+00:04:21.560 --> 00:04:30.760
+ EL file is open. It's now opened within the search path, the load path. So that's why
+
+00:04:30.760 --> 00:04:40.160
+ it's compressed. And I want to tell my friend about the credit section. So first the cursor
+
+00:04:40.160 --> 00:04:45.920
+ is placed here at your credit section. I move over to another window and I use the hyperbole
+
+00:04:45.920 --> 00:04:56.000
+ menu system. So by hitting control H, H, I go into the menu system. I press I for getting
+
+00:04:56.000 --> 00:05:05.960
+ an I button, implicit button, I press L for getting a, creating a link. And there you have
+
+00:05:05.960 --> 00:05:14.440
+ the link. So what does that link mean? Well, it means that in the low for hyperbole email
+
+00:05:14.440 --> 00:05:20.800
+ actually finds a special. If there are in the load path, they will use this short format.
+
+00:05:20.800 --> 00:05:29.960
+ And the end, you have the L for the line number 24 and the C for the column. So if I hit the
+
+00:05:29.960 --> 00:05:37.800
+ action key on this line, you can see that the cursor moves over to the credit section.
+
+00:05:37.800 --> 00:05:46.420
+ You can remove that file just to make sure that it works and move the cursor a little bit
+
+00:05:46.420 --> 00:05:54.040
+ and hit after turning again or meta return and we moved over there. So it, I mean, given
+
+00:05:54.040 --> 00:06:00.560
+ that the receiver has a similar setup with emacs, et cetera, they will, that link will
+
+00:06:00.560 --> 00:06:08.780
+ work there as well. Hi, emacs conference. It's a new recording day. The sun is shining.
+
+00:06:08.780 --> 00:06:15.960
+ I'm wearing a new t-shirt, but we're still cracking on with fun things in hyperbole.
+
+00:06:15.960 --> 00:06:24.640
+ Our next subject is window grid. So with hyperbole, it's easy to create a grid of windows.
+
+00:06:24.640 --> 00:06:29.800
+ I'm going to show how you can do that and also moving on. I'm going to show how you can
+
+00:06:29.800 --> 00:06:38.780
+ use the red or eye buffer to select what buffers to show in the grid. And I will also show
+
+00:06:38.780 --> 00:06:49.120
+ how you can save configuration for use later. You reach the window grid functionality
+
+00:06:49.120 --> 00:06:58.200
+ through the hyperbole menu system. So control H, H, screen. There you have to submenus frame
+
+00:06:58.200 --> 00:07:05.040
+ control, window control. The red functionality is part of both of these submenus. You can
+
+00:07:05.040 --> 00:07:14.120
+ select either, but I go with window control here. And down to the left, we see the add character
+
+00:07:14.120 --> 00:07:24.000
+ and the grid of windows. So hit add. And I'm prompted with the number of columns and rows
+
+00:07:24.000 --> 00:07:40.160
+ for the window grid, which I select 3 by 3 grid. And we get the 3 by 3 grid. It's populated
+
+00:07:40.160 --> 00:07:53.440
+ with buffers. I have loaded in emacs. So let's go back to the square buffer. Now using
+
+00:07:53.440 --> 00:08:00.320
+ all those keystrokes for the menu system is a little bit cumbersome. So there is a shortcut
+
+00:08:00.320 --> 00:08:09.160
+ control C at and if I use that control C at, I get immediately prompted with the number
+
+00:08:09.160 --> 00:08:21.640
+ of rows and columns. If I use a prefix org 0, control U 0, control C at, I get also prompted
+
+00:08:21.640 --> 00:08:30.880
+ with what type of buffers I want to populate in my grid. So let's select emacs list mode.
+
+00:08:30.880 --> 00:08:43.360
+ And again with the 3 by 3 grid. And here you see all the grids or the whole grid is populated
+
+00:08:43.360 --> 00:08:57.220
+ with the emacs list buffers. To get even finer control, you can go into iBuffer and I have
+
+00:08:57.220 --> 00:09:06.640
+ pre-selected here all the emacs list files. I have, so let's pick a few like I marked them
+
+00:09:06.640 --> 00:09:17.120
+ like this. Let's pick three or maybe pick four. And then I had the add sign and then it automatically
+
+00:09:17.120 --> 00:09:32.640
+ shows tool by tool grid with the selected buffers. We can go in again and maybe maybe select
+
+00:09:32.640 --> 00:09:44.380
+ a few more. And the same thing hit add and it now becomes a 3 by 2 grid with these buffers.
+
+00:09:44.380 --> 00:09:56.040
+ The same thing is possible through the grid. So let's just mark quite a few here and
+
+00:09:56.040 --> 00:10:04.400
+ then hit add and then it populates it with all the buffers and you see that if it's not enough
+
+00:10:04.400 --> 00:10:16.800
+ buffer to fill the whole grid, there are blank grids or tangles in the grid. Now going back
+
+00:10:16.800 --> 00:10:25.800
+ and forth like this, maybe if you want to work on some file and then go over to dear it again
+
+00:10:25.800 --> 00:10:33.040
+ to select this can be a little bit cumbersome. You maybe are prepared, agreed with the buffers
+
+00:10:33.040 --> 00:10:42.500
+ you want to have there. Then the heart probably comes with a simple window configuration support
+
+00:10:42.500 --> 00:10:48.280
+ and you reach that the same way through the heart probably menus or controller hh and
+
+00:10:48.280 --> 00:10:59.340
+ window w for window and there you can hit save to save the configuration to ring of configurations.
+
+00:10:59.340 --> 00:11:07.540
+ So let's go back to like the scratch buffer again here and now we want to sort of bring up
+
+00:11:07.540 --> 00:11:14.500
+ our window configuration again so we hit control hh and window and yanking the configuration
+
+00:11:14.500 --> 00:11:23.780
+ and boom, there is the grid again. We're reaching the end of the talk. The last fun thing I want
+
+00:11:23.780 --> 00:11:30.200
+ to talk about is the heart probably support for select the thing and we'll show some use
+
+00:11:30.200 --> 00:11:42.220
+ of selections together with web search. So here I have brought up the new general public
+
+00:11:42.220 --> 00:11:50.380
+ license for just getting some text that I can show the select the thing functionality. So let's
+
+00:11:50.380 --> 00:12:00.060
+ move the cursor over the word versions and then I hit control c return which is bound for the
+
+00:12:00.060 --> 00:12:11.500
+ select the thing functionality. Then it selects the word that the cursor was at. If I hit it again
+
+00:12:11.500 --> 00:12:19.900
+ control c return it selects the line and again it selects the sentence and again the whole paragraph.
+
+00:12:19.900 --> 00:12:29.980
+ So that's a convenient way to extend your search source your selections rather in a buffer.
+
+00:12:29.980 --> 00:12:41.180
+ Looking at selection so you can use that from web search. Let's mark some text and then
+
+00:12:41.580 --> 00:12:48.460
+ hit control c / which is bound for the web search. Here you see the heart probably menu system
+
+00:12:48.460 --> 00:12:57.980
+ again. It's slightly customized with things that I use but the basic menus are the one supported by
+
+00:12:57.980 --> 00:13:08.620
+ heart probably. So let's look at searching .go and it then publish the prompt with the selection.
+
+00:13:08.620 --> 00:13:18.780
+ And I have configured it so it uses my Firefox for these searches.
+
+00:13:20.860 --> 00:13:30.700
+ Here we have the new general public license show. I can also show that for like me being not native
+
+00:13:30.700 --> 00:13:40.300
+ English speaker let's look what take away your freedoms means in Swedish so control c / and then
+
+00:13:40.300 --> 00:13:48.380
+ I hit translate. Take away your freedom. Yeah what's the translation for that? Using Google translate
+
+00:13:48.380 --> 00:14:00.300
+ I get it translated the Swedish. That was the whole talk.
+
+00:14:00.300 --> 00:14:08.860
+ We reached the end and thanks for listening. Bye.
+

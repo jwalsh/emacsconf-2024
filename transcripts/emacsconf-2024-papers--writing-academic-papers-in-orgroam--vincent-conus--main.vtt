@@ -1,0 +1,152 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:12.000
+ Okay, hi everyone. My name is Vincent. I'm a PhD student in Nansan University, Japan, and today I'm going to present to you how I'm using org notes and org room to write academic papers.
+
+00:00:12.000 --> 00:00:19.000
+ The slide I'm going to present here are available on a Git repository, so you can check them later if you want to.
+
+00:00:19.000 --> 00:00:29.000
+ So first, what are we talking about here? So in general, it's possible if you have any org notes to export them as latex.
+
+00:00:29.000 --> 00:00:41.000
+ And given some extra configuration, it's possible basically to reproduce any latex setup that you would use to create documents with an org file.
+
+00:00:41.000 --> 00:00:56.000
+ So in my case, I'm using that system to take some notes there having my org room system and to export that into finished academic paper that you can submit eventually to a conference and so on.
+
+00:00:56.000 --> 00:01:09.000
+ Actually, before I submit that proposal, after I submit that proposal, I just noticed that Mike and Rick in last year, I met a very extensive presentation about org export.
+
+00:01:09.000 --> 00:01:20.000
+ But in here, I just want to showcase my usage of org room to present what all the configuration I'm using to be able to achieve that.
+
+00:01:20.000 --> 00:01:33.000
+ Why do that? So in general, like I said, I'm using that at part of my writing system, so in having a org room notes that can be exported as a document make for a great work for my opinion.
+
+00:01:33.000 --> 00:01:48.000
+ It makes the org even more versatile. So if you use that for maybe writing code in the literature programming, now you're going to be also able to export that into any format you want.
+
+00:01:48.000 --> 00:01:56.000
+ Those are very clean. So in my opinion, it looks better to work in org rather than anything latex code directly.
+
+00:01:56.000 --> 00:02:07.000
+ The centralized bibliography system is also great because it allows to to have a just a few notes that you can reference everywhere and have links to them.
+
+00:02:07.000 --> 00:02:16.000
+ And of course, everything is happening inside of EMAX. So you have access to all tool you are used to like magic or project iron and whatnot.
+
+00:02:16.000 --> 00:02:27.000
+ However, and to quote one of the funniest recent video about EMAX. So with latex, I used to spend hours trying to get the image on the right page, now use org mode latex and just accept it's impossible.
+
+00:02:27.000 --> 00:02:34.000
+ And like all the jokes in that video, it lends in very well because like there is some truth to that.
+
+00:02:34.000 --> 00:02:36.000
+ In that.
+
+00:02:36.000 --> 00:02:45.000
+ With that system, you are not getting rid of the complexity of latex. So if you have problems, you're going to have to deal with the very long logs.
+
+00:02:45.000 --> 00:02:50.000
+ It's a layer on top of latex. So if you if you need to debug your configuration.
+
+00:02:50.000 --> 00:03:01.000
+ If you want to adjust something specific, you would need to be proficient in latex and also in very at ease with your EMAX configuration.
+
+00:03:01.000 --> 00:03:10.000
+ The way to use the org export is less documented than using latex. So if you want to implement something, probably it's going to be described in pure latex.
+
+00:03:10.000 --> 00:03:16.000
+ And then you're going to need to adjust that to make it work inside your org files.
+
+00:03:16.000 --> 00:03:32.000
+ And I explain before that the bibliography system is great, but although it's very picky on the way it works, especially to be exported and depending on the on the template you are using, you might run into issues with some packages that are in conflict.
+
+00:03:32.000 --> 00:03:37.000
+ So there is there is that to be taken into in mind.
+
+00:03:37.000 --> 00:03:47.000
+ So in general, if you have a org note, you can simply export it with a control C control E and L O with the menu that appears, I can show that briefly.
+
+00:03:47.000 --> 00:04:04.000
+ Then you have the menu you can select L and O to export the file. And that works very well in general with that, you are able to to deal with everything that you have in your normal org notes, like if you have images, table links, it's going to be exported in a way that looks decent.
+
+00:04:04.000 --> 00:04:21.000
+ That's what we are starting with. However, if you want to make a publication, if you have a template that you receive from a conference or whatnot, you want to be able to adapt your org notes to be able to export it exactly the way you want.
+
+00:04:21.000 --> 00:04:32.000
+ So I'm going to present the four points that I'm showing here that are for me, the elements that you need to be careful with when you try to work with templates and exporting to latex.
+
+00:04:32.000 --> 00:04:46.000
+ So firstly, you have headers. So basically, these allows to add latex elements that are going to be at the top of the file, you're going to have the title, you're going to have your extra packages here, you're going to have your class, I'm going to present that later.
+
+00:04:46.000 --> 00:04:54.000
+ And that's the part that you're going to adjust to make it look like the text template that you receive.
+
+00:04:54.000 --> 00:05:06.000
+ Then you have the formatting class file. That's a CLS file that you would receive, also part of the template. This one is used instead of the typical doc class like article.
+
+00:05:06.000 --> 00:05:22.000
+ And the way I'm using them is to add an entry, like add an element to the list, or glitter class in my image in it. This way, I can use the CLS file directly and also give the parameters that I want.
+
+00:05:22.000 --> 00:05:31.000
+ So in that case, I'm going to have a appress.cls next to my org notes, and it's going to be able to use it.
+
+00:05:31.000 --> 00:05:51.000
+ A third element is in some case, you might want to use a different later compiler to build your project to build your notes. And that can be done per file, per note in my opinion, that's the most flexible way by editing by adding this line as the very first line of your file and just changing the latex PDF process variable.
+
+00:05:51.000 --> 00:06:06.000
+ And in there, you can put multiple, sorry, multiple commands in a row. So for example, you can build, you can have the shell escape to have the minted note block, the bptc elements.
+
+00:06:06.000 --> 00:06:13.000
+ So that work very well. When you need that, you need to reload your file, though, something to keep in mind.
+
+00:06:13.000 --> 00:06:38.000
+ And lastly, you have the bibliography. So when you have reference, when you want to put reference, you can use the org room, bptc package that need to be installed, then you have some configuration to be set. So you have the bptc compression bibliography, where you explain, where is your your reference files will be file, you can also give a path for where to search for PDFs.
+
+00:06:38.000 --> 00:06:54.000
+ So if you have matching names with your bptc entries and some PDF file in there, they're going to be linked. I can show that later. So that's something that's going to be part of your of your init configuration as part of the org room bptc package configuration.
+
+00:06:54.000 --> 00:07:11.000
+ Then in the note you are exporting, you want to have to add a section called reference. Here you can set a style for the bibliography. And although again, you put which of the of the reference file you want to you want to use.
+
+00:07:11.000 --> 00:07:29.000
+ So with all of that, I'm going to show some some example. So here I have some an org note that I used as the file to be exported into a publication. So you can see up front, I set all my headers package. I have some extra package I put.
+
+00:07:29.000 --> 00:07:53.000
+ I have the class that is something that is next next to it. So you can see in the files, I have the April is the CLS just here. And also with all of that. So you have you can also had tags, I didn't explain that, but you can also like ignore some section. That's that's quite convenient as well.
+
+00:07:53.000 --> 00:08:10.000
+ So here we have some some section. And if you want to add a bibliography. So you're going to do CL sites can put some site entry, put any file in there, no description. And you're going to put you some link like that.
+
+00:08:10.000 --> 00:08:23.000
+ And that's very convenient because firstly it's going to be exported as a reference like you're going to show later. But also it give you access to it directly from the notes. So if I click the thing here, I have some menu.
+
+00:08:23.000 --> 00:08:31.000
+ I can open the bibliography page. Sorry.
+
+00:08:31.000 --> 00:08:43.000
+ And I can also open the PDF that was linked to it. So if I do that, here is the file that pops up that was linked to the bibliography. That's great.
+
+00:08:43.000 --> 00:08:52.000
+ And otherwise, yeah, with in that document, you're going to have other other things can have figures with parameters set on top.
+
+00:08:52.000 --> 00:09:08.000
+ Footnotes as well. If that's something that that you need, for example, here, it's a section that's not exported, but you can have your your normal footnotes. We can go back and forth. And if they are in the exported section, they're going to be they're going to be managed.
+
+00:09:08.000 --> 00:09:25.000
+ So with that, you can export the notes. You can see a control C control E. So you have that menu for exporting org files. You do L folate tech. And then O for running directly as PDF and opening it.
+
+00:09:25.000 --> 00:09:35.000
+ It takes a little while to build. And here we are. So you have the template have been used. So there is a two colon situation happening. We have a specific header format.
+
+00:09:35.000 --> 00:09:48.000
+ And figures and the citation that we put it's happening. It showed here. And it's also going to be visible at the end in the reference section.
+
+00:09:48.000 --> 00:09:58.000
+ So yeah, I guess a full fully ready like finished paper can be produced this way.
+
+00:09:58.000 --> 00:10:08.000
+ And yeah, that's all that I had for for today. Thank you very much for your attention. And yeah, I am a very grateful question on IRC or in the new video chat. Thank you.
+

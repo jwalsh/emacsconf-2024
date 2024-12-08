@@ -1,0 +1,737 @@
+WEBVTT
+
+00:00:00.720 --> 00:00:03.800
+ Hello, my name is Abhinav and I'm going to talk about unlocking
+
+00:00:03.800 --> 00:00:05.600
+ link data in org mode.
+
+00:00:05.600 --> 00:00:09.500
+ So like a lot of you, I use Emacs on org mode for keeping a lot
+
+00:00:09.500 --> 00:00:11.800
+ of my data, personal information.
+
+00:00:11.800 --> 00:00:15.200
+ For example, if I'm trying to write journal entries,
+
+00:00:15.200 --> 00:00:17.800
+ it's most likely going to be an org mode file.
+
+00:00:17.800 --> 00:00:20.000
+ If I'm trying to save bookmarks or save links,
+
+00:00:20.000 --> 00:00:22.520
+ I again, they go into an org mode file.
+
+00:00:22.520 --> 00:00:25.800
+ Now, I was doing that earlier, but last year,
+
+00:00:25.800 --> 00:00:28.360
+ I think around last year, I started to use
+
+00:00:28.360 --> 00:00:30.240
+ these specialized applications.
+
+00:00:30.240 --> 00:00:32.960
+ So for example, if I'm trying to save bookmarks,
+
+00:00:32.960 --> 00:00:36.000
+ I'm going to use a bookmark manager.
+
+00:00:36.000 --> 00:00:38.800
+ I specifically was using drain drop for that.
+
+00:00:38.800 --> 00:00:42.520
+ What happened with that is that it allowed me to save bookmarks.
+
+00:00:42.520 --> 00:00:45.040
+ Let's say, when I'm on Go, I'm on a mobile phone.
+
+00:00:45.040 --> 00:00:49.400
+ I can just open my Android app and then save links to it.
+
+00:00:49.400 --> 00:00:51.000
+ I can also annotate and do other things
+
+00:00:51.000 --> 00:00:52.880
+ that you can do on bookmarks.
+
+00:00:52.880 --> 00:00:55.600
+ Similarly, for reading, let's say, papers and periods,
+
+00:00:55.600 --> 00:00:59.720
+ I would use that arrow for keeping notes about people.
+
+00:00:59.720 --> 00:01:03.200
+ I'll use a tool called Monika CRM.
+
+00:01:03.200 --> 00:01:07.400
+ Now, all these tools, the aim is to do one thing really well,
+
+00:01:07.400 --> 00:01:09.480
+ but they kind of work in their own silos.
+
+00:01:09.480 --> 00:01:12.520
+ And it's very hard to link data from one to another.
+
+00:01:12.520 --> 00:01:14.720
+ For example, if you have a journal application,
+
+00:01:14.720 --> 00:01:18.200
+ you can say things like, hey, today I met this person,
+
+00:01:18.200 --> 00:01:21.200
+ and then this person gave me this recipe, whatever.
+
+00:01:21.200 --> 00:01:25.400
+ But you know that the person information is still kept
+
+00:01:25.400 --> 00:01:27.320
+ in a different application and the recipe information
+
+00:01:27.320 --> 00:01:29.080
+ is still kept in a different application.
+
+00:01:29.080 --> 00:01:33.760
+ You have to do a lot of work to kind of make them come together.
+
+00:01:33.760 --> 00:01:37.040
+ So one thing that happened also last year
+
+00:01:37.040 --> 00:01:39.680
+ was that I started using org room a lot.
+
+00:01:39.680 --> 00:01:42.080
+ So org room is a little casting system
+
+00:01:42.080 --> 00:01:45.040
+ which allows you to have linked notes.
+
+00:01:45.040 --> 00:01:46.440
+ I'll not go too much into that detail,
+
+00:01:46.440 --> 00:01:49.200
+ but basically with org room, you can have
+
+00:01:49.200 --> 00:01:52.440
+ a lot of these text-based files that you make anyway,
+
+00:01:52.440 --> 00:01:55.960
+ and then keep them connected and have this knowledge base
+
+00:01:55.960 --> 00:02:00.960
+ that you can build around your information, your data.
+
+00:02:00.960 --> 00:02:03.360
+ While it's a good system, I still feel like it's not
+
+00:02:03.360 --> 00:02:07.440
+ very pro on providing very good amount of tools
+
+00:02:07.440 --> 00:02:09.920
+ for working with links.
+
+00:02:09.920 --> 00:02:11.320
+ I'll show two kind of things.
+
+00:02:11.320 --> 00:02:15.400
+ First is that I'll show how my current knowledge base
+
+00:02:15.400 --> 00:02:19.760
+ looks like, what kind of workflow I kind of use to save
+
+00:02:19.760 --> 00:02:24.560
+ let's say any information or how do I connect new notes.
+
+00:02:24.560 --> 00:02:26.840
+ The other is that because while this information base
+
+00:02:26.840 --> 00:02:31.760
+ is working out well for me, I still want all of my external
+
+00:02:31.760 --> 00:02:37.080
+ usages to be reflected back into this database of text files.
+
+00:02:37.080 --> 00:02:39.240
+ So if I'm browsing something, I still want that thing
+
+00:02:39.240 --> 00:02:42.800
+ to be saved in my org mode files.
+
+00:02:42.800 --> 00:02:46.440
+ With that, I'm browsing on Android or on browsing on Firefox
+
+00:02:46.440 --> 00:02:48.080
+ somewhere on a laptop.
+
+00:02:48.080 --> 00:02:50.160
+ So I'll show those two things here.
+
+00:02:50.160 --> 00:02:53.840
+ It's going to be a short talk, and then yeah, hope you like it.
+
+00:02:53.840 --> 00:02:55.560
+ So we'll start with this thing.
+
+00:02:55.560 --> 00:02:59.000
+ So this is a simple org room node.
+
+00:02:59.000 --> 00:03:00.080
+ It's a dummy node.
+
+00:03:00.080 --> 00:03:02.880
+ I've made a lot of dummy nodes here just to kind of show.
+
+00:03:02.880 --> 00:03:06.040
+ So maybe some of those information will be sparse,
+
+00:03:06.040 --> 00:03:10.840
+ but I hope I convey the meaning clearly.
+
+00:03:10.840 --> 00:03:14.560
+ So here, if you usually, if I just using plain org mode,
+
+00:03:14.560 --> 00:03:17.400
+ you just have this file, there's nothing else.
+
+00:03:17.400 --> 00:03:19.360
+ Now, if you are using org room,
+
+00:03:19.360 --> 00:03:22.000
+ you can do something called org room buffer toggle,
+
+00:03:22.000 --> 00:03:25.880
+ which will show you a few of those connected nodes.
+
+00:03:25.880 --> 00:03:28.880
+ Now, usually the connections are shown here.
+
+00:03:28.880 --> 00:03:30.560
+ They only show you backlinks.
+
+00:03:30.560 --> 00:03:33.760
+ So basically, any other node that has linked to this node
+
+00:03:33.760 --> 00:03:35.720
+ is going to be shown there.
+
+00:03:35.720 --> 00:03:39.160
+ But in my extension, you can see more things.
+
+00:03:39.160 --> 00:03:42.160
+ For example, here in this case, you can see,
+
+00:03:42.160 --> 00:03:44.480
+ first of all, we show both links.
+
+00:03:44.480 --> 00:03:47.360
+ So any link from this node to something else
+
+00:03:47.360 --> 00:03:49.280
+ will also be shown there, any link from that node
+
+00:03:49.280 --> 00:03:51.800
+ to something else will also be shown there.
+
+00:03:51.800 --> 00:03:54.400
+ So you can see that is one thing.
+
+00:03:54.400 --> 00:03:55.960
+ The other thing is that all these links are
+
+00:03:55.960 --> 00:03:58.600
+ categorized in type of nodes.
+
+00:03:58.600 --> 00:04:01.920
+ For example, when this node is specifically right now
+
+00:04:01.920 --> 00:04:05.160
+ is of kind book, tag is one identifier for it,
+
+00:04:05.160 --> 00:04:09.000
+ but there are other ways to identify a kind of node.
+
+00:04:09.000 --> 00:04:12.800
+ But this is connected to another node which is of a kind person.
+
+00:04:12.800 --> 00:04:15.840
+ So as you can see, the person A asked me to read this book.
+
+00:04:15.840 --> 00:04:19.320
+ So that link is shown there in a very rich format.
+
+00:04:19.320 --> 00:04:23.440
+ So you have more information about the link in this.
+
+00:04:23.440 --> 00:04:24.600
+ The other thing that you can see there
+
+00:04:24.600 --> 00:04:29.360
+ is that there are also links which are not existing right now,
+
+00:04:29.360 --> 00:04:33.200
+ but they could be possibly interesting for me.
+
+00:04:33.200 --> 00:04:34.280
+ So these are similar nodes.
+
+00:04:34.280 --> 00:04:36.400
+ So you can see the scores of similarity
+
+00:04:36.400 --> 00:04:38.960
+ and then other nodes like book on mathematics,
+
+00:04:38.960 --> 00:04:42.680
+ which are the another dummy node that I made for this demo.
+
+00:04:42.680 --> 00:04:44.760
+ Now, these are nodes which, again, I can just go in there
+
+00:04:44.760 --> 00:04:47.760
+ and I can see if maybe they make sense of,
+
+00:04:47.760 --> 00:04:51.280
+ I can just make those connections explicitly.
+
+00:04:51.280 --> 00:04:53.200
+ So let's try some other node here.
+
+00:04:53.200 --> 00:04:56.160
+ So let's say, so this is a node of a recipe.
+
+00:04:56.160 --> 00:04:57.880
+ It's a bomb by sandwich.
+
+00:04:57.880 --> 00:04:59.240
+ It's a recipe I've made.
+
+00:04:59.240 --> 00:05:02.600
+ Now, if you go here on the right, you can see,
+
+00:05:02.600 --> 00:05:06.560
+ there are some things on some person liking the sandwich.
+
+00:05:06.560 --> 00:05:09.520
+ There are some related nodes also, similar nodes,
+
+00:05:09.520 --> 00:05:10.880
+ which I am not linked.
+
+00:05:10.880 --> 00:05:12.600
+ Plus, there are some general entries.
+
+00:05:12.600 --> 00:05:19.280
+ Now, I use augroom daily to kind of write down general entries.
+
+00:05:19.280 --> 00:05:24.080
+ And then what I have to do is basically just write whatever I want
+
+00:05:24.080 --> 00:05:27.600
+ and then just make those links to this node.
+
+00:05:27.600 --> 00:05:31.320
+ So for doing that, I can see that there were two days
+
+00:05:31.320 --> 00:05:34.720
+ where I made bomb by sandwich and I had some observations
+
+00:05:34.720 --> 00:05:38.040
+ on it, which you know, I can see here, right, same.
+
+00:05:38.040 --> 00:05:40.960
+ So same for a person, let's say, if you go to person B,
+
+00:05:40.960 --> 00:05:43.440
+ you can see that, you know, this person has again linked to person A
+
+00:05:43.440 --> 00:05:45.680
+ and there's like some information around it.
+
+00:05:45.680 --> 00:05:48.520
+ Plus, there are some similar nodes there.
+
+00:05:48.520 --> 00:05:50.640
+ This works really well.
+
+00:05:50.640 --> 00:05:52.200
+ The similarity function works really well
+
+00:05:52.200 --> 00:05:55.360
+ if you're basically trying to go to, you know,
+
+00:05:55.360 --> 00:05:56.480
+ bookmarks that I've saved.
+
+00:05:56.480 --> 00:05:58.680
+ So, for example, here's bookmark that I saved,
+
+00:05:58.680 --> 00:06:01.480
+ which is Google at InterSpeed, 2033.
+
+00:06:01.480 --> 00:06:05.320
+ Now, this bookmark is a blog post from Google AI team.
+
+00:06:05.320 --> 00:06:08.160
+ Basically, it, you know, tells what research publications
+
+00:06:08.160 --> 00:06:10.120
+ they had in this conference.
+
+00:06:10.120 --> 00:06:11.640
+ Now, if you go to the similar nodes here,
+
+00:06:11.640 --> 00:06:14.720
+ you can see a very similar blog post from Google's team
+
+00:06:14.720 --> 00:06:17.000
+ for other conferences that they attended, right.
+
+00:06:17.000 --> 00:06:19.000
+ Now, this is really helpful for me, especially when I'm like
+
+00:06:19.000 --> 00:06:20.800
+ reading something later.
+
+00:06:20.800 --> 00:06:23.000
+ So I like to save a lot of links together.
+
+00:06:23.000 --> 00:06:25.040
+ And then when I'm deciding to read something,
+
+00:06:25.040 --> 00:06:27.200
+ I just open this and then see, you know,
+
+00:06:27.200 --> 00:06:29.240
+ however, everything is going to be what I'll say.
+
+00:06:29.240 --> 00:06:31.600
+ I have saved, should I read something else or not.
+
+00:06:31.600 --> 00:06:33.800
+ One interesting feature I was realizing,
+
+00:06:33.800 --> 00:06:36.560
+ I should try out is that, you know,
+
+00:06:36.560 --> 00:06:39.560
+ if I go to this node, which is person B,
+
+00:06:39.560 --> 00:06:42.720
+ you can see that while I'm linking this to person A,
+
+00:06:42.720 --> 00:06:44.960
+ I also have some context around that.
+
+00:06:44.960 --> 00:06:48.240
+ So I'm written, I've written specifically uncle of person A.
+
+00:06:48.240 --> 00:06:49.560
+ Now, if you have a semantic wiki,
+
+00:06:49.560 --> 00:06:53.440
+ you will have a typed link where you don't have a plain link.
+
+00:06:53.440 --> 00:06:55.320
+ You also have a type of the link.
+
+00:06:55.320 --> 00:06:57.240
+ So in this case, the type of the link could be, you know,
+
+00:06:57.240 --> 00:07:01.880
+ hey, it's like uncle Colin, whatever that link is.
+
+00:07:01.880 --> 00:07:05.240
+ But, you know, I don't want to like go into that as detail
+
+00:07:05.240 --> 00:07:08.200
+ and I don't want to like learn how to link things,
+
+00:07:08.200 --> 00:07:09.680
+ learn what kind of types I can make.
+
+00:07:09.680 --> 00:07:11.720
+ So I can just write things in plain text.
+
+00:07:11.720 --> 00:07:12.840
+ So I've written this in plain text.
+
+00:07:12.840 --> 00:07:16.640
+ What I can do now is I can just search for links like this.
+
+00:07:16.640 --> 00:07:19.560
+ For example, I can just do something like family members.
+
+00:07:19.560 --> 00:07:23.160
+ Now, this will show me all the links which have a context
+
+00:07:23.160 --> 00:07:26.920
+ which makes sense as family members.
+
+00:07:26.920 --> 00:07:29.080
+ So basically this is a semantic search on links
+
+00:07:29.080 --> 00:07:31.240
+ on the context of the links and then, you know,
+
+00:07:31.240 --> 00:07:33.200
+ it kind of gives me what I want here.
+
+00:07:33.200 --> 00:07:36.160
+ For example, here in this demo, I just had like one node,
+
+00:07:36.160 --> 00:07:38.800
+ one link which had this uncle relationship.
+
+00:07:38.800 --> 00:07:39.960
+ So that kind of works out.
+
+00:07:39.960 --> 00:07:41.240
+ Now, let's just try another search.
+
+00:07:41.240 --> 00:07:46.000
+ For example, let's say if I'm typing check before meeting.
+
+00:07:46.000 --> 00:07:48.800
+ So these are now again links where I have written something
+
+00:07:48.800 --> 00:07:52.320
+ where I kind of should do something before meeting someone.
+
+00:07:52.320 --> 00:07:54.960
+ So for example, the first one you can see,
+
+00:07:54.960 --> 00:07:57.720
+ there's a person called meeting person.
+
+00:07:57.720 --> 00:07:59.000
+ It's a demo node again.
+
+00:07:59.000 --> 00:08:03.560
+ And I've written one note about one connection here
+
+00:08:03.560 --> 00:08:05.760
+ is basically saying that, hey, you know,
+
+00:08:05.760 --> 00:08:09.280
+ read this link before you go to meet them, right?
+
+00:08:09.280 --> 00:08:11.240
+ So it's also been very helpful for me.
+
+00:08:11.240 --> 00:08:13.360
+ There are like a few patterns where I kind of feel
+
+00:08:13.360 --> 00:08:14.960
+ this works out well.
+
+00:08:14.960 --> 00:08:18.840
+ As I keep making more of the links
+
+00:08:18.840 --> 00:08:20.720
+ and keep writing more context around the link,
+
+00:08:20.720 --> 00:08:24.000
+ this kind of works out really helpful.
+
+00:08:24.000 --> 00:08:26.160
+ This becomes really helpful for me.
+
+00:08:26.160 --> 00:08:28.160
+ Okay, so the other few things, you know,
+
+00:08:28.160 --> 00:08:32.120
+ how do I like work with systems outside EMAX, right?
+
+00:08:32.120 --> 00:08:33.640
+ So the first thing is that, you know,
+
+00:08:33.640 --> 00:08:36.960
+ I haven't found anything that works really well
+
+00:08:36.960 --> 00:08:41.960
+ for saving bookmarks when I'm on my Android phone.
+
+00:08:41.960 --> 00:08:44.600
+ So I had to make new applications, application,
+
+00:08:44.600 --> 00:08:47.000
+ and it's called pile Android.
+
+00:08:47.000 --> 00:08:48.240
+ Now this application basically, you know,
+
+00:08:48.240 --> 00:08:50.920
+ let's me do whatever I was doing with Raindrop,
+
+00:08:50.920 --> 00:08:52.360
+ which was a bookmark manager.
+
+00:08:52.360 --> 00:08:53.360
+ So I can open links.
+
+00:08:53.360 --> 00:08:55.440
+ I can read stuff in Firefox on my browser,
+
+00:08:55.440 --> 00:08:57.280
+ on my Android phone.
+
+00:08:57.280 --> 00:09:00.560
+ And then I can say all of that in my org room database.
+
+00:09:00.560 --> 00:09:03.000
+ org room database here means the org room files that I have
+
+00:09:03.000 --> 00:09:04.360
+ because again, these are plain text files.
+
+00:09:04.360 --> 00:09:06.440
+ I can sync them through mobile phone
+
+00:09:06.440 --> 00:09:10.240
+ to my, you know, desktop and laptop and everything else.
+
+00:09:10.240 --> 00:09:11.880
+ So that's one place where I kind of, you know,
+
+00:09:11.880 --> 00:09:15.160
+ stop going to a new application.
+
+00:09:15.160 --> 00:09:18.200
+ I just basically ingest everything in my org room setup.
+
+00:09:19.160 --> 00:09:22.880
+ The other thing is that when I'm browsing on my laptop,
+
+00:09:22.880 --> 00:09:25.240
+ I still want to, you know,
+
+00:09:25.240 --> 00:09:28.200
+ collect all the data inside my org room system.
+
+00:09:28.200 --> 00:09:31.160
+ So here's something which I called org room site kick.
+
+00:09:31.160 --> 00:09:33.680
+ Now what you can do here is that,
+
+00:09:33.680 --> 00:09:36.000
+ let's say if you want to search for something,
+
+00:09:36.000 --> 00:09:38.160
+ so you can basically do a search normally,
+
+00:09:38.160 --> 00:09:40.280
+ which is going to do a web search.
+
+00:09:40.280 --> 00:09:43.120
+ But if you call org room SK, which is site kick,
+
+00:09:43.120 --> 00:09:47.720
+ it will do a search on all of your org room notes.
+
+00:09:47.720 --> 00:09:50.800
+ So now this search is basically using recall.
+
+00:09:50.800 --> 00:09:52.960
+ So recall kind of indexes all the plain text
+
+00:09:52.960 --> 00:09:55.480
+ and does a full text search for you.
+
+00:09:55.480 --> 00:09:57.480
+ But this is really helpful because when I'm searching
+
+00:09:57.480 --> 00:09:59.760
+ for something and I still want to know that,
+
+00:09:59.760 --> 00:10:02.960
+ hey, I have saved some of those links earlier.
+
+00:10:02.960 --> 00:10:05.360
+ So can I like, you know, see them back?
+
+00:10:05.360 --> 00:10:08.480
+ And then, you know, it's a very good way
+
+00:10:08.480 --> 00:10:11.200
+ to kind of not lose track of what you've already saved.
+
+00:10:11.200 --> 00:10:14.720
+ The other thing I can do is like I can also,
+
+00:10:14.720 --> 00:10:19.720
+ you know, again, since I have saved a project in my org room,
+
+00:10:19.720 --> 00:10:22.440
+ I can basically call again, site kick again
+
+00:10:22.440 --> 00:10:25.280
+ and I can see a note for that.
+
+00:10:25.280 --> 00:10:27.960
+ That note here specifically is tracking my tasks
+
+00:10:27.960 --> 00:10:29.200
+ for this project.
+
+00:10:29.200 --> 00:10:30.760
+ And other than task, you know, again,
+
+00:10:30.760 --> 00:10:32.800
+ I can see other things like similar notes.
+
+00:10:32.800 --> 00:10:37.000
+ I can see, you know, other links that are there.
+
+00:10:37.000 --> 00:10:40.600
+ So, yeah, so this, there's some optimizations to be done.
+
+00:10:40.600 --> 00:10:42.800
+ I think this, you know, the bookmark here
+
+00:10:42.800 --> 00:10:44.400
+ is not very intuitive.
+
+00:10:44.400 --> 00:10:47.200
+ I still want, I want this to be follow,
+
+00:10:47.200 --> 00:10:50.360
+ follow in the browser as I switch tabs.
+
+00:10:50.360 --> 00:10:53.120
+ But again, those things are something I'll work on.
+
+00:10:53.120 --> 00:10:55.000
+ Other optimizations include, you know,
+
+00:10:55.000 --> 00:10:58.760
+ the way I'm doing the search using ML
+
+00:10:58.760 --> 00:11:01.080
+ that needs a little bit of fine tuning
+
+00:11:01.080 --> 00:11:03.920
+ because every time I make a new link,
+
+00:11:03.920 --> 00:11:06.800
+ I have to like rerun the, you know,
+
+00:11:06.800 --> 00:11:09.200
+ re kind of build the features and everything else,
+
+00:11:09.200 --> 00:11:12.600
+ which I make it to be real time.
+
+00:11:12.600 --> 00:11:15.400
+ Yeah, so that concludes my talk.
+
+00:11:15.400 --> 00:11:16.800
+ Hope you enjoyed it.
+
+00:11:16.800 --> 00:11:18.880
+ Let me know if there are any questions.
+
+00:11:18.880 --> 00:11:19.720
+ Thank you.
+
