@@ -1,0 +1,494 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:06.320
+ Hello everyone, I'm Robin Templeton and I'm going to talk about EMAX Beguiled and recent
+
+00:00:06.320 --> 00:00:10.900
+ progress on the GAL EMAX project.
+
+00:00:10.900 --> 00:00:18.080
+ First of all, if you're not familiar with GAL, it's an implementation of the Scheme
+
+00:00:18.080 --> 00:00:24.680
+ Programming Language, which is a dialect of Lisp, and the same family as EMAX Lisp, and
+
+00:00:24.680 --> 00:00:28.120
+ GAL is Gadoo's official extension language.
+
+00:00:28.120 --> 00:00:34.880
+ The goal of the GAL EMAX project is to use GAL as the basis for EMAX's Lisp support,
+
+00:00:34.880 --> 00:00:41.760
+ so it has two main components, a new EMAX Lisp compiler built on top of GAL, and a variety
+
+00:00:41.760 --> 00:00:49.720
+ of EMAX in which the built-in Lisp implementation is entirely replaced with GAL ELisp.
+
+00:00:49.720 --> 00:00:54.840
+ We expect the combination of these two projects to have several benefits.
+
+00:00:54.840 --> 00:01:03.400
+ One is improved performance, another is increased expressiveness for ELisp, and making it easier
+
+00:01:03.400 --> 00:01:07.100
+ to extend an experiment with the language.
+
+00:01:07.100 --> 00:01:12.320
+ And finally, it will reduce EMAX's reliance on C for two reasons.
+
+00:01:12.320 --> 00:01:18.520
+ GAL will be responsible for the language implementation, so EMAX will no longer have to include
+
+00:01:18.520 --> 00:01:26.200
+ a Lisp interpreter, and it will also become possible to implement much more of EMAX in less
+
+00:01:26.200 --> 00:01:28.360
+ than is currently feasible.
+
+00:01:28.360 --> 00:01:34.140
+ And of course, this raises the question of why GAL is suitable as part of it, and we
+
+00:01:34.140 --> 00:01:36.800
+ chose GAL for a few reasons.
+
+00:01:36.800 --> 00:01:42.040
+ GAL is primarily a Scheme of notation, but also has built-in support for multiple languages
+
+00:01:42.040 --> 00:01:46.920
+ using its compiler tower to add support for a new language to GAL.
+
+00:01:46.920 --> 00:01:53.280
+ You only have to write a compiler from the source language to Trial, which is essentially
+
+00:01:53.280 --> 00:01:59.000
+ a low-level, minimal representation of Scheme.
+
+00:01:59.000 --> 00:02:05.560
+ All of GAL's compiler optimizations occur at the Trial layer or lower, so you don't need
+
+00:02:05.560 --> 00:02:10.920
+ to worry about the lower level details of the compiler when initially implementing your
+
+00:02:10.920 --> 00:02:12.400
+ language.
+
+00:02:12.400 --> 00:02:18.120
+ GAL also has some Lisp features that are very rare in Scheme of limitations.
+
+00:02:18.120 --> 00:02:24.320
+ For example, it has a nil value, it counts as both false and an empty list, just like a
+
+00:02:24.320 --> 00:02:32.320
+ nilisp, and it also has a version of the common Lisp object system, and it's metoptic protocol,
+
+00:02:32.320 --> 00:02:37.320
+ which is called Goops.
+
+00:02:37.320 --> 00:02:43.980
+ The idea of GAL Emax has a pretty long history, going back to at least three decades, and
+
+00:02:43.980 --> 00:02:48.080
+ there have been about half a dozen previous implementation attempts.
+
+00:02:48.080 --> 00:02:53.320
+ But the current iteration began with a series of six-summer of code internships – a Daneo
+
+00:02:53.320 --> 00:03:01.040
+ Crafts in 2009, and then my internships from 2010 to 2014.
+
+00:03:01.040 --> 00:03:04.800
+ And my basic implementation strategy was pretty straightforward.
+
+00:03:04.800 --> 00:03:10.280
+ I implemented a core subset of E-Lisp, which was enough to run some batch mode programs
+
+00:03:10.280 --> 00:03:12.680
+ outside of E-MAX.
+
+00:03:12.680 --> 00:03:18.760
+ In E-MAX, I modified the garbage collector and the data structures for Lisp objects to
+
+00:03:18.760 --> 00:03:22.160
+ use their libGAL equivalents.
+
+00:03:22.160 --> 00:03:31.840
+ And our place E-MAX's Lisp evaluator with the one provided by GAL E-Lisp.
+
+00:03:31.840 --> 00:03:38.760
+ And after a little over a year of work at the end of the 2014 internship, I ended up with
+
+00:03:38.760 --> 00:03:44.040
+ a fully functional prototype of GAL E-MAX.
+
+00:03:44.040 --> 00:03:53.880
+ It used GAL E-Lisp alone as its Lisp implementation, and was completely compatible with E-MAX functionality,
+
+00:03:53.880 --> 00:03:56.880
+ and with external extensions.
+
+00:03:56.880 --> 00:04:03.400
+ And caveat was that the performance was pretty bad, as I was focused on correctness, as well
+
+00:04:03.400 --> 00:04:07.740
+ as ease of integration with the E-MAX E-code.
+
+00:04:07.740 --> 00:04:11.920
+ But it was nonetheless a major milestone for the project.
+
+00:04:11.920 --> 00:04:19.520
+ And let's take just a moment to look at GAL E-Lisp.
+
+00:04:19.520 --> 00:04:23.000
+ For starters, we have access to GAL modules.
+
+00:04:23.000 --> 00:04:30.200
+ So, if you call GAL E-Lisp version function, see that we're running under GAL E-Lisp.0.
+
+00:04:30.200 --> 00:04:36.640
+ It acts as to some of the numeric tower via the arithmetic functions.
+
+00:04:36.640 --> 00:04:39.520
+ We also have multiple values.
+
+00:04:39.520 --> 00:04:44.400
+ We have to be careful to use GAL E-Lisp procedure here.
+
+00:04:44.400 --> 00:04:50.720
+ Now, the CL libraries, you can see this works properly, rather than being an emulation.
+
+00:04:50.720 --> 00:04:58.120
+ And finally, we have tail-call elimination, and naturally we're going to use factorial
+
+00:04:58.120 --> 00:05:00.920
+ to demonstrate it.
+
+00:05:00.920 --> 00:05:14.320
+ So, if n is 0, turn the answer else or curse with n less 1, and n times a.
+
+00:05:14.320 --> 00:05:20.120
+ And of course, this definition works quickly, but it gets more interesting if we communicate
+
+00:05:20.120 --> 00:05:27.660
+ the answer with an error.
+
+00:05:27.660 --> 00:05:30.780
+ Now, we're going to look at a backtrace.
+
+00:05:30.780 --> 00:05:37.840
+ You can see here that there are no calls to a fact visible in between the request to evaluate
+
+00:05:37.840 --> 00:05:41.040
+ and the error communicate the answer.
+
+00:05:41.040 --> 00:05:49.880
+ And that's because this tail-call has been optimized into effectively go to.
+
+00:05:49.880 --> 00:05:56.880
+ And this is essential for any kind of series functional programming.
+
+00:05:56.880 --> 00:06:02.480
+ So, that's a peak at GAL E-Lisp.
+
+00:06:02.480 --> 00:06:09.400
+ In 2015, I left university to go work on web technologies, and the project was dormant
+
+00:06:09.400 --> 00:06:11.600
+ for a very long time.
+
+00:06:11.600 --> 00:06:13.920
+ But that's been changing recently.
+
+00:06:13.920 --> 00:06:22.040
+ During the last few months, I've been working with Larry Volkama to rebase GAL E-MAX onto
+
+00:06:22.040 --> 00:06:29.040
+ the development branch of upstream E-MAX, including the past decades' worth of upstream
+
+00:06:29.040 --> 00:06:31.040
+ development.
+
+00:06:31.040 --> 00:06:37.600
+ What we've ended up with is a series of rebases onto different versions of E-MAX.
+
+00:06:37.600 --> 00:06:42.400
+ The older ones tend to work pretty well.
+
+00:06:42.400 --> 00:06:49.000
+ The newer ones have increasingly bad problems, where they haven't been properly adjusted for
+
+00:06:49.000 --> 00:06:54.020
+ changes in the E-MAX implementation.
+
+00:06:54.020 --> 00:06:58.800
+ What we do have, by now, a version of E-MAX, is boosted correctly and can be used for
+
+00:06:58.800 --> 00:07:07.520
+ interactive debugging, as well as the ability to bisect the provisions of E-MAX and find
+
+00:07:07.520 --> 00:07:10.520
+ out where regressions were introduced.
+
+00:07:10.520 --> 00:07:14.960
+ So our immediate goal is, of course, to complete the rebase.
+
+00:07:14.960 --> 00:07:22.400
+ At the same time, we want to improve GAL E-Lisp's performance to at least be competitive
+
+00:07:22.400 --> 00:07:26.040
+ with ordinary E-MAX-Lisp.
+
+00:07:26.040 --> 00:07:33.480
+ Just to characterize the performance situation, GAL E-Lisp is usually about half as fast as
+
+00:07:33.480 --> 00:07:40.900
+ ordinary E-Lisp, while GAL E-Lisp is quite often in order of magnitude faster than ordinary
+
+00:07:40.900 --> 00:07:41.900
+ E-Lisp.
+
+00:07:41.900 --> 00:07:47.240
+ And that's based on micro-venge marks, like the Gabriel-venge marks.
+
+00:07:47.240 --> 00:07:53.360
+ But there's clearly a lot of room to improve our compiler's output.
+
+00:07:53.360 --> 00:07:59.840
+ If you want to mark your calendars, we're expecting to have a usable version of GAL E-MAX
+
+00:07:59.840 --> 00:08:04.100
+ already out sometime next spring.
+
+00:08:04.100 --> 00:08:10.880
+ We're also going to put some effort into either extracting all the work or doing new work
+
+00:08:10.880 --> 00:08:13.680
+ that could be contributed upstream.
+
+00:08:13.680 --> 00:08:21.200
+ On the GAL side, we'll probably start out with optimizing the dynamic binding facilities,
+
+00:08:21.200 --> 00:08:29.160
+ which are used very seldom in-skim, but are used all the time in traditionalist bi-lex.
+
+00:08:29.160 --> 00:08:34.240
+ On the E-MAX side, we'll be working initially on abstracting away the details of the
+
+00:08:34.240 --> 00:08:40.440
+ list implementation, where they're not relevant, and that will clean up the E-MAX code based
+
+00:08:40.440 --> 00:08:41.440
+ a bit.
+
+00:08:41.440 --> 00:08:47.000
+ It'll make it easier to integrate E-MAX and GAL E-Lisp, and it will probably be helpful
+
+00:08:47.000 --> 00:08:52.640
+ for anyone who's working on ordinary E-Lisp on their own.
+
+00:08:52.640 --> 00:09:00.240
+ We're also going to be adding new features to E-MAX, as we've seen in a few of them already.
+
+00:09:00.240 --> 00:09:06.720
+ The numeric tower, tail co-optimization, common-less compatibility, we're also going to provide
+
+00:09:06.720 --> 00:09:13.480
+ access to fibers, which is a GAL library based on ideas from concurrent ML.
+
+00:09:13.480 --> 00:09:18.960
+ That provides much more powerful facilities for concurrent and parallel programming than
+
+00:09:18.960 --> 00:09:21.920
+ what E-MAX currently offers.
+
+00:09:21.920 --> 00:09:35.760
+ And, this plan meets GAL E-MAX's basic goals, and it's work that we could maybe get integrated
+
+00:09:35.760 --> 00:09:38.960
+ upstream in a reasonable amount of time.
+
+00:09:38.960 --> 00:09:45.200
+ But it's also worth considering what more we can do, and what effect GAL E-MAX might
+
+00:09:45.200 --> 00:09:52.000
+ have on E-MAX, if it becomes simply E-MAX.
+
+00:09:52.000 --> 00:09:57.280
+ For context, the amount of C-Coded E-MAX has increased by around 50% in the last decade,
+
+00:09:57.280 --> 00:10:02.000
+ and it now constitutes around the quarter of the code base.
+
+00:10:02.000 --> 00:10:12.320
+ And C can be a bit of a barrier to customizing and extending E-MAX.
+
+00:10:12.320 --> 00:10:16.920
+ For example, there are about 1,500 C subroutines.
+
+00:10:16.920 --> 00:10:23.000
+ Around 500 are used in C-Code, as well as available to list code.
+
+00:10:23.000 --> 00:10:29.520
+ And being written in C means that they can't be practically redefined.
+
+00:10:29.520 --> 00:10:37.280
+ The use of C can become a barrier to extending E-MAX or customizing its behavior.
+
+00:10:37.280 --> 00:10:45.120
+ So we might consider writing as much of E-MAX as possible in Lisp, and one way to speed up
+
+00:10:45.120 --> 00:10:51.360
+ this process would be to provide a common list implementation for Kyle.
+
+00:10:51.360 --> 00:10:57.760
+ Note that between GAL E-Lisp and GAL Scheme, we have all of the essential ingredients for
+
+00:10:57.760 --> 00:11:01.280
+ a common list environment.
+
+00:11:01.280 --> 00:11:10.000
+ We can also share code with other common list implementations such as SPCL and SICL.
+
+00:11:10.000 --> 00:11:17.480
+ And for all, the duration of the project would be better measured in months or even years
+
+00:11:17.480 --> 00:11:22.680
+ despite common list reputation for being a large language.
+
+00:11:22.680 --> 00:11:25.640
+ This could have multiple uses, of course.
+
+00:11:25.640 --> 00:11:33.440
+ It could be a model for future improvements to E-Lisp, because E-Lisp and CL can interact
+
+00:11:33.440 --> 00:11:35.960
+ directly without problems.
+
+00:11:35.960 --> 00:11:43.600
+ And it would be very easy for E-Lisp to borrow language features from common list.
+
+00:11:43.600 --> 00:11:49.960
+ But for the purpose of a C to Lisp transition, it would also provide us with instant access
+
+00:11:49.960 --> 00:11:57.480
+ to a huge number of high quality libraries for things that GAL is not necessarily equipped
+
+00:11:57.480 --> 00:12:05.800
+ to deal with, such as access to low-level Windows APIs, as well as lots of other libraries,
+
+00:12:05.800 --> 00:12:15.320
+ such as interfaces to GUI toolkits for a variety of operating systems.
+
+00:12:15.320 --> 00:12:21.760
+ And at a certain point, this has technical advantages.
+
+00:12:21.760 --> 00:12:28.880
+ If most of E-Max is written in Lisp, then we could consider using GAL Hoot to compile E-Max
+
+00:12:28.880 --> 00:12:36.120
+ to WebAssembly, making it available perhaps in web browsers or on systems with the WebAssembly
+
+00:12:36.120 --> 00:12:39.600
+ system interface.
+
+00:12:39.600 --> 00:12:43.400
+ But it would also be a great victory for a practical software freedom.
+
+00:12:43.400 --> 00:12:49.560
+ Let's see idea that, free of one, the freedom to study and modify programs, should not just
+
+00:12:49.560 --> 00:12:55.120
+ be legally and technically possible, but should be actively encouraged by a computing environment.
+
+00:12:55.120 --> 00:13:05.520
+ E-Max is really one of the archetypal examples of this, but we can and should go further.
+
+00:13:05.520 --> 00:13:13.600
+ When E-Max is implemented primarily in Lisp, the entirety of the system will be transparent
+
+00:13:13.600 --> 00:13:17.800
+ to examination and open to modification.
+
+00:13:17.800 --> 00:13:26.520
+ Every part of E-Max will be instantaneously inspectable, redefineable, and debuggable.
+
+00:13:26.520 --> 00:13:33.880
+ And this will be a fundamental change in what is possible to do with E-Max extensions.
+
+00:13:33.880 --> 00:13:40.640
+ For example, one experiment I'd be interested in is using the common Lisp interface manager
+
+00:13:40.640 --> 00:13:45.760
+ as the basis for E-Max's user interface.
+
+00:13:45.760 --> 00:13:51.120
+ Screw Lisp is giving a talk about McLean later today.
+
+00:13:51.120 --> 00:13:56.920
+ But for present purposes, just think of it as a super-powered version of E-Max's concept
+
+00:13:56.920 --> 00:14:00.640
+ of interactive functions.
+
+00:14:00.640 --> 00:14:05.720
+ It would be a pretty long-term project, and E-Max is currently exists, but it would be
+
+00:14:05.720 --> 00:14:15.720
+ almost trivial if E-Max were customizable at the lowest layers via Lisp.
+
+00:14:15.720 --> 00:14:22.880
+ And we'll certainly be looking at the practicality of these kinds of changes as we continue developing
+
+00:14:22.880 --> 00:14:25.720
+ Gali-Max.
+
+00:14:25.720 --> 00:14:33.280
+ Finally, how can you get involved with and support Gali-Max?
+
+00:14:33.280 --> 00:14:40.080
+ One way to help is just by trying it out and letting us know what your experience is like.
+
+00:14:40.080 --> 00:14:45.400
+ There will be a snapshot available on the code-bird project site of the version that
+
+00:14:45.400 --> 00:14:48.400
+ I'm using to give this presentation.
+
+00:14:48.400 --> 00:14:53.880
+ It will be available both as a geeks package and as a portable tarball.
+
+00:14:53.880 --> 00:14:59.520
+ This will be more interesting as we get closer to a complete rebase.
+
+00:14:59.520 --> 00:15:10.600
+ We're also always happy to talk to potential contributors or potential collaborators from
+
+00:15:10.600 --> 00:15:12.360
+ other projects.
+
+00:15:12.360 --> 00:15:19.800
+ We can always use bug reports and we're interested in what kind of features people actually want
+
+00:15:19.800 --> 00:15:20.800
+ to see.
+
+00:15:20.800 --> 00:15:29.120
+ And Gali-Max is also being developed by a small worker cooperative.
+
+00:15:29.120 --> 00:15:34.440
+ So, donations are a pretty direct way to support the project.
+
+00:15:34.440 --> 00:15:40.160
+ If you do nothing else, I recommend going to the website and subscribing to our mailing
+
+00:15:40.160 --> 00:15:45.480
+ lists so that you can keep up with news on the project.
+
+00:15:45.480 --> 00:15:51.900
+ If you're watching this at e-max.com, there will be a Q&A session and we'll be following this.
+
+00:15:51.900 --> 00:15:52.760
+ Thanks for watching.
+
+00:15:52.760 --> 00:15:56.760
+ [Clock ticking]
+

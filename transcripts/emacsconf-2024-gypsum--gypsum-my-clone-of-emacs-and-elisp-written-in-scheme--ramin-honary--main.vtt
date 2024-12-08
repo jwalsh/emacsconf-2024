@@ -1,0 +1,581 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:07.160
+ Hi, my name is Rameen Hunnery, and I'm here to talk to you today about my clone of EMEX
+
+00:00:07.160 --> 00:00:13.160
+ and EMEX list, but that I've written in Scheme so far.
+
+00:00:13.160 --> 00:00:22.920
+ So I am an EMEX enthusiast since 2017, currently employed as a full stack developer, mostly
+
+00:00:22.920 --> 00:00:28.400
+ working with Python and JavaScript, although my true love is functional programming, especially
+
+00:00:28.400 --> 00:00:30.040
+ Haskell and Scheme.
+
+00:00:30.040 --> 00:00:34.080
+ I started learning Scheme about two years ago, and for the past year I've been working
+
+00:00:34.080 --> 00:00:39.640
+ on a project that I am tentatively calling Gypsum, naming things as hard.
+
+00:00:39.640 --> 00:00:46.240
+ That's not a great name, I'm open to suggestions, but yes, this is the project in which I am
+
+00:00:46.240 --> 00:00:52.960
+ trying to write EMEX list interpreter in Scheme.
+
+00:00:52.960 --> 00:01:01.200
+ But there are many clones already of EMEX, you've probably heard of Edwin, Jad, Jad, Jove,
+
+00:01:01.200 --> 00:01:10.000
+ Lem, MG, Y, Zile, Edwin itself is also written in Scheme, MIT Scheme.
+
+00:01:10.000 --> 00:01:16.280
+ These only clone the key bindings of EMEX and not EMEX list itself.
+
+00:01:16.280 --> 00:01:22.920
+ The only alternative to GNU EMEX that I'm aware of is XEMEX, which is a fork of
+
+00:01:22.920 --> 00:01:26.600
+ GNU EMEX.
+
+00:01:26.600 --> 00:01:33.520
+ Most people don't use EMEX for the key bindings, I mean this is anecdotally speaking, but the
+
+00:01:33.520 --> 00:01:39.760
+ people who I've talked to, I would say don't use EMEX for the key bindings, they use it
+
+00:01:39.760 --> 00:01:42.600
+ really more because of the power of EMEX list.
+
+00:01:42.600 --> 00:01:50.400
+ EMEX is as powerful as any system shell, perhaps even more powerful, system shells like
+
+00:01:50.400 --> 00:01:53.080
+ BASH.
+
+00:01:53.080 --> 00:01:57.320
+ The reason why it's so powerful is because there's a good programming language, which you can
+
+00:01:57.320 --> 00:02:03.280
+ use to control everything on your system, you can control processes, you can load and save
+
+00:02:03.280 --> 00:02:09.400
+ files, you can create files, you can configure things, you can capture the output of processes
+
+00:02:09.400 --> 00:02:17.880
+ and buffers, you can filter text through buffers, and a good programming language is what you
+
+00:02:17.880 --> 00:02:22.400
+ need in order to do all of this.
+
+00:02:22.400 --> 00:02:30.000
+ One big goal of this project is to try to stick as closely as possible to the R7RS standard
+
+00:02:30.000 --> 00:02:38.200
+ scheme definition, that is the latest scheme standard R7, and this is just because I want
+
+00:02:38.200 --> 00:02:43.800
+ my project to work on many scheme implementations, not just GAL.
+
+00:02:43.800 --> 00:02:56.600
+ Although GAL certainly is the reference implementation, so another goal is to be able to run any init.el,
+
+00:02:56.600 --> 00:03:03.040
+ so you can take your existing init.el and run it in my program without significant changes,
+
+00:03:03.040 --> 00:03:07.000
+ that's one of my goals in the end, I should be able to do that.
+
+00:03:07.000 --> 00:03:12.760
+ A lot of people invest significant time in their configs, and it's kind of disruptive if
+
+00:03:12.760 --> 00:03:20.240
+ you want to change editors, not be able to use your emax list config, and so I think a useful
+
+00:03:20.240 --> 00:03:29.600
+ emax clone would be able to clone emax list, well enough that you can run your init.el,
+
+00:03:29.600 --> 00:03:36.520
+ and so overall, why am I doing this, that's just because I like this scheme programming language,
+
+00:03:36.520 --> 00:03:42.720
+ I love it simplicity, and it's power, it's extremely well thought out language, and
+
+00:03:42.720 --> 00:03:48.240
+ it's one of those languages where you can understand the entire language from top to bottom,
+
+00:03:48.240 --> 00:03:54.760
+ you can read the entire specification, and then understand it yourself, it's like computers
+
+00:03:54.760 --> 00:04:00.260
+ I grew up with when I was a kid, they were all very simple computers in the late 80s, early
+
+00:04:00.260 --> 00:04:06.840
+ 90s, and back then, theoretically an engineer could understand the entire system at the software
+
+00:04:06.840 --> 00:04:11.920
+ level, all the way down to the circuit level, you can't do that nowadays, and so nowadays
+
+00:04:11.920 --> 00:04:18.400
+ my computer is not really a physical computer anymore, it's the scheme language standard
+
+00:04:18.400 --> 00:04:26.800
+ itself, that is the core of all of the computation for me, and I would like to use it as more than
+
+00:04:26.800 --> 00:04:36.000
+ just an academic curiosity, it was originally designed for teaching at MIT, but it's found
+
+00:04:36.000 --> 00:04:43.520
+ to use an industry, and the RSA and RSA standard is still relatively new, it's over 10 years
+
+00:04:43.520 --> 00:04:51.920
+ old at this point, but hasn't, I mean the scheme ecosystem itself is already fairly small,
+
+00:04:51.920 --> 00:04:56.680
+ and there's still, I don't think has been a whole lot of adoption of RSA and RSA quite
+
+00:04:56.680 --> 00:05:03.080
+ yet, kind of a shame, so it's like a project like this, a very large scale, kind of a killer
+
+00:05:03.080 --> 00:05:07.760
+ app like project where you're developing a text editor, and perhaps even an integrated
+
+00:05:07.760 --> 00:05:13.200
+ development environment in the scheme, I think would be very useful, just even as a study
+
+00:05:13.200 --> 00:05:22.440
+ of what can this language do, and just overall there seems to be a lot of interest in Guile-based
+
+00:05:22.440 --> 00:05:27.800
+ EMAX, and well maybe a scheme-based EMAX, but Guile in particular, there has been talk
+
+00:05:27.800 --> 00:05:39.000
+ of changing EMAX-Lisp or the core of the EMAX-Lisp over to Guile, for about 30 years or so, talks
+
+00:05:39.000 --> 00:05:45.560
+ originally in the early mid-90s, there were discussions between Richard Stalman, Tom
+
+00:05:45.560 --> 00:05:55.560
+ Lord and Audrey Jaffer, they considered actually replacing EMAX-Lisp with scheme, 1999, and going
+
+00:05:55.560 --> 00:06:03.320
+ for about 10 years, someone named Ken Rayburn, actually started a project where he started
+
+00:06:03.320 --> 00:06:13.960
+ writing EMAX in Guile, my project is very similar to this, here's a quote from his webpage
+
+00:06:13.960 --> 00:06:19.920
+ which is still up, even though it hasn't been updated in 15 years, this project that I have
+
+00:06:19.920 --> 00:06:25.120
+ started is for converting GNU EMAX to Guile as its programming language, support for EMAX-Lisp,
+
+00:06:25.120 --> 00:06:29.200
+ it will continue to exist of course, but it may be through translation and/or interpretation,
+
+00:06:29.200 --> 00:06:34.960
+ the list of engine itself may no longer be the core of the program, and this is my goal as well.
+
+00:06:34.960 --> 00:06:46.600
+ In 2010, Andy Wingo and Ludovic Cortez took a maintenance of the Guile project, from
+
+00:06:46.600 --> 00:07:01.120
+ 2009 to 2011, the first EMAX-Lisp interpreter was already being implemented in Guile, and
+
+00:07:01.120 --> 00:07:06.600
+ even to this day, this EMAX-Lisp interpreter ships with Guile, and so this was happening
+
+00:07:06.600 --> 00:07:10.160
+ while Andy Wingo took control of the project.
+
+00:07:10.160 --> 00:07:18.000
+ In 2011, so shortly after Andy Wingo took control of the project, Guile 2.0 was released,
+
+00:07:18.000 --> 00:07:27.240
+ and also in 2011, in the summertime, someone named Robin Templeton, I believe it was Google
+
+00:07:27.240 --> 00:07:36.400
+ Summer of Code Project, started actually trying to incorporate live Guile, that's the Guile
+
+00:07:36.400 --> 00:07:47.200
+ interpreter as a loadable library linking it to the EMAX executable, and then providing
+
+00:07:47.200 --> 00:07:55.000
+ some built-in functions in EMAX that allows you to call the EMAX, or call the Scheme interpreter,
+
+00:07:55.000 --> 00:08:01.080
+ the Guile Scheme interpreter, from EMAX, and so it's not like a wrapper around the
+
+00:08:01.080 --> 00:08:09.880
+ wrapper like Geyser or Slime. It's actually the whole Scheme interpreter loaded into
+
+00:08:09.880 --> 00:08:16.640
+ your EMAX process, and that means your EMAX will have the ability to actually load compiled
+
+00:08:16.640 --> 00:08:28.200
+ Scheme programs and actually run them and share memory with EMAX-Lisp processes, and
+
+00:08:28.200 --> 00:08:32.040
+ well, Robin Templeton will explain all of this they're presenting today, and I'm very
+
+00:08:32.040 --> 00:08:40.400
+ excited to actually see their presentation. They'll explain everything.
+
+00:08:40.400 --> 00:08:47.720
+ So let's see, moving on, 2020, someone named Vasily Shiniderman, not sure how he pronounced
+
+00:08:47.720 --> 00:08:54.080
+ that, published an overview called the State of EMAX-Lisp on Guile. Let's see if I have
+
+00:08:54.080 --> 00:09:01.280
+ that here. Yep, it's this page right here. He goes into detail about who has done what
+
+00:09:01.280 --> 00:09:10.200
+ so far, and what can you do in Guile with EMAX-Lisp so far, and so on. Like, what is the state
+
+00:09:10.200 --> 00:09:19.280
+ of the project overall? And so, let's speak of the devil, and he would go on social media.
+
+00:09:19.280 --> 00:09:33.360
+ So, 2020 to present, Guile EMAX is dead, so there's GCC EMAX now. There's EMAX-Lisp is
+
+00:09:33.360 --> 00:09:42.280
+ now has its own JIT compiler, and it seems like over the past few years EMAX-Lisp has kind
+
+00:09:42.280 --> 00:09:47.560
+ of moved off into the direction of becoming its own programming language in its own right,
+
+00:09:47.560 --> 00:09:55.200
+ and it is decidedly commonlisp flavored. It is very similar to commonlisp, and that seems
+
+00:09:55.200 --> 00:10:00.880
+ to be the direction that it's headed now, and I don't know if there's really any interest
+
+00:10:00.880 --> 00:10:10.240
+ anymore amongst the Guile, or the EMAX-Lisp containers, of continuing with a Guile-based EMAX.
+
+00:10:10.240 --> 00:10:17.340
+ But as far as I know, there's still a lot of interest in community amongst scheme and
+
+00:10:17.340 --> 00:10:24.620
+ Lisp and EMAX users who are interested in maybe continuing to try to get Guile to become
+
+00:10:24.620 --> 00:10:29.620
+ the core of EMAX, or if not, you know, what Rod and Templeton has been doing, at least
+
+00:10:29.620 --> 00:10:37.020
+ trying to get Guile something, a language, a first class support language in EMAX.
+
+00:10:37.020 --> 00:10:43.900
+ So that's enough talking. Let me just show you what I have so far. The GUI is barely working,
+
+00:10:43.900 --> 00:10:50.380
+ as I have very little experience with GTK, or a G-Object Interjection. It's very difficult
+
+00:10:50.380 --> 00:10:57.340
+ to debug, so it's very slow to develop any crash at sea level, and produces no stack traces.
+
+00:10:57.340 --> 00:11:04.380
+ So far, most of the crashes that I've experienced are due to simple mistakes, like passing
+
+00:11:04.380 --> 00:11:14.180
+ wrong data type. So far, not a whole lot of need for GDB, or rebuilding all GTK, G-Live,
+
+00:11:14.180 --> 00:11:19.980
+ and so on, with the debugging symbols. But yes, still development has been very slow. I'm
+
+00:11:19.980 --> 00:11:29.460
+ learning as I go. I've chosen to use Guile GI as the foundation for the GUI. Let me just
+
+00:11:29.460 --> 00:11:40.220
+ load it up quick here, load in Guile scheme. And this will launch the GUI. I also happen to
+
+00:11:40.220 --> 00:11:48.140
+ have a REPL that runs in a separate thread and submits any form that you type to be evaluated
+
+00:11:48.140 --> 00:11:58.100
+ inside of the running GUI environment. But let me just, you can just type stuff. So hello.
+
+00:11:58.100 --> 00:12:09.500
+ Well, and of course, there is, as you can see, it's not quite rendering correctly. This message
+
+00:12:09.500 --> 00:12:14.760
+ is thing here. That should be over here, obviously. I haven't been able to figure out how to get
+
+00:12:14.760 --> 00:12:23.420
+ those little details down. But yeah, you can do Alt-Column, and you get your Reval, and you
+
+00:12:23.420 --> 00:12:32.300
+ can just evaluate, like, it's an E-Mex, or it's a Scheme-specific thing, like Import, Serfee
+
+00:12:32.300 --> 00:12:47.940
+ 1, and let's see, do Iota 20, for example. And so that is the procedure that iterates and
+
+00:12:47.940 --> 00:12:59.220
+ produces some 20 elements of a list, or you can do something like, let's see, string
+
+00:12:59.220 --> 00:13:11.620
+ append, hello, with space world. Any other result, and so on. And, you know, Scheme allows
+
+00:13:11.620 --> 00:13:17.100
+ you to return multiple values. So what I have done here is just every value is captured
+
+00:13:17.100 --> 00:13:23.560
+ in a list, and prints all of the return values in a list. So for procedure returns, no values,
+
+00:13:23.560 --> 00:13:31.500
+ you get an empty list. And that's that. It's still quite buggy. So if like, here's a bug
+
+00:13:31.500 --> 00:13:42.820
+ that I can reproduce fairly consistently, I can, yeah, if you do, there seems to be a problem
+
+00:13:42.820 --> 00:13:52.340
+ with a widget being freed, so it will crash. I'm trying to solve that, hopefully, before
+
+00:13:52.340 --> 00:14:01.300
+ this presentation goes live. Let's see here. The E-MexLisp parser is based on Gile E-MexLisp,
+
+00:14:01.300 --> 00:14:08.340
+ so the Gile E-MexLisp interpreter that is, that ships with Gile, that is what I am using.
+
+00:14:08.340 --> 00:14:16.340
+ I've actually copied and pasted the source code from the Gile source base into my own
+
+00:14:16.340 --> 00:14:22.440
+ project, so that I can iterate it on it more quickly. And I've already had to make some
+
+00:14:22.440 --> 00:14:30.720
+ modifications to the E-MexLisp interpreter in Gile. So here's the evaluator. I've actually
+
+00:14:30.720 --> 00:14:37.620
+ already modified the parser and the lecture a little bit. And it's at least able to parse
+
+00:14:37.620 --> 00:14:45.220
+ all of the subar.el program, the E-MexLisp program. It can actually load that, but not evaluate
+
+00:14:45.220 --> 00:14:52.900
+ it, or parsed, but not evaluated. Read, not a bell. I have, or by the time this goes live,
+
+00:14:52.900 --> 00:14:58.540
+ I will have submitted a patch upstream. And that's another goal of this project, incidentally,
+
+00:14:58.540 --> 00:15:05.460
+ is that anything that we can contribute to Gile and anything, any built-in functions
+
+00:15:05.460 --> 00:15:11.520
+ that we can implement, I would like to, for this project, I would like to try and contribute
+
+00:15:11.520 --> 00:15:21.100
+ upstream to Gile. The E-MexLisp interpreter is not working well, unfortunately. So this copy,
+
+00:15:21.100 --> 00:15:31.980
+ this is the copy of the code base from this commit in particular. And well, I can't get
+
+00:15:31.980 --> 00:15:38.260
+ it working. I can't actually get the non-copy, the actual built-in version of the E-MexLisp interpreter
+
+00:15:38.260 --> 00:15:51.220
+ to work properly quite yet. So let me quick go to, what is this here? Gile, E-Lisp. So suppose
+
+00:15:51.220 --> 00:15:58.380
+ you have this E-Val E-Lisp procedure here, and it takes an E-Lisp environment, and then
+
+00:15:58.380 --> 00:16:04.060
+ it evaluates an expression in that environment, and evaluates to a value. So this is the standard
+
+00:16:04.060 --> 00:16:10.020
+ way of doing it in Gile. If you can see here, you've got this expression, compile expression.
+
+00:16:10.020 --> 00:16:23.180
+ This is like E-Val. And so I actually trying to load this. So let's do load. Let's see here.
+
+00:16:23.180 --> 00:16:37.340
+ This is, no, I'm going to import Gypsum back-end Gile, E-Lisp. And if I actually want to do this,
+
+00:16:37.340 --> 00:16:43.180
+ so E-Lisp, first of all, it says it failed, because there's an unbound variable E-Lisp,
+
+00:16:43.180 --> 00:16:49.140
+ you don't know what it's talking about. There's no such variable in any of my programs. I have no
+
+00:16:49.140 --> 00:16:59.780
+ idea what's going on here. You can try to run the E-Val E-Lisp on some simple form like plus 1, 2,
+
+00:16:59.780 --> 00:17:08.980
+ and it gives you this exception. This works. This is the same issue that I have with all of the
+
+00:17:08.980 --> 00:17:18.500
+ every version of the E-Max Lisp interpreter in Gile. I can get it to work with this big L mode,
+
+00:17:18.500 --> 00:17:27.540
+ so I can actually do plus 1 and 2 here. I can do Prink, like, 2 here. That all works fine.
+
+00:17:27.540 --> 00:17:31.460
+ It gives me, for some reason, a stack trace here.
+
+00:17:31.460 --> 00:17:46.340
+ And yeah, so it's a bit, it's not well documented. The code base is fairly old. As I said,
+
+00:17:46.340 --> 00:17:53.380
+ it was developed around 2011, and it's fairly opaque, and I have not been able to figure out how to get
+
+00:17:53.380 --> 00:18:00.180
+ E-Max Lisp in Gile working smoothly. So I have started writing my own E-Max Lisp interpreter,
+
+00:18:01.460 --> 00:18:19.940
+ and gypsum, E-Lisp, GileTest.esky. It's not entirely ready. I can show you some of the tests, at least.
+
+00:18:19.940 --> 00:18:27.220
+ Here is a simple E-Max Lisp program that you can evaluate. You got ProgN,
+
+00:18:28.100 --> 00:18:34.820
+ set QA to 3, set QB to 5, set QC to the sum of A and B, return C.
+
+00:18:34.820 --> 00:18:40.820
+ And this, at least, works correctly. As you can see here, the result is 8,
+
+00:18:40.820 --> 00:18:47.700
+ but the Lisp service mandate is enough. Completed yet. Lots of work left to do there.
+
+00:18:47.700 --> 00:18:56.820
+ Yeah. So, in the time I have left, I guess, I can just talk a little bit about what my plans are for
+
+00:18:56.820 --> 00:19:05.620
+ the future. So, I would like to begin by evaluating or, you know, actually loading the sub-R.E-L
+
+00:19:05.620 --> 00:19:10.260
+ into my E-Max Lisp interpreter. I actually have tests set up for that as well, so I can actually
+
+00:19:10.260 --> 00:19:19.380
+ select any form I want from sub-R.E-L, and I can just run this through my interpreter and test to see
+
+00:19:19.380 --> 00:19:33.140
+ if everything is working. Once I get that far. Let me just say that this is my formal appeal to the
+
+00:19:33.140 --> 00:19:42.900
+ community for help on this project. E-Max Lisp has 1393 built-in functions. I could never implement
+
+00:19:42.900 --> 00:19:48.260
+ that many functions on my own, so if this project is going to be useful to anybody in any reasonable
+
+00:19:48.260 --> 00:19:53.860
+ amount of time, I'm going to need help. And I know that there are people out there who are very
+
+00:19:53.860 --> 00:20:00.500
+ interested in a Guile-based E-Max, and so if you're watching this, please feel free to contact me on
+
+00:20:00.500 --> 00:20:10.260
+ social media or over email. My job, the way I see it, is if there's enough interest, and I do get a
+
+00:20:10.260 --> 00:20:17.220
+ lot of people interested in starting to contribute. My job will be to document the building and testing
+
+00:20:17.220 --> 00:20:22.980
+ process and make sure that it is as easy as possible to contribute code to this project. I want to
+
+00:20:22.980 --> 00:20:29.620
+ document the system architecture, I'll write blog posts, I'll do videos on peer tube, explaining how
+
+00:20:29.620 --> 00:20:36.420
+ our thing works, and I will prioritize which built-in functions I think are probably going to be the
+
+00:20:36.420 --> 00:20:42.420
+ most necessary, the most essential to get the interpreter running, and then find low-hanging fruit
+
+00:20:43.780 --> 00:20:50.980
+ functions that are easy for people to implement as a good introduction to getting them started on
+
+00:20:50.980 --> 00:20:58.260
+ contributing to the project. And then of course I will take responsibility myself of
+
+00:20:58.260 --> 00:21:06.820
+ making sure that we can get the E-List interpreter to the point where it can run the E-Max regression tests,
+
+00:21:07.940 --> 00:21:17.860
+ and these are the test suites that are used to test E-MaxList itself in the E-Max code base.
+
+00:21:17.860 --> 00:21:26.500
+ And so ERT is itself written in E-MaxList, and so I think if we implement enough of the built-in
+
+00:21:26.500 --> 00:21:33.460
+ functions to be able to run ERT, then we can actually start using the GNU E-Max regression tests
+
+00:21:33.460 --> 00:21:40.980
+ to test our own interpreter, our own E-Max clone. And of course I'll make sure that there's at least
+
+00:21:40.980 --> 00:21:48.100
+ one usable GUI. I'm currently working on Guile GI and GTK. It would be great to have
+
+00:21:48.100 --> 00:21:55.780
+ and curses based, you know, ANSI terminal-based, something that works in your terminal emulator.
+
+00:21:57.780 --> 00:22:04.180
+ And yeah, it would be great if someday soon, hopefully, we get enough done that you can actually
+
+00:22:04.180 --> 00:22:12.500
+ contribute a patch to this project from within the gypsum editor itself. That was going to do an
+
+00:22:12.500 --> 00:22:22.420
+ overview, but that would be for more of an hour-long presentation. So I'm out of time. I guess the
+
+00:22:22.420 --> 00:22:28.180
+ last thing I should quickly say is there's no matter object protocol in this project, I think that's
+
+00:22:28.180 --> 00:22:33.380
+ a little bit too difficult to port to various schema limitations. So I've created a substitute,
+
+00:22:33.380 --> 00:22:39.300
+ which I'm calling functional lenses, which is inspired by the Haskell project of the same name.
+
+00:22:39.300 --> 00:22:45.380
+ Everything in this project is based on functional lenses.
+
+00:22:47.380 --> 00:22:55.060
+ Yeah, also in a lot of work into the chemax data structure, the point being that I think I have
+
+00:22:55.060 --> 00:23:00.900
+ a pretty good foundation here upon which we can build even though there isn't an actual, there isn't
+
+00:23:00.900 --> 00:23:07.540
+ a lot done in the actual prototype itself, not yet anyway. But I made sure to get the fundamentals
+
+00:23:07.540 --> 00:23:14.020
+ down from the beginning. And so I think we have something a solid foundation on which to build.
+
+00:23:16.180 --> 00:23:26.020
+ So I'm going to conclude it there. And here's my contact details. Like I said, this is a project I'm
+
+00:23:26.020 --> 00:23:33.220
+ appealing to the community of all people who are interested in Gyla and EMAX to help contribute
+
+00:23:33.220 --> 00:23:40.420
+ to this project. I see myself as just getting the ball rolling again, taking off from the work
+
+00:23:40.420 --> 00:23:48.260
+ that Ken Rayburn left behind with my own, you know, from the ground implementation though.
+
+00:23:48.260 --> 00:23:55.460
+ So yeah, contact me, email. You can take a look at my blog where I talk about what I have done.
+
+00:23:55.460 --> 00:24:04.340
+ My source code, the code for this project is up on Codeberg. And the presentation,
+
+00:24:05.700 --> 00:24:10.900
+ this presentation, the homepage for this presentation, you can find more details there.
+
+00:24:10.900 --> 00:24:17.780
+ And yeah, oh, I'm on activity pub as well. So my handle is,
+
+00:24:17.780 --> 00:24:29.380
+ my mean how-90001@fe.discrood.org. And I'm on every day. So yeah, please feel free to contact me
+
+00:24:29.380 --> 00:24:33.940
+ if you're interested. And thank you for your attention.
+
+00:24:33.940 --> 00:24:43.940
+ [BLANK_AUDIO]
+
