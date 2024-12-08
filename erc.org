@@ -1,0 +1,88 @@
+#+TITLE: ERC Configuration for EmacsConf
+#+PROPERTY: header-args:elisp :tangle ~/.emacs.d/lisp/init-erc.el :mkdirp yes
+
+* ERC Configuration for EmacsConf IRC
+This configuration sets up ERC for connecting to EmacsConf channels on Libera Chat.
+
+#+begin_src elisp
+;;; init-erc.el --- ERC configuration for EmacsConf -*- lexical-binding: t -*-
+
+;;; Commentary:
+;; Configuration for connecting to EmacsConf IRC channels on Libera Chat
+;; Includes auto-join, logging, and UI enhancements
+
+;;; Code:
+
+;; Basic requirements
+(require 'erc)
+(require 'erc-join)
+(require 'erc-services)
+(require 'erc-colorize)
+(require 'erc-image)
+
+;; Identity and server settings
+(setq erc-nick "jwalsh"
+      erc-user-full-name "Jason Walsh"
+      erc-server "irc.libera.chat"
+      erc-port 6697
+      erc-server-connect-function 'erc-open-tls-stream
+      erc-prompt-for-password nil)
+
+;; Auto-join channels
+(setq erc-autojoin-timing 'ident
+      erc-auto-join-channels-alist 
+      '(("irc.libera.chat" 
+         "#emacsconf"
+         "#emacsconf-gen"
+         "#emacsconf-dev"
+         "#emacsconf-org")))
+
+;; Logging configuration
+(setq erc-log-channels-directory "~/.emacs.d/erc/logs/"
+      erc-save-buffer-on-part t
+      erc-log-write-after-send t
+      erc-log-write-after-insert t)
+
+;; Create log directory if needed
+(unless (file-exists-p erc-log-channels-directory)
+  (make-directory erc-log-channels-directory t))
+
+;; UI and buffer management
+(setq erc-track-position-in-mode-line t
+      erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE")
+      erc-hide-list '("JOIN" "PART" "QUIT" "NICK")
+      erc-track-priority-faces-only t
+      erc-fill-column 100
+      erc-timestamp-format "[%H:%M] "
+      erc-insert-timestamp-function 'erc-insert-timestamp-left)
+
+;; Buffer management
+(add-to-list 'same-window-buffer-names "*ERC*")
+
+;; Enable modules
+(add-to-list 'erc-modules 'image)
+(erc-colorize-mode 1)
+(erc-update-modules)
+
+;; Connection function
+(defun connect-emacsconf ()
+  "Connect to Libera Chat IRC for EmacsConf."
+  (interactive)
+  (erc-tls :server "irc.libera.chat"
+           :port 6697
+           :nick "jwalsh"))
+
+;; Buffer switching function
+(defun switch-to-irc ()
+  "Switch to an ERC buffer, or start IRC if not already started."
+  (interactive)
+  (if (get-buffer "irc.libera.chat:6697")
+      (switch-to-buffer "irc.libera.chat:6697")
+    (connect-emacsconf)))
+
+;; Key binding
+(global-set-key (kbd "C-c i") 'switch-to-irc)
+
+(provide 'init-erc)
+;;; init-erc.el ends here
+#+end_src
