@@ -1,0 +1,437 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:08.000
+ Hello, my name is Charles Che and welcome to my talk, reimagining the EMAX user experience
+
+00:00:08.000 --> 00:00:15.240
+ with Casual Suite. Casual Suite is a set of opinionated user interfaces to different
+
+00:00:15.240 --> 00:00:21.440
+ modes offered in EMAX. But before I get into describing Casual in detail, let's first
+
+00:00:21.440 --> 00:00:28.320
+ talk about the existing EMAX user experience. To make EMAX go, people can either invoke
+
+00:00:28.320 --> 00:00:36.320
+ commands by name with execute extended command, run a command directly with a pre-assigned
+
+00:00:36.320 --> 00:00:45.160
+ keybinding, finally use a mouse menu if it's available. From human computer interface
+
+00:00:45.160 --> 00:00:52.480
+ research, there is a concept of recall versus recognition in user interface design. Let's
+
+00:00:52.480 --> 00:00:59.860
+ show their distinction by example. A common recall interface is password entry. Absent
+
+00:00:59.860 --> 00:01:05.720
+ any historical affordances, a user must directly remember information to succeed with this
+
+00:01:05.720 --> 00:01:13.200
+ interface. In contrast, menus offer immediate visual cues on what commands are available.
+
+00:01:13.200 --> 00:01:18.200
+ This allows a user to recognize familiar behavior to support successful selection of
+
+00:01:18.200 --> 00:01:26.940
+ it. From user interface research, the key finding is this. Interfaces emphasizing recognition
+
+00:01:26.940 --> 00:01:34.760
+ are much easier to use than those relying on recall. In this light, we see that the EMAX
+
+00:01:34.760 --> 00:01:42.000
+ user experience leans too much towards recall. Completion in history can help tip the scales
+
+00:01:42.000 --> 00:01:50.840
+ towards recognition, but only by a little bit. This reliance on recall is discouraging to
+
+00:01:50.840 --> 00:01:58.440
+ users both new and old, and that's a shame because EMAX has so many useful commands. But
+
+00:01:58.440 --> 00:02:05.060
+ the kicker is that most of them are infrequently used. You can't recall them all, at least
+
+00:02:05.060 --> 00:02:13.340
+ I can't. So, a conundrum. While I've been using EMAX since the early 90s, truthfully, it's
+
+00:02:13.340 --> 00:02:20.320
+ been only in this past decade that I've leveled up in using it. Word mode, magit, eglot,
+
+00:02:20.320 --> 00:02:28.020
+ avi, and many other packages have transformed how I use it. I can only deal with so much cognitive
+
+00:02:28.020 --> 00:02:35.440
+ load and physically straining key bindings. So, what to do about it? Let's bring back an
+
+00:02:35.440 --> 00:02:45.960
+ old ideal. Keyboard-driven menus have been around since TTY video terminals would mainframes.
+
+00:02:45.960 --> 00:02:51.360
+ If you're old enough to recall working with such interfaces, these terms will seem familiar.
+
+00:02:51.360 --> 00:02:59.880
+ They all worked with the limitations of text-based video displays. With keyboard-driven menus,
+
+00:02:59.880 --> 00:03:05.480
+ if a command exists, but nobody can find it, it's not really useful. A well-designed menu
+
+00:03:05.480 --> 00:03:11.960
+ can make a command discoverable. If the command is infrequently used, making it recognizable
+
+00:03:11.960 --> 00:03:19.520
+ helps a lot. And for working primarily with text, having keyboard-only interactions
+
+00:03:19.520 --> 00:03:28.640
+ encourages flow. Given the above, the next step seemed natural.
+
+00:03:28.640 --> 00:03:35.080
+ Augment EMAX with keyboard-driven menus. This is not saying that I want to obsolete name
+
+00:03:35.080 --> 00:03:42.040
+ commands, key bindings, and mouse menus. They all can happily coexist. EMAX is large. It
+
+00:03:42.040 --> 00:03:51.320
+ can contain multitudes. Conveniently, EMAX has a built-in library for building such menus.
+
+00:03:51.320 --> 00:03:58.440
+ It's called Transient, and it's been around since EMAX 28. Developed primarily by Jonas
+
+00:03:58.440 --> 00:04:04.200
+ Bernoulli as a UI toolkit for McGit, Transient has an essential feature for building great
+
+00:04:04.200 --> 00:04:12.320
+ keyboard-driven interfaces. A transit menu can be pinned, and their state updated as commands
+
+00:04:12.320 --> 00:04:18.320
+ are issued from them. This lets us build interfaces that reflect internal state changes made by
+
+00:04:18.320 --> 00:04:23.760
+ commands issued from the user. This is great because many modes have stable behavior and
+
+00:04:23.760 --> 00:04:31.880
+ guess what? EMAX has a lot of modes. If you think about it, EMAX modes are akin to the
+
+00:04:31.880 --> 00:04:37.900
+ ecosystem of apps that we see today, but would far less structure and packaging. A mode,
+
+00:04:37.900 --> 00:04:43.640
+ like an app, focuses on delivering specific behavior to the user. There are many built-in modes
+
+00:04:43.640 --> 00:04:50.000
+ in EMAX, and these modes are complex with dozens, if not hundreds, of commands. Calc itself
+
+00:04:50.000 --> 00:04:56.240
+ has over a thousand of them. It's frustrating to know that these commands are there, but
+
+00:04:56.240 --> 00:05:03.880
+ I really can't access them via recall, so I decided to do something about it. And that
+
+00:05:03.880 --> 00:05:10.560
+ was to transient all the modes, or at least the most major ones. This past summer, I had
+
+00:05:10.560 --> 00:05:15.400
+ the time and resources to start building transit interfaces for modes that I wanted to more
+
+00:05:15.400 --> 00:05:23.480
+ elegantly use. I decided to call this work casual. Given its definition, it seemed like
+
+00:05:23.480 --> 00:05:32.560
+ a good fit for a vibe that I wanted these interfaces to embody. Design principles that I embraced
+
+00:05:32.560 --> 00:05:39.840
+ up front were handcrafted information architecture and layout. This is largely an exercise in mapping
+
+00:05:39.840 --> 00:05:47.400
+ a modes command set to a hierarchical menu structure. I wanted these menus to make sense
+
+00:05:47.400 --> 00:05:52.480
+ to most people. Ideally, users would not have to read documentation to get at the command
+
+00:05:52.480 --> 00:05:59.760
+ that they wanted. Early on, I quickly learned that it was impossible to maintain the existing
+
+00:05:59.760 --> 00:06:05.720
+ default key bindings when mapping them over to a hierarchical menu. Also, some bindings
+
+00:06:05.720 --> 00:06:12.800
+ I just flat out disagreed with. So I resolved to be friendly, but not beholden to them.
+
+00:06:12.800 --> 00:06:17.080
+ In all of the above, I've gone out of my way to make clear that my design decisions are
+
+00:06:17.080 --> 00:06:29.200
+ opinionated. Using casual. To reinforce habit, a common key binding is used
+
+00:06:29.200 --> 00:06:35.760
+ per mode to raise a main menu. This key binding is left to user preference. For me, that binding
+
+00:06:35.760 --> 00:06:44.920
+ is control O. Command bindings are anonomic when possible.
+
+00:06:44.920 --> 00:06:51.760
+ What specific sightings are given their own menu? Since transient menus can be pinned,
+
+00:06:51.760 --> 00:07:00.360
+ we can support repeat or stateful behavior in a mode. As of this writing, there are eleven
+
+00:07:00.360 --> 00:07:05.880
+ modes supported by casual with several more on the way. Let's look at the casual menu for
+
+00:07:05.880 --> 00:07:15.440
+ Dured to highlight the design conventions previously mentioned. In a Dured EMAX window, the user
+
+00:07:15.440 --> 00:07:22.260
+ can invoke their preferred key binding to call a top-level casual main menu. This main
+
+00:07:22.260 --> 00:07:27.680
+ menu is displayed at the bottom of the EMAX frame.
+
+00:07:27.680 --> 00:07:33.680
+ Zooming into this menu, we see the commands offered in it categorized into different sections.
+
+00:07:33.680 --> 00:07:40.000
+ Each command has a key binding, usually a single character shown before its label. The
+
+00:07:40.000 --> 00:07:46.740
+ file section holds commands that act upon the currently selected item or marked items.
+
+00:07:46.740 --> 00:07:51.560
+ The directory section holds commands that affect the current directory or its subdures
+
+00:07:51.560 --> 00:08:00.240
+ within it. The Mark section has marking commands that allow for aggregate operations.
+
+00:08:00.240 --> 00:08:06.360
+ The navigation section shows commands that move the point in a Dured buffer.
+
+00:08:06.360 --> 00:08:14.440
+ The Quick section provides access to bookmark and buffer list commands. Searching Replace
+
+00:08:14.440 --> 00:08:20.320
+ commands are grouped in the search section. New directory and file creation are given
+
+00:08:20.320 --> 00:08:27.000
+ their own section. Finally, at the bottom of the menu are commands dedicated to casual
+
+00:08:27.000 --> 00:08:31.520
+ menu navigation.
+
+00:08:31.520 --> 00:08:37.320
+ Casuals conform to transient conventions where the key binding control G for dismiss one
+
+00:08:37.320 --> 00:08:44.160
+ and control Q to dismiss all menus are honored. Another transient convention is to reserve
+
+00:08:44.160 --> 00:08:51.920
+ the key binding Q to quit the current mode. For most main menus, casual uses the comma
+
+00:08:51.920 --> 00:09:00.220
+ key binding to invoke a mode specific settings menu. Casual also adopts the common UI convention
+
+00:09:00.220 --> 00:09:10.600
+ of using ellipsis and greater than symbols to denote required input and sub menus respectively.
+
+00:09:10.600 --> 00:09:16.940
+ Some commands are more global or non-mode specific in nature. A great deal of these commands
+
+00:09:16.940 --> 00:09:23.620
+ relate to editing, which I find to be a prime motivation for using EMAX. Let's examine
+
+00:09:23.620 --> 00:09:28.420
+ one such menu that supports this.
+
+00:09:28.420 --> 00:09:33.900
+ The main menu for casual edit kit is designed to provide easy access to editing and editing
+
+00:09:33.900 --> 00:09:43.500
+ related commands. Like the previous Dured menu, it organizes commands into different sections.
+
+00:09:43.500 --> 00:09:49.360
+ Commands related to file and buffer operations are in the file section. Commands for editing
+
+00:09:49.360 --> 00:09:56.700
+ text are in the edit section. S or balanced expression commands are given a dedicated section
+
+00:09:56.700 --> 00:10:06.220
+ for their own. More often than not, in many modes, I find them to do what I want.
+
+00:10:06.220 --> 00:10:12.780
+ The tool section provides access to common tools. Bookmarks, I consider it to be an essential
+
+00:10:12.780 --> 00:10:17.800
+ feature. If you haven't used them, it's never too late to start.
+
+00:10:17.800 --> 00:10:23.740
+ EMAX window management commands are given a section. Commands for search and replace,
+
+00:10:23.740 --> 00:10:29.900
+ macros, and projects can be accessed from here.
+
+00:10:29.900 --> 00:10:39.140
+ Finally, the menu navigation section. Note that register commands can be accessed from here.
+
+00:10:39.140 --> 00:10:46.360
+ Okay, enough screenshots. Let's look at casual inaction with a demo of the edit kit menus.
+
+00:10:46.360 --> 00:10:54.940
+ So let's start our demo of casual edit kit with raising the menu, which is bound to Control
+
+00:10:54.940 --> 00:11:01.300
+ O. You'll see the menu pop up here. And in particular, we want to look at the edit
+
+00:11:01.300 --> 00:11:11.300
+ operation. So we'll press E. And we'll see a number of menu items that allow you to make
+
+00:11:11.300 --> 00:11:19.540
+ editing transformations to the text. Be it marking, copying, killing, transposing, transforming,
+
+00:11:19.540 --> 00:11:27.780
+ moving, or deleting the text. You'll see also that there is a sub menu for rectangle operations.
+
+00:11:27.780 --> 00:11:37.460
+ And let's first, let's actually dig through and look at what's in the mark sub menu.
+
+00:11:37.460 --> 00:11:43.780
+ And you'll see that there increments of text in which you can mark, you can mark a word,
+
+00:11:43.780 --> 00:11:50.060
+ a sentence, a paragraph, and balance expression. If we go back, you'll see a similar pattern
+
+00:11:50.060 --> 00:12:01.540
+ for copying, as well as killing and transposing. Let's go and try to move a sentence. We have
+
+00:12:01.540 --> 00:12:09.700
+ the point there at hello there. And we'll move that sentence around. If we press S, we can
+
+00:12:09.700 --> 00:12:15.140
+ move it backward or forward. In this case, let's move it forward. So we'll press F. And you'll
+
+00:12:15.140 --> 00:12:25.340
+ see hello there. Move up a sentence. And then we can also press B to move it back. And then
+
+00:12:25.340 --> 00:12:34.540
+ press return to dismiss. Also, if we wanted to, we can, in this menu, particularly, you'll
+
+00:12:34.540 --> 00:12:39.660
+ see that we also have cursor navigation, so we can move the point there. That's not in
+
+00:12:39.660 --> 00:12:45.340
+ all the menus, but in a good part number of the menus in casual edit kit, you'll see that
+
+00:12:45.340 --> 00:12:56.580
+ here. Let's press return to dismiss that. And let's actually look at some rectangle operations
+
+00:12:56.580 --> 00:13:06.860
+ here. In this case, we have a list with items x, y, and z. And let's say we wanted to prefix
+
+00:13:06.860 --> 00:13:16.020
+ each item here with a string. And we'll say let's, we want to put in there. Hello. So one
+
+00:13:16.020 --> 00:13:24.580
+ way of doing that is to make a rectangle. And so if we go into our rectangle menu, first
+
+00:13:24.580 --> 00:13:31.980
+ off, what we need to do is define that rectangle region. So we'll press M to mark where the
+
+00:13:31.980 --> 00:13:37.660
+ point is right there. And then we can use our cursor operation to move the point to define
+
+00:13:37.660 --> 00:13:44.300
+ the rectangle. In this case, it's right at the start there. We can use the string insert
+
+00:13:44.300 --> 00:13:52.740
+ command i to insert hello, colon, and then we'll put a space there to make it look a little
+
+00:13:52.740 --> 00:14:03.300
+ nicer. And sure enough, that's in there. And we've, we can have access to a number of rectangle
+
+00:14:03.300 --> 00:14:12.580
+ commands here. So if we wanted to, let's say, number, we can go through that same operation
+
+00:14:12.580 --> 00:14:20.020
+ here, define a region, a rectangle region that is, and press N. And you'll see that it has
+
+00:14:20.020 --> 00:14:29.860
+ incremented a number for each item in that rectangle region. We can also press U, tap
+
+00:14:29.860 --> 00:14:45.780
+ U to undo these operations and leave that at that sorting. If we select a region here,
+
+00:14:45.780 --> 00:14:52.580
+ and we go back, you'll see that the sort sub menu is now enabled. Sorting won't work unless
+
+00:14:52.580 --> 00:14:58.580
+ you have a region started. So that's one of the nice things about transient is that it
+
+00:14:58.580 --> 00:15:09.060
+ allows you to visually just enable or disable command items with regards to whatever the
+
+00:15:09.060 --> 00:15:14.420
+ current state or context is here. And in this case, is whether or not you have a region
+
+00:15:14.420 --> 00:15:22.100
+ highlighted. And let's say we want to sort these two columns of numbers. And so there's
+
+00:15:22.100 --> 00:15:32.580
+ a command called N here, which is numeric fields. And let's choose that here. And sure enough,
+
+00:15:32.580 --> 00:15:38.780
+ we get that. But there's a nice twist there. If, well, let's say we wanted to sort on the
+
+00:15:38.780 --> 00:15:49.980
+ second column. So let's move our point back up to here. And we'll mark that. And since everything
+
+00:15:49.980 --> 00:15:56.540
+ is in a continuous line, we can sort of pretend that this region is actually a paragraph and mark that.
+
+00:15:58.220 --> 00:16:10.380
+ And we'll go and select our sort routine. But now we need to figure out how to make numeric fields
+
+00:16:10.380 --> 00:16:18.140
+ sort on the second column. So in transient, if we press a question mark, that gives us basically
+
+00:16:18.140 --> 00:16:24.380
+ a intermediate help section where if we press a key binding, it will tell us or
+
+00:16:25.580 --> 00:16:33.980
+ load the doc string for the command that's there. And so that command in this case is sort of numeric
+
+00:16:33.980 --> 00:16:44.060
+ fields. And it is requires an argument. And that argument can be passed using the prefix argument
+
+00:16:44.060 --> 00:16:57.020
+ control you. So press Q. And let's do that. In this case, we want to check or use the value 2. And press
+
+00:16:57.020 --> 00:17:02.620
+ N. And sure enough, that region is sorted with respect to the second column.
+
+00:17:02.620 --> 00:17:13.900
+ Before casual, so many powerful EMAX commands were not available to me because there were two
+
+00:17:13.900 --> 00:17:21.580
+ hard to recall or I could not discover them. Making casual has changed that, letting me reimagine
+
+00:17:21.580 --> 00:17:29.660
+ more positively my user experience with EMAX. If you're interested in any of what I've shown today,
+
+00:17:29.660 --> 00:17:38.140
+ I invite you to try out casual. Before I leave, my thanks and acknowledgements go out to the following
+
+00:17:38.140 --> 00:17:46.380
+ people. First, to Jonas Bernoulli for making transient and McGit, casual would not be possible without
+
+00:17:46.380 --> 00:17:55.660
+ your work. Next to psionic k for writing transient showcase, it showed me how I could build casual.
+
+00:17:55.660 --> 00:18:02.300
+ To all the casual users and their support, I am genuinely appreciative.
+
+00:18:03.980 --> 00:18:10.380
+ And finally to John Snater for writing the kind post on casual on the IREAL website. Thank you.
+
+00:18:10.380 --> 00:18:19.260
+ Casual can be found on Melpa and its repository is hosted on GitHub.
+
+00:18:19.260 --> 00:18:29.260
+ [BLANK_AUDIO]
+

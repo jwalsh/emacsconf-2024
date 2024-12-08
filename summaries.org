@@ -25,6 +25,7 @@
 | mode complexity         | Difficulty arising from modes having many interrelated functions and features               | Addressed by improving command discoverability         |
 
 
+
 * [[summaries/emacsconf-2024-hyperbole--fun-things-with-gnu-hyperbole--mats-lidell--main.org][Source]]
 
 * Fun Things With Gnu Hyperbole
@@ -50,6 +51,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-org-update--the-future-of-org--ihor-radchenko--main.org][Source]]
 
 * The Future Of Org
@@ -71,6 +73,7 @@
 | robustness principle | The practice of supporting and updating Org Mode to ensure it continues to meet the needs of its users.                  | Org Mode maintenance     |
 | predictability       | A set of guidelines or expectations for individuals who wish to contribute to Org Mode development.                      | Contributor requirements |
 | community            | The engagement and participation of users, contributors, and maintainers in the development and improvement of Org Mode. | Community involvement    |
+
 
 
 
@@ -99,6 +102,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-rust--an-experimental-emacs-core-in-rust--troy-hinckley--main.org][Source]]
 
 * An Experimental Emacs Core In Rust
@@ -120,6 +124,7 @@
 | Emacs core | The runtime, interpreter, garbage collector, everything used to run the code.            | Emacs core |
 | Remacs     | A project that took an outside-in approach to replacing C functions with Rust functions. | Remacs     |
 | Emacs-NG   | A spiritual successor to Remacs, adding a JavaScript runtime and new renderers.          | Emacs-NG   |
+
 
 
 
@@ -145,6 +150,7 @@
 | BigBlueButton | BigBlueButton (BBB) with open captions | streaming media player with captions |
 | Internet Relay Chat | Internet Relay Chat (IRC) | irc chat service for conference communication |
 | IRC client | not specified, but can be connected to using TLS and port 6697 | irc client software for connecting to IRC channels |
+
 
 
 
@@ -174,6 +180,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-sun-open--sunday-opening-remarks--main.org][Source]]
 
 * Sunday Opening Remarks
@@ -199,6 +206,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-theme--my-journey-of-finding-and-creating-the-perfect-emacs-theme--metrowind--main.org][Source]]
 
 * My Journey Of Finding And Creating The Perfect Emacs Theme
@@ -221,6 +229,7 @@
 | MELPA           | Major Emacs package repository for distributing and managing themes and packages                          | Used to publish and distribute Emacs themes              |
 | color palette   | Predefined set of colors chosen to work together in a design system                                       | FlucUI theme drew from DeviantArt and iOS 7 palettes     |
 | color picker    | Tool for selecting and analyzing colors within different color spaces                                     | Used to maintain consistent lightness while varying hues |
+
 
 
 * [[summaries/emacsconf-2024-writing--emacs-writing-studio--peter-prevos--main.org][Source]]
@@ -249,5 +258,6 @@
 | Citar                | a package for accessing bibliographies in Emacs.                                                          | citar                |
 | Vertico              | a package for minibuffer completion in Emacs.                                                             | vertico              |
 | Visual Line Mode     | a mode that enables visual line numbers in Emacs.                                                         | visual-line-mode     |
+
 
 

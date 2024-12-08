@@ -8,3 +8,9 @@
 
 === Raw Content ===
 Hi, EmacsConf. This is "Colour your Emacs with ease". I'm Ryota Sawada, and today's agenda is: start with a brief introduction. I will be talking about colours quite a bit. What colours do you like? Colour spaces and some packages such as color.el, ct.el. I'll be touching on a theme called Hasliberg theme, which I created, before wrapping up the talk. A quick introduction about the talk. The slide is available as an Org mode file at Codeberg. If you're looking at it from Org mode, you probably w...
+
+2024-12-08T17:32:09.003208
+
+=== Content Verification Failed ===
+First 500 chars:
+Hi, EmacsConf. This is "Colour your Emacs with ease". I'm Ryota Sawada, and today's agenda is: start with a brief introduction. I will be talking about colours quite a bit. What colours do you like? Colour spaces and some packages such as color.el, ct.el. I'll be touching on a theme called Hasliberg theme, which I created, before wrapping up the talk. A quick introduction about the talk. The slide is available as an Org mode file at Codeberg. If you're looking at it from Org mode, you probably w

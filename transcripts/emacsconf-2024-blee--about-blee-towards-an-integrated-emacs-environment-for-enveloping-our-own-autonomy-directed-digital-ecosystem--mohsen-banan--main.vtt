@@ -1,0 +1,1019 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:06.660
+ Greetings, Salon.
+
+00:00:06.660 --> 00:00:11.540
+ This is Mohsen Banon, I am a software and internet engineer.
+
+00:00:11.540 --> 00:00:16.380
+ The title of this presentation is "About Blee".
+
+00:00:16.380 --> 00:00:22.460
+ Blee stands for "By Star Liber Halal Imax Environment".
+
+00:00:22.460 --> 00:00:29.700
+ In this presentation, I want to look at Imax as a primary ingredient for the usage environment
+
+00:00:29.700 --> 00:00:35.800
+ of an autonomy and morality-directed digital ecosystem.
+
+00:00:35.800 --> 00:00:38.380
+ My focus here is not just Imax.
+
+00:00:38.380 --> 00:00:46.740
+ This is about augmenting Imax in the context of our own specific digital ecosystem.
+
+00:00:46.740 --> 00:00:50.740
+ This presentation is part theoretical and part practical.
+
+00:00:50.740 --> 00:00:55.020
+ I spend about half of my time on the theory and the bigger picture.
+
+00:00:55.020 --> 00:01:00.860
+ The second half is hands-on and Imax's century.
+
+00:01:00.860 --> 00:01:08.420
+ Imax has long been recognized as the ultimate integration platform, enabling the creation
+
+00:01:08.420 --> 00:01:12.960
+ of an unparalleled user environment.
+
+00:01:12.960 --> 00:01:19.300
+ Tomohiro is right on the mark when he says, "The reason why Imax's platform is good is
+
+00:01:19.300 --> 00:01:25.100
+ that it cooperates with OS, not because it's good by itself."
+
+00:01:25.100 --> 00:01:31.820
+ But this recognition has often been in the context of a generic and abstract OS.
+
+00:01:31.820 --> 00:01:39.200
+ So I am updating Matsumaya's observation as, "The reason why Imax's platform is good
+
+00:01:39.200 --> 00:01:47.380
+ is that it facilitates creation of specific integrated usage environments, like Blee,
+
+00:01:47.380 --> 00:01:55.380
+ which cooperates with Debian and Bysos as part of the Liber Halal Bistor digital ecosystem."
+
+00:01:55.380 --> 00:02:05.180
+ Imax is an especially good choice as the universal core of usaving environments of a digital
+
+00:02:05.180 --> 00:02:12.880
+ ecosystem, because it has an incredibly powerful display engine and an incredibly powerful
+
+00:02:12.880 --> 00:02:19.880
+ ellipse engine, and an incredibly powerful input methods engine, and an incredibly powerful
+
+00:02:19.880 --> 00:02:27.640
+ common agent's paradigm, and the very rich set of mature and convivial idioms and memes
+
+00:02:27.640 --> 00:02:35.960
+ for absorption and integration of external software services continuum capabilities.
+
+00:02:35.960 --> 00:02:43.680
+ In our model, we first augment Imax with a set of cohesive ellipse capabilities and create
+
+00:02:43.680 --> 00:02:49.080
+ Blee, Bistor Liber Halal Imax's environment.
+
+00:02:49.080 --> 00:02:57.880
+ We then further enhance Blee with an integrated framework on top of Debian called Bysos, by
+
+00:02:57.880 --> 00:03:06.560
+ store internet services operating system. Blee is inherently intertwined and integrated
+
+00:03:06.560 --> 00:03:14.620
+ with Bysos. This combination of universal Bysos and Blee then forms a foundation for the
+
+00:03:14.620 --> 00:03:23.560
+ creation of an autonomy-directed digital ecosystem that we call Bysos.
+
+00:03:23.560 --> 00:03:30.720
+ Over the past two decades, I have been working on creating a comprehensive interdisciplinary
+
+00:03:30.720 --> 00:03:38.320
+ and non-properiatory digital ecosystem. We call it Bysos. Bysos challenges the existing
+
+00:03:38.320 --> 00:03:46.160
+ proprietary American digital ecosystem while operating concurrently alongside it.
+
+00:03:46.160 --> 00:03:55.000
+ Bysos' primary offerings are tangible autonomy and genuine privacy on a very large scale.
+
+00:03:55.000 --> 00:04:03.920
+ Bysos is about re-decentralization of internet application services. The store in Bysos stands
+
+00:04:03.920 --> 00:04:13.760
+ for Unix's gloving symbol, signifying that our scope is everything. Blee is a bigger and
+
+00:04:13.760 --> 00:04:20.760
+ different vision for Imax. Let's compare and contrast what I'm proposing against common
+
+00:04:20.760 --> 00:04:28.240
+ current practices of the Imax culture. Please permit me to be slightly cynical.
+
+00:04:28.240 --> 00:04:35.440
+ Much of what we have been seeing in the Imax culture and in Imax Conf can be characterized
+
+00:04:35.440 --> 00:04:43.880
+ as stories of tunnel vision engineers, scratching various issues by integrating various capabilities
+
+00:04:43.880 --> 00:04:52.000
+ and providing DIY recipes. Imax and Lisb are so powerful that people have come up with
+
+00:04:52.000 --> 00:05:02.160
+ catch phrases like the Curse of Lisb. The Curse is that the power of Lisb breeds individualism.
+
+00:05:02.160 --> 00:05:08.720
+ If you can be so powerful alone, you work longer alone. Because it's easy to spin your
+
+00:05:08.720 --> 00:05:17.060
+ own whatever library many people do. I'm suggesting that we should raise the bar. Let's cultivate
+
+00:05:17.060 --> 00:05:26.800
+ Imax in the context of our own digital ecosystem instead. Do more and do more outside of Imax
+
+00:05:26.800 --> 00:05:35.840
+ and recognize that a well-integrated smaller Imax leads to a better usage environment.
+
+00:05:35.840 --> 00:05:42.480
+ Broadly speaking, digital ecosystems are viewed as consisting of four parts. Ideology
+
+00:05:42.480 --> 00:05:49.840
+ software services and content. Software services and content are poly-existentials and can
+
+00:05:49.840 --> 00:05:56.320
+ be analyzed from three different aspects, functionality, usage and the manner of existence.
+
+00:05:56.320 --> 00:06:03.040
+ By manner of existence of poly-existentials, we mean everything relating to how the
+
+00:06:03.040 --> 00:06:08.720
+ poly-existential exists within society. This includes, for example,
+
+00:06:08.720 --> 00:06:15.520
+ or poly-existentials internally transparent. Societal ideology determines
+
+00:06:15.520 --> 00:06:23.360
+ manner of software services and content and in turn manner of existence of software services
+
+00:06:23.360 --> 00:06:31.680
+ and content impact society. In the American model, loss of privacy and autonomy are direct
+
+00:06:31.680 --> 00:06:40.240
+ consequences of the IPR regime. Based on this characterization, let's consider these three
+
+00:06:40.240 --> 00:06:47.360
+ digital ecosystems, the proprietary American digital ecosystem, force and by store.
+
+00:06:47.360 --> 00:06:54.640
+ The five big American proprietary tech companies, Google, Microsoft, Apple, Facebook and Amazon,
+
+00:06:54.640 --> 00:07:02.160
+ have created five competing enclaves as mostly separate and isolated digital ecosystem.
+
+00:07:02.160 --> 00:07:10.000
+ In this slide, I'm focusing on the first three and each of their OSs, their usage environment
+
+00:07:10.000 --> 00:07:17.520
+ and their clouds. Let's clearly recognize that the economic model of these proprietary digital
+
+00:07:17.520 --> 00:07:24.800
+ ecosystems is surveillance capitalism. Now, let's focus on the right side of this picture.
+
+00:07:24.800 --> 00:07:31.840
+ On the non-properatory side, based on the first model, we have ended up with lots of components.
+
+00:07:31.840 --> 00:07:38.160
+ We have Debian as a platform. We have Emacs as an editor-centered usage environment,
+
+00:07:38.720 --> 00:07:44.640
+ but on the non-properatory side, we don't have anything that can reasonably be considered
+
+00:07:44.640 --> 00:07:50.240
+ a digital ecosystem. I mean, the services aspect is missing.
+
+00:07:50.240 --> 00:07:57.600
+ By store, aspires to be a complete non-properatory digital ecosystem.
+
+00:07:57.600 --> 00:08:03.440
+ We were all born into the belief system of intellectual property rights,
+
+00:08:04.240 --> 00:08:12.480
+ making it exceedingly difficult for us to even imagine that this foundational ownership framework
+
+00:08:12.480 --> 00:08:20.240
+ could be fundamentally flawed. I am delighted to announce the availability of my recent book,
+
+00:08:20.240 --> 00:08:28.880
+ Nature of Polyexistent Shows. The full title of my book is Nature of Polyexistent Shows,
+
+00:08:28.880 --> 00:08:34.400
+ basis for abolishment of the Western intellectual property rights regime,
+
+00:08:34.400 --> 00:08:40.800
+ and introduction of the Liber Hallal by store digital ecosystem.
+
+00:08:40.800 --> 00:08:49.200
+ Now, let's know how users of know how ideas, formulas, software and information are inherently
+
+00:08:49.200 --> 00:08:57.680
+ non-scars. They are polyexistent Shows. Unlike mono-existent Shows, which exist in singular,
+
+00:08:58.560 --> 00:09:06.800
+ polyexistent Shows naturally exist in multiples. What is abundant in nature is being made
+
+00:09:06.800 --> 00:09:13.760
+ artificially scarce through man-made ownership rules called copyright and patents.
+
+00:09:13.760 --> 00:09:20.720
+ Let me provide a brief overview. This book is divided into five parts,
+
+00:09:20.720 --> 00:09:27.280
+ each representing a layer of interest to you and to our societal policy makers.
+
+00:09:27.680 --> 00:09:34.240
+ Part one, the philosophical layer, delves into the concept of polyexistence.
+
+00:09:34.240 --> 00:09:43.600
+ In this part, I introduce, for the very first time, the concept and terminology of polyexistent Shows.
+
+00:09:43.600 --> 00:09:50.640
+ The topic of restriction of polyexistent Shows and the Western IPR is one and the same.
+
+00:09:51.520 --> 00:10:00.080
+ Comprehending polyexistence invalidates the Western IPR model. We are living inside of an ownership
+
+00:10:00.080 --> 00:10:09.440
+ fallacy. The Western IPR regime is a sin of our times. Part two is the pathology layer.
+
+00:10:09.440 --> 00:10:16.560
+ Over the course of the past two centuries, numerous theories have been proposed to justify
+
+00:10:16.560 --> 00:10:24.080
+ intellectual property. In this part, I offer my perspective on the weaknesses inherent
+
+00:10:24.080 --> 00:10:31.680
+ in each of these theories. Part three, the ethics layer, focuses on contours of cures.
+
+00:10:31.680 --> 00:10:39.280
+ Having dismissed the Western intellectual property rights regime as an erroneous governance
+
+00:10:39.280 --> 00:10:48.400
+ model for polyexistent Shows, I propose the Lieber Hallal model of governance of polyexistent Shows
+
+00:10:48.400 --> 00:10:57.680
+ towards facilitating conviviality of tools. Part four, the engineering layer introduces the Lieber
+
+00:10:57.680 --> 00:11:06.160
+ Hallal by Spur digital ecosystem as an ethical alternative to the prevailing proprietary American
+
+00:11:06.160 --> 00:11:15.760
+ digital ecosystem. Part five, the sociology layer delves into formulation of Lieber Hallal oriented
+
+00:11:15.760 --> 00:11:24.080
+ societal policies. It's evident that the abolishment of intellectual property carries significant
+
+00:11:24.080 --> 00:11:32.880
+ consequences. In this part, I present my thoughts on this particular dimension for Eastern societies.
+
+00:11:33.600 --> 00:11:39.440
+ For Western societies, I confine myself to inside of IPR strategies.
+
+00:11:39.440 --> 00:11:48.160
+ You can think of this book as being in two volumes. Our focus is Blee in volume two.
+
+00:11:48.160 --> 00:11:56.160
+ But as our blueprint needs to be interdisciplinary, there are some key concepts of volume one
+
+00:11:56.160 --> 00:12:04.640
+ that I want to briefly discuss here. Volume one deals with the general concept of polyexistence
+
+00:12:04.640 --> 00:12:14.560
+ and in validity of IPR. In chapter 11, I introduce the very sensitive and potent vocabulary
+
+00:12:14.560 --> 00:12:23.360
+ of Hallal and Lieber Hallal. Volume two is backed by software and internet services. Content of this
+
+00:12:23.360 --> 00:12:31.840
+ book belongs to all of humanity and verbatim copying of it is unrestricted. If you want to read it,
+
+00:12:31.840 --> 00:12:40.080
+ this book is yours. The nature of polyexistentials book is available both online and in print.
+
+00:12:40.080 --> 00:12:47.440
+ This book is available as two editions, the US edition and the international edition.
+
+00:12:48.640 --> 00:12:57.280
+ The US edition is written with a slightly milder Western unfriendly tone, while the international edition
+
+00:12:57.280 --> 00:13:05.120
+ includes additional original content in foresee. I consider the international edition
+
+00:13:05.120 --> 00:13:12.320
+ to be the authoritative version. However, many readers in the US and Western countries
+
+00:13:12.320 --> 00:13:20.720
+ may prefer the US edition. I maintain separate Git repositories for each edition on GitHub.
+
+00:13:20.720 --> 00:13:35.120
+ US edition is BXPLPC12033 and international edition is BXPLPC12074.
+
+00:13:36.400 --> 00:13:44.800
+ Cloning these repositories will give you access to the book in PDF format, suitable for both
+
+00:13:44.800 --> 00:13:54.960
+ A4 and US letter printing and in EPUB format. Alternatively, the content can be downloaded directly
+
+00:13:54.960 --> 00:14:04.720
+ from your browser without needing to clone the repositories. To ensure broader online availability
+
+00:14:04.720 --> 00:14:15.200
+ and stability, I have also published the book on Zenodo, complete with the UI digital object identifier.
+
+00:14:15.200 --> 00:14:24.160
+ You can download both the A4 and 8.5 by 11 PDFs from there as well.
+
+00:14:24.160 --> 00:14:33.280
+ The book is also available in print on Amazon and most major bookstores in the US and Western regions.
+
+00:14:34.080 --> 00:14:40.000
+ The ISBNs for both editions are included in this slide. Additionally,
+
+00:14:40.000 --> 00:14:47.840
+ I have published this book in Iran through Djangal publishers. I did not write this book for profit.
+
+00:14:47.840 --> 00:14:54.560
+ My aim is to share my thoughts and encourage readers to engage with my views and ideas.
+
+00:14:54.560 --> 00:15:00.720
+ Your feedback is welcome and I'm genuinely interested in hearing your perspectives.
+
+00:15:02.080 --> 00:15:08.320
+ In Western markets, I have priced the print edition somewhat above production costs.
+
+00:15:08.320 --> 00:15:16.080
+ If you find the value in the book and the by store project, purchasing a copy will help support
+
+00:15:16.080 --> 00:15:26.000
+ my work. Thanks in advance for your support. And here are the same links as a native reveal slide.
+
+00:15:26.960 --> 00:15:32.480
+ If instead of a video you are viewing this presentation as a reveal web page,
+
+00:15:32.480 --> 00:15:36.080
+ you can just click on the pointers and URLs.
+
+00:15:36.080 --> 00:15:45.200
+ The concept of poly-existentials has not appeared in prior discussions of validity of IPR.
+
+00:15:45.200 --> 00:15:51.680
+ Once you start thinking in terms of mono-existence and poly-existence,
+
+00:15:52.400 --> 00:15:58.000
+ the recognition of illegitimacy of Western IPR becomes very simple.
+
+00:15:58.000 --> 00:16:05.280
+ I want to very quickly give you a taste of that. You can of course dig deeper in the book.
+
+00:16:05.280 --> 00:16:12.480
+ Existence and possession are aspects of nature, ownership or man-made rules.
+
+00:16:12.480 --> 00:16:18.720
+ All material objects exist in singular and are mono-existentials.
+
+00:16:19.760 --> 00:16:27.440
+ For mono-existentials things are simple. Mono-existentials say paper exists in singular.
+
+00:16:27.440 --> 00:16:36.800
+ It naturally has a single processor. A single owner can be assigned to it, which then makes that
+
+00:16:36.800 --> 00:16:43.760
+ single possession lawful. Poly-existentials naturally exist in multiples.
+
+00:16:45.120 --> 00:16:51.040
+ Much of our world is actually a mixture of mono-existentials and poly-existentials,
+
+00:16:51.040 --> 00:16:54.720
+ which we call mixed-existentials.
+
+00:16:54.720 --> 00:17:03.760
+ Possession and of poly-existentials is naturally many to many. Without any conflict,
+
+00:17:03.760 --> 00:17:12.560
+ poly-existentials can have many processors. Poly-existentials are inherently non-ravalry.
+
+00:17:13.680 --> 00:17:20.560
+ The requirement for ownership to be in harmony with the nature of possession and existence
+
+00:17:20.560 --> 00:17:28.720
+ is violated by the Western IPR regime, which assigns a single owner to what exists
+
+00:17:28.720 --> 00:17:36.080
+ and is possessed in multiples. The end result is creation of artificial scarcity.
+
+00:17:37.120 --> 00:17:44.160
+ Ramification of ownership mistakes are usually catastrophic. Consider the previous
+
+00:17:44.160 --> 00:17:51.920
+ Western and American ownership mistake, that of American slavery, ownership of Africans
+
+00:17:51.920 --> 00:18:00.240
+ by Americans and Europeans. See Chapter 7, Western slavery and the Western IPR regime
+
+00:18:00.880 --> 00:18:08.640
+ of the book for some parallels between these mistakes. This time with the Western IPR ownership
+
+00:18:08.640 --> 00:18:17.920
+ mistake, all of humanity is in danger. So, how are we to correct this catastrophic mistake?
+
+00:18:17.920 --> 00:18:27.360
+ The strategies of public licenses and false are not sufficient. These are minor band-aids. We need
+
+00:18:27.360 --> 00:18:34.320
+ to do a lot more. We need to understand what we are going to replace the mistaken Western IPR
+
+00:18:34.320 --> 00:18:43.680
+ regime with. My answer is Liber Halal Governance of Poly-existentials. Much of my book revolves
+
+00:18:43.680 --> 00:18:52.080
+ around that. We need to fully reject ownership of poly-existentials and replace it with attribution
+
+00:18:52.080 --> 00:19:00.560
+ machineries towards just rewards. We need to abolish the artificial scarcity
+
+00:19:00.560 --> 00:19:08.160
+ of poly-existentials that the Western IPR regime has created and restore poly-existentials
+
+00:19:08.160 --> 00:19:14.080
+ back to their natural state, that of non-rival-ruse public goods.
+
+00:19:15.600 --> 00:19:24.400
+ By now, many Western-as and many West-toxicated are thinking, these are empty slogans that are going
+
+00:19:24.400 --> 00:19:32.160
+ nowhere. And they are right. Copyright and patents are fully entrenched in the West. But what about
+
+00:19:32.160 --> 00:19:38.240
+ the rest of the world? What about the Chinese, the Iranians, Brazilians, Cubans and the rest?
+
+00:19:39.280 --> 00:19:46.160
+ The intellectual property rights regime is not universal. There is more to the world than the West.
+
+00:19:46.160 --> 00:19:54.160
+ What if the WTO was to be recognized for what it is, the Western trade organization?
+
+00:19:54.160 --> 00:20:03.280
+ Thus far, I have been discussing the nature of all poly-existentials, any formula, in any form.
+
+00:20:04.640 --> 00:20:11.120
+ Next, I want to turn our attention to digitals in general and software in particular.
+
+00:20:11.120 --> 00:20:19.680
+ Software is a very special form of poly-existentials. Software is immediately useful, software
+
+00:20:19.680 --> 00:20:29.280
+ produces tools. Digital, as text, music, video, etc. are a pure form of poly-existentials that are
+
+00:20:29.280 --> 00:20:37.680
+ controlled by software. As developers, we know well that we can best produce good software through
+
+00:20:37.680 --> 00:20:45.840
+ collaboration. In that collaborative model, the software itself performs a collaborative road.
+
+00:20:45.840 --> 00:20:53.520
+ Software functions as a vessel for accumulation of our expert component contributions.
+
+00:20:54.960 --> 00:21:00.880
+ The Western IPR model cultivates artificial scarcities and competition.
+
+00:21:00.880 --> 00:21:09.520
+ But software developers instinctly recognize the superiority of the natural collaborative model.
+
+00:21:09.520 --> 00:21:17.040
+ Through public licenses, software developers have done a Juditsu on the IPR model
+
+00:21:17.040 --> 00:21:24.240
+ and have created a collaborative framework inside of the copyright model.
+
+00:21:25.040 --> 00:21:30.400
+ Based on that, natural public goods have defeated artificial scarcity.
+
+00:21:30.400 --> 00:21:38.560
+ Our success with software is proof that the entirety of the Western IPR regime is flawed.
+
+00:21:38.560 --> 00:21:46.640
+ The profession of software engineers need to create a relationship with society.
+
+00:21:47.520 --> 00:21:54.480
+ We need to demand for societal rules which establish proper manner of existence of software
+
+00:21:54.480 --> 00:22:02.720
+ and internet application services. In return, based on that, we should fulfill our guardianship role
+
+00:22:02.720 --> 00:22:10.880
+ and make sure that autonomy and privacy are preserved and that practice digital ecosystems
+
+00:22:10.880 --> 00:22:18.000
+ are healthy. To get there, we need to come up with the right label that represents the proper
+
+00:22:18.000 --> 00:22:24.320
+ manner of existence of software. Those four, two labels have appeared on the scene,
+
+00:22:24.320 --> 00:22:30.640
+ free software and open source. I'm saying that both are problematic.
+
+00:22:30.640 --> 00:22:38.080
+ Free software is ill-directed. It is based on the model of granting users,
+
+00:22:38.640 --> 00:22:46.880
+ freedoms that are irrelevant to most software users. Perhaps copy left or ethical software
+
+00:22:46.880 --> 00:22:55.360
+ could have been better labels. Open source is a moral compromise. It rejects the requirement for
+
+00:22:55.360 --> 00:23:04.080
+ perpetuity of copy left. It facilitates convergence of corporate interest and surrogate activities
+
+00:23:04.080 --> 00:23:11.920
+ of software developers. Over time, proprietary corporations, too, have come to recognize
+
+00:23:11.920 --> 00:23:19.200
+ the superiority of the collaborative model. These proprietary corporations then derailed the
+
+00:23:19.200 --> 00:23:27.520
+ original intent that all software should always remain open source. With permissive public licenses
+
+00:23:27.520 --> 00:23:35.440
+ which permit open source becoming proprietary, the intent of open source has been marginalized
+
+00:23:35.440 --> 00:23:43.840
+ and permissive open source has become the norm. I expand on all of this in chapter 12, digital
+
+00:23:43.840 --> 00:23:52.000
+ non-properatory movements. Instead of free software and open source, the label that I introduce
+
+00:23:52.000 --> 00:24:00.000
+ is Lieberhalol. The Lieberhalol label is distinct and different from false labels.
+
+00:24:00.000 --> 00:24:10.160
+ As an inside of IPR strategy, the Lieberhalol label maps to a single public license, the AferoGPR.
+
+00:24:10.160 --> 00:24:17.440
+ In the Lieberhalol model, it's not up to the developer to choose their own licenses.
+
+00:24:18.480 --> 00:24:25.200
+ There's only one correct license that conveys the Lieberhalol manner of existence of software.
+
+00:24:25.200 --> 00:24:33.360
+ Also, unlike the false labels that dance around the validity of the Western IPR regime,
+
+00:24:33.360 --> 00:24:41.600
+ the Lieberhalol label recognizes the invalidity of the Western IPR regime, calls for
+
+00:24:41.600 --> 00:24:48.720
+ a "bollishment of the Western IPR" and suggests various outside of IPR strategies.
+
+00:24:48.720 --> 00:24:54.960
+ C. Part 5 Formulation of Societal Policies for Details
+
+00:24:54.960 --> 00:25:03.440
+ Furthermore, unlike false, which is just software-oriented, the Lieberhalol label goes
+
+00:25:03.440 --> 00:25:09.040
+ beyond software and also applies to internet application services.
+
+00:25:11.120 --> 00:25:17.680
+ In many ways, software is yesterday's news. Much of what we are experiencing today
+
+00:25:17.680 --> 00:25:20.640
+ is in the form of internet application services.
+
+00:25:20.640 --> 00:25:27.360
+ Internet application services provide remote access to execution of software.
+
+00:25:27.360 --> 00:25:37.760
+ As such, much of false has become proprietary internet application services, as AferoGPR is rarely used.
+
+00:25:38.880 --> 00:25:46.400
+ This is why the Lieberhalol definitions and labels span software and internet application services.
+
+00:25:46.400 --> 00:25:54.400
+ Based on the interdisciplinary state setting that the nature of poly-existentials
+
+00:25:54.400 --> 00:26:00.960
+ book provided and the by-store blueprint that we reviewed, we can now focus on Blee.
+
+00:26:00.960 --> 00:26:07.840
+ Think of Blee as a layer on top of Emacs and think of by-source as a layer on top of DBA.
+
+00:26:07.840 --> 00:26:18.400
+ Let's bootstrap raw-by-source and raw-blee. Starting from scratch, get yourself a fresh copy of DBA and 12.
+
+00:26:18.400 --> 00:26:24.880
+ Then go to github.com/bxgenesis-start.
+
+00:26:24.880 --> 00:26:33.840
+ The readmeat.org file at that github repo is same as chapter 18 of the book.
+
+00:26:35.840 --> 00:26:43.680
+ We will next run raw-by-source.chelle. But prior to that, let's take a quick look.
+
+00:26:43.680 --> 00:26:52.880
+ This bootstrap script will do a lot as root on your fresh DBA. It's best to first try it on a
+
+00:26:52.880 --> 00:27:03.840
+ disposable VM. Raw-by-source.sh adds the current DBA user to sudoes. Then it installs ppex.
+
+00:27:04.720 --> 00:27:11.520
+ And then with ppex, it installs from pypi by-source.provision.
+
+00:27:11.520 --> 00:27:18.880
+ By-source.provision includes additional batch scripts that are then executed.
+
+00:27:18.880 --> 00:27:26.960
+ Full installation involves setting up various accounts, group various directory hierarchies,
+
+00:27:26.960 --> 00:27:33.840
+ lots of up packages, and lots of Python packages. From the by-source name space.
+
+00:27:34.480 --> 00:27:42.320
+ If you're ready, copy and paste this line, and run it. You will be prompted for the root
+
+00:27:42.320 --> 00:27:51.360
+ password. Then be patient. Full installation can take 15 minutes or so. The logs of this script are
+
+00:27:51.360 --> 00:28:03.760
+ captured in raw-by-source.datetag.log.org. What has been installed on your system or raw-by-source
+
+00:28:03.760 --> 00:28:11.920
+ and raw-bly? The universality of DBA let's us build on by-source and bleed, both in the usage
+
+00:28:11.920 --> 00:28:21.520
+ environment and the service environment. With EMAX 3D now available on Android, and with termux
+
+00:28:21.520 --> 00:28:29.600
+ up packages infrastructure in place, it will be very viable to port by-source and bleed to Android.
+
+00:28:30.400 --> 00:28:38.160
+ We have not done so yet. We're waiting for EMAX 3D to mature up. This is by-source mobile
+
+00:28:38.160 --> 00:28:46.080
+ second strategy. Upon completion of the bootstrapping process, you end up with raw-by-source and
+
+00:28:46.080 --> 00:28:54.160
+ raw-bly. You then need to re-log in. At which point your notice that a new account called by-store
+
+00:28:54.160 --> 00:29:03.440
+ has been created. By-store is the default usage account. Let's log into it. You will see a customized
+
+00:29:03.440 --> 00:29:12.000
+ by-store GNOME desktop. You will also notice a bleed startup icon. Let's use it and start
+
+00:29:12.000 --> 00:29:21.120
+ bleed. Notice that the EMAX splash screen has been replaced, and also note that this splash screen
+
+00:29:21.120 --> 00:29:30.320
+ is an org mode. All the original EMAX splash screen info is kept under about EMAX.
+
+00:29:30.320 --> 00:29:40.560
+ Let me enlarge the screen. Now we can live inside of bleed. Notice that the top drop-down EMAX
+
+00:29:40.560 --> 00:29:50.480
+ menus have been augmented. Everything to the left of the file menu is new. Notice the panels menu.
+
+00:29:51.360 --> 00:30:01.200
+ More on these later. Now let me get myself a shell and run tail/set-zip password.
+
+00:30:01.200 --> 00:30:13.600
+ Notice that a number of new accounts has been created. Notably by-source, by-store, and BPO-delimiter.
+
+00:30:15.120 --> 00:30:24.560
+ Let's next CD-to-by-source. Everything related to by-source is in here. The rest is as DBN was.
+
+00:30:24.560 --> 00:30:36.240
+ Let's take a look at /by-source-glie-nf3. All the e-list code for bleed is in here.
+
+00:30:37.120 --> 00:30:46.400
+ For now, bleed is layered on top of Doom. Robby-source and Robly are starting points. They are meant to be
+
+00:30:46.400 --> 00:30:58.880
+ customized. Let's next see how that is done. Robby-source and Robly are foundational layers. They
+
+00:30:58.880 --> 00:31:06.800
+ can be augmented in a variety of ways. The basic unit in the by-store model is the autonomous
+
+00:31:06.800 --> 00:31:14.880
+ site. Think of the autonomous site as the totality of computing and communication capabilities
+
+00:31:14.880 --> 00:31:22.720
+ in a modern family home, plus the ability of that family to host their own internet application
+
+00:31:22.720 --> 00:31:31.840
+ services. Let's walk through how Robby-source and Robly are used to construct an autonomous site.
+
+00:31:32.960 --> 00:31:41.680
+ By-source augmentation model is based on by-source capability bundles, BCBs. Robby-source can be
+
+00:31:41.680 --> 00:31:50.000
+ augmented to become a virtual machine hosting service. From there on, we can use reproducible
+
+00:31:50.000 --> 00:32:00.480
+ images to implement the infrastructure of sites. Took key services are the site BPO GitLab server
+
+00:32:01.200 --> 00:32:07.760
+ and site registrars. With these in place, we can facilitate self-hosting,
+
+00:32:07.760 --> 00:32:16.720
+ which in the by-source model is called possession-assertable liver services. These topics and these
+
+00:32:16.720 --> 00:32:26.800
+ concepts are described in Chapter 17, technology of by-store, by-source. The concepts of service
+
+00:32:26.800 --> 00:32:34.000
+ portability, service possession assertion, autonomous site and inner outer and exposed to
+
+00:32:34.000 --> 00:32:42.720
+ rims of autonomous site or fundamental to by-store. These are shown in this figure as network
+
+00:32:42.720 --> 00:32:52.880
+ abodes. Chapter 17 of the book provides more details. Blee introduces a number of new concepts
+
+00:32:52.880 --> 00:33:00.160
+ that augment EMAX. Some of these are intertwined with by-source and by-store, but some are not.
+
+00:33:00.160 --> 00:33:09.840
+ Here, I provide some examples of these new general concepts. We love EMAX and we love Unix
+
+00:33:09.840 --> 00:33:16.400
+ because their design is convivial. By convivial, I'm referring to Ivan Illich's concept and
+
+00:33:16.400 --> 00:33:25.920
+ terminology of tools for conviviality. It was first published in 1973. It's a must read. A goal
+
+00:33:25.920 --> 00:33:32.480
+ of the design of the by-store digital ecosystem is to enlarge aggregated conviviality.
+
+00:33:32.480 --> 00:33:41.840
+ Here, let's start by reviewing the idioms and means that have made EMAX and Unix so very convivial
+
+00:33:41.840 --> 00:33:48.400
+ and some of the key idioms that have augmented them over the years. I'm showing them as
+
+00:33:48.400 --> 00:33:57.120
+ Linux++ and EMAX++. For the most part, these two philosophies have not been combined.
+
+00:33:57.120 --> 00:34:05.280
+ They were developed and have evolved mostly separately. Think of by-source idioms as an extension
+
+00:34:05.280 --> 00:34:13.120
+ of Linux++ idioms and think of BLEE idioms as an extension of EMAX++.
+
+00:34:13.120 --> 00:34:21.520
+ Then intertwined by-source and BLEE. This aggregated convivial tools powers by-store.
+
+00:34:21.520 --> 00:34:30.400
+ Let me first explain what I mean by aggregated convivial tools and then let me give some examples.
+
+00:34:32.240 --> 00:34:38.480
+ Here is a key sentence from Elyche's tools for conviviality in 1973 essay.
+
+00:34:38.480 --> 00:34:47.440
+ Convivial tools are those which give each person who uses them the greatest opportunity to enrich
+
+00:34:47.440 --> 00:34:51.520
+ the environment with the fruits of his or her vision.
+
+00:34:51.520 --> 00:34:58.000
+ Preparatory manner of existence of software makes them industrial.
+
+00:34:58.560 --> 00:35:04.960
+ Liber Halal Manerov existence of software is a prerequisite for conviviality.
+
+00:35:04.960 --> 00:35:15.520
+ The concept of org dynamic blocks is very powerful but why should they be primarily used in org mode?
+
+00:35:15.520 --> 00:35:23.760
+ I say let's generalize them to EMAX dynamic blocks. Have defaults for org-deblogs start
+
+00:35:23.760 --> 00:35:30.880
+ or E in every relevant mode and use them everywhere. BLEE does that.
+
+00:35:30.880 --> 00:35:36.000
+ In programming languages, dynamic blocks can be used as visible macros.
+
+00:35:36.000 --> 00:35:47.280
+ For those of us who live inside of EMAX, enhancing programming with org mode capabilities is awesome,
+
+00:35:48.000 --> 00:35:56.000
+ incredibly awesome. This can be done in two ways. One with literate programming and org
+
+00:35:56.000 --> 00:36:06.080
+ Babel and two with traditional surrounded programming and Comiga. Comiga stands for collaborative
+
+00:36:06.080 --> 00:36:13.760
+ org mode enhanced EMAX generalized authorship. It's just an acronym that I have come up with.
+
+00:36:15.600 --> 00:36:22.800
+ Literate programming and org Babel are well established. There is a related talk in EMAX
+
+00:36:22.800 --> 00:36:33.440
+ Conf 2024 titled literate programming for the 21st century. Comiga is the inverse of org Babel.
+
+00:36:33.440 --> 00:36:43.280
+ I prepare Comiga over org Babel because I prefer traditional surrounded programming over literate
+
+00:36:43.280 --> 00:36:51.760
+ programming. To each is on. This is not about that debate. This is about mixing your programming
+
+00:36:51.760 --> 00:37:01.360
+ mode with org mode. Much of BLEE and BISOS are implemented in Comiga. Almost all of our E list
+
+00:37:01.360 --> 00:37:09.600
+ python bash and latec work uses Comiga. Full and proper use of Comiga requires poly mode.
+
+00:37:10.320 --> 00:37:16.160
+ Let's call that poly Comiga. But EMAX's poly mode is working progress,
+
+00:37:16.160 --> 00:37:25.520
+ particularly now with the new three-sitter. So in the interim, my usage of Comiga has been
+
+00:37:25.520 --> 00:37:33.040
+ in the form of toggle Comiga, where I manually switch between the programming mode and org mode.
+
+00:37:33.040 --> 00:37:37.760
+ For me, this has proved to be a fine interim solution.
+
+00:37:38.720 --> 00:37:48.000
+ Yes. In EMAX, the way that we have been dealing with documentation and information retrieval
+
+00:37:48.000 --> 00:37:57.040
+ is archaic. Man pages taken for helpful mode and convention-based doc strings are old and limited.
+
+00:37:57.040 --> 00:38:05.600
+ In BISOS and BLEE, we use BLEE panels for all kinds of documentation. Let me show you some examples.
+
+00:38:06.560 --> 00:38:16.160
+ Two fundamental autonomy oriented capabilities that by store offers to individuals are
+
+00:38:16.160 --> 00:38:23.520
+ email and content generation and publication. I'll give a quick overview of these two important
+
+00:38:23.520 --> 00:38:34.480
+ capabilities. At the EMAX CONF 2022, the title of my presentation was revisiting the anatomy of
+
+00:38:34.480 --> 00:38:43.040
+ EMAX male user agents. In that presentation, I gave a brief overview of BISOS, Mormie,
+
+00:38:43.040 --> 00:38:52.240
+ multi-account resident male exchange environment, and Bleegnose. In BISOS, these are typically
+
+00:38:52.240 --> 00:39:01.200
+ paired with byname.net autonomous email services. Content production and self-publication
+
+00:39:01.200 --> 00:39:09.360
+ is a foundational BLEE and BISOS capability bundle. Both this presentation and the nature of
+
+00:39:09.360 --> 00:39:17.200
+ PODY Existentials book were developed with BLEE LCNT. The original text is always in
+
+00:39:17.200 --> 00:39:25.680
+ Comiga latex, latex augmented by org mode. This is the inverse direction of exporting latex from
+
+00:39:25.680 --> 00:39:34.320
+ org mode. For typesetting, the latex syntax is far more powerful than org mode, and with
+
+00:39:34.320 --> 00:39:43.920
+ Comiga latex, you can also benefit from all that org mode offers. For presentation, screen
+
+00:39:43.920 --> 00:39:52.720
+ casting, the original text is then augmented in layers by images, audio voiceovers,
+
+00:39:52.720 --> 00:40:00.480
+ screen captures, videos, and captions. The BML latex file is then processed by both
+
+00:40:00.480 --> 00:40:10.800
+ latex and heavier. Latex produced slides are then absorbed in HTML by heavier as images.
+
+00:40:10.800 --> 00:40:19.680
+ Heavya is a latex to HTML converter. Heavya output is destined to be dispensed by reveal.js.
+
+00:40:20.400 --> 00:40:26.560
+ This video is just a screen capture of the autoplay of reveal file.
+
+00:40:26.560 --> 00:40:35.280
+ Viewing this presentation in its original revamped form is a very rich experience.
+
+00:40:35.280 --> 00:40:44.560
+ All of this involves a whole lot of integration scripting. In raw BISOS, these scripts are in
+
+00:40:44.560 --> 00:40:47.760
+ BISOS Core LCNT bin.
+
+00:40:48.480 --> 00:41:03.040
+ To say that BISOS and BLE or big-and-ambition is an understatement, and clearly, a small theme
+
+00:41:03.040 --> 00:41:10.800
+ won't be able to deliver the outlandish blueprint that is outlined in the nature of Polly Existentials book.
+
+00:41:12.640 --> 00:41:21.040
+ We have been at this for over two decades, and we feel that now, in 2024, it makes sense to involve you.
+
+00:41:21.040 --> 00:41:31.280
+ The pointer has an instructions for installation and usage of BISOS and BLE that I have provided.
+
+00:41:31.280 --> 00:41:36.720
+ Produced systems that are minimally functional, but are not cleaned.
+
+00:41:36.720 --> 00:41:41.040
+ At this time, don't expect stability and support.
+
+00:41:42.000 --> 00:41:49.360
+ Throughout this presentation, I have been emphasizing service portability and possession
+
+00:41:49.360 --> 00:41:58.160
+ ascertainable labor services, PALS. But a complete digital ecosystem includes various other types of
+
+00:41:58.160 --> 00:42:06.480
+ Internet application services as well. In this slide, PALS are at the center and are then augmented
+
+00:42:06.480 --> 00:42:13.680
+ by different other types of services. In the BISOS Store model, equivalent of Facebook-style
+
+00:42:13.680 --> 00:42:22.560
+ application services are called inter-autonomous interactions. With individual-oriented PALS in
+
+00:42:22.560 --> 00:42:32.960
+ place using OAuth of PALS, resources can be shared. Based on that, we can then structure inter-autonomous
+
+00:42:32.960 --> 00:42:41.760
+ interactions while preserving much privacy. Any blueprint for a digital ecosystem must also
+
+00:42:41.760 --> 00:42:49.680
+ consider the economic and business dimensions. Chapter 13, Polly Existential Capitalism
+
+00:42:49.680 --> 00:42:58.240
+ delves into proper economic models for Polly Existentials. The concept of attribution-based
+
+00:42:58.240 --> 00:43:04.880
+ economics, which has been discussed in this forum before, is included.
+
+00:43:04.880 --> 00:43:11.760
+ Chapter 21, Private Sector Strategies by Store Open Business Plan
+
+00:43:11.760 --> 00:43:20.720
+ deals with the business dimension of PALS. What if, in addition to being ethics-oriented,
+
+00:43:20.720 --> 00:43:27.680
+ the entirety of this book could also be considered a sophisticated business plan?
+
+00:43:27.840 --> 00:43:32.160
+ Are there any venture capitalists that use EMAX?
+
+00:43:32.160 --> 00:43:40.080
+ Here is a set of relatively complete domains and links for digging deeper.
+
+00:43:40.080 --> 00:43:48.640
+ These pointers are structured in four layers, ideologies, software, services, and guardianship.
+
+00:43:48.640 --> 00:43:57.280
+ If BISOS, by Store Libre Hallol and Polly Existentials have picked your interest,
+
+00:43:57.280 --> 00:44:04.240
+ and if you wish to participate in making these ideas more widespread and want to further cultivate
+
+00:44:04.240 --> 00:44:12.160
+ them, here are some suggestions. The examples of the bleak concepts that I chose were
+
+00:44:12.160 --> 00:44:21.120
+ purposeful and targeted. I'm hopeful that Orgmo developers and EMAX developers would recognize that
+
+00:44:21.120 --> 00:44:27.600
+ it makes good sense to expand the scope of Org dynamic blocks to the entirety of EMAX.
+
+00:44:27.600 --> 00:44:35.040
+ I'm hopeful that the concept of Polly mode, a single buffer with regions in different modes,
+
+00:44:35.040 --> 00:44:43.360
+ and Orgmo in particular, would receive a high priority in our three-seater transition.
+
+00:44:43.360 --> 00:44:50.640
+ I'm hopeful that bleak omega can become a generalized form of Polly mode.
+
+00:44:50.640 --> 00:44:59.600
+ I'm hopeful that we can build on bleak panels and move towards having a richer base for a universal
+
+00:44:59.600 --> 00:45:07.680
+ EMAX documentation framework. If participation in any of these is of interest to you,
+
+00:45:07.680 --> 00:45:15.920
+ please feel welcome to contact me. EMAX conferences have proven to be very useful and productive.
+
+00:45:16.800 --> 00:45:20.560
+ I look forward to your thoughts, feedback, and questions.
+
+00:45:20.560 --> 00:45:30.000
+ I want to thank all the EMAX conferences for their great work. I'm Sasha, Leo, and Amin, in particular.
+

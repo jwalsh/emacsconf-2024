@@ -1,0 +1,410 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:08.240
+ Hi, EmacsColf.
+
+00:00:08.240 --> 00:00:11.000
+ This is color your Emacs with ease.
+
+00:00:11.000 --> 00:00:16.560
+ I'm Rio de Salada, and today's agenda is start with a brief introduction.
+
+00:00:16.560 --> 00:00:19.840
+ I will be talking about colors quite a bit.
+
+00:00:19.840 --> 00:00:21.680
+ What colors do you like?
+
+00:00:21.680 --> 00:00:25.920
+ Color spaces and some packages such as color.el, ct.el.
+
+00:00:25.920 --> 00:00:31.840
+ I'll be touching on a theme called Hasselberg theme which I created before wrapping up the
+
+00:00:31.840 --> 00:00:34.320
+ talk.
+
+00:00:34.320 --> 00:00:36.400
+ So a quick introduction about the talk.
+
+00:00:36.400 --> 00:00:41.520
+ The slide is available as an org mode file at codeberg, and if you're looking at it from
+
+00:00:41.520 --> 00:00:47.480
+ org mode, you probably want to have rainbow mode turned on or the best viewing, and this
+
+00:00:47.480 --> 00:00:50.600
+ is the case with the presentation today.
+
+00:00:50.600 --> 00:00:58.280
+ I'm Rio de Salada, and I'm available at RYTSWD at usual places.
+
+00:00:58.280 --> 00:01:00.520
+ So what color do you like?
+
+00:01:00.520 --> 00:01:07.600
+ And you might be able to tell I like orange, and that's the color that I use often.
+
+00:01:07.600 --> 00:01:13.040
+ And Emacs gives me all the control I want, so naturally I wanted to make it aesthetically
+
+00:01:13.040 --> 00:01:19.800
+ pleasing to my taste, which meant that I would like to have a dark theme, subtle theme,
+
+00:01:19.800 --> 00:01:26.720
+ with orange as a main accent color, but not too orange, so not everything very orange,
+
+00:01:26.720 --> 00:01:31.560
+ maybe use another blue-ish color as another accent.
+
+00:01:31.560 --> 00:01:37.480
+ Know that this presentation is based on Hasselberg theme more than more than that later.
+
+00:01:37.480 --> 00:01:43.160
+ But when I started my Emacs journey, I didn't start with creating a new theme from Get
+
+00:01:43.160 --> 00:01:44.160
+ Go.
+
+00:01:44.160 --> 00:01:46.680
+ I started with a theme called Nova Theme.
+
+00:01:46.680 --> 00:01:52.440
+ I really liked it. I made a few tweaks around org mode and headings, so that they were a
+
+00:01:52.440 --> 00:02:00.920
+ bit more geared towards my liking, which was around orange being sprinkled, sprinkled across.
+
+00:02:00.920 --> 00:02:06.400
+ And I got to it very nice looking, and I really liked it.
+
+00:02:06.400 --> 00:02:14.960
+ But when I started a long coin task with it, I kind of realized one thing, that it was
+
+00:02:14.960 --> 00:02:19.480
+ very colorful and in the way distracting.
+
+00:02:19.480 --> 00:02:23.120
+ And it actually wasn't about Nova Theme's fault.
+
+00:02:23.120 --> 00:02:29.120
+ It was just many editors, including Emacs and VS Code and other editors and modern themes,
+
+00:02:29.120 --> 00:02:31.440
+ are filled with colors.
+
+00:02:31.440 --> 00:02:33.640
+ Let's have a look.
+
+00:02:33.640 --> 00:02:40.520
+ At the top left, you can see Nova Theme with a bit of a pale greenish background with a
+
+00:02:40.520 --> 00:02:45.120
+ few colors, so purple, pink, blue, green.
+
+00:02:45.120 --> 00:02:51.320
+ You can see some colors like that with Nova Theme, nice looking colors, but still colorful.
+
+00:02:51.320 --> 00:02:57.200
+ Models to be then de tinted, bottom left is also very nice looking modern theme, but quite
+
+00:02:57.200 --> 00:02:58.520
+ colorful.
+
+00:02:58.520 --> 00:03:08.280
+ The same can be said for EF themes, our addition top right and do one as another bottom right.
+
+00:03:08.280 --> 00:03:17.680
+ So that let me to think, how can I make my code editing and coding tasks not to distracting
+
+00:03:17.680 --> 00:03:20.120
+ and I can focus on writing code.
+
+00:03:20.120 --> 00:03:24.960
+ And that was something I could manage with og mode, where I just specifically basically
+
+00:03:24.960 --> 00:03:28.600
+ used orange shades and not too much more.
+
+00:03:28.600 --> 00:03:30.880
+ That's what you're seeing at the moment.
+
+00:03:30.880 --> 00:03:36.200
+ And wanted to do something similar with coding and any general code.
+
+00:03:36.200 --> 00:03:42.240
+ And that led me to the journey of creating my own theme.
+
+00:03:42.240 --> 00:03:45.640
+ But before going to the theme, I need to talk about color spaces.
+
+00:03:45.640 --> 00:03:50.960
+ So SRGB, standard RGB is probably something that many people are familiar with.
+
+00:03:50.960 --> 00:03:57.640
+ HSL is for hue saturation and lightness, LCH is for light luminance, light or lightness,
+
+00:03:57.640 --> 00:03:59.240
+ chroma and hue.
+
+00:03:59.240 --> 00:04:05.440
+ And those are the color spaces probably commonly used in various spaces, but when it comes
+
+00:04:05.440 --> 00:04:12.200
+ to perceptual uniformity, there is an important difference between the color spaces.
+
+00:04:12.200 --> 00:04:15.680
+ So human perception of the color is not very straightforward.
+
+00:04:15.680 --> 00:04:19.520
+ And we can see in the reference here, let's have a look.
+
+00:04:19.520 --> 00:04:26.520
+ At the top, you can see the shade coming from left green to the right blue.
+
+00:04:26.520 --> 00:04:34.600
+ And in the top image, you can see half of it, perhaps, is very similar green color.
+
+00:04:34.600 --> 00:04:40.960
+ And when it comes to blue, you can see more of the different color gradients coming into
+
+00:04:40.960 --> 00:04:42.440
+ play.
+
+00:04:42.440 --> 00:04:50.440
+ The bottom color space is based on the perceptual uniform color space, which gives us a bit more
+
+00:04:50.440 --> 00:04:57.400
+ evenly distributed color gradient, which will be something more suitable for deciding on
+
+00:04:57.400 --> 00:05:04.560
+ the theme set up on the color set up, where you can have various themes that are defined
+
+00:05:04.560 --> 00:05:09.720
+ for human perceptions.
+
+00:05:09.720 --> 00:05:13.040
+ So perceptual uniformity is important.
+
+00:05:13.040 --> 00:05:19.800
+ And for that, it is important to mention about CIE, or International Commission of Elimination
+
+00:05:19.800 --> 00:05:21.400
+ in English.
+
+00:05:21.400 --> 00:05:28.560
+ And they just created important color spaces called CIE XYZ, which was from 1931.
+
+00:05:28.560 --> 00:05:34.600
+ CIE Lab, LAB, and LUV Love, 1976, respectively.
+
+00:05:34.600 --> 00:05:41.080
+ And those are the color spaces used in various fields and industries, and still relevant.
+
+00:05:41.080 --> 00:05:44.800
+ And there is quite a bit that you can read up on.
+
+00:05:44.800 --> 00:05:49.080
+ I'm not a color expert, so I have some references here.
+
+00:05:49.080 --> 00:05:58.240
+ But the TLDR of all of that is, consider using LCH variants over RGB or HSL for better
+
+00:05:58.240 --> 00:06:00.560
+ perceptual uniformity.
+
+00:06:00.560 --> 00:06:09.800
+ And specifically CIE Lab-based LCH, which is often called Lab-LCH, or just LCH, CIE Love-based
+
+00:06:09.800 --> 00:06:17.680
+ LCH is called Love-LCH, and there is a new rather modern LCH set up called OK-LCH, which
+
+00:06:17.680 --> 00:06:20.040
+ is based on OK-LAB.
+
+00:06:20.040 --> 00:06:25.720
+ So those are the color spaces that are worth looking at when it comes to creating shades.
+
+00:06:25.720 --> 00:06:27.920
+ And how do you create shades?
+
+00:06:27.920 --> 00:06:31.040
+ Color.el and CT.el are great solutions.
+
+00:06:31.040 --> 00:06:35.880
+ You can create shades and different colors based on RGB and hex.
+
+00:06:35.880 --> 00:06:43.000
+ And you can see in the red example here, FF0000 is a bright red, and you can darken it
+
+00:06:43.000 --> 00:06:49.120
+ by providing less red values by like CC or 8/8, and you can see that the colors are slightly
+
+00:06:49.120 --> 00:06:55.000
+ darker than the FF0000, but what if you are working with the complex colors, such as
+
+00:06:55.000 --> 00:06:59.480
+ FBB151, this particular orange.
+
+00:06:59.480 --> 00:07:05.800
+ And that's where color.el, CT.el, Community Play, color.el is a built-in package in EMAX,
+
+00:07:05.800 --> 00:07:11.560
+ so you can use it by just requiring it, and color darken name, and providing the color
+
+00:07:11.560 --> 00:07:20.080
+ with hex value with 40% gives you a darker orange without doing too much of a color computation
+
+00:07:20.080 --> 00:07:21.840
+ by hand.
+
+00:07:21.840 --> 00:07:27.040
+ And this hex value is something that EMAX understands, and Rainbow Mode does as well.
+
+00:07:27.040 --> 00:07:32.440
+ And when it comes to CT.el, it's not a built-in solution, but it's more versatile, and it works
+
+00:07:32.440 --> 00:07:34.520
+ with various color spaces.
+
+00:07:34.520 --> 00:07:42.240
+ So you can see that CT edit HSL, likeness, decrease by 40%, I would give us a darker color
+
+00:07:42.240 --> 00:07:51.440
+ by 40%, and we can also use LCH variant, which can use the LCH color spaces for darkening
+
+00:07:51.440 --> 00:07:53.360
+ the color.
+
+00:07:53.360 --> 00:07:58.960
+ This results in slightly different colors for this particular orange, but if you are working
+
+00:07:58.960 --> 00:08:04.160
+ with the green or blue or some other colors, it might be worth looking at LCH variant
+
+00:08:04.160 --> 00:08:08.560
+ rather than other color spaces.
+
+00:08:08.560 --> 00:08:11.800
+ With that, let's have a look at Hasbroke theme.
+
+00:08:11.800 --> 00:08:16.640
+ This is a theme that I created personally, and the name is based on the Swiss Alps, and
+
+00:08:16.640 --> 00:08:19.680
+ with the following ideas in mind.
+
+00:08:19.680 --> 00:08:27.480
+ It focuses on setting up shades, and shades by that you can see how the top of the heading
+
+00:08:27.480 --> 00:08:31.480
+ here is a bright orange color.
+
+00:08:31.480 --> 00:08:38.520
+ And other orange colors, this heading, and this heading are based on the top orange color
+
+00:08:38.520 --> 00:08:43.200
+ and then giving some shade and illuminance adjustment, essentially.
+
+00:08:43.200 --> 00:08:48.120
+ It follows a pattern from web design and tailwind color shades, a great example that you can
+
+00:08:48.120 --> 00:08:50.840
+ find if you have a look.
+
+00:08:50.840 --> 00:08:57.840
+ It does not use CT.el as it aims to be fully dependency free, and does not consider color contrast
+
+00:08:57.840 --> 00:08:59.920
+ for accessibility.
+
+00:08:59.920 --> 00:09:04.880
+ This is because it's personal, and I don't have that particular need.
+
+00:09:04.880 --> 00:09:09.360
+ This is based on love LCH rather than lab LCH, and that's another reason why I didn't
+
+00:09:09.360 --> 00:09:13.320
+ use CT.el, and it is highly experimental.
+
+00:09:13.320 --> 00:09:18.240
+ But the code is available at codeberg and GitHub just for your reference.
+
+00:09:18.240 --> 00:09:22.800
+ So let's see Hasbroke theme in action.
+
+00:09:22.800 --> 00:09:27.880
+ So this is the theme that we were looking at for org mode as well, but for the code, in
+
+00:09:27.880 --> 00:09:30.280
+ this case, elisp.
+
+00:09:30.280 --> 00:09:36.480
+ And you can see that the color is mostly white and blue, with orange spring, to spring
+
+00:09:36.480 --> 00:09:42.440
+ quarter cross for string input, and you can see some pink showing up as well, but essentially
+
+00:09:42.440 --> 00:09:45.600
+ all the color setup is done by shades.
+
+00:09:45.600 --> 00:09:52.800
+ So most of it is based on white or neutral, and there will be lighter and darker variants
+
+00:09:52.800 --> 00:09:59.400
+ that can be set for the primary color of blue, and you can see the darker and brighter
+
+00:09:59.400 --> 00:10:07.160
+ colors being used, and with that shade setup, I only have to provide a few colors as the
+
+00:10:07.160 --> 00:10:14.920
+ base colors, and from there I can define the shades for the theme setup, which leads to
+
+00:10:14.920 --> 00:10:21.480
+ creating a more monotonic color setup, where this one is a very monotonic, very subtle
+
+00:10:21.480 --> 00:10:27.640
+ difference of white colors used for the base colors, and I don't have to make too many
+
+00:10:27.640 --> 00:10:33.120
+ changes to the color setup, I just have to provide the base colors that are different.
+
+00:10:33.120 --> 00:10:39.000
+ The same can be set for this very orange color theme, which is based on the base colors
+
+00:10:39.000 --> 00:10:45.680
+ of orange-like colors, and gives the shade of various different setup.
+
+00:10:45.680 --> 00:10:55.320
+ And this means that I can use Asliberg theme nature color palette, and that gives me more
+
+00:10:55.320 --> 00:11:06.380
+ of a green-based color, where all the base colors are set up with a green-ish color setup.
+
+00:11:06.380 --> 00:11:11.840
+ With that, I would like to wrap up with a few ideas, when adjusting themes and working
+
+00:11:11.840 --> 00:11:19.520
+ with colors, maybe consider using CIE lab, CIE lab, or OK lab-based color spaces that would
+
+00:11:19.520 --> 00:11:27.360
+ give you different shades, which are easier to work with for human perceptions.
+
+00:11:27.360 --> 00:11:32.720
+ Color.EL and Citi.EL can be a great tool for making shades and work with color spaces, and
+
+00:11:32.720 --> 00:11:38.080
+ Hasliberg theme is yet another theme highly personal and experimental, but could be an
+
+00:11:38.080 --> 00:11:41.120
+ inspiration for your theme journey.
+
+00:11:41.120 --> 00:11:46.160
+ With that, why not sprinkle your emacs with your favorite colors.
+
+00:11:46.160 --> 00:11:46.520
+ Thank you.
+
+00:11:46.520 --> 00:11:56.520
+ [BLANK_AUDIO]
+

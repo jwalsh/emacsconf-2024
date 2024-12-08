@@ -8,3 +8,9 @@
 
 === Raw Content ===
 Good morning. I'm Blaine Mooers. I'm an associate professor of biochemistry and physiology at the University of Oklahoma Health Sciences in Oklahoma City. I'm going to be talking about the utilization of Org mode to write a specific kind of log file for thinking about writing projects, in particular research articles. I have stored a template for this file on GitHub. You can find it at Mooers Lab. If you go to the landing page and scroll down to Emacs-related, you'll find a link to it. I am a st...
+
+2024-12-08T17:32:16.492195
+
+=== Content Verification Failed ===
+First 500 chars:
+Good morning. I'm Blaine Mooers. I'm an associate professor of biochemistry and physiology at the University of Oklahoma Health Sciences in Oklahoma City. I'm going to be talking about the utilization of Org mode to write a specific kind of log file for thinking about writing projects, in particular research articles. I have stored a template for this file on GitHub. You can find it at Mooers Lab. If you go to the landing page and scroll down to Emacs-related, you'll find a link to it. I am a st

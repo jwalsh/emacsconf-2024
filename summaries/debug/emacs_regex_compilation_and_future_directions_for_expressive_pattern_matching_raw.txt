@@ -8,3 +8,9 @@
 
 === Raw Content ===
 Hello, I'm Danny McClanahan. This is EmacsConf 2024. And this presentation is ostensibly about Emacs Regex compilation. But it'll lead a lot more in future directions. Thanks for coming on this journey with me. This presentation is 50 slides, 50 footnotes, and that's intended for it to be a resource later on for your perusal. We are unfortunately not going to be able to go into all of it, but I will try to be within 20 minutes so we can make it throughout Q&A. This is the structure of the talk. ...
+
+2024-12-08T17:32:18.800055
+
+=== Content Verification Failed ===
+First 500 chars:
+Hello, I'm Danny McClanahan. This is EmacsConf 2024. And this presentation is ostensibly about Emacs Regex compilation. But it'll lead a lot more in future directions. Thanks for coming on this journey with me. This presentation is 50 slides, 50 footnotes, and that's intended for it to be a resource later on for your perusal. We are unfortunately not going to be able to go into all of it, but I will try to be within 20 minutes so we can make it throughout Q&A. This is the structure of the talk. 

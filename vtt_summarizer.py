@@ -54,6 +54,27 @@ class TalkSummary:
 - Generated: {datetime.now().isoformat()}
 - Model: {self.meta.get('model', 'unknown')}"""
 
+def generate_summary_collection(summaries_dir: Path):
+    """Generate a single org file containing all summaries."""
+    summary_file = summaries_dir.parent / "summaries.org"
+    
+    content = f"""#+TITLE: EmacsConf 2024 Talk Summaries
+#+DATE: {datetime.now().strftime('%Y-%m-%d')}
+
+"""
+    
+    for org_file in sorted(summaries_dir.glob("*.org")):
+        if org_file.name.startswith("."): continue
+        content += f"\n* [[{org_file}][Source]]\n\n"
+        
+        # Read the org file but exclude Meta section
+        org_content = org_file.read_text()
+        sections = org_content.split("** Meta")[0]
+        content += sections + "\n"
+    
+    summary_file.write_text(content)
+    click.echo(f"Generated {summary_file}")
+
 def parse_vtt_content(vtt_path: Path) -> str:
     """Extract text content from VTT file."""
     try:
@@ -64,6 +85,42 @@ def parse_vtt_content(vtt_path: Path) -> str:
     except Exception as e:
         click.echo(f"Error parsing {vtt_path}: {e}", err=True)
         return ""
+
+def verify_content(content: str, title: str) -> bool:
+    """Verify if content appears to be valid transcript content."""
+    # Quick size checks first
+    words = content.split()
+    if len(words) < 300:  # Main transcripts typically have >300 words
+        click.echo("Warning: Content too short to be main transcript")
+        return False
+        
+    if '--chapters' in title or 'intro' in title.lower():
+        click.echo("Warning: Skipping chapter or intro file")
+        return False
+        
+    try:
+        response = ollama.chat(
+            model="phi3",
+            messages=[{
+                "role": "user", 
+                "content": f"Does this appear to be a full talk transcript for '{title}'? Return JSON with verified: true/false and reason. First 200 chars:\n{content[:200]}"
+            }],
+            format={
+                "type": "object", 
+                "properties": {
+                    "verified": {"type": "boolean"},
+                    "reason": {"type": "string"}
+                }, 
+                "required": ["verified", "reason"]
+            }
+        )
+        result = json.loads(response.message.content)
+        if not result.get('verified', False):
+            click.echo(f"Warning: {result.get('reason', 'Unknown reason')}")
+        return result.get('verified', False)
+    except Exception as e:
+        click.echo(f"Verification error: {e}")
+        return False
 
 def extract_talk_info(filename: str) -> tuple[str, str]:
     """Extract talk title and speaker from filename."""
@@ -111,25 +168,10 @@ def generate_summary(content: str, title: str, speaker: str, output_path: Path) 
     debug_dir.mkdir(exist_ok=True)
     
     try:
-        # Verify content first
-        verify_response = ollama.chat(
-            model="phi3",
-            messages=[{
-                "role": "user", 
-                "content": f"Does this appear to be valid transcript content for '{title}'? Return only JSON with verified: true/false.\n\nFirst 200 chars:\n{content[:200]}"
-            }],
-            format={"type": "object", "properties": {"verified": {"type": "boolean"}}, "required": ["verified"]}
-        )
-        
-        save_debug_output(debug_dir, title, f"=== Verification Response ===\n{verify_response.message.content}")
-        
-        result = json.loads(verify_response.message.content)
-        if not result.get('verified', False):
-            click.echo("Warning: Content verification failed")
-            # Save raw content for inspection
-            save_debug_output(debug_dir, title, f"\n=== Raw Content ===\n{content[:500]}...")
+        if not verify_content(content, title):
+            save_debug_output(debug_dir, title, f"\n=== Content Verification Failed ===\nFirst 500 chars:\n{content[:500]}")
             return None
-
+            
         # Generate summary
         response = ollama.chat(
             model="llama3.2",
@@ -208,6 +250,9 @@ def main(media_dir: str, force: bool, output: str, verbose: bool):
             click.echo(f"✓ Generated: {summary_file}")
         else:
             click.echo(f"✗ Failed: {vtt_file.name}")
+    
+    # Generate combined summary file
+    generate_summary_collection(output_path)
 
 if __name__ == '__main__':
     main()
