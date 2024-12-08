@@ -16,7 +16,7 @@ Based on Colin Woodbury's EmacsConf 2024 talk
 
 ** Basic Examples 
 
-*** Example 1: Basic transformation with map and filter
+*** DONE Example 1: Basic transformation with map and filter
 #+begin_src elisp
 (t-transduce 
  (t-comp 
@@ -29,7 +29,7 @@ Based on Colin Woodbury's EmacsConf 2024 talk
 #+RESULTS:
 | HELLO | WORLD | EMACS |
 
-*** Example 2: Processing numbers efficiently
+*** DONE Example 2: Processing numbers efficiently
 
 #+begin_src elisp
 (t-transduce
@@ -46,18 +46,35 @@ Based on Colin Woodbury's EmacsConf 2024 talk
 
 ** Advanced Use Cases
 
-*** Example 3: Working with CSV-like data (Fixed) 
+
+*** TODO Example 3: Working with CSV-like data (Fixed) 
 #+begin_src elisp
-;; 
-(t-transduce 
- (t-comp
-  t-from-csv  ; Remove parentheses, it's a function reference
-  (t-map (lambda (hm) (gethash "Score" hm)))
-  (t-filter (lambda (score) (> (string-to-number score) 80))))
- #'t-cons
- (list "Name,Score" "Alice,85" "Bob,75" "Charlie,90"))
+(require 'transducers)
+(setq-local read-symbol-shorthands '(("t-" . "transducers-")))
+
+;; Create sample student data
+(let* ((student-data
+       '("Name,Score,Grade"
+         "Alice,85,B+"
+         "Bob,75,C"
+         "Charlie,90,A-"
+         "David,95,A"
+         "Eve,82,B"))
+       (from-csv transducers-from-csv))  ; Create the transducer
+  (t-transduce 
+   (t-comp
+    from-csv  ; Transform CSV strings into hash tables
+    (t-map (lambda (hm)   ; Extract student info
+            (list (gethash "Name" hm)
+                  (string-to-number (gethash "Score" hm))
+                  (gethash "Grade" hm))))
+    (t-filter (lambda (student)  ; Filter scores > 80
+              (> (cadr student) 80))))
+   #'t-cons
+   student-data))
 #+end_src
-*** Example 4: Window-based processing
+
+*** DONE Example 4: Window-based processing
 #+begin_src elisp
 (t-transduce
  (t-comp
@@ -68,7 +85,11 @@ Based on Colin Woodbury's EmacsConf 2024 talk
  #'t-cons
  '(1 2 3 4 5 6 7 8 9))
 #+end_src
-*** Example 5: Unique elements with counting
+
+#+RESULTS:
+| 2.0 | 3.0 | 4.0 | 5.0 | 6.0 | 7.0 | 8.0 |
+
+*** TODO Example 5: Unique elements with counting
 #+begin_src elisp
 (t-transduce
  (t-comp
@@ -80,7 +101,7 @@ Based on Colin Woodbury's EmacsConf 2024 talk
 
 ** Working with Files
 
-*** Example 6: Processing file content
+*** TODO Example 6: Processing file content
 #+begin_src elisp
 (t-transduce
  (t-comp
@@ -96,7 +117,7 @@ Based on Colin Woodbury's EmacsConf 2024 talk
 
 ** Real-time Data Processing
 
-*** Example 7: Processing a stream of data
+*** TODO Example 7: Processing a stream of data
 #+begin_src elisp
 (t-transduce
  (t-comp
@@ -110,6 +131,9 @@ Based on Colin Woodbury's EmacsConf 2024 talk
  '("1" "2" "3" "4" "5" "6" "7" "8" "9" "10"))
 #+end_src
 
+#+RESULTS:
+: [3.0 5.0 7.0]
+
 ** Notes
 - Transducers chain operations efficiently without intermediate collections
 - Memory efficient for processing large data sets
@@ -117,7 +141,7 @@ Based on Colin Woodbury's EmacsConf 2024 talk
 - Composable and reusable
 - Built-in short-circuiting capabilities
 
-** Generate Mock Bank Transaction Data
+** DONE Generate Mock Bank Transaction Data
 #+begin_src bash :tangle scripts/generate_transactions.sh :mkdirp t
 #!/bin/bash
 
@@ -184,20 +208,20 @@ done | sort -t, -k1 | tee data/transactions.csv | head -n 10
 #+end_src
 
 #+RESULTS:
-|       Date | Description |  Amount | Type       | Category       |  Balance |
-| 2024-01-02 | SPOTIFY     | -195.28 | transfer   | Dining         |  -5315.6 |
-| 2024-01-05 | LYFT        | -199.19 | debit      | Transportation |  7441.63 |
-| 2024-01-10 | AMAZON      | -194.63 | withdrawal | Utilities      | -9650.02 |
-| 2024-01-12 | TRADER_JOES |  -193.8 | debit      | Entertainment  |  8424.07 |
-| 2024-01-20 | TARGET      | -198.21 | debit      | Transportation | -3358.86 |
-| 2024-01-27 | SHELL_GAS   | -199.44 | transfer   | Groceries      | -5709.55 |
-| 2024-01-29 | STARBUCKS   |  -197.3 | withdrawal | Shopping       | -6696.28 |
-| 2024-01-31 | SHELL_GAS   |  -193.3 | withdrawal | Dining         |  5861.94 |
-| 2024-02-03 | LYFT        | -194.95 | withdrawal | Entertainment  | -1783.78 |
-| 2024-02-03 | TARGET      | -197.43 | deposit    | Dining         |  3310.99 |
+|       Date | Description |  Amount | Type       | Category      |  Balance |
+| 2024-01-02 | WHOLE_FOODS | -194.32 | debit      | Groceries     | -6685.07 |
+| 2024-01-06 | SPOTIFY     | -199.25 | transfer   | Dining        |  7827.52 |
+| 2024-01-07 | NETFLIX     | -193.17 | credit     | Dining        |  5290.66 |
+| 2024-01-09 | TARGET      | -196.76 | transfer   | Utilities     | -7666.42 |
+| 2024-01-13 | STARBUCKS   | -195.88 | debit      | Groceries     | -4719.84 |
+| 2024-01-15 | WHOLE_FOODS | -197.61 | credit     | Entertainment | -8655.71 |
+| 2024-01-18 | STARBUCKS   | -193.84 | credit     | Shopping      |  3525.64 |
+| 2024-01-23 | WHOLE_FOODS | -196.29 | withdrawal | Dining        |  5677.63 |
+| 2024-01-24 | TARGET      | -196.99 | debit      | Shopping      | -4327.84 |
+| 2024-01-28 | TRADER_JOES | -195.41 | debit      | Entertainment |   9405.7 |
 
 ** Process Transactions with Transducers
-*** Setup and Helper Functions
+*** DONE Setup and Helper Functions
 #+begin_src elisp
 (require 'transducers)
 
@@ -211,7 +235,7 @@ done | sort -t, -k1 | tee data/transactions.csv | head -n 10
 #+RESULTS:
 : read-csv-lines
 
-*** Example 1: View Base Data
+*** DONE Example 1: View Base Data
 #+begin_src elisp
 (seq-take (read-csv-lines "data/transactions.csv") 10)
 #+end_src
@@ -219,7 +243,7 @@ done | sort -t, -k1 | tee data/transactions.csv | head -n 10
 #+RESULTS:
 | 2024-01-02,SPOTIFY,-195.28,transfer,Dining,-5315.60 | 2024-01-05,LYFT,-199.19,debit,Transportation,7441.63 | 2024-01-10,AMAZON,-194.63,withdrawal,Utilities,-9650.02 | 2024-01-12,TRADER_JOES,-193.80,debit,Entertainment,8424.07 | 2024-01-20,TARGET,-198.21,debit,Transportation,-3358.86 | 2024-01-27,SHELL_GAS,-199.44,transfer,Groceries,-5709.55 | 2024-01-29,STARBUCKS,-197.30,withdrawal,Shopping,-6696.28 | 2024-01-31,SHELL_GAS,-193.30,withdrawal,Dining,5861.94 | 2024-02-03,LYFT,-194.95,withdrawal,Entertainment,-1783.78 | 2024-02-03,TARGET,-197.43,deposit,Dining,3310.99 |
 
-*** Example 2: Total Expenses
+*** TODO Example 2: Total Expenses
 #+begin_src elisp
 (require 'transducers)
 (let ((transducers-from-csv (transducers-from-csv)))  ; Create the transducer
@@ -232,7 +256,7 @@ done | sort -t, -k1 | tee data/transactions.csv | head -n 10
    (read-csv-lines "data/transactions.csv")))
 #+end_src
 
-*** Example 3: Merchant Analysis
+*** TODO Example 3: Merchant Analysis
 #+begin_src elisp
 (t-transduce
 (t-comp
@@ -243,7 +267,7 @@ done | sort -t, -k1 | tee data/transactions.csv | head -n 10
 (read-csv-lines "data/transactions.csv"))
 #+end_src
 
-*** Example 4: Category Summaries
+*** TODO Example 4: Category Summaries
 #+begin_src elisp
 (t-transduce
 (t-comp
@@ -260,7 +284,7 @@ done | sort -t, -k1 | tee data/transactions.csv | head -n 10
 (read-csv-lines "data/transactions.csv"))
 #+end_src
 
-*** Example 5: Monthly Spending Patterns
+*** TODO Example 5: Monthly Spending Patterns
 #+begin_src elisp
 (t-transduce
 (t-comp
@@ -277,7 +301,7 @@ done | sort -t, -k1 | tee data/transactions.csv | head -n 10
 (read-csv-lines "data/transactions.csv"))
 #+end_src
 
-*** Example 6: Large Transactions
+*** TODO [#B] Example 6: Large Transactions
 #+begin_src elisp
 (t-transduce
 (t-comp
