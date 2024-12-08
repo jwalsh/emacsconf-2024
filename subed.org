@@ -1,0 +1,172 @@
+#+title: Subed Validation Guide for EmacsConf Videos
+#+author: Jason Walsh <j@wal.sh>
+#+date: [2024-12-07 Sat]
+
+* Setup
+** List Available Videos
+#+begin_src shell
+ls media.emacsconf.org/2024/ | grep "webm" | head -n 5
+#+end_src
+
+#+RESULTS:
+| emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--intro.webm |
+| emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--main.webm  |
+| emacsconf-2024-color--colour-your-emacs-with-ease--ryota--intro.webm                                     |
+| emacsconf-2024-color--colour-your-emacs-with-ease--ryota--main.webm                                      |
+| emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--edited.webm                              |
+
+** Install and Configure Subed
+#+begin_src elisp
+(require 'package)
+(add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/"))
+(package-initialize)
+(package-install 'subed)
+
+(require 'subed)
+(add-hook 'subed-mode-hook 'subed-enable-pause-while-typing)
+(add-hook 'subed-mode-hook 'subed-enable-sync-point-to-player)
+(add-hook 'subed-mode-hook 'subed-enable-sync-player-to-point)
+#+end_src
+
+#+RESULTS:
+| subed-enable-sync-player-to-point | subed-enable-sync-point-to-player | subed-enable-pause-while-typing |
+
+** Find Talk Files
+#+begin_src shell
+# List VTT files
+ls media.emacsconf.org/2024/ | grep "vtt$" | head
+#+end_src
+
+#+RESULTS:
+| emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--main--chapters.vtt |
+| emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--main.vtt           |
+| emacsconf-2024-color--colour-your-emacs-with-ease--ryota--main--chapters.vtt                                     |
+| emacsconf-2024-color--colour-your-emacs-with-ease--ryota--main.vtt                                               |
+| emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--intro.vtt                                        |
+| emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--main--chapters.vtt                               |
+| emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--main.vtt                                         |
+| emacsconf-2024-guile--beguiling-emacs-guileemacs-relaunched--robin-templeton--main.vtt                           |
+| emacsconf-2024-gypsum--gypsum-my-clone-of-emacs-and-elisp-written-in-scheme--ramin-honary--main.vtt              |
+| emacsconf-2024-hyperdrive--new-in-hyperdriveel-quick-install-peer-graph-transclusion--joseph-turner--intro.vtt   |
+
+#+begin_src shell
+# List corresponding videos
+ls media.emacsconf.org/2024/ | grep "webm$" | head 
+#+end_src
+
+#+RESULTS:
+| emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--intro.webm |
+| emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--main.webm  |
+| emacsconf-2024-color--colour-your-emacs-with-ease--ryota--intro.webm                                     |
+| emacsconf-2024-color--colour-your-emacs-with-ease--ryota--main.webm                                      |
+| emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--edited.webm                              |
+| emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--intro.webm                               |
+| emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--main.webm                                |
+| emacsconf-2024-guile--beguiling-emacs-guileemacs-relaunched--robin-templeton--intro.webm                 |
+| emacsconf-2024-guile--beguiling-emacs-guileemacs-relaunched--robin-templeton--main.webm                  |
+| emacsconf-2024-gypsum--gypsum-my-clone-of-emacs-and-elisp-written-in-scheme--ramin-honary--intro.webm    |
+
+* Validation Example: Emacs 30 Talk
+
+#+begin_src shell :results drawer
+head -n 1 media.emacsconf.org/2024/emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--main.vtt
+#+end_src
+
+#+RESULTS:
+:results:
+WEBVTT captioned by anush and sachac, checked by anush and bhavin
+:end:
+
+** Open Files
+#+begin_src elisp
+;; Open the VTT file first
+(find-file "media.emacsconf.org/2024/emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--main.vtt")
+
+;; Then play the video
+(subed-mpv-play-from-file "media.emacsconf.org/2024/emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--edited.webm")
+
+;; Enable waveform display
+(subed-waveform-minor-mode)
+#+end_src
+
+** Check Subtitle Format
+#+begin_src elisp
+;; Show first few subtitles
+(with-current-buffer (find-file-noselect "media.emacsconf.org/2024/emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--main.vtt")
+  (buffer-substring-no-properties (point-min) 500))
+#+end_src
+
+** Validation Commands
+#+begin_src elisp
+;; Loop current subtitle
+(subed-toggle-loop-over-current-subtitle)
+
+;; Check for overlaps
+(subed-trim-overlaps)
+
+;; Save and reload in mpv
+(save-buffer)
+#+end_src
+
+* Batch Processing
+** List All VTT Files
+#+begin_src shell
+find media.emacsconf.org/2024/ -name "*.vtt" -type f | wc -l 
+#+end_src
+
+#+RESULTS:
+: 39
+
+** Find Videos Without VTT
+#+begin_src shell :results drawer
+for f in $(ls media.emacsconf.org/2024/*.webm); do
+  vtt="${f%.*}.vtt"
+  if [ ! -f "$vtt" ]; then
+    echo "Missing VTT for: $f"
+  fi
+done
+#+end_src
+
+#+RESULTS:
+:results:
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-color--colour-your-emacs-with-ease--ryota--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--edited.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-guile--beguiling-emacs-guileemacs-relaunched--robin-templeton--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-gypsum--gypsum-my-clone-of-emacs-and-elisp-written-in-scheme--ramin-honary--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-julia--exploring-shared-philosophies-in-julia-and-emacs--gabriele-bozzola--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-maxima--emacs-eev-and-maxima-now--eduardo-ochs--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-mcclim--elisp-and-mcclim--screwlisp--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-p-search--psearch-a-local-search-engine-in-emacs--zac-romero--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-sat-open--saturday-opening-remarks--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-secrets--committing-secrets-with-git-using-sopsmode--jonathan-otsuka--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-shell--emacs-as-a-shell--christopher-howard--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-theme--my-journey-of-finding-and-creating-the-perfect-emacs-theme--metrowind--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-water--watering-my-digital-plant-with-emacs-timers--christopher-howard--intro.webm
+Missing VTT for: media.emacsconf.org/2024/emacsconf-2024-writing--emacs-writing-studio--peter-prevos--intro.webm
+:end:
+
+
+** Find All VTT Files
+#+begin_src shell :result drawer
+ls media.emacsconf.org/2024/*.vtt | wc -l
+#+end_src
+
+#+RESULTS:
+: 39
+
+** Find Captioned VTT Files
+#+begin_src shell :result drawer
+grep -i "captioned by" media.emacsconf.org/2024/*.vtt | wc -l
+#+end_src
+
+#+RESULTS:
+: 16
+
+** Find Checked VTT Files
+#+begin_src shell :result drawer
+grep -L "checked by" media.emacsconf.org/2024/*.vtt | wc -l 
+#+end_src
+
+#+RESULTS:
+: 36
