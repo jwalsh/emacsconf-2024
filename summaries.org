@@ -1,9 +1,6 @@
 #+TITLE: EmacsConf 2024 Talk Summaries
 #+DATE: 2024-12-08
 
-
-* [[summaries/emacsconf-2024-blee--about-blee-towards-an-integrated-emacs-environment-for-enveloping-our-own-autonomy-directed-digital-ecosystem--mohsen-banan--main.org][Source]]
-
 * About Blee Towards An Integrated Emacs Environment For Enveloping Our Own Autonomy Directed Digital Ecosystem
 :PROPERTIES:
 :SPEAKER: Mohsen Banan
@@ -30,7 +27,7 @@
 
 
 
-* [[summaries/emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--main.org][Source]]
+- [[summaries/emacsconf-2024-blee--about-blee-towards-an-integrated-emacs-environment-for-enveloping-our-own-autonomy-directed-digital-ecosystem--mohsen-banan--main.org][Source]]
 
 * Reimagining The Emacs User Experience With Casual Suite
 :PROPERTIES:
@@ -54,7 +51,7 @@
 
 
 
-* [[summaries/emacsconf-2024-color--colour-your-emacs-with-ease--ryota--main.org][Source]]
+- [[summaries/emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--main.org][Source]]
 
 * Colour Your Emacs With Ease
 :PROPERTIES:
@@ -81,7 +78,7 @@
 
 
 
-* [[summaries/emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--main.org][Source]]
+- [[summaries/emacsconf-2024-color--colour-your-emacs-with-ease--ryota--main.org][Source]]
 
 * Emacs 30 Highlights
 :PROPERTIES:
@@ -104,7 +101,7 @@
 
 
 
-* [[summaries/emacsconf-2024-guile--beguiling-emacs-guileemacs-relaunched--robin-templeton--main.org][Source]]
+- [[summaries/emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--main.org][Source]]
 
 * Beguiling Emacs Guileemacs Relaunched
 :PROPERTIES:
@@ -133,7 +130,7 @@
 
 
 
-* [[summaries/emacsconf-2024-gypsum--gypsum-my-clone-of-emacs-and-elisp-written-in-scheme--ramin-honary--main.org][Source]]
+- [[summaries/emacsconf-2024-guile--beguiling-emacs-guileemacs-relaunched--robin-templeton--main.org][Source]]
 
 * Gypsum My Clone Of Emacs And Elisp Written In Scheme
 :PROPERTIES:
@@ -158,7 +155,7 @@
 
 
 
-* [[summaries/emacsconf-2024-hyperbole--fun-things-with-gnu-hyperbole--mats-lidell--main.org][Source]]
+- [[summaries/emacsconf-2024-gypsum--gypsum-my-clone-of-emacs-and-elisp-written-in-scheme--ramin-honary--main.org][Source]]
 
 * Fun Things With Gnu Hyperbole
 :PROPERTIES:
@@ -184,7 +181,7 @@
 
 
 
-* [[summaries/emacsconf-2024-hyperdrive--new-in-hyperdriveel-quick-install-peer-graph-transclusion--joseph-turner--main.org][Source]]
+- [[summaries/emacsconf-2024-hyperbole--fun-things-with-gnu-hyperbole--mats-lidell--main.org][Source]]
 
 * New In Hyperdriveel Quick Install Peer Graph Transclusion
 :PROPERTIES:
@@ -213,7 +210,7 @@
 
 
 
-* [[summaries/emacsconf-2024-julia--exploring-shared-philosophies-in-julia-and-emacs--gabriele-bozzola--main.org][Source]]
+- [[summaries/emacsconf-2024-hyperdrive--new-in-hyperdriveel-quick-install-peer-graph-transclusion--joseph-turner--main.org][Source]]
 
 * Exploring Shared Philosophies In Julia And Emacs
 :PROPERTIES:
@@ -240,7 +237,7 @@
 
 
 
-* [[summaries/emacsconf-2024-learning--survival-of-the-skillest-thriving-in-the-learning-jungle--bala-ramadurai--main.org][Source]]
+- [[summaries/emacsconf-2024-julia--exploring-shared-philosophies-in-julia-and-emacs--gabriele-bozzola--main.org][Source]]
 
 * Survival Of The Skillest Thriving In The Learning Jungle
 :PROPERTIES:
@@ -261,7 +258,7 @@
 
 
 
-* [[summaries/emacsconf-2024-links--unlocking-linked-data-replacing-specialized-apps-with-an-orgbased-semantic-wiki--abhinav-tushar--main.org][Source]]
+- [[summaries/emacsconf-2024-learning--survival-of-the-skillest-thriving-in-the-learning-jungle--bala-ramadurai--main.org][Source]]
 
 * Unlocking Linked Data Replacing Specialized Apps With An Orgbased Semantic Wiki
 :PROPERTIES:
@@ -287,7 +284,7 @@
 
 
 
-* [[summaries/emacsconf-2024-maxima--emacs-eev-and-maxima-now--eduardo-ochs--main.org][Source]]
+- [[summaries/emacsconf-2024-links--unlocking-linked-data-replacing-specialized-apps-with-an-orgbased-semantic-wiki--abhinav-tushar--main.org][Source]]
 
 * Emacs Eev And Maxima Now
 :PROPERTIES:
@@ -312,7 +309,7 @@
 
 
 
-* [[summaries/emacsconf-2024-mcclim--elisp-and-mcclim--screwlisp--main.org][Source]]
+- [[summaries/emacsconf-2024-maxima--emacs-eev-and-maxima-now--eduardo-ochs--main.org][Source]]
 
 * Elisp And Mcclim
 :PROPERTIES:
@@ -337,7 +334,7 @@
 
 
 
-* [[summaries/emacsconf-2024-org-update--the-future-of-org--ihor-radchenko--main.org][Source]]
+- [[summaries/emacsconf-2024-mcclim--elisp-and-mcclim--screwlisp--main.org][Source]]
 
 * The Future Of Org
 :PROPERTIES:
@@ -362,7 +359,7 @@
 
 
 
-* [[summaries/emacsconf-2024-p-search--psearch-a-local-search-engine-in-emacs--zac-romero--main.org][Source]]
+- [[summaries/emacsconf-2024-org-update--the-future-of-org--ihor-radchenko--main.org][Source]]
 
 * Psearch A Local Search Engine In Emacs
 :PROPERTIES:
@@ -388,7 +385,7 @@
 
 
 
-* [[summaries/emacsconf-2024-papers--writing-academic-papers-in-orgroam--vincent-conus--main.org][Source]]
+- [[summaries/emacsconf-2024-p-search--psearch-a-local-search-engine-in-emacs--zac-romero--main.org][Source]]
 
 * Writing Academic Papers In Orgroam
 :PROPERTIES:
@@ -413,7 +410,7 @@
 
 
 
-* [[summaries/emacsconf-2024-project--managing-writing-project-metadata-with-orgmode--blaine-mooers--main.org][Source]]
+- [[summaries/emacsconf-2024-papers--writing-academic-papers-in-orgroam--vincent-conus--main.org][Source]]
 
 * Managing Writing Project Metadata With Orgmode
 :PROPERTIES:
@@ -442,7 +439,7 @@
 
 
 
-* [[summaries/emacsconf-2024-regex--emacs-regex-compilation-and-future-directions-for-expressive-pattern-matching--danny-mcclanahan--main.org][Source]]
+- [[summaries/emacsconf-2024-project--managing-writing-project-metadata-with-orgmode--blaine-mooers--main.org][Source]]
 
 * Emacs Regex Compilation And Future Directions For Expressive Pattern Matching
 :PROPERTIES:
@@ -468,7 +465,7 @@
 
 
 
-* [[summaries/emacsconf-2024-rust--an-experimental-emacs-core-in-rust--troy-hinckley--main.org][Source]]
+- [[summaries/emacsconf-2024-regex--emacs-regex-compilation-and-future-directions-for-expressive-pattern-matching--danny-mcclanahan--main.org][Source]]
 
 * An Experimental Emacs Core In Rust
 :PROPERTIES:
@@ -493,7 +490,7 @@
 
 
 
-* [[summaries/emacsconf-2024-sat-open--saturday-opening-remarks--main.org][Source]]
+- [[summaries/emacsconf-2024-rust--an-experimental-emacs-core-in-rust--troy-hinckley--main.org][Source]]
 
 * Saturday Opening Remarks
 :PROPERTIES:
@@ -519,7 +516,7 @@
 
 
 
-* [[summaries/emacsconf-2024-shell--emacs-as-a-shell--christopher-howard--main.org][Source]]
+- [[summaries/emacsconf-2024-sat-open--saturday-opening-remarks--main.org][Source]]
 
 * Emacs As A Shell
 :PROPERTIES:
@@ -546,7 +543,7 @@
 
 
 
-* [[summaries/emacsconf-2024-sun-open--sunday-opening-remarks--main.org][Source]]
+- [[summaries/emacsconf-2024-shell--emacs-as-a-shell--christopher-howard--main.org][Source]]
 
 * Sunday Opening Remarks
 :PROPERTIES:
@@ -572,7 +569,7 @@
 
 
 
-* [[summaries/emacsconf-2024-theme--my-journey-of-finding-and-creating-the-perfect-emacs-theme--metrowind--main.org][Source]]
+- [[summaries/emacsconf-2024-sun-open--sunday-opening-remarks--main.org][Source]]
 
 * My Journey Of Finding And Creating The Perfect Emacs Theme
 :PROPERTIES:
@@ -597,7 +594,7 @@
 
 
 
-* [[summaries/emacsconf-2024-water--watering-my-digital-plant-with-emacs-timers--christopher-howard--main.org][Source]]
+- [[summaries/emacsconf-2024-theme--my-journey-of-finding-and-creating-the-perfect-emacs-theme--metrowind--main.org][Source]]
 
 * Watering My Digital Plant With Emacs Timers
 :PROPERTIES:
@@ -619,7 +616,7 @@
 
 
 
-* [[summaries/emacsconf-2024-writing--emacs-writing-studio--peter-prevos--main.org][Source]]
+- [[summaries/emacsconf-2024-water--watering-my-digital-plant-with-emacs-timers--christopher-howard--main.org][Source]]
 
 * Emacs Writing Studio
 :PROPERTIES:
@@ -647,4 +644,7 @@
 | Visual Line Mode     | a mode that enables visual line numbers in Emacs.                                                         | visual-line-mode     |
 
 
+
+
+- [[summaries/emacsconf-2024-writing--emacs-writing-studio--peter-prevos--main.org][Source]]
 
