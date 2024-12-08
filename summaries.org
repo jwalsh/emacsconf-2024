@@ -29,6 +29,7 @@
 | ByStar                 | A comprehensive, interdisciplinary, and non-proprietary digital ecosystem that challenges the existing proprietary American digital ecosystem | ByStar (By*)                                                                                                              |
 
 
+
 * [[summaries/emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--main.org][Source]]
 
 * Reimagining The Emacs User Experience With Casual Suite
@@ -50,6 +51,7 @@
 | Transient library       | Emacs package providing dynamic, contextual menus that make commands more discoverable      | Used to reimagine keyboard-driven menu interfaces      |
 | pinning                 | Feature to keep menus visible and automatically updated based on system state               | Enables persistent menus that reflect command outcomes |
 | mode complexity         | Difficulty arising from modes having many interrelated functions and features               | Addressed by improving command discoverability         |
+
 
 
 * [[summaries/emacsconf-2024-color--colour-your-emacs-with-ease--ryota--main.org][Source]]
@@ -78,6 +80,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-emacs30--emacs-30-highlights--philip-kaludercic--main.org][Source]]
 
 * Emacs 30 Highlights
@@ -97,6 +100,7 @@
 | Android support         | Native Android support allows Emacs to be built for Android devices natively using a graphical interface.                        | new feature in Emacs 30 |
 | Touchscreen interaction | Touchscreen interactions such as pinch-to-zoom, context menus, and gesture recognition are enabled in Emacs for Android devices. | feature in Emacs 30     |
 | TUI Emacs               | TUI Emacs supports touchscreen events, enabling users to interact with their device using touch screens.                         | feature in TUI Emacs    |
+
 
 
 
@@ -128,6 +132,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-gypsum--gypsum-my-clone-of-emacs-and-elisp-written-in-scheme--ramin-honary--main.org][Source]]
 
 * Gypsum My Clone Of Emacs And Elisp Written In Scheme
@@ -149,6 +154,7 @@
 | Scheme language standard               | R7RS (Recursive Standard for the Scheme Language) | The Scheme standard that Ramin wants to follow               |
 | Scheme implementation                  | Guile                                             | The Scheme implementation that Ramin is using as a reference |
 | Study of Scheme language capabilities  | A study of what the R7RS language can do          | The target audience for Ramin's project                      |
+
 
 
 
@@ -174,6 +180,7 @@
 | M-RET (action key) on end of line | When using the action key on the end of a line, it scrolls to the top of the window.                                     | end of line scrolling |
 | Implicit link                     | A text pattern recognized by Hyperbole that triggers an action without needing explicit typing.                          | implicit links        |
 | Window grid functionality         | A feature in Hyperbole for creating a grid of windows with customizable settings.                                        | window grid           |
+
 
 
 
@@ -205,6 +212,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-julia--exploring-shared-philosophies-in-julia-and-emacs--gabriele-bozzola--main.org][Source]]
 
 * Exploring Shared Philosophies In Julia And Emacs
@@ -231,6 +239,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-learning--survival-of-the-skillest-thriving-in-the-learning-jungle--bala-ramadurai--main.org][Source]]
 
 * Survival Of The Skillest Thriving In The Learning Jungle
@@ -248,6 +257,7 @@
 |------------------+------------------------------------------------------------------------------------------------+------------------|
 | Skill Definition | A skill is the knowledge and ability that enables you to do something well.                    | What is a skill? |
 | Elisp Org Mode   | Emacs' built-in Org Mode for managing tasks, notes, and other information in a structured way. | Elisp Org Mode   |
+
 
 
 
@@ -276,6 +286,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-maxima--emacs-eev-and-maxima-now--eduardo-ochs--main.org][Source]]
 
 * Emacs Eev And Maxima Now
@@ -297,6 +308,7 @@
 | command-line interface (CLI) | An interface that is not graphical, such as text-based or command-line interfaces.                        | interface               |
 | Maxima                       | A computer program used for symbolic mathematics, such as solving equations and manipulating expressions. | computer algebra system |
 | shell buffer                 | A buffer in a shell that stores the history of commands entered by a user.                                | shell buffer            |
+
 
 
 
@@ -324,6 +336,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-org-update--the-future-of-org--ihor-radchenko--main.org][Source]]
 
 * The Future Of Org
@@ -345,6 +358,7 @@
 | robustness principle | The practice of supporting and updating Org Mode to ensure it continues to meet the needs of its users.                  | Org Mode maintenance     |
 | predictability       | A set of guidelines or expectations for individuals who wish to contribute to Org Mode development.                      | Contributor requirements |
 | community            | The engagement and participation of users, contributors, and maintainers in the development and improvement of Org Mode. | Community involvement    |
+
 
 
 
@@ -373,6 +387,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-papers--writing-academic-papers-in-orgroam--vincent-conus--main.org][Source]]
 
 * Writing Academic Papers In Orgroam
@@ -394,6 +409,7 @@
 | Bibliography system      | A system that allows for easy referencing and linking of notes throughout an Org file                               | Centralized bibliography system in Org Roam      |
 | Debugging Org export     | The process of identifying and fixing errors in the Org export configuration to ensure proper formatting and layout | Importance of debugging Org export configuration |
 | Org Mode LaTeX           | A layer on top of LaTeX that allows for easy integration with Org Mode                                              | Org Mode LaTeX                                   |
+
 
 
 
@@ -425,6 +441,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-regex--emacs-regex-compilation-and-future-directions-for-expressive-pattern-matching--danny-mcclanahan--main.org][Source]]
 
 * Emacs Regex Compilation And Future Directions For Expressive Pattern Matching
@@ -447,6 +464,7 @@
 | Regex Compilation      | The process of converting regular expressions into machine-readable code for execution by the Emacs regex engine                           | Emacs regex engine implementation          |
 | Modern Techniques      | Approaches to implementing regular expressions that prioritize performance, efficiency, or compatibility with modern programming languages | Modern techniques mentioned in the talk    |
 | Emacs Development Team | The Emacs development team and community discussions about the future of the Emacs regex engine and its integration with other features    | Emacs Devel and emacs community discussion |
+
 
 
 
@@ -474,6 +492,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-sat-open--saturday-opening-remarks--main.org][Source]]
 
 * Saturday Opening Remarks
@@ -496,6 +515,7 @@
 | BigBlueButton | BigBlueButton (BBB) with open captions | streaming media player with captions |
 | Internet Relay Chat | Internet Relay Chat (IRC) | irc chat service for conference communication |
 | IRC client | not specified, but can be connected to using TLS and port 6697 | irc client software for connecting to IRC channels |
+
 
 
 
@@ -525,6 +545,7 @@
 
 
 
+
 * [[summaries/emacsconf-2024-sun-open--sunday-opening-remarks--main.org][Source]]
 
 * Sunday Opening Remarks
@@ -547,6 +568,7 @@
 | BigBlueButton (BBB)       | A web-based platform for remote meetings and presentations.                         | Virtual meeting platform     |
 | Etherpad                  | A software application that enables users to collaborate on documents in real-time. | Real-time collaboration tool |
 | IRC (Internet Relay Chat) | A set of rules for communication between computer networks.                         | Instant messaging protocol   |
+
 
 
 
@@ -574,6 +596,7 @@
 | color picker    | Tool for selecting and analyzing colors within different color spaces                                     | Used to maintain consistent lightness while varying hues |
 
 
+
 * [[summaries/emacsconf-2024-water--watering-my-digital-plant-with-emacs-timers--christopher-howard--main.org][Source]]
 
 * Watering My Digital Plant With Emacs Timers
@@ -592,6 +615,7 @@
 | run-at-time function | A function that performs an action at a specific time to repeat it after a specific number of seconds.              | definition |
 | Gemini protocol      | A small web protocol with simplicity, non-extensibility, and privacy goals, similar to HyperText Transfer Protocol. | definition |
 | Gemtext              | A simple hyperlinking document format, analogous to HTML.                                                           | definition |
+
 
 
 
@@ -621,5 +645,6 @@
 | Citar                | a package for accessing bibliographies in Emacs.                                                          | citar                |
 | Vertico              | a package for minibuffer completion in Emacs.                                                             | vertico              |
 | Visual Line Mode     | a mode that enables visual line numbers in Emacs.                                                         | visual-line-mode     |
+
 
 

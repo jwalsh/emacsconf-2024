@@ -9,10 +9,9 @@ EOL
 
 # Find all org files and append their content
 for file in summaries/*.org; do
- # Add a separator between summaries
- echo -e "\n* [[${file}][Source]]\n" >> summaries.org
  # Append content but strip the Meta section
  sed '/^** Meta/,$d' "$file" >> summaries.org
+ echo -e "\n\n- [[${file}][Source]]\n" >> summaries.org
 done
 
 echo "Generated summaries.org"
