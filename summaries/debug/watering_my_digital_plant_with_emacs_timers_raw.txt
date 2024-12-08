@@ -1,0 +1,10 @@
+=== Verification Response ===
+{
+  "verified": false
+}
+ 
+
+2024-12-08T17:25:09.605328
+
+=== Raw Content ===
+Welcome to Watering My Digital Plant with Emacs Timers, a talk by Christopher Howard for Emacs Conference 2024. The goal of this talk is to give a brief introduction to Emacs timers using the illustration of how I created a bot for the Astrobotany service. What is Astrobotany? Let me jump to the home page. Astrobotany is a botany game or a simulation that is played using the Gemini protocol and gemtext documents. What is Gemini? The Gemini protocol is a small web protocol, similar to the HyperTe...

@@ -1,0 +1,10 @@
+=== Verification Response ===
+{
+  "verified": false
+}
+
+
+2024-12-08T17:25:09.145133
+
+=== Raw Content ===
+Hello. My name is Abhinav, and I'm going to talk about unlocking linked data in Org Mode. So, like, a lot of you, I use Emacs and Org Mode for keeping a lot of my data, personal information. For example, if I'm trying to, you know, write journal entries, it's most likely going to be an Org Mode file. If I'm trying to save bookmarks or save links, again, they go into an Org Mode file. Now, I was doing that earlier, but, last year, I think I around last year, I started to use these specialized app...

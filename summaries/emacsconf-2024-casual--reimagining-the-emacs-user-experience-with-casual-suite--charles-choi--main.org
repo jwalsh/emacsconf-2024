@@ -4,13 +4,20 @@
 :END:
 
 ** Key Points
-
+- Emacs user experience relies too much on recall, making it difficult for users to access infrequently used commands
+- Completion in history can help with recognition, but only by a little bit
+- Keyboard-driven menus are being reimagined using Transient library
+- Transient library allows for pinned and state-updated menus that reflect internal state changes made by commands issued from the user
 
 ** Technical Terms
-| Term | Definition | Context |
-|-
-
+| Term                    | Definition                                                                                  | Context                                                |
+|-------------------------+---------------------------------------------------------------------------------------------+--------------------------------------------------------|
+| recall interface design | Interface where users must remember commands and actions from memory without visual aids    | Emacs UX relies heavily on users remembering commands  |
+| completion              | Suggests possible actions based on partial input to help users recognize rather than recall | Used in command history but provides limited help      |
+| Transient library       | Emacs package providing dynamic, contextual menus that make commands more discoverable      | Used to reimagine keyboard-driven menu interfaces      |
+| pinning                 | Feature to keep menus visible and automatically updated based on system state               | Enables persistent menus that reflect command outcomes |
+| mode complexity         | Difficulty arising from modes having many interrelated functions and features               | Addressed by improving command discoverability         |
 
 ** Meta
-- Generated: 2024-12-07T20:44:32.672219
-- Model: phi3
+- Generated: 2024-12-08T17:12:44.066192
+- Model: llama3.2

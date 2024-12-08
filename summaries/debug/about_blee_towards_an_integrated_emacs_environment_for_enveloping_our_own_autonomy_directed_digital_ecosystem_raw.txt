@@ -1,0 +1,10 @@
+=== Verification Response ===
+{
+  "verified": false
+}
+
+
+2024-12-08T17:24:43.782496
+
+=== Raw Content ===
+Greetings. Salaam. This is Mohsen Banan. I am a software and internet engineer. The title of this presentation is ``About Blee''. Blee stands for ByStar Libre-Halaal Emacs Environment. In this presentation I want to look at Emacs as a primary ingredient for the usage environment of an autonomy and morality directed digital ecosystem. My focus here is not just Emacs. This is about augmenting Emacs in the context of our own specific digital ecosystem. This presentation is part theoretical and part...

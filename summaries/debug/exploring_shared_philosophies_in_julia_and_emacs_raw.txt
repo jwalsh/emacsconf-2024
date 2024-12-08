@@ -1,0 +1,10 @@
+=== Verification Response ===
+{
+  "verified": false
+}
+
+
+2024-12-08T17:24:42.772534
+
+=== Raw Content ===
+Hello, I'm very excited to tell you about shared philosophies between the Julia programming language and Emacs. While Julia and Emacs might look like different pieces of software, I think there is profound commonalities between the two. Let's start by introducing Julia. Julia is a high-level dynamic programming language. Julia is free and open source software and is used primarily for scientific computing. The reason Julia is used for scientific computing is that while Julia is high level and ha...

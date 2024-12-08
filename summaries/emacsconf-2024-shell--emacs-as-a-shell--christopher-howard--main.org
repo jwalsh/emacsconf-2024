@@ -4,13 +4,23 @@
 :END:
 
 ** Key Points
-
+- Emacs is not just an editor or development environment, but can be thought of as a shell that allows interaction with the rest of the system through commands
+- Emacs can provide most of the functionality expected from a shell
+- Using Emacs as a shell instead of other shells like Bash is possible and beneficial
+- Running a terminal emulator within Emacs is not necessary and may hinder performance
+- Emacs has its own built-in terminal emulator, but it's not the primary intention of using Emacs as a shell
 
 ** Technical Terms
 | Term | Definition | Context |
 |-
+| Shell | An interface that allows interaction with the operating system through commands | Definition of a shell |
+| Terminal emulator | A program designed to control the cursor and text appearance in response to various control codes to mimic a terminal display device | External shell to run from within Emacs |
+| Terminal emulator (built-in) | A program that controls the cursor and text appearance in response to various control codes to mimic a terminal display device | Emacs' built-in terminal emulator |
+| Eshell | A legitimate shell that provides a similar experience to other shells like Bash, well-integrated into the Emacs interface, and without giving up the power of the Emacs Lisp engine | Emacs' unique built-in shell |
+| Internal/built-in commands | Internal or built-in commands that are made available for use within the shell | Built-in commands in a shell |
+| Environment variables | Variables that contain information about the environment, such as user ID, group ID, and working directory | Environment variables in a shell |
 
 
 ** Meta
-- Generated: 2024-12-07T20:47:01.894000
-- Model: phi3
+- Generated: 2024-12-08T17:25:23.114208
+- Model: llama3.2

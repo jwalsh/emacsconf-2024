@@ -1,0 +1,10 @@
+=== Verification Response ===
+{
+  "verified": false
+}
+
+
+2024-12-08T17:24:41.463988
+
+=== Raw Content ===
+Hello, welcome to this talk on hyperdrive.el. I'm Joseph Turner presenting on behalf of Ushin, a tiny independent information freedom nonprofit. Hyperdrive.el is an Emacs interface to the Hyperdrive peer-to-peer file sharing system built by HolePunch. Like other peer-to-peer file sharing tools, such as BitTorrent, Hyperdrive lets you share unlimited files directly with other users without having to go through a central hub. One thing that sets HyperDrive apart is that the files you share can be ...

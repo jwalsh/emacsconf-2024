@@ -1,0 +1,10 @@
+=== Verification Response ===
+{
+  "verified": false
+}
+
+
+2024-12-08T17:24:41.023216
+
+=== Raw Content ===
+Oh, wow! I'm gonna tell you about how I'm learning this new thing… Okay… Hey dude, I am recording, okay? So, I'll call you back yeah yeah I'm doing learning the new thing. Yeah yeah yeah later later later not right now later later later later. Sorry about that. Okay, as I was saying, I'm going to tell you all about how I'm learning this new thing. Ooh, Sacha Chua's Emacs newsletter is out. Maybe I should spend some time… Oh, wait a second. I have to learn this new thing. Haha. Okay, so I'm going...

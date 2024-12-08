@@ -1,0 +1,36 @@
+{
+  "key_points": [
+    "Welcome and introduction to EmacsConf 2024",
+    "Explanation of the conference schedule and how to watch talks",
+    "Overview of streaming options and technical details",
+    "Instructions on how to participate in live Q&A sessions",
+    "Tips for getting the most out of the conference"
+  ],
+  "technical_terms": [
+    {
+      "context": "streaming media player for high performance",
+      "definition": "mpv, a free and open-source media player",
+      "name": "mpv"
+    },
+    {
+      "context": "web-based players for alternative streaming options",
+      "definition": "not specified",
+      "name": "web-based players"
+    },
+    {
+      "context": "streaming media player with captions",
+      "definition": "BigBlueButton (BBB) with open captions",
+      "name": "BigBlueButton"
+    },
+    {
+      "context": "irc chat service for conference communication",
+      "definition": "Internet Relay Chat (IRC)",
+      "name": "Internet Relay Chat"
+    },
+    {
+      "context": "irc client software for connecting to IRC channels",
+      "definition": "not specified, but can be connected to using TLS and port 6697",
+      "name": "IRC client"
+    }
+  ]
+}

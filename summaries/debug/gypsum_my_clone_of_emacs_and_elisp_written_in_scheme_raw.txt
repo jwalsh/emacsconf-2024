@@ -1,0 +1,10 @@
+=== Verification Response ===
+{
+  "verified": false
+}
+
+
+2024-12-08T17:24:43.277245
+
+=== Raw Content ===
+Hi, my name is Ramin Honary, and I'm here to talk to you today about my clone of Emacs and Emacs Lisp that I've written in Scheme so far. So I am an Emacs enthusiast since 2017, currently employed as a full stack developer, mostly working with Python and JavaScript, although my true love is functional programming, especially Haskell, and Scheme. I started learning Scheme about two years ago. And for the past year, I've been working on a project that I'm tentatively calling Gypsum. Naming things ...

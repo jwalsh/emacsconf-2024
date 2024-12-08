@@ -1,0 +1,25 @@
+* Sunday Opening Remarks
+:PROPERTIES:
+:SPEAKER: Main
+:END:
+
+** Key Points
+- EmacsConf streams will use mpv for optimal performance.
+- Q&A sessions can be joined via BigBlueButton (BBB), Etherpad, or IRC.
+- TALK [ID] Q&A: BBB indicates an upcoming live Q&A session with a solid border in the schedule.
+- Etherpad links are provided on talk pages to facilitate note-taking and question submission.
+- IRC channels (#emacsconf-gen, #emacsconf-org, #emacsconf) are available for general discussions, feedback, and help wanted.
+- chat.emacsconf.org can be used to join IRC channels directly through a web browser.
+
+** Technical Terms
+| Term                      | Definition                                                                          | Context                      |
+|---------------------------+-------------------------------------------------------------------------------------+------------------------------|
+| mpv                       | A software application that plays back video and audio content in real-time.        | Streaming media player       |
+| BigBlueButton (BBB)       | A web-based platform for remote meetings and presentations.                         | Virtual meeting platform     |
+| Etherpad                  | A software application that enables users to collaborate on documents in real-time. | Real-time collaboration tool |
+| IRC (Internet Relay Chat) | A set of rules for communication between computer networks.                         | Instant messaging protocol   |
+
+
+** Meta
+- Generated: 2024-12-08T17:12:54.996506
+- Model: llama3.2

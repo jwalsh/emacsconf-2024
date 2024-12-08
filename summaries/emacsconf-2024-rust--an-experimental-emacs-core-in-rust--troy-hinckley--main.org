@@ -4,13 +4,21 @@
 :END:
 
 ** Key Points
-
+- Now discussing the Emacs core
+- Emacs has a long history
+- Rune creates an opportunity for experimentation and trying new approaches
+- Rust protects from undefined behavior and memory unsafety, but also enables fast performance with a strong ecosystem
+- Multi-threading in Rust is enabled through 'fearless concurrency'
+- Comparison to other Rust and Emacs projects: Remacs and Emacs-NG
 
 ** Technical Terms
-| Term | Definition | Context |
-|-
+| Term       | Definition                                                                               | Context    |
+|------------+------------------------------------------------------------------------------------------+------------|
+| Emacs core | The runtime, interpreter, garbage collector, everything used to run the code.            | Emacs core |
+| Remacs     | A project that took an outside-in approach to replacing C functions with Rust functions. | Remacs     |
+| Emacs-NG   | A spiritual successor to Remacs, adding a JavaScript runtime and new renderers.          | Emacs-NG   |
 
 
 ** Meta
-- Generated: 2024-12-07T20:47:12.035132
-- Model: phi3
+- Generated: 2024-12-08T17:13:29.979914
+- Model: llama3.2

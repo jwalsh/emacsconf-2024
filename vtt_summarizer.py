@@ -9,17 +9,22 @@ from dataclasses import dataclass
 import json
 from webvtt import WebVTT
 from datetime import datetime
+from pydantic import BaseModel
 
-@dataclass
-class TechnicalTerm:
+class TechnicalTerm(BaseModel):
     """A technical term with context."""
     name: str
     definition: str
-    context: str = ""
+    context: str
+
+class TalkSummaryFormat(BaseModel):
+    """Schema for talk summaries from the model."""
+    key_points: list[str]
+    technical_terms: list[TechnicalTerm]
 
 @dataclass
 class TalkSummary:
-    """Schema for talk summaries."""
+    """Full talk summary including metadata."""
     title: str
     speaker: str
     key_points: list[str]
@@ -71,82 +76,94 @@ def extract_talk_info(filename: str) -> tuple[str, str]:
 
 def get_prompt(content: str, title: str, speaker: str) -> str:
     """Get prompt for summary generation."""
-    return f"""Analyze this EmacsConf talk:
+    return f"""Analyze this EmacsConf talk and provide a structured summary. Return as JSON.
+
+Talk details:
 Title: {title}
 Speaker: {speaker}
 
-Extract technical points and terms. For each term include:
-1. Clear definition
-2. How it was used in the talk
-3. Connection to Emacs
+Extract key technical points and important technical terms, focusing on Emacs-related concepts and tools.
+For each technical term, include its definition and how it was specifically used in this talk.
 
-Format response exactly as:
-Key Points:
-- [technical point]
-- [another point]
+Keep the response format exactly as:
+{{
+  "key_points": ["point 1", "point 2", ...],
+  "technical_terms": [
+    {{"name": "term name", "definition": "clear definition", "context": "how used in talk"}},
+    ...
+  ]
+}}
 
-Technical Terms:
-Term: [term name]
-Definition: [definition]
-Context: [usage in talk]
-
-Transcript start:
+Transcript:
 {content[:4000]}"""
 
-def generate_summary(content: str, title: str, speaker: str) -> Optional[TalkSummary]:
-    """Generate summary."""
+def save_debug_output(debug_dir: Path, title: str, content: str):
+    """Save debug output to file."""
+    debug_file = debug_dir / f"{title.replace(' ', '_').lower()}_raw.txt"
+    if debug_file.exists():
+        existing = debug_file.read_text()
+        content = f"{existing}\n\n{datetime.now().isoformat()}\n{content}"
+    debug_file.write_text(content)
+
+def generate_summary(content: str, title: str, speaker: str, output_path: Path) -> Optional[TalkSummary]:
+    """Generate summary using Llama with structured outputs."""
+    debug_dir = output_path / "debug"
+    debug_dir.mkdir(exist_ok=True)
+    
     try:
-        response = ollama.chat(
+        # Verify content first
+        verify_response = ollama.chat(
             model="phi3",
-            messages=[{"role": "user", "content": get_prompt(content, title, speaker)}]
+            messages=[{
+                "role": "user", 
+                "content": f"Does this appear to be valid transcript content for '{title}'? Return only JSON with verified: true/false.\n\nFirst 200 chars:\n{content[:200]}"
+            }],
+            format={"type": "object", "properties": {"verified": {"type": "boolean"}}, "required": ["verified"]}
+        )
+        
+        save_debug_output(debug_dir, title, f"=== Verification Response ===\n{verify_response.message.content}")
+        
+        result = json.loads(verify_response.message.content)
+        if not result.get('verified', False):
+            click.echo("Warning: Content verification failed")
+            # Save raw content for inspection
+            save_debug_output(debug_dir, title, f"\n=== Raw Content ===\n{content[:500]}...")
+            return None
+
+        # Generate summary
+        response = ollama.chat(
+            model="llama3.2",
+            messages=[{
+                "role": "user", 
+                "content": get_prompt(content, title, speaker)
+            }],
+            format=TalkSummaryFormat.model_json_schema()
         )
         
         if not response.message.content:
+            save_debug_output(debug_dir, title, "\n=== Error ===\nEmpty response from model")
             return None
             
-        lines = response.message.content.split('\n')
-        key_points = []
-        technical_content = []
-        current_section = None
+        save_debug_output(debug_dir, title, f"\n=== Model Response ===\n{response.message.content}")
         
-        for line in lines:
-            if 'Key Points:' in line:
-                current_section = 'points'
-            elif 'Technical Terms:' in line:
-                current_section = 'terms'
-            elif line.strip().startswith('- ') and current_section == 'points':
-                key_points.append(line.strip()[2:])
-            elif current_section == 'terms':
-                technical_content.append(line)
-        
-        # Parse technical terms
-        terms = []
-        current_term = {}
-        
-        for line in technical_content:
-            line = line.strip()
-            if line.startswith('Term:'):
-                if current_term:
-                    terms.append(TechnicalTerm(**current_term))
-                    current_term = {}
-                current_term['name'] = line[5:].strip()
-            elif line.startswith('Definition:'):
-                current_term['definition'] = line[11:].strip()
-            elif line.startswith('Context:'):
-                current_term['context'] = line[8:].strip()
-        
-        if current_term:
-            terms.append(TechnicalTerm(**current_term))
+        # Save raw response before parsing
+        raw_file = output_path / "raw" / f"{title.replace(' ', '_').lower()}.json"
+        raw_file.parent.mkdir(exist_ok=True)
+        raw_file.write_text(response.message.content)
+            
+        parsed = TalkSummaryFormat.model_validate_json(response.message.content)
         
         return TalkSummary(
             title=title,
             speaker=speaker,
-            key_points=key_points,
-            technical_terms=terms,
-            meta={"model": "phi3"}
+            key_points=parsed.key_points,
+            technical_terms=parsed.technical_terms,
+            meta={"model": "llama3.2"}
         )
         
     except Exception as e:
+        error_msg = f"\n=== Error ===\n{str(e)}"
+        save_debug_output(debug_dir, title, error_msg)
         click.echo(f"Error generating summary: {e}", err=True)
         return None
 
@@ -184,7 +201,7 @@ def main(media_dir: str, force: bool, output: str, verbose: bool):
             click.echo(f"Title: {title}")
             click.echo(f"Speaker: {speaker}")
         
-        summary = generate_summary(content, title, speaker)
+        summary = generate_summary(content, title, speaker, output_path)
         
         if summary:
             summary_file.write_text(summary.to_org())

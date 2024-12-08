@@ -4,13 +4,22 @@
 :END:
 
 ** Key Points
-
+- The traditional search tools in editors have limitations
+- Search results often contain noise and lack relevance
+- Search primitives are limited
+- There's no notion of relevance or ranking
+- Drawing inspiration from information retrieval is necessary to improve searching
 
 ** Technical Terms
 | Term | Definition | Context |
 |-
+| Local Search | Search features in editors, such as grep and ripgrep, which run locally and match strings to text | The kind of search feature that editors usually have |
+| Hosted Online Search | Search features that rely on a vast corpus of data and are typically proprietary | A type of search feature found in online services |
+| Relevance | The degree to which a result is useful or pertinent to the search query | The concept of relevance in searching |
+| Reverse Index | A map of search terms to locations where those terms are located | A data structure used by search engines to quickly locate results |
+| Information Retrieval | The task of determining how to find the desired information within a large dataset | The process of constructing a search query |
 
 
 ** Meta
-- Generated: 2024-12-07T20:45:32.166393
-- Model: phi3
+- Generated: 2024-12-08T17:24:55.069916
+- Model: llama3.2

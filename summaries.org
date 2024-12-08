@@ -1,0 +1,253 @@
+#+TITLE: EmacsConf 2024 Talk Summaries
+#+DATE: 2024-12-08
+
+
+* [[summaries/emacsconf-2024-casual--reimagining-the-emacs-user-experience-with-casual-suite--charles-choi--main.org][Source]]
+
+* Reimagining The Emacs User Experience With Casual Suite
+:PROPERTIES:
+:SPEAKER: Charles Choi
+:END:
+
+** Key Points
+- Emacs user experience relies too much on recall, making it difficult for users to access infrequently used commands
+- Completion in history can help with recognition, but only by a little bit
+- Keyboard-driven menus are being reimagined using Transient library
+- Transient library allows for pinned and state-updated menus that reflect internal state changes made by commands issued from the user
+
+** Technical Terms
+| Term                    | Definition                                                                                  | Context                                                |
+|-------------------------+---------------------------------------------------------------------------------------------+--------------------------------------------------------|
+| recall interface design | Interface where users must remember commands and actions from memory without visual aids    | Emacs UX relies heavily on users remembering commands  |
+| completion              | Suggests possible actions based on partial input to help users recognize rather than recall | Used in command history but provides limited help      |
+| Transient library       | Emacs package providing dynamic, contextual menus that make commands more discoverable      | Used to reimagine keyboard-driven menu interfaces      |
+| pinning                 | Feature to keep menus visible and automatically updated based on system state               | Enables persistent menus that reflect command outcomes |
+| mode complexity         | Difficulty arising from modes having many interrelated functions and features               | Addressed by improving command discoverability         |
+
+
+* [[summaries/emacsconf-2024-hyperbole--fun-things-with-gnu-hyperbole--mats-lidell--main.org][Source]]
+
+* Fun Things With Gnu Hyperbole
+:PROPERTIES:
+:SPEAKER: Mats Lidell
+:END:
+
+** Key Points
+- Action key
+- Assist key
+- End of line scrolling
+- Implicit links
+- Window grid
+
+** Technical Terms
+| Term                              | Definition                                                                                                               | Context               |
+|-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+-----------------------|
+| M-RET (action key)                | A special keybinding M-RET used for performing actions on different contexts.                                            | action key            |
+| C-u M-RET (assist key)            | The assist key is bound by default to M-RET with the prefix argument, used for performing actions on different contexts. | assist key            |
+| M-RET (action key) on end of line | When using the action key on the end of a line, it scrolls to the top of the window.                                     | end of line scrolling |
+| Implicit link                     | A text pattern recognized by Hyperbole that triggers an action without needing explicit typing.                          | implicit links        |
+| Window grid functionality         | A feature in Hyperbole for creating a grid of windows with customizable settings.                                        | window grid           |
+
+
+
+* [[summaries/emacsconf-2024-org-update--the-future-of-org--ihor-radchenko--main.org][Source]]
+
+* The Future Of Org
+:PROPERTIES:
+:SPEAKER: Ihor Radchenko
+:END:
+
+** Key Points
+- The future of Org Mode development will focus on user-centric design and community involvement.
+- Ihor Radchenko emphasizes the importance of predictability and robustness in maintenance.
+- Maintainers should be transparent about their time, skills, and motivations.
+- Learning and education are crucial for maintainers to improve their skills.
+- A culture of respect and communication is necessary within the Org Mode community.
+
+** Technical Terms
+| Term                 | Definition                                                                                                               | Context                  |
+|----------------------+--------------------------------------------------------------------------------------------------------------------------+--------------------------|
+| user-centric design  | The process of creating and improving Org Mode.                                                                          | Org Mode development     |
+| robustness principle | The practice of supporting and updating Org Mode to ensure it continues to meet the needs of its users.                  | Org Mode maintenance     |
+| predictability       | A set of guidelines or expectations for individuals who wish to contribute to Org Mode development.                      | Contributor requirements |
+| community            | The engagement and participation of users, contributors, and maintainers in the development and improvement of Org Mode. | Community involvement    |
+
+
+
+* [[summaries/emacsconf-2024-p-search--psearch-a-local-search-engine-in-emacs--zac-romero--main.org][Source]]
+
+* Psearch A Local Search Engine In Emacs
+:PROPERTIES:
+:SPEAKER: Zac Romero
+:END:
+
+** Key Points
+- The traditional search tools in editors have limitations
+- Search results often contain noise and lack relevance
+- Search primitives are limited
+- There's no notion of relevance or ranking
+- Drawing inspiration from information retrieval is necessary to improve searching
+
+** Technical Terms
+| Term | Definition | Context |
+|-
+| Local Search | Search features in editors, such as grep and ripgrep, which run locally and match strings to text | The kind of search feature that editors usually have |
+| Hosted Online Search | Search features that rely on a vast corpus of data and are typically proprietary | A type of search feature found in online services |
+| Relevance | The degree to which a result is useful or pertinent to the search query | The concept of relevance in searching |
+| Reverse Index | A map of search terms to locations where those terms are located | A data structure used by search engines to quickly locate results |
+| Information Retrieval | The task of determining how to find the desired information within a large dataset | The process of constructing a search query |
+
+
+
+* [[summaries/emacsconf-2024-rust--an-experimental-emacs-core-in-rust--troy-hinckley--main.org][Source]]
+
+* An Experimental Emacs Core In Rust
+:PROPERTIES:
+:SPEAKER: Troy Hinckley
+:END:
+
+** Key Points
+- Now discussing the Emacs core
+- Emacs has a long history
+- Rune creates an opportunity for experimentation and trying new approaches
+- Rust protects from undefined behavior and memory unsafety, but also enables fast performance with a strong ecosystem
+- Multi-threading in Rust is enabled through 'fearless concurrency'
+- Comparison to other Rust and Emacs projects: Remacs and Emacs-NG
+
+** Technical Terms
+| Term       | Definition                                                                               | Context    |
+|------------+------------------------------------------------------------------------------------------+------------|
+| Emacs core | The runtime, interpreter, garbage collector, everything used to run the code.            | Emacs core |
+| Remacs     | A project that took an outside-in approach to replacing C functions with Rust functions. | Remacs     |
+| Emacs-NG   | A spiritual successor to Remacs, adding a JavaScript runtime and new renderers.          | Emacs-NG   |
+
+
+
+* [[summaries/emacsconf-2024-sat-open--saturday-opening-remarks--main.org][Source]]
+
+* Saturday Opening Remarks
+:PROPERTIES:
+:SPEAKER: Main
+:END:
+
+** Key Points
+- Welcome and introduction to EmacsConf 2024
+- Explanation of the conference schedule and how to watch talks
+- Overview of streaming options and technical details
+- Instructions on how to participate in live Q&A sessions
+- Tips for getting the most out of the conference
+
+** Technical Terms
+| Term | Definition | Context |
+|-
+| mpv | mpv, a free and open-source media player | streaming media player for high performance |
+| web-based players | not specified | web-based players for alternative streaming options |
+| BigBlueButton | BigBlueButton (BBB) with open captions | streaming media player with captions |
+| Internet Relay Chat | Internet Relay Chat (IRC) | irc chat service for conference communication |
+| IRC client | not specified, but can be connected to using TLS and port 6697 | irc client software for connecting to IRC channels |
+
+
+
+* [[summaries/emacsconf-2024-shell--emacs-as-a-shell--christopher-howard--main.org][Source]]
+
+* Emacs As A Shell
+:PROPERTIES:
+:SPEAKER: Christopher Howard
+:END:
+
+** Key Points
+- Emacs is not just an editor or development environment, but can be thought of as a shell that allows interaction with the rest of the system through commands
+- Emacs can provide most of the functionality expected from a shell
+- Using Emacs as a shell instead of other shells like Bash is possible and beneficial
+- Running a terminal emulator within Emacs is not necessary and may hinder performance
+- Emacs has its own built-in terminal emulator, but it's not the primary intention of using Emacs as a shell
+
+** Technical Terms
+| Term | Definition | Context |
+|-
+| Shell | An interface that allows interaction with the operating system through commands | Definition of a shell |
+| Terminal emulator | A program designed to control the cursor and text appearance in response to various control codes to mimic a terminal display device | External shell to run from within Emacs |
+| Terminal emulator (built-in) | A program that controls the cursor and text appearance in response to various control codes to mimic a terminal display device | Emacs' built-in terminal emulator |
+| Eshell | A legitimate shell that provides a similar experience to other shells like Bash, well-integrated into the Emacs interface, and without giving up the power of the Emacs Lisp engine | Emacs' unique built-in shell |
+| Internal/built-in commands | Internal or built-in commands that are made available for use within the shell | Built-in commands in a shell |
+| Environment variables | Variables that contain information about the environment, such as user ID, group ID, and working directory | Environment variables in a shell |
+
+
+
+* [[summaries/emacsconf-2024-sun-open--sunday-opening-remarks--main.org][Source]]
+
+* Sunday Opening Remarks
+:PROPERTIES:
+:SPEAKER: Main
+:END:
+
+** Key Points
+- EmacsConf streams will use mpv for optimal performance.
+- Q&A sessions can be joined via BigBlueButton (BBB), Etherpad, or IRC.
+- TALK [ID] Q&A: BBB indicates an upcoming live Q&A session with a solid border in the schedule.
+- Etherpad links are provided on talk pages to facilitate note-taking and question submission.
+- IRC channels (#emacsconf-gen, #emacsconf-org, #emacsconf) are available for general discussions, feedback, and help wanted.
+- chat.emacsconf.org can be used to join IRC channels directly through a web browser.
+
+** Technical Terms
+| Term                      | Definition                                                                          | Context                      |
+|---------------------------+-------------------------------------------------------------------------------------+------------------------------|
+| mpv                       | A software application that plays back video and audio content in real-time.        | Streaming media player       |
+| BigBlueButton (BBB)       | A web-based platform for remote meetings and presentations.                         | Virtual meeting platform     |
+| Etherpad                  | A software application that enables users to collaborate on documents in real-time. | Real-time collaboration tool |
+| IRC (Internet Relay Chat) | A set of rules for communication between computer networks.                         | Instant messaging protocol   |
+
+
+
+* [[summaries/emacsconf-2024-theme--my-journey-of-finding-and-creating-the-perfect-emacs-theme--metrowind--main.org][Source]]
+
+* My Journey Of Finding And Creating The Perfect Emacs Theme
+:PROPERTIES:
+:SPEAKER: Metrowind
+:END:
+
+** Key Points
+- Emacs themes can be customized using various tools and techniques
+- Understanding color theory and color spaces is crucial for creating visually appealing themes
+- LAB color space is used in the 'lab' theme to achieve consistent lightness across colors
+- MELPA (a package repository) is used to manage and distribute Emacs themes
+- Flat UI design concepts popularized by iOS 7 are incorporated into some themes, such as FlucUI
+
+** Technical Terms
+| Term            | Definition                                                                                                | Context                                                  |
+|-----------------+-----------------------------------------------------------------------------------------------------------+----------------------------------------------------------|
+| Flat UI         | Design philosophy emphasizing minimalism and simple elements without 3D effects                           | Used as inspiration for FlucUI theme from iOS 7 design   |
+| LAB color space | Color model using lightness and two color dimensions, providing perceptually uniform color representation | Used in 'lab' theme for consistent color lightness       |
+| MELPA           | Major Emacs package repository for distributing and managing themes and packages                          | Used to publish and distribute Emacs themes              |
+| color palette   | Predefined set of colors chosen to work together in a design system                                       | FlucUI theme drew from DeviantArt and iOS 7 palettes     |
+| color picker    | Tool for selecting and analyzing colors within different color spaces                                     | Used to maintain consistent lightness while varying hues |
+
+
+* [[summaries/emacsconf-2024-writing--emacs-writing-studio--peter-prevos--main.org][Source]]
+
+* Emacs Writing Studio
+:PROPERTIES:
+:SPEAKER: Peter Prevos
+:END:
+
+** Key Points
+- I introduced the concept of an opinionated starter kit for authors who write for humans, not for programmers who write for computers.
+- After analyzing my research and writing workflow, I developed Emacs Writing Studio (EWS) as a comprehensive solution to help authors manage their writing projects.
+- EWS is based on three main steps: inspiration, ideation, and production. It uses Org mode for note-taking and managing bibliographies.
+- The book that accompanies EWS is written entirely in Org mode.
+- I used the standard keyboard shortcuts in Emacs and avoided customizations whenever possible to keep things simple.
+- EWS includes packages like Denote for note tagging, citar for accessing bibliographies, and vertico for minibuffer completion.
+- The focus of EWS is on providing a streamlined writing experience that minimizes distractions and maximizes productivity.
+- I believe EWS can help authors overcome the paradox of choice in Emacs by making deliberate design decisions about their workflow.
+
+** Technical Terms
+| Term                 | Definition                                                                                                | Context              |
+|----------------------+-----------------------------------------------------------------------------------------------------------+----------------------|
+| Emacs Writing Studio | an opinionated starter kit for authors who write for humans, not for programmers who write for computers. | Emacs Writing Studio |
+| Org Mode             | a note-taking and document management system in Emacs.                                                    | Org mode             |
+| Denote               | a package for note tagging in Emacs.                                                                      | Denote               |
+| Citar                | a package for accessing bibliographies in Emacs.                                                          | citar                |
+| Vertico              | a package for minibuffer completion in Emacs.                                                             | vertico              |
+| Visual Line Mode     | a mode that enables visual line numbers in Emacs.                                                         | visual-line-mode     |
+
+

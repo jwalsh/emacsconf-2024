@@ -1,0 +1,25 @@
+* Fun Things With Gnu Hyperbole
+:PROPERTIES:
+:SPEAKER: Mats Lidell
+:END:
+
+** Key Points
+- Action key
+- Assist key
+- End of line scrolling
+- Implicit links
+- Window grid
+
+** Technical Terms
+| Term                              | Definition                                                                                                               | Context               |
+|-----------------------------------+--------------------------------------------------------------------------------------------------------------------------+-----------------------|
+| M-RET (action key)                | A special keybinding M-RET used for performing actions on different contexts.                                            | action key            |
+| C-u M-RET (assist key)            | The assist key is bound by default to M-RET with the prefix argument, used for performing actions on different contexts. | assist key            |
+| M-RET (action key) on end of line | When using the action key on the end of a line, it scrolls to the top of the window.                                     | end of line scrolling |
+| Implicit link                     | A text pattern recognized by Hyperbole that triggers an action without needing explicit typing.                          | implicit links        |
+| Window grid functionality         | A feature in Hyperbole for creating a grid of windows with customizable settings.                                        | window grid           |
+
+
+** Meta
+- Generated: 2024-12-08T17:17:41.292401
+- Model: llama3.2
