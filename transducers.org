@@ -1,0 +1,301 @@
+* Transducers: Ergonomic Data Processing Examples
+
+Based on Colin Woodbury's EmacsConf 2024 talk
+
+** Setup
+#+begin_src elisp
+(use-package transducers
+  :straight (:host github :repo "fosskers/transducers.el")
+  :config
+  ;; Optional: Use t- prefix instead of transducers-
+  (setq-local read-symbol-shorthands '(("t-" . "transducers-"))))
+#+end_src
+
+#+RESULTS:
+: t
+
+** Basic Examples 
+
+*** Example 1: Basic transformation with map and filter
+#+begin_src elisp
+(t-transduce 
+ (t-comp 
+  (t-map #'upcase)
+  (t-filter (lambda (s) (> (length s) 3))))
+ #'t-cons 
+ '("hello" "hi" "world" "emacs"))
+#+end_src
+
+#+RESULTS:
+| HELLO | WORLD | EMACS |
+
+*** Example 2: Processing numbers efficiently
+
+#+begin_src elisp
+(t-transduce
+ (t-comp
+  (t-filter #'cl-oddp)
+  (t-map (lambda (n) (* n n)))
+  (t-take 5))
+ #'+
+ (t-ints 1))  ;; Infinite stream of integers
+#+end_src
+
+#+RESULTS:
+: 165
+
+** Advanced Use Cases
+
+*** Example 3: Working with CSV-like data (Fixed) 
+#+begin_src elisp
+;; 
+(t-transduce 
+ (t-comp
+  t-from-csv  ; Remove parentheses, it's a function reference
+  (t-map (lambda (hm) (gethash "Score" hm)))
+  (t-filter (lambda (score) (> (string-to-number score) 80))))
+ #'t-cons
+ (list "Name,Score" "Alice,85" "Bob,75" "Charlie,90"))
+#+end_src
+*** Example 4: Window-based processing
+#+begin_src elisp
+(t-transduce
+ (t-comp
+  (t-window 3)              ;; Create sliding windows of 3 elements
+  (t-map (lambda (w)        ;; Calculate average of each window
+          (/ (apply #'+ w)
+             (float (length w))))))
+ #'t-cons
+ '(1 2 3 4 5 6 7 8 9))
+#+end_src
+*** Example 5: Unique elements with counting
+#+begin_src elisp
+(t-transduce
+ (t-comp
+  (t-unique)               ;; Remove duplicates
+  (t-enumerate))          ;; Add indices
+ #'t-cons
+ '("a" "b" "a" "c" "b" "d"))
+#+end_src
+
+** Working with Files
+
+*** Example 6: Processing file content
+#+begin_src elisp
+(t-transduce
+ (t-comp
+  (t-map #'split-string)           ;; Split lines into words
+  #'t-concatenate                  ;; Flatten the list of words
+  (t-filter (lambda (w)            ;; Filter empty strings
+             (not (string-empty-p w))))
+  (t-map #'downcase)              ;; Normalize case
+  (t-unique))                     ;; Get unique words
+ #'t-count                        ;; Count unique words
+ (t-file-read "README.org"))
+#+end_src
+
+** Real-time Data Processing
+
+*** Example 7: Processing a stream of data
+#+begin_src elisp
+(t-transduce
+ (t-comp
+  (t-step 2)                      ;; Take every second item
+  (t-map #'string-to-number)      ;; Convert to numbers
+  (t-window 3)                    ;; Create windows of 3
+  (t-map (lambda (w)              ;; Calculate moving average
+          (/ (apply #'+ w)
+             (float (length w))))))
+ #'t-vector
+ '("1" "2" "3" "4" "5" "6" "7" "8" "9" "10"))
+#+end_src
+
+** Notes
+- Transducers chain operations efficiently without intermediate collections
+- Memory efficient for processing large data sets
+- Can work with infinite sequences
+- Composable and reusable
+- Built-in short-circuiting capabilities
+
+** Generate Mock Bank Transaction Data
+#+begin_src bash :tangle scripts/generate_transactions.sh :mkdirp t
+#!/bin/bash
+
+# Header
+echo "Date,Description,Amount,Type,Category,Balance"
+
+# Generate 100 transactions
+START_DATE="2024-01-01"
+BALANCE=10000.00
+
+# Common merchants
+MERCHANTS=(
+    "TRADER_JOES" 
+    "AMAZON" 
+    "SPOTIFY" 
+    "NETFLIX" 
+    "SHELL_GAS" 
+    "STARBUCKS" 
+    "TARGET" 
+    "WHOLE_FOODS"
+    "UBER" 
+    "LYFT"
+)
+
+# Common transaction types
+TYPES=("debit" "credit" "transfer" "withdrawal" "deposit")
+
+# Categories
+CATEGORIES=(
+    "Groceries" 
+    "Entertainment" 
+    "Transportation" 
+    "Dining" 
+    "Utilities" 
+    "Shopping"
+)
+
+mkdir -p data
+
+for i in {1..100}; do
+    # Generate random date within 2024
+    DAYS_TO_ADD=$((RANDOM % 365))
+    TRANS_DATE=$(date -v+"$DAYS_TO_ADD"d -j -f "%Y-%m-%d" "$START_DATE" "+%Y-%m-%d" 2>/dev/null || 
+                 date -d "$START_DATE + $DAYS_TO_ADD days" "+%Y-%m-%d")
+    
+    # Random merchant
+    MERCHANT=${MERCHANTS[$((RANDOM % ${#MERCHANTS[@]}))]}
+    
+    # Random amount (between -200 and 500)
+    AMOUNT=$(printf "%.2f" $(echo "scale=2; (($RANDOM % 70000) - 20000) / 100" | bc))
+    
+    # Transaction type
+    TYPE=${TYPES[$((RANDOM % ${#TYPES[@]}))]}
+    
+    # Category
+    CATEGORY=${CATEGORIES[$((RANDOM % ${#CATEGORIES[@]}))]}
+    
+    # Update balance
+    BALANCE=$(printf "%.2f" $(echo "scale=2; $BALANCE + $AMOUNT" | bc))
+    
+    echo "$TRANS_DATE,$MERCHANT,$AMOUNT,$TYPE,$CATEGORY,$BALANCE"
+done | sort -t, -k1 | tee data/transactions.csv | head -n 10
+
+#+end_src
+
+#+RESULTS:
+|       Date | Description |  Amount | Type       | Category       |  Balance |
+| 2024-01-02 | SPOTIFY     | -195.28 | transfer   | Dining         |  -5315.6 |
+| 2024-01-05 | LYFT        | -199.19 | debit      | Transportation |  7441.63 |
+| 2024-01-10 | AMAZON      | -194.63 | withdrawal | Utilities      | -9650.02 |
+| 2024-01-12 | TRADER_JOES |  -193.8 | debit      | Entertainment  |  8424.07 |
+| 2024-01-20 | TARGET      | -198.21 | debit      | Transportation | -3358.86 |
+| 2024-01-27 | SHELL_GAS   | -199.44 | transfer   | Groceries      | -5709.55 |
+| 2024-01-29 | STARBUCKS   |  -197.3 | withdrawal | Shopping       | -6696.28 |
+| 2024-01-31 | SHELL_GAS   |  -193.3 | withdrawal | Dining         |  5861.94 |
+| 2024-02-03 | LYFT        | -194.95 | withdrawal | Entertainment  | -1783.78 |
+| 2024-02-03 | TARGET      | -197.43 | deposit    | Dining         |  3310.99 |
+
+** Process Transactions with Transducers
+*** Setup and Helper Functions
+#+begin_src elisp
+(require 'transducers)
+
+(defun read-csv-lines (file)
+ "Read CSV file and split into lines."
+ (with-temp-buffer
+   (insert-file-contents file)
+   (split-string (buffer-string) "\n" t)))
+#+end_src
+
+#+RESULTS:
+: read-csv-lines
+
+*** Example 1: View Base Data
+#+begin_src elisp
+(seq-take (read-csv-lines "data/transactions.csv") 10)
+#+end_src
+
+#+RESULTS:
+| 2024-01-02,SPOTIFY,-195.28,transfer,Dining,-5315.60 | 2024-01-05,LYFT,-199.19,debit,Transportation,7441.63 | 2024-01-10,AMAZON,-194.63,withdrawal,Utilities,-9650.02 | 2024-01-12,TRADER_JOES,-193.80,debit,Entertainment,8424.07 | 2024-01-20,TARGET,-198.21,debit,Transportation,-3358.86 | 2024-01-27,SHELL_GAS,-199.44,transfer,Groceries,-5709.55 | 2024-01-29,STARBUCKS,-197.30,withdrawal,Shopping,-6696.28 | 2024-01-31,SHELL_GAS,-193.30,withdrawal,Dining,5861.94 | 2024-02-03,LYFT,-194.95,withdrawal,Entertainment,-1783.78 | 2024-02-03,TARGET,-197.43,deposit,Dining,3310.99 |
+
+*** Example 2: Total Expenses
+#+begin_src elisp
+(require 'transducers)
+(let ((transducers-from-csv (transducers-from-csv)))  ; Create the transducer
+  (t-transduce
+   (t-comp
+    transducers-from-csv
+    (t-map (lambda (hm) (string-to-number (gethash "Amount" hm))))
+    (t-filter #'minusp))
+   #'+
+   (read-csv-lines "data/transactions.csv")))
+#+end_src
+
+*** Example 3: Merchant Analysis
+#+begin_src elisp
+(t-transduce
+(t-comp
+ transducers-from-csv
+ (t-map (lambda (hm) (gethash "Description" hm)))
+ (t-group-by #'identity))
+#'t-cons
+(read-csv-lines "data/transactions.csv"))
+#+end_src
+
+*** Example 4: Category Summaries
+#+begin_src elisp
+(t-transduce
+(t-comp
+ transducers-from-csv
+ (t-map (lambda (hm) 
+         (cons (gethash "Category" hm)
+               (string-to-number (gethash "Amount" hm)))))
+ (t-group-by #'car)
+ (t-map (lambda (group)
+          (list (car group)
+                :total (apply #'+ (mapcar #'cdr (cdr group)))
+                :count (length (cdr group))))))
+#'t-cons
+(read-csv-lines "data/transactions.csv"))
+#+end_src
+
+*** Example 5: Monthly Spending Patterns
+#+begin_src elisp
+(t-transduce
+(t-comp
+ transducers-from-csv
+ (t-map (lambda (hm)
+         (cons (substring (gethash "Date" hm) 0 7)  ; Get YYYY-MM
+               (string-to-number (gethash "Amount" hm)))))
+ (t-group-by #'car)
+ (t-map (lambda (group)
+          (list (car group)
+                :transactions (length (cdr group))
+                :total (apply #'+ (mapcar #'cdr (cdr group)))))))
+#'t-cons
+(read-csv-lines "data/transactions.csv"))
+#+end_src
+
+*** Example 6: Large Transactions
+#+begin_src elisp
+(t-transduce
+(t-comp
+ transducers-from-csv
+ (t-map (lambda (hm)
+         (list (gethash "Date" hm)
+               (gethash "Description" hm)
+               (string-to-number (gethash "Amount" hm))
+               (gethash "Category" hm))))
+ (t-filter (lambda (entry) (< (abs (nth 2 entry)) 190)))
+ (t-sort #'> #'caddr)
+ (t-take 5)
+ (t-map (lambda (entry)
+         (format "%s: %s ($%.2f) - %s"
+                 (nth 0 entry)
+                 (nth 1 entry)
+                 (nth 2 entry)
+                 (nth 3 entry)))))
+#'t-cons
+(read-csv-lines "data/transactions.csv"))
+#+end_src

@@ -232,7 +232,7 @@ Times in EST (GMT-5)
 
 - https://emacsconf.org/2024/talks/sun-open/
 
-*** TODO 9:10 - 9:20 :: Unlocking linked data: replacing specialized apps with an Org-based semantic wiki
+*** DONE 9:10 - 9:20 :: Unlocking linked data: replacing specialized apps with an Org-based semantic wiki
 - *Speaker*: Abhinav Tushar (he/him)
 - *Track*: General
 - *Q&A*: Etherpad
@@ -260,7 +260,7 @@ Times in EST (GMT-5)
 
 #+RESULTS:
 
-*** TODO 9:30 - 9:50 :: Emacs regex compilation and future directions for expressive pattern matching
+*** DONE 9:30 - 9:50 :: Emacs regex compilation and future directions for expressive pattern matching
 - *Speaker*: Danny McClanahan (they/them)
 - *Track*: General
 - *Q&A*: #emacsconf-gen
@@ -337,6 +337,32 @@ Times in EST (GMT-5)
 - *Q&A*: BBB
 
 - https://emacsconf.org/2024/talks/transducers/
+- https://github.com/fosskers/transducers.el
+**** Example: Letter Frequency Analysis
+#+begin_src elisp
+(require 'transducers)
+
+;; Get some sample text (using fortune)
+(defvar sample-text
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+nisi ut aliquip ex ea commodo consequat.")
+
+;; Analyze letter frequencies
+(t-transduce
+ (t-comp
+  (t-map #'downcase)                    ; Convert to lowercase
+  (t-filter #'alphabetp)                ; Keep only letters
+  (t-group-by #'identity)               ; Group by character
+  (t-map (lambda (group)                ; Calculate frequencies
+          (cons (car group)
+                (length (cdr group)))))  
+  (t-sort #'> #'cdr))                   ; Sort by frequency
+ #'t-cons
+ (string-to-list sample-text))
+#+end_src
+
 
 *** TODO 16:50 - 17:00 :: Sunday closing remarks
 - *Track*: General
@@ -361,8 +387,7 @@ Supported players:
 - ffplay
 
 * Chat Channels
+
 - General Track: #emacsconf-gen on libera.chat
 - Development Track: #emacsconf-dev on libera.chat
-
-
 
