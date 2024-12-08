@@ -49,5 +49,8 @@ elisp-example: ## Create a new Elisp example
 commit: ## Just show the suggested commit message without committing
 	@poetry run python git-conv.py
 
+commit-staff: ## Staff Software commit message review 
+	poetry run python git-conv.py -g codellama -v jwalsh/staff-engineers -n 5
+
 mirror: ## Media mirror
 	wget -mkEpnp https://media.emacsconf.org/2024/
