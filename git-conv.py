@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
-from typing import Literal, TextIO
+from typing import Literal
 import click
 import subprocess
 from pydantic import BaseModel, Field
@@ -90,15 +90,24 @@ class GitCommitAI:
     def generate_message(self, diff: str, attempt: int = 1, feedback: str = None) -> CommitMessage:
         """Generate commit message using model."""
         prompt = [
-            {"role": "system", "content": "Generate a conventional commit message based on the git diff."},
-            {"role": "user", "content": f"""Return valid JSON matching this schema:
+            {"role": "system", "content": """You are a Git commit message generator.
+Create conventional commit messages that are clear, specific, and follow the schema exactly.
+Focus on the actual changes in the diff, not meta-information."""},
+            {"role": "user", "content": f"""Generate a commit message as JSON matching this schema:
 {self.schema}
 
-Keep the message concise and focused on the key changes."""}
+Guidelines:
+- Use specific scopes from the schema
+- Keep descriptions concise and clear
+- Focus on what changed and why"""
+            }
         ]
 
         if feedback and attempt > 1:
-            prompt.append({"role": "user", "content": f"Previous issues:\n{feedback}"})
+            prompt.append({
+                "role": "user", 
+                "content": f"Consider this feedback from the reviewer:\n{feedback}\nPlease revise accordingly."
+            })
 
         prompt.append({"role": "user", "content": f"Changes to analyze:\n{diff}"})
 
@@ -116,17 +125,21 @@ Keep the message concise and focused on the key changes."""}
     def validate_message(self, message: str) -> tuple[bool, str]:
         """Validate message using validator model."""
         prompt = [
-            {"role": "system", "content": "Review this commit message and return a structured review result."},
-            {"role": "user", "content": f"""Analyze this commit message:
+            {"role": "system", "content": """You are a commit message reviewer.
+Provide specific, actionable feedback focusing on conventional commits compliance.
+Return a structured review result."""},
+            {"role": "user", "content": f"""Review this commit message:
 {message}
 
-Return valid JSON matching this schema:
+Return JSON matching this schema:
 {self.review_schema}
 
-Check:
-1. Follows conventional commits format
-2. Clear and specific description
-3. Appropriate scope if needed"""}
+Evaluate:
+1. Conventional commits format compliance
+2. Clarity and specificity
+3. Appropriate scope usage
+4. Description accuracy"""
+            }
         ]
 
         try:
@@ -156,31 +169,40 @@ Check:
         
         feedback = None
         for attempt in range(1, self.max_attempts + 1):
-            click.echo(f"\nAttempt {attempt}/{self.max_attempts}...")
+            # Generation attempt
+            click.secho(f"\n🤖 [{self.generator}] Analyzing changes... (Attempt {attempt}/{self.max_attempts})", fg="blue")
+            if feedback:
+                click.secho(f"Considering feedback from {self.validator}:", fg="yellow")
+                click.echo(f"  {feedback}")
             
             commit_msg = self.generate_message(diff, attempt, feedback)
             if not commit_msg:
                 continue
             
             formatted = commit_msg.format_message()
-            click.echo("\nGenerated message:")
-            click.echo(formatted)
+            click.echo("\nProposed commit message:")
+            click.secho(formatted, fg="bright_blue")
             
-            click.echo("\nValidating...")
+            # Validation
+            click.secho(f"\n🔍 [{self.validator}] Reviewing commit message...", fg="blue")
             passed, feedback = self.validate_message(formatted)
             
             if passed:
-                click.secho("✓ Validation passed", fg="green")
+                click.secho("✓ Message approved!", fg="green")
                 if feedback:
-                    click.echo(f"Suggestions: {feedback}")
+                    click.secho("Suggestions for future commits:", fg="yellow")
+                    click.echo(f"  {feedback}")
                 break
             else:
-                click.secho("✗ Validation failed", fg="red")
-                click.echo(f"Issues: {feedback}")
+                click.secho("✗ Changes requested", fg="red")
+                click.secho("Feedback:", fg="yellow")
+                for line in feedback.split('\n'):
+                    click.echo(f"  {line}")
+                
                 if attempt < self.max_attempts:
-                    click.echo("\nRetrying with feedback...")
+                    click.secho(f"\n🔄 Asking {self.generator} to revise based on {self.validator}'s feedback...", fg="blue")
         
-        if click.confirm("\nUse this message?", default=False):
+        if click.confirm("\n💬 Use this message?", default=False):
             self.commit_changes(formatted)
 
 @click.command()
@@ -203,7 +225,7 @@ Check:
     show_default=True
 )
 def main(generator: str, validator: str, attempts: int) -> None:
-    """AI-powered conventional commit message generator."""
+    """AI-powered conventional commit message generator for EmacsConf."""
     try:
         committer = GitCommitAI(
             generator=generator,
