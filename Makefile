@@ -54,3 +54,15 @@ commit: ## Staff Software commit message review
 
 mirror: ## Media mirror
 	wget -mkEpnp https://media.emacsconf.org/2024/
+
+summarize: ## Summarize transcripts
+	poetry run python vtt_summarizer.py media.emacsconf.org/2024/
+
+summarize-force: ## Summarize transcripts
+	poetry run python vtt_summarizer.py --force media.emacsconf.org/2024/
+
+media.emacsconf.org: mirror
+
+rclone-media: media.emacsconf.org ## Clone media.emacsconf.org
+	@rclone config
+

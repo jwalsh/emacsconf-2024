@@ -1,0 +1,16 @@
+* Writing Academic Papers In Orgroam
+:PROPERTIES:
+:SPEAKER: Vincent Conus
+:END:
+
+** Key Points
+
+
+** Technical Terms
+| Term | Definition | Context |
+|-
+
+
+** Meta
+- Generated: 2024-12-07T20:46:16.853465
+- Model: phi3

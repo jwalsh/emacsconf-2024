@@ -1,0 +1,16 @@
+* Psearch A Local Search Engine In Emacs
+:PROPERTIES:
+:SPEAKER: Zac Romero
+:END:
+
+** Key Points
+
+
+** Technical Terms
+| Term | Definition | Context |
+|-
+
+
+** Meta
+- Generated: 2024-12-07T20:45:32.166393
+- Model: phi3

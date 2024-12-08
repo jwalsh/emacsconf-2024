@@ -1,0 +1,16 @@
+* Saturday Opening Remarks
+:PROPERTIES:
+:SPEAKER: Main
+:END:
+
+** Key Points
+
+
+** Technical Terms
+| Term | Definition | Context |
+|-
+
+
+** Meta
+- Generated: 2024-12-07T20:46:24.751219
+- Model: phi3

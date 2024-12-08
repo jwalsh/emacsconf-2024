@@ -308,7 +308,18 @@ files = [
     {file = "typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"},
 ]
 
+[[package]]
+name = "webvtt-py"
+version = "0.5.1"
+description = "WebVTT reader, writer and segmenter"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "webvtt-py-0.5.1.tar.gz", hash = "sha256:2040dd325277ddadc1e0c6cc66cbc4a1d9b6b49b24c57a0c3364374c3e8a3dc1"},
+    {file = "webvtt_py-0.5.1-py3-none-any.whl", hash = "sha256:9d517d286cfe7fc7825e9d4e2079647ce32f5678eb58e39ef544ffbb932610b7"},
+]
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "2ba9850587b970af85579f31b830508832bccbeddf669029047395e11d4c1042"
+content-hash = "a7fab0735158f55e080bd2a0ae7d5f6bbf94ca1a5a28aa1fca86b6935a4fb128"

@@ -1,0 +1,16 @@
+* Emacs As A Shell
+:PROPERTIES:
+:SPEAKER: Christopher Howard
+:END:
+
+** Key Points
+
+
+** Technical Terms
+| Term | Definition | Context |
+|-
+
+
+** Meta
+- Generated: 2024-12-07T20:47:01.894000
+- Model: phi3

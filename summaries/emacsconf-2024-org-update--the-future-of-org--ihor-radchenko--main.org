@@ -1,0 +1,16 @@
+* The Future Of Org
+:PROPERTIES:
+:SPEAKER: Ihor Radchenko
+:END:
+
+** Key Points
+
+
+** Technical Terms
+| Term | Definition | Context |
+|-
+
+
+** Meta
+- Generated: 2024-12-07T20:42:38.800611
+- Model: phi3

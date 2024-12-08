@@ -1,0 +1,16 @@
+* Emacs Eev And Maxima Now
+:PROPERTIES:
+:SPEAKER: Eduardo Ochs
+:END:
+
+** Key Points
+
+
+** Technical Terms
+| Term | Definition | Context |
+|-
+
+
+** Meta
+- Generated: 2024-12-07T20:43:36.721607
+- Model: phi3

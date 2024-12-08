@@ -1,0 +1,16 @@
+* Reimagining The Emacs User Experience With Casual Suite
+:PROPERTIES:
+:SPEAKER: Charles Choi
+:END:
+
+** Key Points
+
+
+** Technical Terms
+| Term | Definition | Context |
+|-
+
+
+** Meta
+- Generated: 2024-12-07T20:44:32.672219
+- Model: phi3

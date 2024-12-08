@@ -1,0 +1,16 @@
+* An Experimental Emacs Core In Rust
+:PROPERTIES:
+:SPEAKER: Troy Hinckley
+:END:
+
+** Key Points
+
+
+** Technical Terms
+| Term | Definition | Context |
+|-
+
+
+** Meta
+- Generated: 2024-12-07T20:47:12.035132
+- Model: phi3
